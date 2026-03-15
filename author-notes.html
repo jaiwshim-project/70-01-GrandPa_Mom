@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>작가의 말 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* Page hero */
+.page-hero{
+  background:linear-gradient(135deg,#2A1508 0%,#5C2E0A 50%,#8B4513 100%);
+  padding:56px 0;color:#fff;text-align:center;
+  border-bottom:3px solid var(--terra);
+}
+.page-hero h1{color:#fff;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.page-hero p{color:rgba(255,255,255,.82);font-size:.96rem}
+
+/* Author intro */
+.author-intro{
+  background:var(--white);border-radius:var(--radius);padding:40px;
+  margin:36px 0;display:flex;gap:32px;align-items:flex-start;
+  border:2px solid var(--border-card);
+  border-left:5px solid var(--terra);
+  box-shadow:0 4px 16px var(--shadow);
+}
+@media(max-width:640px){.author-intro{flex-direction:column;gap:20px;padding:24px}}
+.author-avatar{
+  width:88px;height:88px;border-radius:50%;
+  background:linear-gradient(135deg,var(--terra),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(184,85,48,.35);
+  border:3px solid rgba(255,255,255,.8);
+}
+.author-info h3{font-family:'Noto Serif KR',serif;font-size:1.22rem;margin-bottom:4px;color:var(--navy)}
+.author-info .author-sub{font-size:.86rem;color:var(--terra);margin-bottom:13px;font-weight:600}
+.author-info p{font-size:.92rem;line-height:1.85;color:var(--text-sub)}
+
+/* Notes list */
+.notes-list{display:flex;flex-direction:column;gap:22px;padding-bottom:64px}
+
+/* Note card */
+.note-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:2px solid var(--border-card);overflow:hidden;
+  transition:box-shadow .25s,border-color .25s;
+  box-shadow:0 2px 8px var(--shadow);
+}
+.note-card:hover{box-shadow:0 8px 24px var(--shadow-md);border-color:var(--terra-light)}
+.note-header{
+  padding:18px 24px 0;display:flex;align-items:flex-start;
+  justify-content:space-between;gap:12px;
+  border-bottom:0;
+}
+.note-ep-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--gold-pale);
+  border:1px solid rgba(196,149,32,.35);
+  border-radius:20px;padding:4px 12px;
+  font-size:.75rem;font-weight:700;color:#7A5E10;white-space:nowrap;
+}
+.note-date{font-size:.78rem;color:var(--text-muted);font-weight:500}
+.note-body{padding:16px 24px 22px}
+.note-title{
+  font-family:'Noto Serif KR',serif;font-size:1.08rem;font-weight:700;
+  color:var(--navy);margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--border-light);
+}
+.note-text{font-size:.92rem;line-height:1.88;color:var(--text-sub)}
+.note-text + .note-text{margin-top:12px}
+.note-footer{
+  padding:14px 24px;border-top:2px solid var(--cream-darker,var(--cream-dark));
+  background:var(--cream-dark);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.note-reactions{display:flex;gap:8px}
+.react-btn{
+  padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:600;
+  background:var(--white);border:2px solid var(--border);
+  cursor:pointer;transition:all .2s;color:var(--text-light);min-height:36px;
+}
+.react-btn:hover,.react-btn.active{
+  background:rgba(184,85,48,.08);border-color:var(--terra);color:var(--terra-dark);
+}
+.note-link{
+  font-size:.82rem;color:var(--terra);font-weight:600;
+  padding:5px 12px;border-radius:6px;border:1.5px solid rgba(184,85,48,.3);
+  background:rgba(184,85,48,.06);transition:all .2s;
+}
+.note-link:hover{background:var(--terra);color:#fff;text-decoration:none}
+
+/* Tag pill */
+.note-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.note-tag{
+  display:inline-block;padding:3px 12px;border-radius:12px;font-size:.73rem;font-weight:600;
+  background:rgba(22,46,74,.07);color:var(--navy-light);
+  border:1px solid rgba(22,46,74,.18);
+}
+
+@media(max-width:480px){
+  .note-header{padding:16px 18px 0}
+  .note-body{padding:14px 18px 18px}
+  .note-footer{padding:12px 18px}
+}
+
+</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="badge badge-gold" style="margin-bottom:12px">✍️ 작가의 말</span>
+    <h1>이야기 뒤의 이야기</h1>
+    <p>각 에피소드를 쓰면서 떠올린 생각들, 독자들에게 전하고 싶은 말</p>
+  </div>
+</div>
+
+<section style="background:var(--cream-dark)">
+  <div class="container">
+    <!-- Author Intro -->
+    <div class="author-intro">
+      <div class="author-avatar">✍️</div>
+      <div class="author-info">
+        <h3>심재우 작가</h3>
+        <p class="author-sub">공대 출신 스토리텔러 · 부부 에세이스트</p>
+        <p>
+          30년 넘게 함께 살아온 우리 부부의 이야기를 씁니다.
+          공학도의 눈으로 세상을 분석하고, 예술가의 감성을 가진 아내 덕분에
+          세상을 다시 보게 됐습니다. 이 이야기가 비슷한 차이를 가진
+          누군가에게 닿기를 바랍니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- Notes List -->
+    <div class="notes-list" id="notesList"></div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<div id="auth-placeholder"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/common.js"></script>
+<script>
+const AUTHOR_NOTES = [
+  {
+    id:1, ep:15, epTitle:'색깔 논쟁', part:2,
+    date:'2025-08-15',
+    title:'\"빨강\"과 \"노을색\" 사이의 거리',
+    body:[
+      '이 에피소드를 쓸 때 아내에게 물었습니다. "당신은 저 색이 뭔 색이야?" 아내는 망설임 없이 "노을색"이라고 했습니다. 저는 색상표를 펼쳐 Pantone 코드를 찾으려 했죠.',
+      '이상하게도 우리는 50년을 이런 식으로 대화해 왔습니다. 그런데 한 번도 싸운 적이 없어요. 아마 둘 다 틀리지 않았다는 걸 어느 순간 알게 됐기 때문이겠죠. 빨강과 노을색, 둘 다 맞는 말이니까요.'
+    ],
+    tags:['색깔','소통','부부','에피소드 뒷이야기'],
+    likes:87
+  },
+  {
+    id:2, ep:11, epTitle:'데이트 계획표', part:2,
+    date:'2025-08-11',
+    title:'엑셀 데이트 계획표를 변호하며',
+    body:[
+      '독자 여러분, 저는 정말 엑셀로 데이트 계획표를 만들었습니다. 열두 칸짜리 스프레드시트에, 이동 시간, 예상 비용, 날씨 변수까지 포함해서요.',
+      '아내는 그 표를 보고 웃었습니다. 그런데 나중에 들었는데, 그 안에 자기가 좋아하는 것들이 다 들어있었다는 걸 그날 처음 알았다고 했어요. 저는 아내가 좋아하는 걸 데이터로 정리해 뒀거든요. 사랑 표현도 공학적으로 가능합니다.'
+    ],
+    tags:['데이트','엑셀','공학적 사랑'],
+    likes:124
+  },
+  {
+    id:3, ep:8, epTitle:'첫 오해', part:1,
+    date:'2025-08-08',
+    title:'논리와 감성은 번역이 필요하다',
+    body:[
+      '\"왜 화났어?\"라는 질문에 \"화 안 났어\"라고 대답하는 사람과, 그 말을 문자 그대로 받아들이는 사람이 만나면 어떻게 될까요.',
+      '저는 그날 아내가 화가 났다는 걸 눈치채지 못했습니다. 논리적으로 화가 났다는 증거가 없었거든요. 그런데 아내는 제가 무관심하다고 느꼈어요. 같은 상황, 전혀 다른 해석. 그 간격을 메우는 데 우리는 10년이 걸렸습니다.'
+    ],
+    tags:['오해','소통','부부싸움','번역'],
+    likes:156
+  },
+  {
+    id:4, ep:7, epTitle:'첫 산책', part:1,
+    date:'2025-08-07',
+    title:'지도보다 가로수가 많은 길',
+    body:[
+      '저는 산책할 때 늘 지도를 봤습니다. 어느 방향으로 가면 최단 시간에 집에 돌아올 수 있는지 계산하면서요.',
+      '아내는 그날 가로수 아래에 멈춰서 잎사귀가 흔들리는 걸 한참 바라봤습니다. \"왜 서 있어?\" \"예쁘잖아.\" 저는 처음으로 지도를 주머니에 넣었습니다. 그리고 처음으로 그 길이 예쁘다는 걸 알았어요.'
+    ],
+    tags:['산책','일상','관점의 차이'],
+    likes:98
+  },
+  {
+    id:5, ep:1, epTitle:'미술관 앞에서', part:1,
+    date:'2025-08-01',
+    title:'이 이야기를 시작하면서',
+    body:[
+      '이 연재를 시작하기로 결심한 건 아내의 말 한 마디 때문이었습니다. \"우리 이야기를 써봐. 재미있을 것 같아.\" 저는 그 말도 논리적으로 검토했습니다. 소재의 특수성, 독자층의 공감 가능성, 시장 포화도...',
+      '그러다 깨달았어요. 이게 바로 우리 이야기구나. 공학도의 눈으로 사랑을 분석하고, 예술가의 감성으로 사랑을 살아온 두 사람의 이야기. 미술관 앞 오후 3시에서 시작합니다. 끝이 어딜지는 아직 계산 중이에요.'
+    ],
+    tags:['연재시작','프롤로그','작가소개'],
+    likes:203
+  },
+  {
+    id:6, ep:12, epTitle:'여행 계획 사건', part:2,
+    date:'2025-08-12',
+    title:'계획 없는 여행을 처음 해본 날',
+    body:[
+      '아내가 처음으로 제 여행 계획표를 버렸습니다. 문자 그대로 쓰레기통에요. \"오늘은 그냥 걸어요.\" 저는 그날 아무 계획 없이 처음으로 낯선 도시를 걸었습니다.',
+      '그날 골목에서 우연히 들어간 작은 식당에서 인생 파스타를 먹었어요. 계획표에는 없던 집이었습니다. 그리고 알았어요. 가끔은 길을 잃어야 더 좋은 길을 찾는다는 걸.'
+    ],
+    tags:['여행','계획','즉흥','발견'],
+    likes:134
+  },
+  {
+    id:7, ep:2, epTitle:'20분 늦은 이유', part:1,
+    date:'2025-08-02',
+    title:'\"노을이 예뻤어요\"라는 변명',
+    body:[
+      '약속에 20분 늦은 사람에게 \"왜 늦었어?\"라고 물었을 때 \"노을이 예뻤어요\"라고 대답한다면, 여러분은 어떻게 하시겠어요?',
+      '저는 그 답이 너무 황당해서 웃음이 나왔습니다. 그리고 처음으로 생각했어요. 이 사람은 정말 다른 세상에 사는 사람이구나. 그런데 그 세상이 보고 싶어졌습니다. 노을이 예뻐서 20분을 멈출 수 있는 사람의 세상이.'
+    ],
+    tags:['첫만남','노을','시간관'],
+    likes:178
+  },
+  {
+    id:8, ep:9, epTitle:'첫 웃음', part:1,
+    date:'2025-08-09',
+    title:'같은 순간, 다른 이유',
+    body:[
+      '우리가 처음 같이 웃은 건 카페에서였어요. 옆 테이블에서 고양이가 손님 케이크를 훔쳐 먹는 장면을 봤거든요.',
+      '나중에 알고 보니, 저는 \"고양이가 무게 대비 최대 칼로리를 효율적으로 섭취했다\"는 게 우스웠고, 아내는 \"고양이 표정이 너무 당당했다\"는 게 우스웠대요. 이유는 달랐지만, 그 순간 우리는 같은 타이밍에 웃었어요. 그게 뭔가 중요한 것 같았습니다.'
+    ],
+    tags:['웃음','고양이','첫 공감'],
+    likes:119
+  },
+];
+
+const reactedSet = new Set(JSON.parse(localStorage.getItem('reactedNotes') || '[]'));
+
+function renderNotes() {
+  document.getElementById('notesList').innerHTML = AUTHOR_NOTES.map(noteCard).join('');
+}
+
+function noteCard(n) {
+  const hasReacted = reactedSet.has(n.id);
+  return `
+  <div class="note-card" id="note-${n.id}">
+    <div class="note-header">
+      <span class="note-ep-badge">📖 EP.${n.ep} · ${n.epTitle}</span>
+      <span class="note-date">${formatDate(n.date)}</span>
+    </div>
+    <div class="note-body">
+      <h3 class="note-title">${n.title}</h3>
+      ${n.body.map(p => `<p class="note-text">${p}</p>`).join('')}
+      <div class="note-tags">
+        ${n.tags.map(t => `<span class="note-tag">#${t}</span>`).join('')}
+      </div>
+    </div>
+    <div class="note-footer">
+      <div class="note-reactions">
+        <button class="react-btn ${hasReacted ? 'active' : ''}" onclick="reactNote(${n.id}, this)">
+          ${hasReacted ? '❤️' : '🤍'} <span id="nr-${n.id}">${formatNum(n.likes)}</span>
+        </button>
+        <button class="react-btn" onclick="shareNote(${n.id})">🔗 공유</button>
+      </div>
+      <a class="note-link" href="episode-detail.html?id=${n.ep}">에피소드 읽기 →</a>
+    </div>
+  </div>`;
+}
+
+function reactNote(id, btn) {
+  const n = AUTHOR_NOTES.find(n => n.id === id);
+  if (!n) return;
+  const reacted = reactedSet.has(id);
+  if (reacted) {
+    reactedSet.delete(id);
+    n.likes--;
+    btn.classList.remove('active');
+    btn.innerHTML = `🤍 <span id="nr-${id}">${formatNum(n.likes)}</span>`;
+  } else {
+    reactedSet.add(id);
+    n.likes++;
+    btn.classList.add('active');
+    btn.innerHTML = `❤️ <span id="nr-${id}">${formatNum(n.likes)}</span>`;
+  }
+  localStorage.setItem('reactedNotes', JSON.stringify([...reactedSet]));
+}
+
+function shareNote(id) {
+  const n = AUTHOR_NOTES.find(n => n.id === id);
+  if (!n) return;
+  const url = location.origin + location.pathname + '?note=' + id;
+  navigator.clipboard.writeText(url).then(() => showToast('링크가 복사됐어요.'));
+}
+
+renderNotes();
+</script>
+</body>
+</html>

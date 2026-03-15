@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공대형 vs 미대형 성향 테스트 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* 테스트 히어로 */
+.test-hero{background:linear-gradient(135deg,var(--navy),#2E5485,var(--terra));padding:56px 0;text-align:center;color:#fff}
+.test-hero h1{color:#fff;margin-bottom:10px}
+.test-hero p{color:rgba(255,255,255,.75);font-size:.95rem;max-width:500px;margin:0 auto}
+
+/* 진행바 */
+.progress-wrap{max-width:560px;margin:0 auto 32px;padding:0 20px}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:8px;font-size:.85rem;color:var(--text-light)}
+.progress-header strong{color:var(--terra)}
+
+/* 질문 카드 */
+.test-wrap{max-width:560px;margin:0 auto;padding:40px 20px 60px}
+.question-card-main{
+  background:var(--white);border-radius:16px;
+  border:1px solid var(--border);padding:32px;
+  margin-bottom:24px;
+  box-shadow:0 4px 16px var(--shadow);
+  animation:fadeIn .3s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.q-num{font-size:.8rem;font-weight:700;color:var(--terra);letter-spacing:1px;margin-bottom:14px}
+.q-text{font-family:'Noto Serif KR',serif;font-size:1.15rem;color:var(--navy);line-height:1.6;margin-bottom:24px;font-weight:600}
+
+.choice-list{display:flex;flex-direction:column;gap:10px}
+.choice-btn{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;border-radius:12px;
+  border:2px solid var(--border);background:var(--cream);
+  text-align:left;cursor:pointer;transition:all .2s;
+  font-size:.92rem;line-height:1.5;
+}
+.choice-btn:hover{border-color:var(--terra);background:rgba(196,98,58,.05);transform:translateX(3px)}
+.choice-btn.selected-a{border-color:var(--navy);background:rgba(27,58,92,.08)}
+.choice-btn.selected-b{border-color:var(--terra);background:rgba(196,98,58,.08)}
+.choice-letter{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:700;
+  background:var(--border);color:var(--text-light);
+}
+.choice-btn.selected-a .choice-letter{background:var(--navy);color:#fff}
+.choice-btn.selected-b .choice-letter{background:var(--terra);color:#fff}
+
+.test-nav{display:flex;justify-content:space-between;gap:12px}
+
+/* 결과 카드 */
+.result-wrap{max-width:600px;margin:0 auto;padding:40px 20px 60px;display:none}
+.result-card{
+  background:var(--white);border-radius:20px;border:1px solid var(--border);
+  overflow:hidden;box-shadow:0 8px 32px var(--shadow);
+  animation:fadeIn .5s ease;
+}
+.result-top{padding:36px;text-align:center}
+.result-icon{font-size:3.5rem;margin-bottom:12px}
+.result-type{font-size:.85rem;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+.result-title{font-size:1.5rem;margin-bottom:12px}
+.result-desc{font-size:.92rem;color:var(--text-light);line-height:1.7;max-width:400px;margin:0 auto}
+
+/* 점수 게이지 */
+.score-bar-wrap{padding:24px 32px;border-top:1px solid var(--border)}
+.score-labels{display:flex;justify-content:space-between;font-size:.82rem;font-weight:700;margin-bottom:8px}
+.score-labels .eng{color:var(--navy)}
+.score-labels .art{color:var(--terra)}
+.score-bar-track{height:14px;background:var(--border);border-radius:7px;overflow:hidden;position:relative}
+.score-bar-eng{position:absolute;left:0;top:0;bottom:0;background:var(--navy);border-radius:7px;transition:width .8s ease}
+.score-bar-art{position:absolute;right:0;top:0;bottom:0;background:var(--terra);border-radius:7px;transition:width .8s ease}
+.score-pcts{display:flex;justify-content:space-between;margin-top:6px;font-size:.88rem;font-weight:700}
+.score-pcts .ep{color:var(--navy)}
+.score-pcts .ap{color:var(--terra)}
+
+.result-actions{padding:24px 32px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-top:1px solid var(--border)}
+
+/* 통계 */
+.stats-section{padding:32px;background:var(--cream-dark);border-top:1px solid var(--border)}
+.stats-title{font-size:.88rem;font-weight:700;color:var(--text-light);margin-bottom:14px;text-align:center;letter-spacing:1px}
+.stats-bars{display:flex;flex-direction:column;gap:8px}
+.stat-row{display:grid;grid-template-columns:80px 1fr 40px;align-items:center;gap:8px;font-size:.82rem}
+.stat-bar-fill{height:8px;border-radius:4px;transition:width .8s ease}
+
+</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="test-hero">
+  <div class="container">
+    <span class="badge badge-gold" style="margin-bottom:14px">🔬 20문항 성향 테스트</span>
+    <h1>나는 공대형인가, 미대형인가?</h1>
+    <p>20개의 질문으로 알아보는 나의 사고 유형 — 당신은 논리의 건축가인가요, 감성의 화가인가요?</p>
+  </div>
+</div>
+
+<!-- 진행 상황 -->
+<div style="background:var(--cream);padding:24px 0 0" id="testProgress">
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <span>질문 <strong id="currentQ">1</strong> / 20</span>
+      <span id="progressPct">5%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:5%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 테스트 본체 -->
+<div style="background:var(--cream)">
+  <div class="test-wrap" id="testSection">
+    <div class="question-card-main">
+      <div class="q-num" id="qNum">Q01</div>
+      <div class="q-text" id="qText"></div>
+      <div class="choice-list">
+        <button class="choice-btn" id="choiceA" onclick="select('a')">
+          <span class="choice-letter">A</span>
+          <span id="choiceAText"></span>
+        </button>
+        <button class="choice-btn" id="choiceB" onclick="select('b')">
+          <span class="choice-letter">B</span>
+          <span id="choiceBText"></span>
+        </button>
+      </div>
+    </div>
+    <div class="test-nav">
+      <button class="btn btn-outline" onclick="prev()" id="prevBtn">← 이전</button>
+      <button class="btn btn-primary" onclick="next()" id="nextBtn" disabled>다음 →</button>
+    </div>
+  </div>
+
+  <!-- 결과 -->
+  <div class="result-wrap" id="resultSection">
+    <div class="result-card">
+      <div class="result-top">
+        <div class="result-icon" id="resultIcon">📐</div>
+        <div class="result-type text-terra" id="resultType">공대형 인간</div>
+        <h2 class="result-title" id="resultTitle">당신은 논리의 건축가입니다</h2>
+        <p class="result-desc" id="resultDesc"></p>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-labels">
+          <span class="eng">📐 공대형</span>
+          <span class="art">🎨 미대형</span>
+        </div>
+        <div class="score-bar-track">
+          <div class="score-bar-eng" id="barEng"></div>
+          <div class="score-bar-art" id="barArt"></div>
+        </div>
+        <div class="score-pcts">
+          <span class="ep" id="pctEng">-</span>
+          <span class="ap" id="pctArt">-</span>
+        </div>
+      </div>
+      <div class="stats-section">
+        <div class="stats-title">지금까지의 테스트 분포</div>
+        <div class="stats-bars">
+          <div class="stat-row">
+            <span style="color:var(--navy)">📐 공대형</span>
+            <div class="progress-bar"><div class="stat-bar-fill" id="statEng" style="background:var(--navy);width:38%"></div></div>
+            <span style="color:var(--navy);font-weight:700">38%</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--terra)">🎨 미대형</span>
+            <div class="progress-bar"><div class="stat-bar-fill" id="statArt" style="background:var(--terra);width:31%"></div></div>
+            <span style="color:var(--terra);font-weight:700">31%</span>
+          </div>
+          <div class="stat-row">
+            <span style="color:var(--gold)">⚖️ 균형형</span>
+            <div class="progress-bar"><div class="stat-bar-fill" id="statBal" style="background:var(--gold);width:31%"></div></div>
+            <span style="color:#8B6914;font-weight:700">31%</span>
+          </div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button class="btn btn-navy" onclick="shareResult()">결과 공유하기</button>
+        <a href="episodes.html" class="btn btn-secondary">에피소드 읽기</a>
+        <button class="btn btn-outline" onclick="retake()">다시 테스트</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<div id="auth-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/common.js"></script>
+<script>
+const QUESTIONS = [
+  {q:'여행을 떠날 때 당신은?', a:'계획표를 만들고 예약을 모두 완료한다', b:'대충 방향만 잡고 그냥 떠난다'},
+  {q:'미술관에서 작품을 볼 때?', a:'작품 설명 카드를 꼼꼼히 읽는다', b:'그냥 느낌으로 본다'},
+  {q:'새로운 문제를 만나면?', a:'원인을 분석하고 해결 방법을 찾는다', b:'직관적으로 아이디어를 떠올린다'},
+  {q:'집을 꾸밀 때 더 중요한 건?', a:'기능적이고 효율적인 배치', b:'분위기와 색감'},
+  {q:'사진을 찍을 때?', a:'구도와 각도를 계산한다', b:'순간의 느낌을 담는다'},
+  {q:'길을 잃으면?', a:'즉시 지도 앱을 켠다', b:'주변 풍경을 보며 걷는다'},
+  {q:'대화할 때 더 중요한 건?', a:'논리적으로 맞는 말인지', b:'상대방의 감정이 어떤지'},
+  {q:'책을 읽을 때?', a:'정보와 지식을 얻으려 한다', b:'이야기와 감동을 느끼려 한다'},
+  {q:'영화를 볼 때?', a:'플롯의 논리적 완성도를 본다', b:'감정적으로 몰입하며 느낀다'},
+  {q:'문제를 해결할 때?', a:'체계적인 계획을 세운다', b:'창의적인 아이디어로 접근한다'},
+  {q:'약속 시간에 대해?', a:'정확히 지켜야 한다', b:'적당히 융통성 있게'},
+  {q:'정리 습관은?', a:'항상 깔끔하게 정리한다', b:'창의적인 혼돈 속에 편안함을 느낀다'},
+  {q:'선물을 고를 때?', a:'실용적이고 필요한 것', b:'감성적이고 예쁜 것'},
+  {q:'글쓰기를 할 때?', a:'논리적 구조를 먼저 잡는다', b:'느낌 따라 자유롭게 쓴다'},
+  {q:'음식점 선택 시?', a:'리뷰와 평점을 분석한다', b:'분위기와 느낌으로 선택한다'},
+  {q:'취미 활동은?', a:'목표가 있고 발전하는 활동', b:'즐기고 표현하는 활동'},
+  {q:'새 프로젝트 시작 시?', a:'상세 계획서를 먼저 작성한다', b:'일단 시작하며 방향을 잡는다'},
+  {q:'음악을 들을 때?', a:'장르나 구조적 특성에 관심', b:'가사와 감정에 집중'},
+  {q:'쇼핑할 때?', a:'필요한 것 목록을 만들고 비교한다', b:'마음에 끌리는 것을 산다'},
+  {q:'인생에서 더 중요한 것은?', a:'안정적이고 계획된 삶', b:'감동적이고 아름다운 삶'},
+];
+
+let cur = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+
+function render() {
+  const q = QUESTIONS[cur];
+  document.getElementById('qNum').textContent = `Q${String(cur+1).padStart(2,'0')}`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('choiceAText').textContent = q.a;
+  document.getElementById('choiceBText').textContent = q.b;
+  const pct = Math.round((cur+1)/QUESTIONS.length*100);
+  document.getElementById('currentQ').textContent = cur+1;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('prevBtn').disabled = cur === 0;
+  // 선택 상태 복원
+  document.getElementById('choiceA').className = 'choice-btn' + (answers[cur]==='a'?' selected-a':'');
+  document.getElementById('choiceB').className = 'choice-btn' + (answers[cur]==='b'?' selected-b':'');
+  document.getElementById('nextBtn').disabled = answers[cur] === null;
+  document.getElementById('nextBtn').textContent = cur === QUESTIONS.length-1 ? '결과 보기 🎉' : '다음 →';
+}
+
+function select(choice) {
+  answers[cur] = choice;
+  document.getElementById('choiceA').className = 'choice-btn' + (choice==='a'?' selected-a':'');
+  document.getElementById('choiceB').className = 'choice-btn' + (choice==='b'?' selected-b':'');
+  document.getElementById('nextBtn').disabled = false;
+  // 0.3초 후 자동 이동
+  setTimeout(()=>next(), 400);
+}
+
+function next() {
+  if (answers[cur] === null) return;
+  if (cur < QUESTIONS.length-1) { cur++; render(); }
+  else showResult();
+}
+function prev() { if (cur > 0) { cur--; render(); } }
+
+function showResult() {
+  const engScore = answers.filter(a=>a==='a').length;
+  const artScore = answers.filter(a=>a==='b').length;
+  const total = QUESTIONS.length;
+  const ep = Math.round(engScore/total*100);
+  const ap = 100 - ep;
+
+  let type, icon, title, desc, color;
+  if (ep >= 70) {
+    type='공대형 인간'; icon='📐'; title='당신은 논리의 건축가입니다';
+    desc='세상을 구조와 논리로 이해합니다. 계획을 세우고 분석하는 것을 즐기며, 문제의 원인을 파악하고 효율적인 해결책을 찾아냅니다. 당신의 논리적 사고는 세상을 더 질서 있게 만드는 힘입니다.';
+    color='var(--navy)';
+  } else if (ap >= 70) {
+    type='미대형 인간'; icon='🎨'; title='당신은 감성의 화가입니다';
+    desc='세상을 색과 감성으로 느낍니다. 즉흥적이고 창의적이며, 규칙보다는 느낌을 따릅니다. 아름다움을 발견하고 감동을 전달하는 특별한 능력을 가지고 있습니다. 당신의 감성이 세상을 더 아름답게 만듭니다.';
+    color='var(--terra)';
+  } else {
+    type='균형형 인간'; icon='⚖️'; title='당신은 균형의 철학자입니다';
+    desc='논리와 감성이 조화롭게 공존합니다. 공대생 할아버지처럼 분석하고, 미대생 할머니처럼 느낄 수 있는 희귀한 유형입니다. 당신은 이성과 감성의 경계에서 가장 풍요로운 삶을 살아가고 있습니다.';
+    color='var(--gold)';
+  }
+
+  document.getElementById('resultIcon').textContent = icon;
+  document.getElementById('resultType').textContent = type;
+  document.getElementById('resultType').style.color = color;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultDesc').textContent = desc;
+  document.getElementById('pctEng').textContent = ep + '%';
+  document.getElementById('pctArt').textContent = ap + '%';
+  document.getElementById('barEng').style.width = ep + '%';
+  document.getElementById('barArt').style.width = ap + '%';
+
+  document.getElementById('testSection').style.display = 'none';
+  document.getElementById('testProgress').style.display = 'none';
+  document.getElementById('resultSection').style.display = 'block';
+
+  // Supabase 저장
+  const resultType = ep >= 70 ? 'engineer' : ap >= 70 ? 'artist' : 'balanced';
+  const sb = getSupabase();
+  if (sb) sb.from('test_results').insert({session_id:getSessionId(),engineer_score:engScore,artist_score:artScore,result_type:resultType}).catch(()=>{});
+}
+
+function shareResult() {
+  const type = document.getElementById('resultType').textContent;
+  const title = document.getElementById('resultTitle').textContent;
+  const text = `나는 "${type}"! ${title} — 공대생 할아버지, 미대생 할머니 성향 테스트`;
+  navigator.clipboard.writeText(text + '\n' + location.href).then(()=>showToast('결과가 클립보드에 복사되었습니다!','success'));
+}
+
+function retake() {
+  cur = 0;
+  answers.fill(null);
+  document.getElementById('testSection').style.display = 'block';
+  document.getElementById('testProgress').style.display = 'block';
+  document.getElementById('resultSection').style.display = 'none';
+  render();
+}
+
+render();
+</script>
+</body>
+</html>

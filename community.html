@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>커뮤니티 — 공대생 할아버지, 미대생 할머니</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== Community Page Styles ===== */
+    .community-hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+    .community-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .community-hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      background: #fff;
+      border-bottom: 2px solid #e2e8f0;
+      position: sticky;
+      top: 70px;
+      z-index: 100;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 18px 24px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #718096;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      color: #e53e3e;
+      border-bottom-color: #e53e3e;
+    }
+    .tab-btn:hover:not(.active) {
+      color: #4a5568;
+      background: #f7fafc;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      padding: 40px 0;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Sort + Write Bar */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .sort-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .sort-btn {
+      padding: 8px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      background: #fff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      color: #718096;
+      transition: all 0.2s;
+    }
+    .sort-btn.active,
+    .sort-btn:hover {
+      background: #e53e3e;
+      color: #fff;
+      border-color: #e53e3e;
+    }
+    .write-btn {
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #e53e3e, #c53030);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .write-btn:hover { opacity: 0.9; }
+
+    /* Story Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .story-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .story-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .card-category {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .cat-engineer { background: #ebf8ff; color: #2b6cb0; }
+    .cat-artist   { background: #fff5f5; color: #c53030; }
+    .cat-couple   { background: #f0fff4; color: #276749; }
+    .cat-general  { background: #faf5ff; color: #6b46c1; }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .card-excerpt {
+      font-size: 0.875rem;
+      color: #718096;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #a0aec0;
+    }
+    .card-author { font-weight: 600; color: #4a5568; }
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .like-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #a0aec0;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .like-btn:hover, .like-btn.liked {
+      color: #e53e3e;
+      background: #fff5f5;
+    }
+    .report-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #cbd5e0;
+      font-size: 0.75rem;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+    .report-btn:hover { color: #a0aec0; }
+
+    /* Discussion Board */
+    .topic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .topic-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+    .topic-header {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #f7fafc, #edf2f7);
+      border-bottom: 1px solid #e2e8f0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topic-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2d3748;
+    }
+    .topic-stats {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: #a0aec0;
+    }
+    .topic-body {
+      padding: 20px 24px;
+    }
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .comment-item {
+      display: flex;
+      gap: 12px;
+    }
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .comment-bubble {
+      flex: 1;
+      background: #f7fafc;
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+    .comment-bubble .nickname {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #4a5568;
+      margin-bottom: 4px;
+    }
+    .comment-bubble .text {
+      font-size: 0.875rem;
+      color: #4a5568;
+      line-height: 1.5;
+    }
+    .comment-bubble .time {
+      font-size: 0.75rem;
+      color: #a0aec0;
+      margin-top: 6px;
+    }
+    .comment-form {
+      display: flex;
+      gap: 10px;
+    }
+    .comment-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .comment-input:focus { border-color: #e53e3e; }
+    .comment-submit {
+      padding: 10px 18px;
+      background: #e53e3e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .comment-submit:hover { opacity: 0.85; }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 40px;
+    }
+    .page-btn {
+      width: 38px;
+      height: 38px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: #4a5568;
+    }
+    .page-btn.active, .page-btn:hover {
+      background: #e53e3e;
+      border-color: #e53e3e;
+      color: #fff;
+    }
+    .page-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      background: #fff;
+      color: #a0aec0;
+    }
+
+    /* Loading Skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton-card {
+      height: 200px;
+      border-radius: 12px;
+    }
+
+    /* Write Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2d3748;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #a0aec0;
+      padding: 4px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus { border-color: #e53e3e; }
+    .form-textarea {
+      min-height: 160px;
+      resize: vertical;
+      font-family: inherit;
+      line-height: 1.6;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #e53e3e, #c53030);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.9; }
+
+    /* Login Prompt */
+    .login-prompt {
+      text-align: center;
+      padding: 60px 20px;
+      background: #f7fafc;
+      border-radius: 12px;
+      border: 2px dashed #e2e8f0;
+    }
+    .login-prompt p { color: #718096; margin-bottom: 16px; }
+    .login-prompt .login-link {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #e53e3e;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #a0aec0;
+    }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+    .empty-state p { font-size: 1rem; }
+
+    /* Notification Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 14px 20px;
+      background: #2d3748;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .action-bar { flex-direction: column; align-items: stretch; }
+      .write-btn { text-align: center; }
+      .tab-btn { font-size: 0.875rem; padding: 14px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<!-- Hero -->
+<section class="community-hero">
+  <h1>우리들의 이야기 공간</h1>
+  <p>공대생과 미대생이 만나 만드는 이야기.<br>당신의 경험과 생각을 나눠주세요.</p>
+</section>
+
+<!-- Tab Navigation -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('stories', this)">
+    📖 독자 이야기
+  </button>
+  <button class="tab-btn" onclick="switchTab('discussion', this)">
+    💬 토론 게시판
+  </button>
+</div>
+
+<!-- ===== TAB 1: 독자 이야기 ===== -->
+<div id="tab-stories" class="tab-content active">
+  <div class="container">
+
+    <div class="action-bar">
+      <div class="sort-btns">
+        <button class="sort-btn active" onclick="sortStories('latest', this)">최신순</button>
+        <button class="sort-btn" onclick="sortStories('popular', this)">인기순</button>
+      </div>
+      <button class="write-btn" onclick="openWriteModal()">✏️ 이야기 쓰기</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid" id="storiesGrid">
+      <!-- 로딩 스켈레톤 -->
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="storiesPagination"></div>
+
+  </div>
+</div>
+
+<!-- ===== TAB 2: 토론 게시판 ===== -->
+<div id="tab-discussion" class="tab-content">
+  <div class="container">
+
+    <div class="action-bar">
+      <div class="sort-btns">
+        <button class="sort-btn active" onclick="sortDiscussion('latest', this)">최신순</button>
+        <button class="sort-btn" onclick="sortDiscussion('popular', this)">인기순</button>
+      </div>
+    </div>
+
+    <div class="topic-list" id="topicList">
+      <!-- 주제별 토론 스레드 (JS로 렌더링) -->
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="discussionPagination"></div>
+
+  </div>
+</div>
+
+<!-- ===== Write Modal ===== -->
+<div class="modal-overlay" id="writeModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title">이야기 쓰기</h2>
+      <button class="modal-close" onclick="closeWriteModal()">×</button>
+    </div>
+
+    <div id="modalLoginPrompt" style="display:none;">
+      <div class="login-prompt">
+        <p>이야기를 쓰려면 로그인이 필요해요.</p>
+        <a href="#" class="login-link" onclick="openLogin()">로그인 하기</a>
+      </div>
+    </div>
+
+    <form id="storyForm" onsubmit="submitStory(event)">
+      <div class="form-group">
+        <label class="form-label" for="storyCategory">카테고리</label>
+        <select class="form-select" id="storyCategory">
+          <option value="우리집공대생">우리 집 공대생 이야기</option>
+          <option value="우리집미대생">우리 집 미대생 이야기</option>
+          <option value="커플이야기">커플/부부 이야기</option>
+          <option value="독자이야기">기타 독자 이야기</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="storyTitle">제목</label>
+        <input type="text" class="form-input" id="storyTitle"
+               placeholder="이야기 제목을 입력하세요" required maxlength="200" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="storyContent">내용</label>
+        <textarea class="form-textarea" id="storyContent"
+                  placeholder="여러분의 이야기를 들려주세요..." required minlength="20"></textarea>
+      </div>
+      <button type="submit" class="form-submit">이야기 등록하기</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script>
+// ===================================================
+// community.html — JavaScript
+// ===================================================
+
+const ITEMS_PER_PAGE = 10;
+let currentStoriesPage = 1;
+let currentDiscussionPage = 1;
+let storiesSort = 'latest';
+let discussionSort = 'latest';
+let currentUser = null;
+
+// 기본 토론 주제
+const DISCUSSION_TOPICS = [
+  {
+    id: 1,
+    title: '논리 vs 감성, 어느 것이 더 중요한가요?',
+    icon: '⚖️'
+  },
+  {
+    id: 2,
+    title: '계획형 vs 즉흥형, 당신은 어떤 편인가요?',
+    icon: '📅'
+  },
+  {
+    id: 3,
+    title: '당신 주변의 공대생/미대생 에피소드를 공유해 주세요',
+    icon: '📖'
+  },
+  {
+    id: 4,
+    title: '효율과 아름다움, 둘 다 가질 수 있을까요?',
+    icon: '✨'
+  }
+];
+
+// ===================== 초기화 =====================
+document.addEventListener('DOMContentLoaded', async () => {
+  await checkAuthState();
+  await loadStories();
+  renderTopics();
+});
+
+async function checkAuthState() {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    currentUser = user;
+    updateNavUI();
+  } catch (e) {
+    console.log('Auth check skipped (Supabase not configured)');
+  }
+}
+
+function updateNavUI() {
+  const btn = document.getElementById('navLoginBtn');
+  if (btn && currentUser) {
+    btn.textContent = '내 프로필';
+  }
+}
+
+// ===================== 탭 전환 =====================
+function switchTab(tabName, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabName).classList.add('active');
+  btn.classList.add('active');
+
+  if (tabName === 'stories') loadStories();
+  if (tabName === 'discussion') renderTopics();
+}
+
+// ===================== 독자 이야기 로드 =====================
+async function loadStories(page = 1) {
+  currentStoriesPage = page;
+  const grid = document.getElementById('storiesGrid');
+
+  // 스켈레톤 표시
+  grid.innerHTML = Array(3).fill('<div class="skeleton skeleton-card"></div>').join('');
+
+  try {
+    const orderCol = storiesSort === 'latest' ? 'created_at' : 'like_count';
+    const from = (page - 1) * ITEMS_PER_PAGE;
+    const to = from + ITEMS_PER_PAGE - 1;
+
+    const { data: stories, error, count } = await supabase
+      .from('user_stories')
+      .select('*, profiles(nickname)', { count: 'exact' })
+      .order(orderCol, { ascending: false })
+      .range(from, to);
+
+    if (error) throw error;
+
+    if (!stories || stories.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state" style="grid-column: 1/-1;">
+          <div class="icon">📝</div>
+          <p>아직 이야기가 없어요. 첫 번째 이야기를 올려보세요!</p>
+        </div>`;
+      document.getElementById('storiesPagination').innerHTML = '';
+      return;
+    }
+
+    grid.innerHTML = stories.map(s => renderStoryCard(s)).join('');
+    renderPagination('storiesPagination', count, page, ITEMS_PER_PAGE, loadStories);
+
+  } catch (err) {
+    console.error('Stories load error:', err);
+    // 데모 데이터 표시
+    renderDemoStories(grid);
+    renderDemoPagination('storiesPagination', loadStories);
+  }
+}
+
+function renderStoryCard(story) {
+  const catMap = {
+    '우리집공대생': { label: '공대생 이야기', cls: 'cat-engineer' },
+    '우리집미대생': { label: '미대생 이야기', cls: 'cat-artist' },
+    '커플이야기': { label: '커플 이야기', cls: 'cat-couple' },
+    '독자이야기': { label: '독자 이야기', cls: 'cat-general' }
+  };
+  const cat = catMap[story.category] || catMap['독자이야기'];
+  const nickname = story.profiles?.nickname || '익명 독자';
+  const excerpt = story.content.length > 150
+    ? story.content.slice(0, 150) + '...'
+    : story.content;
+  const dateStr = new Date(story.created_at).toLocaleDateString('ko-KR', {
+    year: 'numeric', month: 'short', day: 'numeric'
+  });
+
+  return `
+    <div class="story-card" data-id="${story.id}">
+      <span class="card-category ${cat.cls}">${cat.label}</span>
+      <div class="card-title">${escapeHtml(story.title)}</div>
+      <div class="card-excerpt">${escapeHtml(excerpt)}</div>
+      <div class="card-meta">
+        <span class="card-author">✍️ ${escapeHtml(nickname)}</span>
+        <span>${dateStr}</span>
+      </div>
+      <div class="card-meta" style="margin-top:12px;">
+        <button class="like-btn" onclick="toggleStoryLike(${story.id}, this)" data-liked="false">
+          ❤️ ${story.like_count || 0}
+        </button>
+        <button class="report-btn" onclick="reportItem('story', ${story.id})" title="신고">🚩</button>
+      </div>
+    </div>`;
+}
+
+function renderDemoStories(grid) {
+  const demos = [
+    { id: 1, category: '우리집공대생', title: '남편이 여행 짐을 엑셀로 정리했어요', content: '신혼 여행 가기 3주 전부터 짐 목록을 엑셀 스프레드시트로 만들더라고요. 색상 코딩에 체크박스까지... 처음엔 황당했는데 나중엔 정말 하나도 빠진 게 없었어요.', like_count: 47, created_at: '2025-08-10', profiles: { nickname: '미대생아내' } },
+    { id: 2, category: '우리집미대생', title: '아내가 설거지도 "구도"를 따진다고요?', content: '그릇 쌓는 것도 "비율"과 "균형"이 있어야 한다며 제가 쌓아놓은 것을 다시 정렬하더라고요. 이걸 이해하는 데 5년이 걸렸습니다.', like_count: 38, created_at: '2025-08-09', profiles: { nickname: '공대생남편' } },
+    { id: 3, category: '커플이야기', title: '우리가 서로 다르다는 걸 처음 알았던 순간', content: '데이트 중 카페 인테리어 얘기를 하는데 저는 "동선이 비효율적이다"고 했고, 그는 "색감이 따뜻하다"고 했어요. 그때 처음 알았어요, 우리가 정말 다른 세상에 살고 있다는 걸.', like_count: 62, created_at: '2025-08-08', profiles: { nickname: '두개의시선' } }
+  ];
+  grid.innerHTML = demos.map(s => renderStoryCard(s)).join('');
+}
+
+function renderDemoPagination(containerId, callback) {
+  renderPagination(containerId, 3, 1, ITEMS_PER_PAGE, callback);
+}
+
+// ===================== 좋아요 =====================
+async function toggleStoryLike(storyId, btn) {
+  if (!currentUser) {
+    showToast('좋아요는 로그인 후 이용할 수 있어요.');
+    return;
+  }
+  const isLiked = btn.dataset.liked === 'true';
+  const countEl = btn;
+  const currentCount = parseInt(countEl.textContent.replace(/[^0-9]/g, '')) || 0;
+
+  try {
+    if (isLiked) {
+      await supabase.from('likes').delete()
+        .match({ user_id: currentUser.id, episode_id: storyId });
+      btn.dataset.liked = 'false';
+      btn.classList.remove('liked');
+      btn.innerHTML = `❤️ ${currentCount - 1}`;
+    } else {
+      await supabase.from('likes').insert({ user_id: currentUser.id, episode_id: storyId });
+      btn.dataset.liked = 'true';
+      btn.classList.add('liked');
+      btn.innerHTML = `❤️ ${currentCount + 1}`;
+    }
+  } catch (err) {
+    showToast('처리 중 오류가 발생했어요.');
+  }
+}
+
+// ===================== 정렬 =====================
+function sortStories(type, btn) {
+  storiesSort = type;
+  document.querySelectorAll('#tab-stories .sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadStories(1);
+}
+
+function sortDiscussion(type, btn) {
+  discussionSort = type;
+  document.querySelectorAll('#tab-discussion .sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTopics();
+}
+
+// ===================== 토론 게시판 =====================
+function renderTopics() {
+  const list = document.getElementById('topicList');
+  list.innerHTML = DISCUSSION_TOPICS.map(topic => `
+    <div class="topic-card" id="topic-${topic.id}">
+      <div class="topic-header" onclick="toggleTopic(${topic.id})">
+        <div class="topic-title">${topic.icon} ${topic.title}</div>
+        <div class="topic-stats">
+          <span id="count-${topic.id}">댓글 로딩 중...</span>
+          <span>▼</span>
+        </div>
+      </div>
+      <div class="topic-body" id="body-${topic.id}" style="display:none;">
+        <div class="comment-list" id="comments-${topic.id}">
+          <div class="skeleton" style="height:60px;border-radius:12px;"></div>
+          <div class="skeleton" style="height:60px;border-radius:12px;"></div>
+        </div>
+        <div class="comment-form">
+          <input type="text" class="comment-input" id="comment-input-${topic.id}"
+                 placeholder="${currentUser ? '의견을 남겨주세요...' : '로그인 후 참여할 수 있어요'}"
+                 ${currentUser ? '' : 'disabled'} maxlength="500" />
+          <button class="comment-submit" onclick="submitComment(${topic.id})">등록</button>
+        </div>
+      </div>
+    </div>`).join('');
+
+  // 댓글 수 로드
+  DISCUSSION_TOPICS.forEach(t => loadTopicCommentCount(t.id));
+}
+
+async function toggleTopic(topicId) {
+  const body = document.getElementById('body-' + topicId);
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  if (!isOpen) {
+    await loadTopicComments(topicId);
+  }
+}
+
+async function loadTopicCommentCount(topicId) {
+  try {
+    const { count } = await supabase
+      .from('community_posts')
+      .select('*', { count: 'exact', head: true })
+      .eq('topic_id', topicId);
+    document.getElementById('count-' + topicId).textContent = `댓글 ${count || 0}개`;
+  } catch {
+    document.getElementById('count-' + topicId).textContent = '댓글 0개';
+  }
+}
+
+async function loadTopicComments(topicId) {
+  const listEl = document.getElementById('comments-' + topicId);
+  try {
+    const { data: posts, error } = await supabase
+      .from('community_posts')
+      .select('*, profiles(nickname)')
+      .eq('topic_id', topicId)
+      .order('created_at', { ascending: false })
+      .limit(20);
+
+    if (error) throw error;
+
+    if (!posts || posts.length === 0) {
+      listEl.innerHTML = `<div class="empty-state"><p>첫 번째 의견을 남겨보세요!</p></div>`;
+      return;
+    }
+
+    listEl.innerHTML = posts.map(p => renderCommentItem(p)).join('');
+
+  } catch {
+    // 데모 댓글
+    listEl.innerHTML = renderDemoComments(topicId);
+  }
+}
+
+function renderCommentItem(post) {
+  const nickname = post.profiles?.nickname || '익명';
+  const initial = nickname.slice(0, 1);
+  const timeStr = getRelativeTime(post.created_at);
+
+  return `
+    <div class="comment-item">
+      <div class="comment-avatar">${initial}</div>
+      <div class="comment-bubble">
+        <div class="nickname">${escapeHtml(nickname)}</div>
+        <div class="text">${escapeHtml(post.content)}</div>
+        <div class="time">${timeStr}</div>
+      </div>
+    </div>`;
+}
+
+function renderDemoComments(topicId) {
+  const demosByTopic = {
+    1: [
+      { nickname: '공대생남편', content: '논리 없이는 문제를 해결할 수 없어요. 하지만 감성 없이는 문제를 찾을 수도 없죠.', time: '2시간 전' },
+      { nickname: '미대생아내', content: '감성이 먼저예요. 무엇이 중요한지는 느껴야 알 수 있거든요.', time: '1시간 전' }
+    ],
+    2: [
+      { nickname: '계획광', content: '모든 여행은 D-90부터 시작합니다. 계획이 있어야 자유도 있어요.', time: '3시간 전' },
+      { nickname: '즉흥파', content: '계획이 없는 게 계획이에요. 예측 불가능함이 여행의 묘미죠!', time: '30분 전' }
+    ],
+    3: [
+      { nickname: '독자독자', content: '남자친구가 저의 캔버스 배치를 보고 "동선 최적화가 안 됐다"고 했어요 ㅋㅋㅋ', time: '5시간 전' }
+    ],
+    4: [
+      { nickname: '두개의시선', content: '저희 부부가 그 증거예요. 공대생인 남편과 미대생인 저, 효율과 아름다움을 둘 다 추구하며 살고 있답니다.', time: '1일 전' }
+    ]
+  };
+
+  const demos = demosByTopic[topicId] || [];
+  if (demos.length === 0) return `<div class="empty-state"><p>첫 번째 의견을 남겨보세요!</p></div>`;
+
+  return demos.map(d => `
+    <div class="comment-item">
+      <div class="comment-avatar">${d.nickname.slice(0,1)}</div>
+      <div class="comment-bubble">
+        <div class="nickname">${d.nickname}</div>
+        <div class="text">${d.content}</div>
+        <div class="time">${d.time}</div>
+      </div>
+    </div>`).join('');
+}
+
+async function submitComment(topicId) {
+  if (!currentUser) {
+    showToast('댓글을 작성하려면 로그인이 필요해요.');
+    return;
+  }
+
+  const input = document.getElementById('comment-input-' + topicId);
+  const content = input.value.trim();
+  if (!content) return;
+
+  try {
+    const { error } = await supabase.from('community_posts').insert({
+      user_id: currentUser.id,
+      topic_id: topicId,
+      content: content
+    });
+
+    if (error) throw error;
+
+    input.value = '';
+    showToast('댓글이 등록되었어요!');
+    await loadTopicComments(topicId);
+    await loadTopicCommentCount(topicId);
+
+  } catch (err) {
+    showToast('등록 중 오류가 발생했어요.');
+  }
+}
+
+// ===================== 이야기 쓰기 모달 =====================
+function openWriteModal() {
+  const modal = document.getElementById('writeModal');
+  modal.classList.add('open');
+  const form = document.getElementById('storyForm');
+  const prompt = document.getElementById('modalLoginPrompt');
+  if (currentUser) {
+    form.style.display = 'block';
+    prompt.style.display = 'none';
+  } else {
+    form.style.display = 'none';
+    prompt.style.display = 'block';
+  }
+}
+
+function closeWriteModal() {
+  document.getElementById('writeModal').classList.remove('open');
+}
+
+document.getElementById('writeModal').addEventListener('click', function(e) {
+  if (e.target === this) closeWriteModal();
+});
+
+async function submitStory(e) {
+  e.preventDefault();
+  if (!currentUser) return;
+
+  const title    = document.getElementById('storyTitle').value.trim();
+  const content  = document.getElementById('storyContent').value.trim();
+  const category = document.getElementById('storyCategory').value;
+
+  if (!title || !content) return;
+
+  const submitBtn = e.target.querySelector('.form-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = '등록 중...';
+
+  try {
+    const { error } = await supabase.from('user_stories').insert({
+      user_id: currentUser.id,
+      title, content, category
+    });
+
+    if (error) throw error;
+
+    closeWriteModal();
+    e.target.reset();
+    showToast('이야기가 등록되었어요!');
+    await loadStories(1);
+
+  } catch (err) {
+    showToast('등록 중 오류가 발생했어요.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = '이야기 등록하기';
+  }
+}
+
+// ===================== 신고 =====================
+function reportItem(type, id) {
+  // TODO: 신고 기능 구현
+  showToast('신고가 접수되었어요. (기능 준비 중)');
+}
+
+// ===================== 페이지네이션 =====================
+function renderPagination(containerId, total, current, perPage, callback) {
+  const totalPages = Math.ceil(total / perPage);
+  if (totalPages <= 1) {
+    document.getElementById(containerId).innerHTML = '';
+    return;
+  }
+
+  let html = `
+    <button class="page-btn" onclick="${callback.name}(${current - 1})"
+      ${current <= 1 ? 'disabled' : ''}>‹</button>`;
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || Math.abs(i - current) <= 2) {
+      html += `<button class="page-btn ${i === current ? 'active' : ''}"
+        onclick="${callback.name}(${i})">${i}</button>`;
+    } else if (Math.abs(i - current) === 3) {
+      html += `<span class="page-btn" style="cursor:default;">...</span>`;
+    }
+  }
+
+  html += `
+    <button class="page-btn" onclick="${callback.name}(${current + 1})"
+      ${current >= totalPages ? 'disabled' : ''}>›</button>`;
+
+  document.getElementById(containerId).innerHTML = html;
+}
+
+// ===================== 유틸 =====================
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function getRelativeTime(isoStr) {
+  const diff = Date.now() - new Date(isoStr).getTime();
+  const min  = Math.floor(diff / 60000);
+  const hr   = Math.floor(min / 60);
+  const day  = Math.floor(hr / 24);
+  if (day > 0) return `${day}일 전`;
+  if (hr  > 0) return `${hr}시간 전`;
+  if (min > 0) return `${min}분 전`;
+  return '방금 전';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function openLogin() {
+  closeWriteModal();
+  showToast('로그인 기능 준비 중이에요.');
+}
+</script>
+
+<div id="footer-placeholder"></div>
+<div id="auth-placeholder"></div>
+<script src="js/common.js"></script>
+</body>
+</html>

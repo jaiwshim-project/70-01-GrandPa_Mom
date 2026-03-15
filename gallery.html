@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그림 이야기 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* 페이지 히어로 */
+.page-hero{
+  background:linear-gradient(135deg,#0E2440 0%,var(--navy) 55%,#5C2A0A 100%);
+  padding:52px 0;color:#fff;text-align:center;
+  border-bottom:3px solid var(--terra);
+}
+.page-hero h1{color:#fff;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.page-hero p{color:rgba(255,255,255,.82);font-size:.96rem;max-width:540px;margin:0 auto}
+
+/* 필터 탭 */
+.filter-bar{
+  background:var(--white);
+  border-bottom:2px solid var(--border);
+  position:sticky;top:66px;z-index:90;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.filter-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.filter-inner::-webkit-scrollbar{display:none}
+.filter-btn{
+  flex-shrink:0;padding:14px 20px;font-size:.86rem;font-weight:600;
+  color:var(--text-light);background:none;
+  border-bottom:3px solid transparent;
+  transition:all .2s;white-space:nowrap;min-height:48px;
+}
+.filter-btn:hover{color:var(--terra);background:rgba(184,85,48,.05)}
+.filter-btn.active{color:var(--terra-dark);border-bottom-color:var(--terra);background:rgba(184,85,48,.06);font-weight:700}
+
+/* 갤러리 그리드 */
+.gallery-section{background:var(--cream-dark);min-height:60vh;padding:40px 0 64px}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px;
+}
+@media(max-width:760px){.gallery-grid{grid-template-columns:1fr;gap:24px}}
+
+/* 갤러리 카드 */
+.gallery-card{
+  background:var(--bg-card);
+  border-radius:var(--radius);
+  border:2px solid var(--border-card);
+  overflow:hidden;
+  box-shadow:0 2px 10px var(--shadow);
+  transition:all .28s;
+  cursor:pointer;
+}
+.gallery-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 36px var(--shadow-md);
+  border-color:var(--terra-light);
+}
+
+/* 이미지 영역 */
+.gallery-img-wrap{
+  width:100%;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  position:relative;
+  background:var(--cream-deeper);
+}
+.gallery-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .45s ease;
+  display:block;
+}
+.gallery-card:hover .gallery-img-wrap img{
+  transform:scale(1.04);
+}
+.gallery-img-badge{
+  position:absolute;top:14px;left:14px;
+  background:rgba(22,46,74,.78);
+  color:#fff;font-size:.72rem;font-weight:700;
+  padding:5px 11px;border-radius:20px;letter-spacing:.4px;
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.18);
+}
+.gallery-ep-link{
+  position:absolute;bottom:14px;right:14px;
+  background:rgba(184,85,48,.88);
+  color:#fff;font-size:.75rem;font-weight:700;
+  padding:6px 13px;border-radius:20px;
+  text-decoration:none;letter-spacing:.3px;
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.18);
+  transition:background .2s;
+}
+.gallery-ep-link:hover{background:var(--terra-dark)}
+
+/* 카드 본문 */
+.gallery-card-body{padding:22px 24px 26px}
+.gallery-card-title{
+  font-size:1.12rem;font-weight:700;color:var(--navy);
+  margin-bottom:6px;line-height:1.4;
+}
+.gallery-card-sub{
+  font-size:.78rem;color:var(--text-muted);
+  margin-bottom:14px;font-weight:500;letter-spacing:.3px;
+}
+.gallery-card-desc{
+  font-family:'Noto Serif KR',serif;
+  font-size:.94rem;line-height:1.95;color:var(--text-sub);
+  border-top:1px solid var(--border-light);
+  padding-top:14px;
+}
+
+/* 라이트박스 */
+.lightbox{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(10,18,30,.92);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+  padding:20px;
+}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox-inner{
+  position:relative;max-width:900px;width:100%;
+  background:var(--bg-card);border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.6);
+  transform:scale(.94);transition:transform .25s;
+}
+.lightbox.open .lightbox-inner{transform:scale(1)}
+.lightbox-img{width:100%;display:block;max-height:70vh;object-fit:contain;background:var(--cream-deeper)}
+.lightbox-caption{padding:20px 24px 22px}
+.lightbox-caption h3{font-size:1.08rem;color:var(--navy);margin-bottom:4px}
+.lightbox-caption p{font-size:.88rem;color:var(--text-light);line-height:1.7}
+.lightbox-close{
+  position:absolute;top:14px;right:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.55);color:#fff;
+  font-size:1.1rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:1.5px solid rgba(255,255,255,.25);
+  transition:background .2s;
+}
+.lightbox-close:hover{background:rgba(0,0,0,.8)}
+
+/* 빈 상태 */
+.empty-soon{
+  text-align:center;padding:60px 20px;color:var(--text-muted);
+}
+.empty-soon .empty-icon{font-size:3rem;margin-bottom:16px}
+.empty-soon h4{color:var(--navy);margin-bottom:8px}
+
+@media(max-width:480px){
+  .gallery-card-body{padding:16px 16px 20px}
+  .gallery-card-title{font-size:1rem}
+  .gallery-card-desc{font-size:.88rem}
+}
+</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="badge badge-gold" style="margin-bottom:12px">🎨 <span id="totalCount">1</span>점 수록</span>
+    <h1>그림 이야기</h1>
+    <p>각 에피소드를 위해 만들어진 그림들을 모아 봅니다.<br>논리와 감성이 수채화 한 장 안에 함께 담겼습니다.</p>
+  </div>
+</div>
+
+<!-- 필터 -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-inner">
+      <button class="filter-btn active" data-tag="all"     onclick="filterTag('all',this)">전체</button>
+      <button class="filter-btn"        data-tag="cover"   onclick="filterTag('cover',this)">표지·메인</button>
+      <button class="filter-btn"        data-tag="ep"      onclick="filterTag('ep',this)">에피소드</button>
+    </div>
+  </div>
+</div>
+
+<!-- 갤러리 본문 -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="empty-soon hidden" id="emptyState">
+      <div class="empty-icon">🖌️</div>
+      <h4>해당 그림이 아직 없습니다</h4>
+      <p>새로운 그림이 곧 추가될 예정입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<div id="auth-placeholder"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/common.js"></script>
+<script>
+// ── 갤러리 데이터 ──
+const GALLERY = [
+  {
+    id: 1,
+    tag: 'cover',
+    title: '함께 걷는 길',
+    sub: '표지 그림 · 2026',
+    src: '1. 자료/ChatGPT Image 2026년 3월 15일 오후 01_01_17.png',
+    epLink: null,
+    epLabel: null,
+    desc: `가을 공원 산책로를 나란히 걷는 두 사람. 남자는 어깨에 설계 도면을 들었고, 여자는 물감이 튄 원피스에 꽃다발을 안았다. 두 사람은 다른 것을 들고, 다른 것을 보며 살아왔지만 손은 꼭 맞잡혀 있다. 강물 위로 노을이 번지고, 벤치 위에 수채화 물감이 놓인 이 장면은 이 이야기 전체를 담는다. 논리와 감성, 설계와 색채—서로 다른 두 세계가 한 걸음 한 걸음 같은 방향으로 걸어간다는 것. 그것이 이 부부 60년의 이야기다.`
+  },
+];
+
+let currentTag = 'all';
+
+function filterTag(tag, btn) {
+  currentTag = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery();
+}
+
+function getFiltered() {
+  if (currentTag === 'all') return GALLERY;
+  return GALLERY.filter(g => g.tag === currentTag);
+}
+
+function galleryCard(g) {
+  return `
+  <div class="gallery-card" onclick="openLightbox(${g.id})">
+    <div class="gallery-img-wrap">
+      <img src="${g.src}" alt="${g.title}" loading="lazy">
+      <span class="gallery-img-badge">${g.tag === 'cover' ? '표지·메인' : '에피소드'}</span>
+      ${g.epLink ? `<a class="gallery-ep-link" href="${g.epLink}" onclick="event.stopPropagation()">${g.epLabel}</a>` : ''}
+    </div>
+    <div class="gallery-card-body">
+      <div class="gallery-card-title">${g.title}</div>
+      <div class="gallery-card-sub">${g.sub}</div>
+      <p class="gallery-card-desc">${g.desc}</p>
+    </div>
+  </div>`;
+}
+
+function renderGallery() {
+  const grid  = document.getElementById('galleryGrid');
+  const empty = document.getElementById('emptyState');
+  const list  = getFiltered();
+  document.getElementById('totalCount').textContent = GALLERY.length;
+  if (list.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+  } else {
+    empty.classList.add('hidden');
+    grid.innerHTML = list.map(galleryCard).join('');
+  }
+}
+
+// 라이트박스
+function openLightbox(id) {
+  const g = GALLERY.find(x => x.id === id);
+  if (!g) return;
+  document.getElementById('lightboxImg').src   = g.src;
+  document.getElementById('lightboxImg').alt   = g.title;
+  document.getElementById('lightboxTitle').textContent = g.title;
+  document.getElementById('lightboxDesc').textContent  = g.desc;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+renderGallery();
+</script>
+</body>
+</html>

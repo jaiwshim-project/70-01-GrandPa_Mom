@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>책 프로젝트 — 공대생 할아버지, 미대생 할머니</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== Book Project Page Styles ===== */
+    .bp-hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+    .bp-hero .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fc8181;
+      margin-bottom: 12px;
+    }
+    .bp-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .bp-hero .desc {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== Dashboard Section ===== */
+    .dashboard-section {
+      padding: 60px 0;
+      background: #f7fafc;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .stat-icon { font-size: 2rem; margin-bottom: 12px; }
+    .stat-value {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #e53e3e;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      color: #718096;
+      font-weight: 500;
+    }
+
+    /* Progress Bar */
+    .progress-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 32px;
+    }
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .progress-label { font-weight: 700; color: #2d3748; }
+    .progress-pct {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #e53e3e;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 16px;
+      background: #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #fc8181, #e53e3e);
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+    .progress-detail {
+      margin-top: 10px;
+      font-size: 0.875rem;
+      color: #718096;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Countdown */
+    .countdown-card {
+      background: linear-gradient(135deg, #e53e3e, #c53030);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+    .countdown-title { font-size: 0.9rem; opacity: 0.9; margin-bottom: 16px; letter-spacing: 0.1em; }
+    .countdown-display {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .count-unit { text-align: center; }
+    .count-num {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      display: block;
+    }
+    .count-label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 6px;
+      letter-spacing: 0.1em;
+    }
+    .count-sep {
+      font-size: 2rem;
+      font-weight: 800;
+      opacity: 0.6;
+      align-self: center;
+    }
+    .countdown-date {
+      margin-top: 16px;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* ===== Timeline Section ===== */
+    .timeline-section {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #e53e3e, #e2e8f0);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -34px;
+      top: 4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 3px solid #e2e8f0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+    .timeline-item.done .timeline-dot {
+      background: #e53e3e;
+      border-color: #e53e3e;
+    }
+    .timeline-item.current .timeline-dot {
+      background: #fff;
+      border-color: #e53e3e;
+      box-shadow: 0 0 0 4px rgba(229, 62, 62, 0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(229,62,62,0.2); }
+      50% { box-shadow: 0 0 0 8px rgba(229,62,62,0.1); }
+    }
+    .timeline-content {
+      background: #f7fafc;
+      border-radius: 12px;
+      padding: 20px 24px;
+      border-left: 4px solid #e2e8f0;
+    }
+    .timeline-item.done .timeline-content { border-left-color: #e53e3e; }
+    .timeline-item.current .timeline-content {
+      border-left-color: #e53e3e;
+      background: #fff5f5;
+    }
+    .timeline-step {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #a0aec0;
+      margin-bottom: 4px;
+    }
+    .timeline-item.done .timeline-step { color: #e53e3e; }
+    .timeline-item.current .timeline-step { color: #e53e3e; }
+    .timeline-item-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 6px;
+    }
+    .timeline-period {
+      font-size: 0.875rem;
+      color: #718096;
+    }
+    .timeline-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 10px;
+    }
+    .badge-done    { background: #c6f6d5; color: #276749; }
+    .badge-current { background: #fed7d7; color: #c53030; }
+    .badge-pending { background: #e2e8f0; color: #718096; }
+
+    /* ===== Subscribe Section ===== */
+    .subscribe-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    }
+    .subscribe-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .subscribe-card .icon { font-size: 3rem; margin-bottom: 16px; }
+    .subscribe-card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
+    .subscribe-card p {
+      font-size: 0.95rem;
+      color: #718096;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .subscribe-form {
+      display: flex;
+      gap: 10px;
+    }
+    .subscribe-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .subscribe-input:focus { border-color: #e53e3e; }
+    .subscribe-btn {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #e53e3e, #c53030);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .subscribe-btn:hover { opacity: 0.9; }
+    .subscribe-count {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #a0aec0;
+    }
+    .subscribe-success {
+      display: none;
+      padding: 16px;
+      background: #f0fff4;
+      border: 1px solid #9ae6b4;
+      border-radius: 10px;
+      color: #276749;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    /* ===== Support Messages Section ===== */
+    .support-section {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .support-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .support-msg-card {
+      background: #f7fafc;
+      border-radius: 12px;
+      padding: 20px 24px;
+      border-left: 4px solid #fc8181;
+    }
+    .support-msg-card .nickname {
+      font-weight: 700;
+      color: #4a5568;
+      font-size: 0.875rem;
+      margin-bottom: 6px;
+    }
+    .support-msg-card .message {
+      color: #2d3748;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .support-msg-card .time {
+      font-size: 0.75rem;
+      color: #a0aec0;
+      margin-top: 8px;
+    }
+    .support-form-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .support-form-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: #e53e3e; }
+    .form-textarea { min-height: 100px; resize: vertical; font-family: inherit; }
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #e53e3e, #c53030);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.9; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 14px 20px;
+      background: #2d3748;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* Skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @media (max-width: 640px) {
+      .subscribe-form { flex-direction: column; }
+      .countdown-display { gap: 12px; }
+      .count-num { font-size: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="header-placeholder"></div>
+
+<!-- Hero -->
+<section class="bp-hero">
+  <div class="subtitle">책 프로젝트 현황</div>
+  <h1>함께 만드는 책 이야기</h1>
+  <p>공대생 할아버지, 미대생 할머니의 60년 이야기를<br>
+  함께 만들어 가고 있습니다.</p>
+</section>
+
+<!-- ===== Dashboard Section ===== -->
+<section class="dashboard-section">
+  <div class="container">
+    <h2 class="section-title">진행 현황 대시보드</h2>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-value" id="episodeCount">0</div>
+        <div class="stat-label">현재 연재 에피소드</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-value">120</div>
+        <div class="stat-label">목표 에피소드</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-value" id="subscriberCount">0</div>
+        <div class="stat-label">출간 알림 구독자</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💌</div>
+        <div class="stat-value" id="supportCount">0</div>
+        <div class="stat-label">응원 메시지</div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <span class="progress-label">전체 진행률</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <div class="progress-detail">
+        <span id="progressDetail">0 / 120 에피소드</span>
+        <span>목표: 2026년 6월 완성</span>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-card">
+      <div class="countdown-title">예상 출간일까지</div>
+      <div class="countdown-display">
+        <div class="count-unit">
+          <span class="count-num" id="cdDays">--</span>
+          <div class="count-label">DAYS</div>
+        </div>
+        <span class="count-sep">:</span>
+        <div class="count-unit">
+          <span class="count-num" id="cdHours">--</span>
+          <div class="count-label">HOURS</div>
+        </div>
+        <span class="count-sep">:</span>
+        <div class="count-unit">
+          <span class="count-num" id="cdMinutes">--</span>
+          <div class="count-label">MIN</div>
+        </div>
+        <span class="count-sep">:</span>
+        <div class="count-unit">
+          <span class="count-num" id="cdSeconds">--</span>
+          <div class="count-label">SEC</div>
+        </div>
+      </div>
+      <div class="countdown-date">🎉 2026년 하반기 출간 예정</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Timeline Section ===== -->
+<section class="timeline-section">
+  <div class="container">
+    <h2 class="section-title">단계별 타임라인</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item done">
+        <div class="timeline-dot">✓</div>
+        <div class="timeline-content">
+          <div class="timeline-step">1단계
+            <span class="timeline-badge badge-done">완료</span>
+          </div>
+          <div class="timeline-item-title">기획 완료</div>
+          <div class="timeline-period">2025년 7월</div>
+        </div>
+      </div>
+
+      <div class="timeline-item current">
+        <div class="timeline-dot">●</div>
+        <div class="timeline-content">
+          <div class="timeline-step">2단계
+            <span class="timeline-badge badge-current">진행 중</span>
+          </div>
+          <div class="timeline-item-title">웹 연재</div>
+          <div class="timeline-period">2025년 8월 ~ 2026년 6월</div>
+        </div>
+      </div>
+
+      <div class="timeline-item pending">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-step">3단계
+            <span class="timeline-badge badge-pending">예정</span>
+          </div>
+          <div class="timeline-item-title">탈고 &amp; 편집</div>
+          <div class="timeline-period">2026년 7월 ~ 9월</div>
+        </div>
+      </div>
+
+      <div class="timeline-item pending">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-step">4단계
+            <span class="timeline-badge badge-pending">예정</span>
+          </div>
+          <div class="timeline-item-title">출판 &amp; 출간</div>
+          <div class="timeline-period">2026년 10월 ~ 12월</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Subscribe Section ===== -->
+<section class="subscribe-section">
+  <div class="container">
+    <div class="subscribe-card">
+      <div class="icon">📬</div>
+      <h2>출간 알림 받기</h2>
+      <p>책이 출간되면 가장 먼저 알려드릴게요.<br>
+      특별 독자 혜택도 함께 드립니다.</p>
+
+      <form class="subscribe-form" id="subscribeForm" onsubmit="submitSubscribe(event)">
+        <input type="email" class="subscribe-input" id="subscribeEmail"
+               placeholder="이메일 주소를 입력하세요" required />
+        <button type="submit" class="subscribe-btn">출간 알림 받기</button>
+      </form>
+
+      <div class="subscribe-success" id="subscribeSuccess">
+        ✅ 출간 알림 신청이 완료되었어요!
+      </div>
+      <div class="subscribe-count" id="subscribeCountText">
+        현재 <strong id="subscriberCountInline">0</strong>명이 알림을 신청했어요
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Support Messages Section ===== -->
+<section class="support-section">
+  <div class="container">
+    <h2 class="section-title">응원 메시지</h2>
+
+    <!-- 최근 응원 메시지 5개 -->
+    <div class="support-messages" id="supportMessages">
+      <div class="skeleton" style="height:80px;"></div>
+      <div class="skeleton" style="height:80px;"></div>
+      <div class="skeleton" style="height:80px;"></div>
+    </div>
+
+    <!-- 응원 메시지 작성 폼 -->
+    <div class="support-form-card">
+      <h3>💝 응원 메시지 남기기</h3>
+      <form id="supportForm" onsubmit="submitSupport(event)">
+        <div class="form-group">
+          <label class="form-label" for="supportNickname">닉네임</label>
+          <input type="text" class="form-input" id="supportNickname"
+                 placeholder="닉네임을 입력하세요" required maxlength="50" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="supportMessage">응원 메시지</label>
+          <textarea class="form-textarea" id="supportMessage"
+                    placeholder="두 분을 응원하는 마음을 전해주세요..." required minlength="5" maxlength="500"></textarea>
+        </div>
+        <button type="submit" class="form-submit">응원 메시지 보내기 💌</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script>
+// ===================================================
+// book-project.html — JavaScript
+// ===================================================
+
+const TARGET_DATE = new Date('2026-12-01T00:00:00');
+const TARGET_EPISODES = 120;
+
+document.addEventListener('DOMContentLoaded', async () => {
+  startCountdown();
+  await Promise.all([
+    loadStats(),
+    loadSupportMessages()
+  ]);
+});
+
+// ===================== 카운트다운 타이머 =====================
+function startCountdown() {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+function updateCountdown() {
+  const now  = new Date();
+  const diff = TARGET_DATE - now;
+
+  if (diff <= 0) {
+    document.getElementById('cdDays').textContent    = '00';
+    document.getElementById('cdHours').textContent   = '00';
+    document.getElementById('cdMinutes').textContent = '00';
+    document.getElementById('cdSeconds').textContent = '00';
+    return;
+  }
+
+  const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cdDays').textContent    = String(days).padStart(3, '0');
+  document.getElementById('cdHours').textContent   = String(hours).padStart(2, '0');
+  document.getElementById('cdMinutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('cdSeconds').textContent = String(seconds).padStart(2, '0');
+}
+
+// ===================== 통계 로드 =====================
+async function loadStats() {
+  try {
+    const [episodesRes, subscribersRes, supportRes] = await Promise.all([
+      supabase.from('episodes').select('*', { count: 'exact', head: true }).eq('is_published', true),
+      supabase.from('subscribers').select('*', { count: 'exact', head: true }),
+      supabase.from('support_messages').select('*', { count: 'exact', head: true })
+    ]);
+
+    const epCount  = episodesRes.count || 0;
+    const subCount = subscribersRes.count || 0;
+    const supCount = supportRes.count || 0;
+
+    updateStats(epCount, subCount, supCount);
+
+  } catch (err) {
+    console.log('Stats load error (demo mode):', err.message);
+    updateStats(0, 0, 0);
+  }
+}
+
+function updateStats(episodes, subscribers, support) {
+  // Episode count
+  animateNumber('episodeCount', episodes);
+  animateNumber('subscriberCount', subscribers);
+  animateNumber('supportCount', support);
+  document.getElementById('subscriberCountInline').textContent = subscribers;
+
+  // Progress bar
+  const pct = Math.min(100, Math.round((episodes / TARGET_EPISODES) * 100));
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressDetail').textContent = `${episodes} / ${TARGET_EPISODES} 에피소드`;
+
+  setTimeout(() => {
+    document.getElementById('progressBar').style.width = pct + '%';
+  }, 200);
+}
+
+function animateNumber(id, target, duration = 1200) {
+  const el = document.getElementById(id);
+  if (!el || target === 0) { if (el) el.textContent = '0'; return; }
+
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// ===================== 응원 메시지 로드 =====================
+async function loadSupportMessages() {
+  const container = document.getElementById('supportMessages');
+
+  try {
+    const { data: messages, error } = await supabase
+      .from('support_messages')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    if (error) throw error;
+
+    if (!messages || messages.length === 0) {
+      container.innerHTML = `
+        <div style="text-align:center;padding:40px;color:#a0aec0;">
+          <p>첫 번째 응원 메시지를 남겨주세요!</p>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = messages.map(m => renderSupportMsg(m)).join('');
+
+  } catch (err) {
+    // 데모 메시지
+    container.innerHTML = getDemoMessages().map(m => renderSupportMsg(m)).join('');
+  }
+}
+
+function renderSupportMsg(msg) {
+  const timeStr = new Date(msg.created_at).toLocaleDateString('ko-KR', {
+    year: 'numeric', month: 'short', day: 'numeric'
+  });
+  return `
+    <div class="support-msg-card">
+      <div class="nickname">💝 ${escapeHtml(msg.nickname)}</div>
+      <div class="message">${escapeHtml(msg.message)}</div>
+      <div class="time">${timeStr}</div>
+    </div>`;
+}
+
+function getDemoMessages() {
+  return [
+    { nickname: '독자독자', message: '두 분의 이야기가 정말 감동적이에요. 빨리 책으로 만나고 싶습니다!', created_at: '2025-08-10' },
+    { nickname: '비슷한부부', message: '저희 부부와 너무 닮았어요. 공대 남편과 예대 출신 아내가 함께 읽으며 웃고 있습니다.', created_at: '2025-08-09' },
+    { nickname: '기대독자', message: '에피소드 하나하나가 우리 가족 이야기 같아요. 꼭 출간되길 바랍니다!', created_at: '2025-08-08' }
+  ];
+}
+
+// ===================== 구독 신청 =====================
+async function submitSubscribe(e) {
+  e.preventDefault();
+  const email = document.getElementById('subscribeEmail').value.trim();
+  if (!email) return;
+
+  const btn = e.target.querySelector('.subscribe-btn');
+  btn.disabled = true;
+  btn.textContent = '신청 중...';
+
+  try {
+    const { error } = await supabase.from('subscribers').insert({ email });
+
+    if (error) {
+      if (error.code === '23505') {
+        showToast('이미 신청된 이메일이에요.');
+        return;
+      }
+      throw error;
+    }
+
+    document.getElementById('subscribeForm').style.display = 'none';
+    document.getElementById('subscribeSuccess').style.display = 'block';
+    showToast('출간 알림이 신청되었어요!');
+
+    // 구독자 수 업데이트
+    const currentCount = parseInt(document.getElementById('subscriberCountInline').textContent) || 0;
+    document.getElementById('subscriberCountInline').textContent = currentCount + 1;
+    animateNumber('subscriberCount', currentCount + 1);
+
+  } catch (err) {
+    showToast('신청 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '출간 알림 받기';
+  }
+}
+
+// ===================== 응원 메시지 제출 =====================
+async function submitSupport(e) {
+  e.preventDefault();
+  const nickname = document.getElementById('supportNickname').value.trim();
+  const message  = document.getElementById('supportMessage').value.trim();
+  if (!nickname || !message) return;
+
+  const btn = e.target.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = '전송 중...';
+
+  try {
+    const { error } = await supabase.from('support_messages').insert({ nickname, message });
+    if (error) throw error;
+
+    e.target.reset();
+    showToast('응원 메시지가 전달되었어요! 감사합니다 💝');
+    await loadSupportMessages();
+    await loadStats();
+
+  } catch (err) {
+    showToast('전송 중 오류가 발생했어요.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '응원 메시지 보내기 💌';
+  }
+}
+
+// ===================== 유틸 =====================
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+
+<div id="footer-placeholder"></div>
+<div id="auth-placeholder"></div>
+<script src="js/common.js"></script>
+</body>
+</html>

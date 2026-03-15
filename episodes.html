@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연재 이야기 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* Page hero */
+.page-hero{
+  background:linear-gradient(135deg,#0E2440 0%,var(--navy) 60%,#1E3E61 100%);
+  padding:52px 0;color:#fff;text-align:center;
+  border-bottom:3px solid var(--terra);
+}
+.page-hero h1{color:#fff;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.page-hero p{color:rgba(255,255,255,.82);font-size:.96rem}
+
+/* Part filter tabs */
+.filter-bar{
+  background:var(--white);
+  border-bottom:2px solid var(--border);
+  position:sticky;top:66px;z-index:90;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.filter-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.filter-inner::-webkit-scrollbar{display:none}
+.filter-btn{
+  flex-shrink:0;padding:14px 18px;font-size:.86rem;font-weight:600;
+  color:var(--text-light);background:none;
+  border-bottom:3px solid transparent;
+  transition:all .2s;white-space:nowrap;min-height:48px;
+}
+.filter-btn:hover{color:var(--terra);background:rgba(184,85,48,.05)}
+.filter-btn.active{color:var(--terra-dark);border-bottom-color:var(--terra);background:rgba(184,85,48,.06);font-weight:700}
+
+/* Episode grid */
+.ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:32px 0}
+@media(max-width:900px){.ep-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.ep-grid{grid-template-columns:1fr}}
+
+.ep-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  border:2px solid var(--border-card);cursor:pointer;
+  transition:all .25s;overflow:hidden;
+  box-shadow:0 1px 4px var(--shadow);
+}
+.ep-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px var(--shadow-md);border-color:var(--terra-light)}
+.ep-card-top{
+  background:linear-gradient(135deg,var(--cream-deeper),var(--cream-dark));
+  padding:12px 16px;display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--border-light);
+}
+.ep-card-part{font-size:.72rem;font-weight:700;color:var(--terra-dark);letter-spacing:.5px}
+.ep-card-num{font-size:.78rem;color:var(--text-muted);font-weight:500}
+.ep-card-body{padding:18px}
+.ep-card-body h3{font-size:1rem;margin-bottom:8px;color:var(--navy);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ep-card-preview{
+  font-size:.86rem;color:var(--text-light);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  margin-bottom:14px;line-height:1.68;
+}
+.ep-card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:12px;border-top:1px solid var(--border-light);
+}
+.ep-meta-small{display:flex;gap:10px;font-size:.79rem;color:var(--text-muted)}
+.ep-date{font-size:.75rem;color:var(--text-muted)}
+
+/* 에피소드 카드 수채화 썸네일 */
+.ep-card-illus{
+  width:100%;overflow:hidden;
+  border-bottom:1px solid var(--border-light);
+  line-height:0;
+  background:var(--cream-dark);
+}
+.ep-card-illus svg{display:block;width:100%;height:auto}
+
+/* Load more */
+.load-more-wrap{text-align:center;padding:16px 0 48px}
+
+@media(max-width:480px){
+  .ep-card-body{padding:14px}
+  .filter-btn{padding:12px 14px;font-size:.82rem}
+}
+</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="badge badge-gold" style="margin-bottom:12px">📖 총 <span id="totalCount">15</span>편 연재 중</span>
+    <h1>연재 이야기</h1>
+    <p>공대생 할아버지, 미대생 할머니가 함께 살아가는 이야기</p>
+  </div>
+</div>
+
+<!-- 부 필터 -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-inner">
+      <button class="filter-btn active" data-part="0" onclick="filterPart(0,this)">전체</button>
+      <button class="filter-btn" data-part="1" onclick="filterPart(1,this)">1부 · 첫만남</button>
+      <button class="filter-btn" data-part="2" onclick="filterPart(2,this)">2부 · 연애</button>
+      <button class="filter-btn" data-part="3" onclick="filterPart(3,this)">3부 · 결혼</button>
+      <button class="filter-btn" data-part="4" onclick="filterPart(4,this)">4부 · 생활</button>
+      <button class="filter-btn" data-part="5" onclick="filterPart(5,this)">5부 · 중년</button>
+      <button class="filter-btn" data-part="6" onclick="filterPart(6,this)">6부 · 노년</button>
+    </div>
+  </div>
+</div>
+
+<section style="background:var(--cream-dark);min-height:60vh">
+  <div class="container">
+    <div class="ep-grid" id="epGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+      <button class="btn btn-outline btn-lg" onclick="loadMore()">더 보기</button>
+    </div>
+    <div class="empty-state hidden" id="emptyState">
+      <div class="empty-icon">📭</div>
+      <h4>아직 에피소드가 없습니다</h4>
+      <p>이 부의 에피소드가 곧 연재됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<div id="auth-placeholder"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/common.js"></script>
+<script>
+// 에피소드 전체 목록 (Supabase 없을 때 폴백)
+const ALL_EPISODES = [
+  {id:1, ep:1, part:1, title:'미술관 앞에서',         preview:'그날 그는 시간을 계산하고 있었다. 오후 3시, 미술관 앞.', date:'2025-08-01', likes:128, comments:24},
+  {id:2, ep:2, part:1, title:'20분 늦은 이유',        preview:'"20분 늦었어요." "노을이 예뻤어요."', date:'2025-08-02', likes:198, comments:41},
+  {id:3, ep:3, part:1, title:'첫 커피',               preview:'같은 카페, 다른 방식으로 커피를 주문했다.', date:'2025-08-03', likes:87, comments:12},
+  {id:4, ep:4, part:1, title:'첫 대화',               preview:'대화는 달랐다. 언어가 달랐다.', date:'2025-08-04', likes:76, comments:9},
+  {id:5, ep:5, part:1, title:'다른 질문',             preview:'그는 "왜?"를 물었고, 그녀는 "어때?"를 물었다.', date:'2025-08-05', likes:94, comments:15},
+  {id:6, ep:6, part:1, title:'다른 대답',             preview:'같은 질문에 완전히 다른 대답이 돌아왔다.', date:'2025-08-06', likes:82, comments:11},
+  {id:7, ep:7, part:1, title:'첫 산책',               preview:'지도를 보는 남자와 가로수를 보는 여자.', date:'2025-08-07', likes:103, comments:18},
+  {id:8, ep:8, part:1, title:'첫 오해',               preview:'논리와 감성은 같은 말도 다르게 듣는다.', date:'2025-08-08', likes:156, comments:32},
+  {id:9, ep:9, part:1, title:'첫 웃음',               preview:'다른 이유로, 같은 순간에 웃었다.', date:'2025-08-09', likes:119, comments:21},
+  {id:10,ep:10,part:1, title:'첫 싸움',               preview:'작은 다툼이 큰 차이를 보여주었다.', date:'2025-08-10', likes:187, comments:38},
+  {id:11,ep:11,part:2, title:'데이트 계획표',         preview:'엑셀로 만든 데이트 계획표를 보고 그녀는 웃었다.', date:'2025-08-11', likes:234, comments:45},
+  {id:12,ep:12,part:2, title:'여행 계획 사건',        preview:'여행은 계획표가 없을 때 시작된다.', date:'2025-08-12', likes:176, comments:29},
+  {id:13,ep:13,part:2, title:'사진 찍기',             preview:'그는 구도를 계산하고, 그녀는 순간을 담았다.', date:'2025-08-13', likes:143, comments:22},
+  {id:14,ep:14,part:2, title:'카페 철학',             preview:'같은 카페에서 완전히 다른 것을 본다.', date:'2025-08-14', likes:98, comments:14},
+  {id:15,ep:15,part:2, title:'색깔 논쟁',             preview:'"이건 빨강입니다." "이건 노을색이에요."', date:'2025-08-15', likes:198, comments:37},
+];
+
+let currentPart = 0;
+let displayed = 0;
+const PAGE = 9;
+
+function filterPart(part, btn) {
+  currentPart = part;
+  displayed = 0;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderEpisodes();
+}
+
+function getFiltered() {
+  return currentPart === 0 ? ALL_EPISODES : ALL_EPISODES.filter(e => e.part === currentPart);
+}
+
+function renderEpisodes() {
+  const grid = document.getElementById('epGrid');
+  const empty = document.getElementById('emptyState');
+  const more = document.getElementById('loadMoreWrap');
+  const filtered = getFiltered();
+  const slice = filtered.slice(0, PAGE);
+  displayed = slice.length;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.remove('hidden');
+    more.style.display = 'none';
+    return;
+  }
+  empty.classList.add('hidden');
+  grid.innerHTML = slice.map(epCard).join('');
+  more.style.display = filtered.length > displayed ? 'block' : 'none';
+  document.getElementById('totalCount').textContent = ALL_EPISODES.length;
+}
+
+function loadMore() {
+  const filtered = getFiltered();
+  const next = filtered.slice(displayed, displayed + PAGE);
+  displayed += next.length;
+  document.getElementById('epGrid').insertAdjacentHTML('beforeend', next.map(epCard).join(''));
+  if (displayed >= filtered.length) document.getElementById('loadMoreWrap').style.display = 'none';
+}
+
+// 에피소드별 수채화 썸네일 팔레트 (부에 따라 다른 색상)
+const PART_PALETTES = {
+  1: { bg:'#EEF4FA', accent1:'#7EA8CC', accent2:'#3A6A9C', blob1:'#B8D0E8', blob2:'#8AAAC8', title:'첫만남' },
+  2: { bg:'#FFF0E8', accent1:'#D47040', accent2:'#A84820', blob1:'#F0B890', blob2:'#D48060', title:'연애' },
+  3: { bg:'#F0F8F0', accent1:'#5A9460', accent2:'#2A6430', blob1:'#90C898', blob2:'#60A870', title:'결혼' },
+  4: { bg:'#FFF8E8', accent1:'#C09030', accent2:'#907010', blob1:'#E8CC80', blob2:'#C0A840', title:'생활' },
+  5: { bg:'#F8F0F8', accent1:'#9060A0', accent2:'#603070', blob1:'#C898C8', blob2:'#A868A8', title:'중년' },
+  6: { bg:'#F8F0E8', accent1:'#A07050', accent2:'#704830', blob1:'#D0AA88', blob2:'#B08060', title:'노년' },
+};
+
+function epThumbnailSVG(ep, part) {
+  const p = PART_PALETTES[part] || PART_PALETTES[1];
+  // 에피소드 번호 기반 시드로 구도 변경
+  const s = ep % 4;
+  const shapes = [
+    // 구도 0: 두 원형 인물
+    `<ellipse cx="105" cy="62" rx="22" ry="24" fill="${p.blob1}" opacity=".5" filter="url(#tf)"/>
+     <ellipse cx="165" cy="58" rx="22" ry="24" fill="${p.blob2}" opacity=".45" filter="url(#tf)"/>
+     <ellipse cx="135" cy="95" rx="60" ry="20" fill="${p.accent1}" opacity=".2" filter="url(#tf)"/>`,
+    // 구도 1: 나무/꽃
+    `<ellipse cx="130" cy="55" rx="45" ry="40" fill="${p.blob1}" opacity=".5" filter="url(#tf)"/>
+     <ellipse cx="155" cy="65" rx="35" ry="30" fill="${p.blob2}" opacity=".4" filter="url(#tf)"/>
+     <rect x="128" y="80" width="6" height="30" fill="${p.accent2}" opacity=".55"/>`,
+    // 구도 2: 창문/카페
+    `<rect x="85" y="35" width="90" height="65" fill="${p.blob1}" opacity=".4" rx="4"/>
+     <rect x="95" y="45" width="30" height="40" fill="${p.accent1}" opacity=".35" rx="2"/>
+     <rect x="135" y="45" width="30" height="40" fill="${p.accent1}" opacity=".3" rx="2"/>`,
+    // 구도 3: 대화하는 두 실루엣
+    `<ellipse cx="100" cy="60" rx="14" ry="15" fill="${p.blob1}" opacity=".6"/>
+     <rect x="92" y="74" width="16" height="30" fill="${p.accent1}" opacity=".5" rx="3"/>
+     <ellipse cx="168" cy="58" rx="14" ry="15" fill="${p.blob2}" opacity=".55"/>
+     <rect x="160" y="72" width="16" height="30" fill="${p.accent2}" opacity=".45" rx="3"/>
+     <path d="M114 68 Q134 52 154 66" stroke="${p.accent2}" stroke-width="1.5" fill="none" opacity=".35"/>`,
+  ];
+  return `<svg viewBox="0 0 270 130" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+  <defs><filter id="tf"><feGaussianBlur stdDeviation="3"/></filter></defs>
+  <rect width="270" height="130" fill="${p.bg}"/>
+  <ellipse cx="50" cy="40" rx="70" ry="50" fill="${p.blob1}" opacity=".2" filter="url(#tf)"/>
+  <ellipse cx="220" cy="90" rx="70" ry="45" fill="${p.blob2}" opacity=".18" filter="url(#tf)"/>
+  ${shapes[s]}
+  <text x="135" y="118" font-family="serif" font-size="10" fill="${p.accent2}" opacity=".45" text-anchor="middle" font-style="italic">EP.${ep}</text>
+</svg>`;
+}
+
+function epCard(e) {
+  return `
+  <div class="ep-card" onclick="location.href='episode-detail.html?id=${e.id}'">
+    <div class="ep-card-illus">${epThumbnailSVG(e.ep, e.part)}</div>
+    <div class="ep-card-top">
+      <span class="ep-card-part">${getPartName(e.part)}</span>
+      <span class="ep-card-num">EP.${e.ep}</span>
+    </div>
+    <div class="ep-card-body">
+      <h3>${e.title}</h3>
+      <p class="ep-card-preview">${e.preview}</p>
+      <div class="ep-card-footer">
+        <div class="ep-meta-small"><span>❤️ ${e.likes}</span><span>💬 ${e.comments}</span></div>
+        <span class="ep-date">${formatDate(e.date)}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Supabase에서 로드 시도
+async function loadFromSupabase() {
+  const sb = getSupabase();
+  if (!sb || SUPABASE_URL.includes('YOUR_')) return;
+  const { data } = await sb.from('episodes').select('*').eq('is_published', true).order('episode_number');
+  if (data && data.length > 0) {
+    ALL_EPISODES.length = 0;
+    data.forEach(e => ALL_EPISODES.push({
+      id: e.id, ep: e.episode_number, part: e.part_number,
+      title: e.title, preview: e.summary || e.content?.slice(0,80) || '',
+      date: e.published_at, likes: e.like_count || 0, comments: 0
+    }));
+  }
+  renderEpisodes();
+}
+
+renderEpisodes();
+loadFromSupabase();
+</script>
+</body>
+</html>
