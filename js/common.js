@@ -271,9 +271,14 @@ function renderPartNav() {
 function renderHeader() {
   return `
 <header id="mainHeader" class="main-header">
+  <div class="header-top-bar"></div>
   <div class="container header-inner">
     <a href="index.html" class="logo">
       <img src="로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="logo-img">
+      <div class="logo-text">
+        공대생 할아버지, 미대생 할머니
+        <small>논리와 감성이 함께 살아가는 이야기</small>
+      </div>
     </a>
     <nav class="desktop-nav">
       <a href="episodes.html"     class="nav-link">연재 이야기</a>
@@ -283,7 +288,7 @@ function renderHeader() {
       <a href="community.html"    class="nav-link">독자 이야기</a>
       <a href="book-project.html" class="nav-link">책 프로젝트</a>
       <a href="author-notes.html" class="nav-link">작가 노트</a>
-      <a href="platform.html"     class="nav-link" style="color:var(--gold-light);font-weight:700">플랫폼 이야기</a>
+      <a href="platform.html"     class="nav-link nav-link-special">플랫폼 이야기</a>
     </nav>
     <div class="header-actions">
       <button id="loginBtn" class="btn btn-primary btn-sm" onclick="showAuthModal()">로그인</button>
@@ -304,7 +309,7 @@ function renderHeader() {
     <a href="community.html"    class="mobile-nav-link">👥 독자 이야기</a>
     <a href="book-project.html" class="mobile-nav-link">📚 책 프로젝트</a>
     <a href="author-notes.html" class="mobile-nav-link">✍️ 작가 노트</a>
-    <a href="platform.html"     class="mobile-nav-link" style="color:var(--gold)">✨ 플랫폼 이야기</a>
+    <a href="platform.html"     class="mobile-nav-link mobile-nav-special">✨ 플랫폼 이야기</a>
   </div>
 </header>`;
 }
@@ -313,13 +318,14 @@ function renderHeader() {
 function renderFooter() {
   return `
 <footer class="main-footer">
-  <div class="container">
+<div class="container">
     <div class="footer-grid">
       <div>
         <div class="footer-logo">
           <img src="로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="footer-logo-img">
         </div>
         <p class="footer-desc">논리와 감성이 함께 살아가는 이야기.<br>우리는 틀린 것이 아니라 다른 것이었다.</p>
+        <p class="footer-tagline">— 40년의 사랑, 두 언어로 쓴 하나의 이야기</p>
       </div>
       <div>
         <h5>바로가기</h5>
@@ -341,7 +347,7 @@ function renderFooter() {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 공대생 할아버지, 미대생 할머니. All rights reserved.</p>
+      <p>© 2026 공대생 할아버지, 미대생 할머니. All rights reserved.</p>
     </div>
   </div>
 </footer>`;
