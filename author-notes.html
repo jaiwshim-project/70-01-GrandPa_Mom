@@ -15,14 +15,28 @@
 .page-hero h1{color:#fff;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
 .page-hero p{color:rgba(255,255,255,.82);font-size:.96rem}
 
+/* Author tabs */
+.author-tab-bar{
+  display:flex;gap:0;margin:32px 0 0;border-bottom:2px solid var(--border-light);
+}
+.author-tab-btn{
+  padding:12px 28px;font-size:.95rem;font-weight:700;
+  background:none;border:none;cursor:pointer;
+  color:var(--text-muted);border-bottom:3px solid transparent;
+  margin-bottom:-2px;transition:all .2s;font-family:'Noto Serif KR',serif;
+}
+.author-tab-btn.active{color:var(--terra);border-bottom-color:var(--terra)}
+.author-tab-btn:hover:not(.active){color:var(--navy)}
+
 /* Author intro */
 .author-intro{
   background:var(--white);border-radius:var(--radius);padding:40px;
-  margin:36px 0;display:flex;gap:32px;align-items:flex-start;
+  margin:20px 0 36px;display:flex;gap:32px;align-items:flex-start;
   border:2px solid var(--border-card);
   border-left:5px solid var(--terra);
   box-shadow:0 4px 16px var(--shadow);
 }
+.author-intro.hidden{display:none}
 @media(max-width:640px){.author-intro{flex-direction:column;gap:20px;padding:24px}}
 .author-avatar{
   width:88px;height:88px;border-radius:50%;
@@ -117,14 +131,34 @@
 
 <section style="background:var(--cream-dark)">
   <div class="container">
-    <!-- Author Intro -->
-    <div class="author-intro">
+    <!-- Author Tabs -->
+    <div class="author-tab-bar">
+      <button class="author-tab-btn active" onclick="switchAuthorTab(1, this)">🎨 조혜인 작가 (미대생)</button>
+      <button class="author-tab-btn" onclick="switchAuthorTab(2, this)">📐 심재우 작가 (공대생)</button>
+    </div>
+
+    <!-- 조혜인 작가 -->
+    <div class="author-intro" id="authorTab1">
+      <div class="author-avatar" style="background:linear-gradient(135deg,#C4623A,#E8A070)">🎨</div>
+      <div class="author-info">
+        <h3>조혜인 작가</h3>
+        <p class="author-sub">미대 출신 유화, 파스텔화, 수채화 작가 · 부부 에세이스트</p>
+        <p>
+          색과 붓으로 세상을 담아 온 지 40년이 넘었지만,
+          여전히 새로운 색이 보입니다. 남편은 제가 왜 같은 노을을 매번 다르게 그리냐고 묻지만,
+          노을은 어제와 오늘이 다르거든요. 이 이야기에 우리들 삶의 여정과 순간들이 담긴 수채화가 함께할 수 있어 행복합니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- 심재우 작가 -->
+    <div class="author-intro hidden" id="authorTab2">
       <div class="author-avatar">✍️</div>
       <div class="author-info">
         <h3>심재우 작가</h3>
         <p class="author-sub">공대 출신 스토리텔러 · 부부 에세이스트</p>
         <p>
-          30년 넘게 함께 살아온 우리 부부의 이야기를 씁니다.
+          40년 넘게 함께 살아온 우리 부부의 이야기를 씁니다.
           공학도의 눈으로 세상을 분석하고, 예술가의 감성을 가진 아내 덕분에
           세상을 다시 보게 됐습니다. 이 이야기가 비슷한 차이를 가진
           누군가에게 닿기를 바랍니다.
@@ -143,6 +177,109 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="js/common.js"></script>
 <script>
+function switchAuthorTab(num, btn) {
+  document.querySelectorAll('.author-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('authorTab1').classList.toggle('hidden', num !== 1);
+  document.getElementById('authorTab2').classList.toggle('hidden', num !== 2);
+  currentAuthor = num;
+  renderNotes();
+}
+
+let currentAuthor = 1;
+
+// ── 조혜인 작가 노트 ──
+const AUTHOR_NOTES_HYE = [
+  {
+    id:101, ep:15, epTitle:'색깔 논쟁', part:2,
+    date:'2025-08-15',
+    title:'노을색은 코드로 못 담아요',
+    body:[
+      '남편이 그날 저한테 물었어요. "저게 무슨 색이야?" 저는 노을색이라고 했죠. 그러니까 남편은 팬톤 코드를 찾기 시작했어요. 저는 그 모습이 귀여웠지만, 한편으론 안타까웠어요.',
+      '색은 이름이 아니에요. 빛이 바뀌는 순간의 느낌이에요. 저는 그 노을을 50번도 넘게 그렸지만 똑같이 그려진 적이 없어요. 그날의 습도, 바람, 마음 상태에 따라 달라지거든요. 그게 색의 진짜 이름이에요.'
+    ],
+    tags:['색채','수채화','노을','작가의 눈'],
+    likes:92
+  },
+  {
+    id:102, ep:1, epTitle:'미술관 앞에서', part:1,
+    date:'2025-08-01',
+    title:'그 오후의 빛을 수채화로 담은 이유',
+    body:[
+      '미술관 앞 오후 3시, 저는 그날 하늘 색이 너무 아름다워서 20분을 서 있었어요. 남편은 시계를 계속 봤고요. 나중에 그 장면을 그림으로 그렸는데, 남편 손에 있는 시계가 자꾸 눈에 들어왔어요.',
+      '그때서야 알았어요. 제가 하늘을 보는 동안 남편은 저를 기다리고 있었다는 걸. 그게 그 그림에서 제일 따뜻한 부분이에요. 수채화는 보이지 않는 것도 담거든요.'
+    ],
+    tags:['미술관','첫만남','수채화','빛'],
+    likes:215
+  },
+  {
+    id:103, ep:2, epTitle:'노을빛 거리', part:1,
+    date:'2025-08-02',
+    title:'20분은 짧았어요, 그 노을 앞에서는',
+    body:[
+      '약속에 20분 늦었던 건 맞아요. 그런데 솔직히 말하면 그 노을은 정말 멈춰야 했어요. 그 색이 딱 3분 밖에 안 지속되거든요. 화가는 그 3분을 위해서 20분을 쓸 수 있어요.',
+      '남편은 제 변명을 듣고 웃었어요. 황당하다는 웃음인 줄 알았는데, 나중에 그이가 말하더라고요. 그때 처음으로 다른 세상이 궁금해졌다고. 그 노을 덕분에 우리가 시작됐어요.'
+    ],
+    tags:['노을','지각','화가의 시간','첫만남'],
+    likes:183
+  },
+  {
+    id:104, ep:3, epTitle:'카페의 두 방식', part:1,
+    date:'2025-08-03',
+    title:'라테아트는 마시기 아까운 그림이에요',
+    body:[
+      '저는 카페에 가면 라테아트를 오래 들여다봐요. 우유 거품으로 만든 그 작은 그림이, 마시면 사라지잖아요. 그 순간이 너무 아까워서 사진을 찍고, 그림으로 그리고 나서야 마셔요.',
+      '남편은 커피가 식는다고 했지만, 저는 그게 더 중요했어요. 사라지는 것들을 붙잡는 게 그림의 일이거든요. 노트에 계산식을 쓰는 사람과, 커피에 그림을 그리는 사람. 우리는 그때도 이미 서로 달랐어요.'
+    ],
+    tags:['카페','라테아트','그림','사라지는 순간'],
+    likes:107
+  },
+  {
+    id:105, ep:7, epTitle:'첫 산책', part:1,
+    date:'2025-08-07',
+    title:'저는 산책할 때 하늘만 봐요',
+    body:[
+      '남편은 산책할 때 지도를 봤어요. 저는 하늘을 봤어요. 한 번은 구름 모양이 고양이처럼 생겨서 한참 바라봤더니, 남편이 "거기 멈추면 안 돼, 차 다녀"라고 했어요.',
+      '그날 떨어진 나뭇잎이 너무 예뻐서 그림으로 그렸어요. 보통 잎은 초록인데, 그날 잎은 초록 안에 노랑, 갈색, 빨강이 다 있었어요. 그 잎 한 장에 계절이 다 들어있는 것 같았어요. 남편한테 보여줬더니 "식물 색소 분해 현상"이라고 했어요. 틀린 말이 아니었지만, 맞는 말도 아니었어요.'
+    ],
+    tags:['산책','나뭇잎','계절','수채화'],
+    likes:101
+  },
+  {
+    id:106, ep:13, epTitle:'사진 찍기', part:2,
+    date:'2025-08-13',
+    title:'찰나를 담는다는 것',
+    body:[
+      '남편은 황금비율을 맞춰서 사진을 찍어요. 저는 그냥 순간적으로 셔터를 눌러요. 나중에 보면 제 사진이 흔들려 있거나 기울어져 있어도, 그 순간의 공기가 담겨 있어요.',
+      '수채화도 마찬가지예요. 붓이 종이에 닿는 그 0.1초가 가장 중요해요. 계산하면 놓쳐요. 저는 평생 그 찰나를 연습했어요. 남편이 구도를 맞추는 동안 저는 이미 두 장을 그렸어요.'
+    ],
+    tags:['사진','찰나','붓터치','수채화'],
+    likes:88
+  },
+  {
+    id:107, ep:9, epTitle:'첫 웃음', part:1,
+    date:'2025-08-09',
+    title:'고양이 눈이 너무 예뻤어요',
+    body:[
+      '그 고양이가 케이크를 훔쳐 먹을 때, 저는 고양이 눈이 너무 예뻐서 웃었어요. 황금빛 눈동자에 케이크 크림이 묻어 있었거든요. 남편은 나중에 그게 "효율적 칼로리 섭취"가 웃겼다고 했는데, 우리가 같은 타이밍에 웃었다는 게 신기했어요.',
+      '그날 집에 와서 그 고양이를 그렸어요. 당당한 표정으로 케이크를 먹는 고양이. 남편이 그림을 보더니 "이 고양이, 죄책감 없이 행복하네"라고 했어요. 맞아요. 그게 제가 그리고 싶었던 거예요.'
+    ],
+    tags:['고양이','웃음','수채화','행복'],
+    likes:125
+  },
+  {
+    id:108, ep:11, epTitle:'데이트 계획표', part:2,
+    date:'2025-08-11',
+    title:'그 엑셀 표 안에 저를 담았더라고요',
+    body:[
+      '처음 남편이 엑셀 계획표를 꺼냈을 때 웃었어요. 데이트를 데이터로 관리하는 사람이 어디 있냐고. 그런데 표 안을 들여다보니까 제가 좋아하는 것들이 다 있었어요.',
+      '제가 좋아하는 미술관, 좋아하는 동네 밥집, 창가 자리를 선호한다는 메모. 남편은 저를 코드로 이해하는 사람이었어요. 그 방식이 달라서 웃겼지만, 그 마음이 틀리지 않았어요. 저는 그날 남편 계획표를 수채화로 그렸어요. 엑셀이 따뜻해 보이더라고요.'
+    ],
+    tags:['데이트','계획표','사랑표현','수채화'],
+    likes:138
+  },
+];
+
 const AUTHOR_NOTES = [
   {
     id:1, ep:15, epTitle:'색깔 논쟁', part:2,
@@ -237,7 +374,8 @@ const AUTHOR_NOTES = [
 const reactedSet = new Set(JSON.parse(localStorage.getItem('reactedNotes') || '[]'));
 
 function renderNotes() {
-  document.getElementById('notesList').innerHTML = AUTHOR_NOTES.map(noteCard).join('');
+  const notes = currentAuthor === 1 ? AUTHOR_NOTES_HYE : AUTHOR_NOTES;
+  document.getElementById('notesList').innerHTML = notes.map(noteCard).join('');
 }
 
 function noteCard(n) {
