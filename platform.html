@@ -69,6 +69,18 @@
 .plat-lead{font-size:1.05rem;line-height:1.9;color:var(--text-light);max-width:640px}
 .plat-section.dark .plat-lead{color:rgba(255,255,255,.75)}
 
+/* ── 로고 소개 ── */
+.logo-story-section{padding:72px 0;background:var(--cream)}
+.logo-story-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.logo-story-image img{width:100%;max-width:360px;display:block;margin:0 auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.15))}
+.logo-story-text .plat-lead{margin-bottom:16px}
+.logo-story-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+@media(max-width:768px){
+  .logo-story-inner{grid-template-columns:1fr;gap:36px;text-align:center}
+  .logo-story-tags{justify-content:center}
+  .logo-story-text .plat-lead{margin:0 auto 16px}
+}
+
 /* ── 핵심 개념 카드 ── */
 .concept-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;
@@ -89,7 +101,7 @@
   opacity:0;transition:opacity .28s;
 }
 .concept-card:hover::before{opacity:1}
-.concept-icon{font-size:2.4rem;margin-bottom:16px;display:block}
+.concept-icon{width:72px;height:72px;border-radius:14px;object-fit:cover;margin-bottom:16px;display:block;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .concept-card h3{font-size:1.2rem;color:var(--navy);margin-bottom:10px}
 .concept-card p{font-size:.93rem;line-height:1.85;color:var(--text-light)}
 .concept-vs{
@@ -101,7 +113,8 @@
   background:var(--bg-card);border-radius:var(--radius);
   border:2px solid var(--border-card);flex:1;min-width:200px;
 }
-.concept-vs-item .big{font-size:2.8rem;font-weight:800;line-height:1;margin-bottom:8px}
+.concept-vs-item .big{margin-bottom:12px;display:flex;justify-content:center}
+.concept-vs-item .big img{width:90px;height:90px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .concept-vs-item.eng .big{color:#3A6AAC}
 .concept-vs-item.art .big{color:#C4623A}
 .concept-vs-item p{font-size:.88rem;color:var(--text-muted)}
@@ -205,6 +218,41 @@
   </div>
 </div>
 
+<!-- ── 로고 소개 ── -->
+<section class="logo-story-section">
+  <div class="container">
+    <div class="logo-story-inner">
+      <div class="logo-story-image">
+        <img src="로고-공대생.png" alt="공대생 할아버지, 미대생 할머니 로고">
+      </div>
+      <div class="logo-story-text">
+        <span class="plat-label">Our Logo</span>
+        <h2 class="plat-h2" style="margin-top:8px">로고에 담긴 이야기</h2>
+        <p class="plat-lead">
+          왼쪽의 할아버지는 공학도입니다.<br>
+          컴퍼스와 자, 설계 도면과 원자 기호—<br>
+          <strong>논리와 구조</strong>로 세상을 읽어온 사람입니다.
+        </p>
+        <p class="plat-lead">
+          오른쪽의 할머니는 미대생이었습니다.<br>
+          팔레트와 붓, 꽃과 물감 자국—<br>
+          <strong>감성과 색채</strong>로 세상을 그려온 사람입니다.
+        </p>
+        <p class="plat-lead">
+          두 사람은 서로 달랐습니다.<br>
+          그러나 달랐기 때문에 함께였습니다.<br>
+          로고 하단의 문구처럼, <strong>Since 19XX, 사랑과 조화</strong>로.
+        </p>
+        <div class="logo-story-tags">
+          <span class="plat-badge">⚙️ 논리 × 🎨 감성</span>
+          <span class="plat-badge">📐 공학 × 🖌️ 예술</span>
+          <span class="plat-badge">❤️ 사랑과 조화</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── 핵심 개념 ── -->
 <section class="plat-section">
   <div class="container">
@@ -220,22 +268,22 @@
 
     <div class="concept-grid">
       <div class="concept-card">
-        <span class="concept-icon">📐</span>
+        <img class="concept-icon" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=72&h=72&fit=crop&auto=format" alt="구조와 흐름">
         <h3>글 — 구조와 흐름</h3>
         <p>공대생 할아버지의 세계처럼, 이야기는 논리적 구조 안에서 흘러갑니다. 원인이 있고 결과가 있고, 대화에는 맥락이 있습니다. 독자는 두 사람의 차이를 '이해'하게 됩니다.</p>
       </div>
       <div class="concept-card">
-        <span class="concept-icon">🎨</span>
+        <img class="concept-icon" src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=72&h=72&fit=crop&auto=format" alt="감성과 인상">
         <h3>그림 — 감성과 인상</h3>
         <p>미대생 할머니의 세계처럼, 수채화는 정보가 아닌 감정을 전달합니다. 노을빛 거리, 커피잔 위의 스팀, 나뭇잎이 흔들리는 오후. 독자는 그 순간을 '느끼게' 됩니다.</p>
       </div>
       <div class="concept-card">
-        <span class="concept-icon">🤝</span>
+        <img class="concept-icon" src="https://images.unsplash.com/photo-1521737604082-fb7afca49e89?w=72&h=72&fit=crop&auto=format" alt="공존">
         <h3>공존 — 서로 다른 언어의 만남</h3>
         <p>이 플랫폼이 추구하는 것은 단 하나입니다. 두 언어가 나란히 놓였을 때 만들어지는, 혼자로는 불가능한 그 특별한 울림입니다. 글만도 그림만도 아닌, 둘이 함께일 때의 세계.</p>
       </div>
       <div class="concept-card">
-        <span class="concept-icon">💡</span>
+        <img class="concept-icon" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=72&h=72&fit=crop&auto=format" alt="발견">
         <h3>발견 — 읽는 것 이상의 경험</h3>
         <p>같은 에피소드를 읽고 나서 수채화를 보면, 아까와 다른 장면이 보입니다. 수채화를 먼저 보고 글을 읽으면, 글이 다르게 읽힙니다. 이 플랫폼은 그 순서까지 설계합니다.</p>
       </div>
@@ -243,13 +291,13 @@
 
     <div class="concept-vs">
       <div class="concept-vs-item eng">
-        <div class="big">📐</div>
+        <div class="big"><img src="https://images.unsplash.com/photo-1581093196277-9f6e2aa1a4d0?w=90&h=90&fit=crop&auto=format" alt="공대생 할아버지"></div>
         <strong style="font-size:1rem;color:#3A6AAC">공대생 할아버지</strong>
         <p style="margin-top:8px">설계도면 · 숫자 · 구조 · 효율<br>"왜?"를 묻는 사람</p>
       </div>
       <div class="concept-vs-divider">×</div>
       <div class="concept-vs-item art">
-        <div class="big">🎨</div>
+        <div class="big"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=90&h=90&fit=crop&auto=format" alt="미대생 할머니"></div>
         <strong style="font-size:1rem;color:#C4623A">미대생 할머니</strong>
         <p style="margin-top:8px">수채화 · 색채 · 감성 · 순간<br>"어때?"를 묻는 사람</p>
       </div>
