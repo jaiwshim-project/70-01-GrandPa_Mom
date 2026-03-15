@@ -190,30 +190,30 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이게 내가 지난 3주 동안 분석한 결과야. 항목별 가중치를 곱한 종합 점수가 92점이 나왔어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"…이게 뭐야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"우리 사이에 대한 분석이야. 데이터 기반으로 보면, 나는 너랑 사귀는 게 합리적이라는 결론이 나왔어."</div></div>
-    <p>혜인은 한참 화면을 들여다봤다. '공통 관심사: 14개', '대화 평균 지속 시간: 112분', '서로를 생각한 횟수 (추정치): 측정 불가'라는 마지막 항목 옆에 별표가 붙어 있었다.</p>
+    <p>할머니은 한참 화면을 들여다봤다. '공통 관심사: 14개', '대화 평균 지속 시간: 112분', '서로를 생각한 횟수 (추정치): 측정 불가'라는 마지막 항목 옆에 별표가 붙어 있었다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"측정 불가라고 적어놓고 왜 별표야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"…그건 내가 직접 셀 수가 없어서. 너무 많아서."</div></div>
-    <p>혜인은 웃음을 참다가 결국 터뜨렸다. 그리고 그 웃음 끝에서 조용히 고개를 끄덕였다. 세상에서 가장 논리적인 고백은 그렇게 성공했다.</p>
+    <p>할머니은 웃음을 참다가 결국 터뜨렸다. 그리고 그 웃음 끝에서 조용히 고개를 끄덕였다. 세상에서 가장 논리적인 고백은 그렇게 성공했다.</p>
   `
 },
 {
   id: 17,
   content: `
     <p>첫 생일 선물을 고르는 일은 생각보다 어려웠다. 그는 사흘 동안 인터넷을 뒤졌다. 실용성, 내구성, 가격 대비 만족도. 최종 선택은 고용량 보조 배터리였다.</p>
-    <p>혜인은 포장을 뜯다가 잠시 멈췄다. 그러다 웃었다. 길고 따뜻한 웃음이었다.</p>
+    <p>할머니은 포장을 뜯다가 잠시 멈췄다. 그러다 웃었다. 길고 따뜻한 웃음이었다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"배터리야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"네 폰 배터리가 항상 부족하잖아. 용량도 크고, 고속 충전도 되고. 후기도 4.8점이야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 네 생일에 팔레트 샀는데."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"팔레트? 나 그림 안 그리는데."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"예뻐서 샀어. 색깔이 네 책상에 어울릴 것 같아서."</div></div>
     <p>그는 며칠 후 팔레트를 책상 한쪽에 올려놓았다. 쓸 일은 없었지만, 볼 때마다 기분이 이상하게 좋았다. 그게 뭔지 설명할 수 없었다.</p>
-    <p>혜인은 보조 배터리를 파우치에 넣고 다녔다. 무거웠지만, 꺼낼 때마다 그 사람 생각이 났다. 그것으로 충분했다.</p>
+    <p>할머니은 보조 배터리를 파우치에 넣고 다녔다. 무거웠지만, 꺼낼 때마다 그 사람 생각이 났다. 그것으로 충분했다.</p>
   `
 },
 {
   id: 18,
   content: `
-    <p>주말 저녁, 두 사람은 처음으로 함께 요리를 했다. 메뉴는 카레. 그는 레시피를 프린트해 왔고, 혜인은 어머니에게 전화로 물어봤다.</p>
+    <p>주말 저녁, 두 사람은 처음으로 함께 요리를 했다. 메뉴는 카레. 그는 레시피를 프린트해 왔고, 할머니은 어머니에게 전화로 물어봤다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"감자 200그램이야. 저울 어딨어?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그냥 이만큼이면 돼. 눈으로 봐."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"눈으로 보면 오차가 생기잖아."</div></div>
@@ -222,18 +222,18 @@ const EPISODE_CONTENT = [
     <p>둘 다 손을 놓지 않았다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"당신이 부어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"같이 붓자."</div></div>
-    <p>카레는 약간 짰다. 레시피보다 소금을 더 넣은 건 혜인이었고, 감자가 덜 익은 건 재우가 타이머를 잘못 맞춰서였다. 그래도 두 사람은 그릇을 깨끗이 비웠다. 오차가 있어도 괜찮았다.</p>
+    <p>카레는 약간 짰다. 레시피보다 소금을 더 넣은 건 할머니이었고, 감자가 덜 익은 건 할아버지가 타이머를 잘못 맞춰서였다. 그래도 두 사람은 그릇을 깨끗이 비웠다. 오차가 있어도 괜찮았다.</p>
   `
 },
 {
   id: 19,
   content: `
-    <p>사귀기 직전, 두 사람에게는 각각 마지막 소개팅이 있었다. 혜인은 나중에야 그 이야기를 꺼냈다. 재우도 그날 소개팅이 있었다고 했다.</p>
+    <p>사귀기 직전, 두 사람에게는 각각 마지막 소개팅이 있었다. 할머니은 나중에야 그 이야기를 꺼냈다. 할아버지도 그날 소개팅이 있었다고 했다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"어떤 사람이었어?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"회계사. 말도 잘 하고, 조건도 좋았어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그래서?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"밥 먹는 내내 당신이 이 상황을 어떻게 그릴까 생각했어."</div></div>
-    <p>혜인은 잠시 말이 없었다.</p>
+    <p>할머니은 잠시 말이 없었다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 상대가 말하는 동안 머릿속으로 네 목소리를 들었어. 아마 그때부터였나봐."</div></div>
     <p>두 번 다시 소개팅은 없었다. 필요가 없어졌으므로. 그것도 데이터였다. 가장 정직한 종류의.</p>
   `
@@ -241,14 +241,14 @@ const EPISODE_CONTENT = [
 {
   id: 20,
   content: `
-    <p>연인이 된 지 석 달째 되던 날, 혜인이 물었다. 질문은 뜬금없이 커피잔을 들다가 나왔다.</p>
+    <p>연인이 된 지 석 달째 되던 날, 할머니이 물었다. 질문은 뜬금없이 커피잔을 들다가 나왔다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"10년 후에 어디 있을 것 같아?"</div></div>
-    <p>재우는 커피를 내려놓고 진지하게 생각했다. 그에게 10년은 설계 기간이었다.</p>
+    <p>할아버지는 커피를 내려놓고 진지하게 생각했다. 그에게 10년은 설계 기간이었다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"직책은 팀장 이상이어야 하고, 집은 소유하고 있어야 하고. 저축률은 지금보다 30% 올리고 싶어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그게 다야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"…너는?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 10년 후에도 매일 뭔가를 그리고 싶어. 그리고 아침에 눈 떴을 때 곁에 있는 사람이 지금 이 사람이면 좋겠어."</div></div>
-    <p>재우는 아무 말도 하지 않았다. 하지만 노트에 새 항목을 추가했다. '10년 계획 — 혜인.' 그 칸은 다른 어떤 항목보다 먼저 체크됐다.</p>
+    <p>할아버지는 아무 말도 하지 않았다. 하지만 노트에 새 항목을 추가했다. '10년 계획 — 할머니.' 그 칸은 다른 어떤 항목보다 먼저 체크됐다.</p>
   `
 },
 {
@@ -260,7 +260,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"일정표까지?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"보여줄까?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"아니."</div></div>
-    <p>혜인은 반지를 끼고 오래 들여다봤다. 계획표가 있는 프로포즈. 낭만이라고는 없는 방식. 그런데 왜 이렇게 울컥하지? 6개월 동안 매일 나를 생각했다는 거잖아.</p>
+    <p>할머니은 반지를 끼고 오래 들여다봤다. 계획표가 있는 프로포즈. 낭만이라고는 없는 방식. 그런데 왜 이렇게 울컥하지? 6개월 동안 매일 나를 생각했다는 거잖아.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"응."</div></div>
     <p>한 글자였다. 그 한 글자를 위해 그는 182일을 준비했다.</p>
   `
@@ -268,24 +268,24 @@ const EPISODE_CONTENT = [
 {
   id: 22,
   content: `
-    <p>웨딩드레스 매장에는 흰색이 수십 가지였다. 아이보리, 오프화이트, 크림, 스노우, 밀크, 샴페인. 혜인은 하나씩 이름을 불렀고, 재우는 메모지에 받아 적었다.</p>
+    <p>웨딩드레스 매장에는 흰색이 수십 가지였다. 아이보리, 오프화이트, 크림, 스노우, 밀크, 샴페인. 할머니은 하나씩 이름을 불렀고, 할아버지는 메모지에 받아 적었다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"RGB 값으로 따지면 거의 비슷한 것들 아냐?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"빛을 다르게 받으면 전혀 달라. 봐봐, 이건 따뜻하고, 이건 차갑잖아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"…그 차이를 느끼는 거야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"당연하지. 색깔에도 온도가 있어."</div></div>
     <p>그는 그날 처음 알았다. 흰색이 하나가 아니라는 것을. 그리고 그녀가 수십 가지 흰색을 구분하듯, 어쩌면 자신도 그녀의 웃음을 수십 가지로 구분하고 있었다는 것을.</p>
-    <p>혜인은 샴페인 컬러 드레스를 골랐다. 재우는 그게 제일 따뜻해 보인다고 말했다. 색깔에 온도가 있다는 걸 이해한 첫 번째 순간이었다.</p>
+    <p>할머니은 샴페인 컬러 드레스를 골랐다. 할아버지는 그게 제일 따뜻해 보인다고 말했다. 색깔에 온도가 있다는 걸 이해한 첫 번째 순간이었다.</p>
   `
 },
 {
   id: 23,
   content: `
-    <p>청첩장은 두 사람이 함께 만들었다. 혜인은 직접 그린 수채화 일러스트를 넣고 싶었다. 재우는 정보 전달이 명확해야 한다고 했다.</p>
+    <p>청첩장은 두 사람이 함께 만들었다. 할머니은 직접 그린 수채화 일러스트를 넣고 싶었다. 할아버지는 정보 전달이 명확해야 한다고 했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"날짜, 시간, 장소, 주차 정보, 계좌번호. 이 다섯 가지가 다 있어야 해."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"근데 청첩장은 감동도 줘야 해. 받는 사람이 설레야 하잖아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"설렘을 어떻게 인쇄해?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"이렇게."</div></div>
-    <p>혜인이 스케치북을 펼쳤다. 두 사람이 나란히 걷는 그림이었는데, 한 명은 시계를 들고 있고 한 명은 하늘을 보고 있었다. 재우는 한참 그림을 들여다보다가 말했다.</p>
+    <p>할머니이 스케치북을 펼쳤다. 두 사람이 나란히 걷는 그림이었는데, 한 명은 시계를 들고 있고 한 명은 하늘을 보고 있었다. 할아버지는 한참 그림을 들여다보다가 말했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이거 우리야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"응."</div></div>
     <p>청첩장에는 수채화 그림이 들어갔다. 계좌번호도, 주차 안내도 전부 들어갔다. 두 사람의 설계도는 그렇게 완성됐다.</p>
@@ -300,7 +300,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"파란 소파가 인테리어에 맞아? 벽이 베이지인데."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"보색 대비야. 오히려 더 살아."</div></div>
     <p>그들은 결국 수납 기능이 있는 파란 소파를 샀다. 효율과 아름다움이 한 물건에 다 들어있는 건 생각보다 어렵지 않았다. 그냥 서로를 조금씩 믿으면 됐다.</p>
-    <p>이사 온 첫날 오후, 서쪽 창으로 들어온 빛이 파란 소파 위에 내려앉았다. 재우는 한참 그걸 봤다. 혜인이 옳았다.</p>
+    <p>이사 온 첫날 오후, 서쪽 창으로 들어온 빛이 파란 소파 위에 내려앉았다. 할아버지는 한참 그걸 봤다. 할머니이 옳았다.</p>
   `
 },
 {
@@ -311,25 +311,25 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그냥 골목이 예쁜 데 가고 싶어."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"프라하 골목이 예뻐. 여기 사진 봐."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"어, 진짜 예쁘다."</div></div>
-    <p>결국 프라하로 갔다. 도착한 첫날, 혜인은 지도를 접고 그냥 걸었다. 재우는 처음엔 경로 이탈을 알리는 앱 알림을 무시하지 못했다가, 혜인이 멈춰 선 골목에서 생각보다 오래 서 있었다. 빛이 좋았다. 예측하지 않은 골목에서.</p>
+    <p>결국 프라하로 갔다. 도착한 첫날, 할머니은 지도를 접고 그냥 걸었다. 할아버지는 처음엔 경로 이탈을 알리는 앱 알림을 무시하지 못했다가, 할머니이 멈춰 선 골목에서 생각보다 오래 서 있었다. 빛이 좋았다. 예측하지 않은 골목에서.</p>
   `
 },
 {
   id: 26,
   content: `
-    <p>결혼식 날 아침, 두 사람은 각자의 공간에서 눈을 떴다. 재우는 전날 밤 체크리스트를 한 번 더 검토했고, 혜인은 아침 일찍 일어나 창밖을 한참 바라봤다.</p>
+    <p>결혼식 날 아침, 두 사람은 각자의 공간에서 눈을 떴다. 할아버지는 전날 밤 체크리스트를 한 번 더 검토했고, 할머니은 아침 일찍 일어나 창밖을 한참 바라봤다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">(마음속으로) '하객 230명. 주차 안내 문자 발송 완료. 웨딩홀 최종 확인 완료. 날씨 맑음. 계획대로.'</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">(창밖을 바라보며) '오늘 하늘 색이 좋다. 저 하늘 색을 뭐라고 부르면 될까. 결혼식 날 하늘 색.'</div></div>
-    <p>드레스를 입은 혜인이 식장 입구에 섰을 때, 재우는 멀리서 그녀를 봤다. 체크리스트 생각이 전부 사라졌다. 그냥 그녀만 보였다.</p>
-    <p>버진 로드를 걷는 혜인의 눈에 재우가 보였다. 그 자리에 서서 조금도 움직이지 않고 자신만 보고 있는 사람. 설레는 게 이런 거구나, 하고 그때 처음 제대로 알았다.</p>
+    <p>드레스를 입은 할머니이 식장 입구에 섰을 때, 할아버지는 멀리서 그녀를 봤다. 체크리스트 생각이 전부 사라졌다. 그냥 그녀만 보였다.</p>
+    <p>버진 로드를 걷는 할머니의 눈에 할아버지가 보였다. 그 자리에 서서 조금도 움직이지 않고 자신만 보고 있는 사람. 설레는 게 이런 거구나, 하고 그때 처음 제대로 알았다.</p>
   `
 },
 {
   id: 27,
   content: `
     <p>서약은 각자가 직접 썼다. 주례 목사님이 개인 서약을 해도 좋다고 했을 때, 두 사람은 같은 밤에 다른 방에서 서약서를 썼다.</p>
-    <p>재우의 서약서에는 이런 문장이 있었다. '나는 당신의 체온이 36.5도 이하로 내려갈 때 곁에 있겠습니다. 당신의 울음의 원인을 분석하기보다 울음 자체를 안겠습니다.'</p>
-    <p>혜인의 서약서에는 이런 문장이 있었다. '나는 당신의 논리를 이해하지 못해도 당신의 마음을 이해하겠습니다. 당신이 말로 다 하지 못하는 것들을 그림으로 기억하겠습니다.'</p>
+    <p>할아버지의 서약서에는 이런 문장이 있었다. '나는 당신의 체온이 36.5도 이하로 내려갈 때 곁에 있겠습니다. 당신의 울음의 원인을 분석하기보다 울음 자체를 안겠습니다.'</p>
+    <p>할머니의 서약서에는 이런 문장이 있었다. '나는 당신의 논리를 이해하지 못해도 당신의 마음을 이해하겠습니다. 당신이 말로 다 하지 못하는 것들을 그림으로 기억하겠습니다.'</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"'울음의 원인을 분석하기보다'—이 부분은 나한테 직접 하는 말이지?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"응. 식장에서 웃으면 안 되는데."</div></div>
     <p>두 가지 언어로 쓰인 약속은 그렇게 하나로 묶였다. 논리와 감성은 서로의 빈자리를 채웠다.</p>
@@ -339,12 +339,12 @@ const EPISODE_CONTENT = [
   id: 28,
   content: `
     <p>신혼여행에서 돌아온 첫날 밤, 두 사람은 생각보다 조용했다.</p>
-    <p>짐을 풀고, 냉장고에 음식을 채우고, 각자의 물건을 각자의 자리에 두었다. 재우는 공구함을 정리했고, 혜인은 물감 통을 선반에 올렸다.</p>
+    <p>짐을 풀고, 냉장고에 음식을 채우고, 각자의 물건을 각자의 자리에 두었다. 할아버지는 공구함을 정리했고, 할머니은 물감 통을 선반에 올렸다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"뭔가 특별한 날 같지 않아?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"우리 집에 처음 자는 날이잖아."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그걸 어떻게 느껴?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"…좋아. 말로는 잘 모르겠는데, 좋아."</div></div>
-    <p>불을 끄고 누웠다. 익숙하지 않은 새 침대, 새 천장, 새 어둠. 그러나 옆에 있는 숨소리는 낯설지 않았다. 재우는 한참 있다가 혜인의 손을 잡았다. 혜인은 잡힌 손을 꼭 쥐었다. 조용한 두 사람의 첫날밤이었다.</p>
+    <p>불을 끄고 누웠다. 익숙하지 않은 새 침대, 새 천장, 새 어둠. 그러나 옆에 있는 숨소리는 낯설지 않았다. 할아버지는 한참 있다가 할머니의 손을 잡았다. 할머니은 잡힌 손을 꼭 쥐었다. 조용한 두 사람의 첫날밤이었다.</p>
   `
 },
 {
@@ -361,124 +361,124 @@ const EPISODE_CONTENT = [
 {
   id: 30,
   content: `
-    <p>결혼 1주년. 재우는 날짜를 정확히 기억했고, 혜인은 그 감각을 기억했다. 1년 전 이맘때 공기가 어땠는지, 자신이 얼마나 떨렸는지.</p>
+    <p>결혼 1주년. 할아버지는 날짜를 정확히 기억했고, 할머니은 그 감각을 기억했다. 1년 전 이맘때 공기가 어땠는지, 자신이 얼마나 떨렸는지.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"365일 전 오늘 오후 2시 30분에 우리 결혼했어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그때 네 손이 조금 떨렸던 게 기억나."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"떨었어?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"응. 그래서 더 좋았어."</div></div>
-    <p>저녁 식사는 1년 전 프로포즈 식당으로 갔다. 재우는 같은 테이블을 예약해 뒀었다. 혜인은 같은 자리에 앉으니 그날이 다시 보인다고 했다. 계산과 기억이 한 테이블 위에서 조용히 마주쳤다.</p>
+    <p>저녁 식사는 1년 전 프로포즈 식당으로 갔다. 할아버지는 같은 테이블을 예약해 뒀었다. 할머니은 같은 자리에 앉으니 그날이 다시 보인다고 했다. 계산과 기억이 한 테이블 위에서 조용히 마주쳤다.</p>
   `
 },
 {
   id: 31,
   content: `
-    <p>결혼 3년 차가 되면 각자의 아침 루틴이 굳어진다. 재우의 알람은 정확히 7시였다. 5분 간격으로 세 번. 7시 15분에 세수, 7시 22분에 커피, 7시 40분에 출근 준비 완료.</p>
-    <p>혜인의 7시는 달랐다. 눈을 뜨는 건 7시였지만, 일어나는 건 7시 33분이었다. 알람이 울리면 이불 속에서 천장을 보다가, 오늘 하늘 색이 어떨지 먼저 생각했다.</p>
+    <p>결혼 3년 차가 되면 각자의 아침 루틴이 굳어진다. 할아버지의 알람은 정확히 7시였다. 5분 간격으로 세 번. 7시 15분에 세수, 7시 22분에 커피, 7시 40분에 출근 준비 완료.</p>
+    <p>할머니의 7시는 달랐다. 눈을 뜨는 건 7시였지만, 일어나는 건 7시 33분이었다. 알람이 울리면 이불 속에서 천장을 보다가, 오늘 하늘 색이 어떨지 먼저 생각했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"7시에 일어나면 아침이 더 효율적이야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"7시 33분에 일어나면 이불이 더 따뜻해."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그게 이유가 돼?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"충분한 이유지."</div></div>
-    <p>재우는 결국 7시 15분에 혜인의 커피를 먼저 내리기 시작했다. 그녀가 일어날 즈음에 딱 식는 온도로. 계획표에 없던 항목이었지만, 하루도 빠지지 않았다.</p>
+    <p>할아버지는 결국 7시 15분에 할머니의 커피를 먼저 내리기 시작했다. 그녀가 일어날 즈음에 딱 식는 온도로. 계획표에 없던 항목이었지만, 하루도 빠지지 않았다.</p>
   `
 },
 {
   id: 32,
   content: `
-    <p>토요일 장보기는 언제나 협상이었다. 재우는 메모 앱에 구매 목록을 미리 작성했다. 혜인은 마트에 가서 그때그때 느낌으로 골랐다.</p>
+    <p>토요일 장보기는 언제나 협상이었다. 할아버지는 메모 앱에 구매 목록을 미리 작성했다. 할머니은 마트에 가서 그때그때 느낌으로 골랐다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"목록에 없는 걸 왜 사?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"색깔이 예뻐서. 이 보라 양배추 봐."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"보라 양배추를 어디다 써?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"생각해보면 쓸 데 있어. 아무튼 예쁘잖아."</div></div>
     <p>카트 안에는 목록의 물건과 목록 외 물건이 반반이었다. 집에 와서 보면 목록 외 물건이 의외로 더 유용한 경우도 있었다. 예쁜 양배추는 그주 내내 식탁을 화사하게 했다.</p>
-    <p>재우는 나중에 목록 앱에 항목을 하나 추가했다. '직감 구매 허용 한도: 1만 원.'</p>
+    <p>할아버지는 나중에 목록 앱에 항목을 하나 추가했다. '직감 구매 허용 한도: 1만 원.'</p>
   `
 },
 {
   id: 33,
   content: `
-    <p>인테리어 논쟁은 의자 하나에서 시작됐다. 혜인이 빈티지 나무 의자를 사왔다. 흔들리는 다리, 긁힌 자국, 낡은 등받이.</p>
+    <p>인테리어 논쟁은 의자 하나에서 시작됐다. 할머니이 빈티지 나무 의자를 사왔다. 흔들리는 다리, 긁힌 자국, 낡은 등받이.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이거 불안정해. 앉으면 위험하겠다."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"이 느낌이 좋잖아. 세월이 있어."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"세월은 안전하지 않아."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그게 매력이야."</div></div>
-    <p>재우는 결국 다리를 보강하고 조인트를 교체했다. 의자는 더 이상 흔들리지 않았지만, 긁힌 자국과 낡은 느낌은 그대로였다. 혜인은 그 의자에 앉아서 그림을 그렸다. 안전하면서도 아름다운 의자. 두 사람이 만든 첫 번째 물건이었다.</p>
+    <p>할아버지는 결국 다리를 보강하고 조인트를 교체했다. 의자는 더 이상 흔들리지 않았지만, 긁힌 자국과 낡은 느낌은 그대로였다. 할머니은 그 의자에 앉아서 그림을 그렸다. 안전하면서도 아름다운 의자. 두 사람이 만든 첫 번째 물건이었다.</p>
   `
 },
 {
   id: 34,
   content: `
-    <p>재우는 가계부를 엑셀로 관리했다. 항목별 지출, 월별 추이, 연간 비교 그래프. 혜인은 노트에 가계부를 썼다. 항목보다 그날의 기분이 더 많이 담긴 노트.</p>
+    <p>할아버지는 가계부를 엑셀로 관리했다. 항목별 지출, 월별 추이, 연간 비교 그래프. 할머니은 노트에 가계부를 썼다. 항목보다 그날의 기분이 더 많이 담긴 노트.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이번 달 카페 지출이 지난달보다 18% 늘었어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그건 요즘 날씨가 좋아서 나가고 싶었거든."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"날씨가 지출 변수야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"당연하지. 흐린 날엔 집에 있어."</div></div>
-    <p>혜인의 가계부 3월 칸에는 이렇게 쓰여 있었다. '커피 4,500원 × 6 = 봄. 남편이랑 3번.' 재우는 그 페이지를 우연히 보고 아무 말도 못 했다. 그 숫자의 의미가 달랐다.</p>
+    <p>할머니의 가계부 3월 칸에는 이렇게 쓰여 있었다. '커피 4,500원 × 6 = 봄. 남편이랑 3번.' 할아버지는 그 페이지를 우연히 보고 아무 말도 못 했다. 그 숫자의 의미가 달랐다.</p>
   `
 },
 {
   id: 35,
   content: `
-    <p>부부싸움은 항상 같은 패턴이었다. 재우는 논리로, 혜인은 감정으로. 서로 다른 언어로 말하는 두 사람.</p>
+    <p>부부싸움은 항상 같은 패턴이었다. 할아버지는 논리로, 할머니은 감정으로. 서로 다른 언어로 말하는 두 사람.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"내 말의 논리적 오류가 어딨어? 짚어줘."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"지금 논리 따지는 게 문제야!"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그럼 뭘 따져야 해?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"내가 서운한 거 알아줘야지!"</div></div>
-    <p>재우는 잠시 멈췄다. 그리고 천천히 말했다.</p>
+    <p>할아버지는 잠시 멈췄다. 그리고 천천히 말했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"…서운했어? 미안."</div></div>
-    <p>싸움은 거기서 끝났다. 논리가 옳고 그름을 따지기 전에, 서운함을 먼저 알아주는 것. 그게 재우가 배운 가장 비효율적이고 가장 효과적인 방법이었다.</p>
+    <p>싸움은 거기서 끝났다. 논리가 옳고 그름을 따지기 전에, 서운함을 먼저 알아주는 것. 그게 할아버지가 배운 가장 비효율적이고 가장 효과적인 방법이었다.</p>
   `
 },
 {
   id: 36,
   content: `
-    <p>재우의 친구들은 대부분 이공계였다. 대화는 시스템, 최적화, 숫자로 채워졌다. 혜인의 친구들은 대부분 예술 쪽이었다. 대화는 색감, 감각, 분위기로 채워졌다.</p>
+    <p>할아버지의 친구들은 대부분 이공계였다. 대화는 시스템, 최적화, 숫자로 채워졌다. 할머니의 친구들은 대부분 예술 쪽이었다. 대화는 색감, 감각, 분위기로 채워졌다.</p>
     <p>처음으로 합석한 날, 두 그룹은 서로를 신기한 눈으로 봤다.</p>
-    <div class="dialogue"><div class="speaker">재우 친구</div><div class="line">"혜인 씨 친구들은 대화할 때 왜 '느낌'을 그렇게 자주 써요?"</div></div>
-    <div class="dialogue"><div class="speaker">혜인 친구</div><div class="line">"재우 씨 친구들은 왜 대화를 결론부터 시작해요?"</div></div>
-    <p>술자리가 무르익으면서 두 그룹은 섞이기 시작했다. 공학도가 미술의 기하학에 눈을 뜨고, 예술가가 건축 구조의 아름다움을 발견했다. 재우와 혜인은 서로를 보며 웃었다. 어쩌면 자신들이 먼저 이 사실을 알고 있었던 거였다.</p>
+    <div class="dialogue"><div class="speaker">할아버지 친구</div><div class="line">"할머니 씨 친구들은 대화할 때 왜 '느낌'을 그렇게 자주 써요?"</div></div>
+    <div class="dialogue"><div class="speaker">할머니 친구</div><div class="line">"할아버지 씨 친구들은 왜 대화를 결론부터 시작해요?"</div></div>
+    <p>술자리가 무르익으면서 두 그룹은 섞이기 시작했다. 공학도가 미술의 기하학에 눈을 뜨고, 예술가가 건축 구조의 아름다움을 발견했다. 할아버지와 할머니은 서로를 보며 웃었다. 어쩌면 자신들이 먼저 이 사실을 알고 있었던 거였다.</p>
   `
 },
 {
   id: 37,
   content: `
-    <p>아이가 태어난 날, 재우는 병원에서 노트를 꺼냈다. 체중, 신장, 아프가 점수. 혜인은 아이의 손가락을 세다가 멈췄다.</p>
+    <p>아이가 태어난 날, 할아버지는 병원에서 노트를 꺼냈다. 체중, 신장, 아프가 점수. 할머니은 아이의 손가락을 세다가 멈췄다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"3.2킬로그램. 정상 범위야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"손이 너무 작아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"신생아 평균이야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"근데 너무 작잖아. 이 손으로 뭔가를 잡을 거잖아."</div></div>
-    <p>재우는 아이의 손을 보았다. 정말로 작았다. 수치로는 설명이 됐지만, 그 작음이 주는 감각은 설명이 안 됐다. 아이의 손가락 하나가 그의 손가락을 감쌌다. 그 순간 재우의 눈에서 무언가가 흘렀다. 예상치 못한 데이터였다.</p>
+    <p>할아버지는 아이의 손을 보았다. 정말로 작았다. 수치로는 설명이 됐지만, 그 작음이 주는 감각은 설명이 안 됐다. 아이의 손가락 하나가 그의 손가락을 감쌌다. 그 순간 할아버지의 눈에서 무언가가 흘렀다. 예상치 못한 데이터였다.</p>
   `
 },
 {
   id: 38,
   content: `
-    <p>육아 방식도 달랐다. 재우는 월령별 발달 기준표를 책상 위에 붙여놓았다. 혜인은 아이가 뭔가에 집중할 때 옆에서 같이 그림을 그렸다.</p>
+    <p>육아 방식도 달랐다. 할아버지는 월령별 발달 기준표를 책상 위에 붙여놓았다. 할머니은 아이가 뭔가에 집중할 때 옆에서 같이 그림을 그렸다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"지금 이 월령이면 색깔 구분이 돼야 해."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"얘가 지금 파란색 크레용을 제일 좋아해."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"파란색을 구분하는 거야, 좋아하는 거야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"둘 다지. 좋아하면 구분도 되지."</div></div>
-    <p>아이는 그렇게 두 세계를 동시에 물려받았다. 크레용으로 그림을 그리다가 "왜 파란 하늘이야?"라고 묻는 아이. 재우는 빛의 산란을 설명했고, 혜인은 하늘이 파란 날이 얼마나 기분 좋은지를 말했다. 아이는 둘 다 들었다.</p>
+    <p>아이는 그렇게 두 세계를 동시에 물려받았다. 크레용으로 그림을 그리다가 "왜 파란 하늘이야?"라고 묻는 아이. 할아버지는 빛의 산란을 설명했고, 할머니은 하늘이 파란 날이 얼마나 기분 좋은지를 말했다. 아이는 둘 다 들었다.</p>
   `
 },
 {
   id: 39,
   content: `
-    <p>가족 여행은 세 개의 시선을 가진 여행이었다. 재우는 동선을 계획했고, 혜인은 색깔을 모았고, 아이는 자신만의 것들을 발견했다.</p>
+    <p>가족 여행은 세 개의 시선을 가진 여행이었다. 할아버지는 동선을 계획했고, 할머니은 색깔을 모았고, 아이는 자신만의 것들을 발견했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"오후 3시에 여기 도착하면 4시에 저녁 먹기 전에 이 코스 다 돌 수 있어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"근데 저 돌담 좀 봐. 이끼 색이 너무 좋다."</div></div>
     <div class="dialogue"><div class="speaker">아이</div><div class="line">"아빠, 저기 개미!"</div></div>
-    <p>계획은 늘 30분쯤 뒤처졌다. 이끼 앞에서, 개미 앞에서. 그러나 재우도 어느 순간부터 일정표보다 이끼 색이 눈에 들어왔다. 그리고 아이와 함께 개미를 쫓았다. 세 개의 시선이 하나의 풍경을 만들었다.</p>
+    <p>계획은 늘 30분쯤 뒤처졌다. 이끼 앞에서, 개미 앞에서. 그러나 할아버지도 어느 순간부터 일정표보다 이끼 색이 눈에 들어왔다. 그리고 아이와 함께 개미를 쫓았다. 세 개의 시선이 하나의 풍경을 만들었다.</p>
   `
 },
 {
   id: 40,
   content: `
-    <p>집안일 분담 협상은 결혼 6개월 만에 공식화됐다. 재우는 스프레드시트를 만들었다. 항목, 빈도, 소요 시간, 담당자.</p>
+    <p>집안일 분담 협상은 결혼 6개월 만에 공식화됐다. 할아버지는 스프레드시트를 만들었다. 항목, 빈도, 소요 시간, 담당자.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"전체 가사 노동을 시간으로 환산하면 주당 총 28시간이야. 반반 하면 14시간씩."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 요리를 더 할게. 대신 넌 청소기 돌려."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그러면 시간 배분이 맞나?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"시간보다 정성이야. 내가 요리할 때 더 정성을 들이니까."</div></div>
-    <p>분담표는 결국 항목보다 '마음이 가는 쪽'으로 정해졌다. 재우는 빨래를 개는 걸 좋아했다. 혜인은 설거지를 하면서 노래를 불렀다. 효율보다 정성이 이긴 협상이었다.</p>
+    <p>분담표는 결국 항목보다 '마음이 가는 쪽'으로 정해졌다. 할아버지는 빨래를 개는 걸 좋아했다. 할머니은 설거지를 하면서 노래를 불렀다. 효율보다 정성이 이긴 협상이었다.</p>
   `
 },
 {
@@ -489,75 +489,75 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"응. 근데 왜 이렇게 조용하지."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"원래 이랬잖아. 우리 둘이 있을 때."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그때로 돌아간 건지, 새로 시작하는 건지 모르겠어."</div></div>
-    <p>재우는 대답하지 않고 혜인의 밥그릇에 반찬을 올려줬다. 혜인은 그걸 보다가 웃었다. 20년 넘게 해온 동작인데, 오늘따라 달라 보였다. 빈 둥지는 슬프기도 했고, 이상하게 설레기도 했다.</p>
+    <p>할아버지는 대답하지 않고 할머니의 밥그릇에 반찬을 올려줬다. 할머니은 그걸 보다가 웃었다. 20년 넘게 해온 동작인데, 오늘따라 달라 보였다. 빈 둥지는 슬프기도 했고, 이상하게 설레기도 했다.</p>
   `
 },
 {
   id: 42,
   content: `
-    <p>재우가 은퇴를 준비하는 방식은 물론 스프레드시트였다. 연금, 저축, 예상 지출, 의료비 추정치. 혜인은 스케치북을 새로 샀다.</p>
+    <p>할아버지가 은퇴를 준비하는 방식은 물론 스프레드시트였다. 연금, 저축, 예상 지출, 의료비 추정치. 할머니은 스케치북을 새로 샀다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"은퇴 후 월 지출을 지금의 70%로 잡으면 이 정도 여유가 생겨."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 은퇴하면 매일 그림 그릴 거야."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그게 수입이 될 수도 있어. 계획에 넣을까?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"수입은 필요 없어. 그냥 그리고 싶어서 그릴 거야."</div></div>
-    <p>재우는 계획표에 '혜인 그림 시간: 오전'이라고 적었다. 수입 칸은 비워뒀다. 그림에는 돈으로 환산할 수 없는 가치가 있다는 걸 20년이 지나서야 제대로 알았다.</p>
+    <p>할아버지는 계획표에 '할머니 그림 시간: 오전'이라고 적었다. 수입 칸은 비워뒀다. 그림에는 돈으로 환산할 수 없는 가치가 있다는 걸 20년이 지나서야 제대로 알았다.</p>
   `
 },
 {
   id: 43,
   content: `
-    <p>두 번째 여행은 달랐다. 재우가 먼저 말했다. "이번엔 계획 없이 가자."</p>
+    <p>두 번째 여행은 달랐다. 할아버지가 먼저 말했다. "이번엔 계획 없이 가자."</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"진짜? 너가 그 말을 해?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"응. 비행기 티켓만 사고, 나머지는 가서 정하자."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"근데 숙소는?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"현지에서 보면 되지 않아?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"…당신이 그런 말을 하다니."</div></div>
-    <p>그들은 포르투갈로 갔다. 숙소는 리스본 골목에서 찾은 작은 게스트하우스였다. 동선은 없었다. 발길 닿는 대로 걸었다. 재우는 지도를 세 번 열었다가 세 번 닫았다. 혜인은 그 모습을 그림에 담았다. 지도를 접는 남자의 뒷모습.</p>
+    <p>그들은 포르투갈로 갔다. 숙소는 리스본 골목에서 찾은 작은 게스트하우스였다. 동선은 없었다. 발길 닿는 대로 걸었다. 할아버지는 지도를 세 번 열었다가 세 번 닫았다. 할머니은 그 모습을 그림에 담았다. 지도를 접는 남자의 뒷모습.</p>
   `
 },
 {
   id: 44,
   content: `
-    <p>중년이 되면 건강 검진이 연례 행사가 된다. 재우는 수치를 메모했다. 혈압, 혈당, 콜레스테롤, 체중. 혜인은 의사의 표정을 봤다.</p>
+    <p>중년이 되면 건강 검진이 연례 행사가 된다. 할아버지는 수치를 메모했다. 혈압, 혈당, 콜레스테롤, 체중. 할머니은 의사의 표정을 봤다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"혈압이 작년보다 5 올랐어. 관리해야겠다."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"의사 선생님 표정이 괜찮았어?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"표정을 왜 봐?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"숫자보다 표정이 더 솔직하거든."</div></div>
-    <p>재우는 나중에 생각해보니 의사 표정을 기억하지 못했다. 혜인은 숫자를 기억하지 못했다. 두 사람은 서로에게 건강 통역사가 됐다. 숫자와 몸의 언어를 합쳐야 전체 그림이 나왔다.</p>
+    <p>할아버지는 나중에 생각해보니 의사 표정을 기억하지 못했다. 할머니은 숫자를 기억하지 못했다. 두 사람은 서로에게 건강 통역사가 됐다. 숫자와 몸의 언어를 합쳐야 전체 그림이 나왔다.</p>
   `
 },
 {
   id: 45,
   content: `
-    <p>아이들이 떠난 후, 두 사람은 취미를 다시 꺼냈다. 혜인은 오래 방치했던 수채화 도구를 꺼내고, 재우는 오래 잊고 있던 설계 스케치를 다시 시작했다.</p>
+    <p>아이들이 떠난 후, 두 사람은 취미를 다시 꺼냈다. 할머니은 오래 방치했던 수채화 도구를 꺼내고, 할아버지는 오래 잊고 있던 설계 스케치를 다시 시작했다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"수채화는 실수를 덮을 수가 없어. 그게 처음엔 싫었는데 지금은 좋아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"설계는 모든 오차를 미리 계산해야 해. 처음엔 그게 당연했는데 지금은 버겁기도 해."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"서로 바뀐 거야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"아니, 서로를 조금씩 닮은 거 아닐까."</div></div>
-    <p>그날 저녁, 두 사람은 같은 테이블에서 각자 다른 것을 했다. 재우는 스케치를 하고, 혜인은 수채화를 했다. 조용했다. 그 조용함이 둘 다 좋았다.</p>
+    <p>그날 저녁, 두 사람은 같은 테이블에서 각자 다른 것을 했다. 할아버지는 스케치를 하고, 할머니은 수채화를 했다. 조용했다. 그 조용함이 둘 다 좋았다.</p>
   `
 },
 {
   id: 46,
   content: `
-    <p>아침 산책의 속도가 달라졌다. 젊을 때는 혜인이 느리고 재우가 앞서갔다. 이제는 둘 다 느렸다. 그러나 같은 속도로.</p>
+    <p>아침 산책의 속도가 달라졌다. 젊을 때는 할머니이 느리고 할아버지가 앞서갔다. 이제는 둘 다 느렸다. 그러나 같은 속도로.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"예전엔 내가 더 빨리 걸었는데."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"이제 같이 걸으니까 좋잖아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"속도가 줄은 게 좋아?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"볼 게 더 많아지잖아. 느리면."</div></div>
-    <p>재우는 그날 처음으로 산책 경로에 없던 골목길로 들어갔다. 혜인이 자꾸 들어가자고 했던 그 골목. 담벼락에 이끼가 피어 있었다. 작은 고양이 한 마리가 있었다. 재우는 발걸음을 멈췄다. 느린 속도만이 발견할 수 있는 것들이 있었다.</p>
+    <p>할아버지는 그날 처음으로 산책 경로에 없던 골목길로 들어갔다. 할머니이 자꾸 들어가자고 했던 그 골목. 담벼락에 이끼가 피어 있었다. 작은 고양이 한 마리가 있었다. 할아버지는 발걸음을 멈췄다. 느린 속도만이 발견할 수 있는 것들이 있었다.</p>
   `
 },
 {
   id: 47,
   content: `
-    <p>대학 동창회에 두 사람은 따로 참석했다. 재우는 공대 동창회, 혜인은 미대 동창회. 그리고 집에 돌아와 서로의 이야기를 했다.</p>
+    <p>대학 동창회에 두 사람은 따로 참석했다. 할아버지는 공대 동창회, 할머니은 미대 동창회. 그리고 집에 돌아와 서로의 이야기를 했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"친구들이 다들 은퇴 준비 얘기를 하더라. 포트폴리오 조정이나 연금 수령 시기."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"우리 동창들은 지금도 하고 싶은 거 이야기를 하더라. 개인전, 새 작업 방향."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나는 은퇴 준비 이야기보다 네 친구들 얘기가 더 부럽다."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"하고 싶은 거 생겼어?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"…생각해볼게."</div></div>
-    <p>그날 밤 재우는 오래된 스케치북을 꺼냈다. 20대에 설계했던 상상 속 집들. 지을 수 없었지만 그려두었던 것들. 청춘은 숫자가 아니라 이런 곳에 있었다.</p>
+    <p>그날 밤 할아버지는 오래된 스케치북을 꺼냈다. 20대에 설계했던 상상 속 집들. 지을 수 없었지만 그려두었던 것들. 청춘은 숫자가 아니라 이런 곳에 있었다.</p>
   `
 },
 {
@@ -568,13 +568,13 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"우리 엄마는 어제 전화하다가 우셨어."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"왜?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"이유는 모르겠어. 그냥 울고 싶으셨던 것 같아."</div></div>
-    <p>재우는 그날 저녁 장모님께 전화했다. 특별한 이유 없이. "어머니, 저예요. 목소리 듣고 싶어서요." 장모님은 한참 전화기를 들고 계셨다. 논리보다 목소리 하나가 더 많은 일을 했다. 혜인에게 배운 것이었다.</p>
+    <p>할아버지는 그날 저녁 장모님께 전화했다. 특별한 이유 없이. "어머니, 저예요. 목소리 듣고 싶어서요." 장모님은 한참 전화기를 들고 계셨다. 논리보다 목소리 하나가 더 많은 일을 했다. 할머니에게 배운 것이었다.</p>
   `
 },
 {
   id: 49,
   content: `
-    <p>결혼 25주년이었다. 재우는 이번에도 날짜를 기억했다. 그러나 이번에는 엑셀 표 대신 편지를 썼다.</p>
+    <p>결혼 25주년이었다. 할아버지는 이번에도 날짜를 기억했다. 그러나 이번에는 엑셀 표 대신 편지를 썼다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"25년 동안 같이 살았는데, 아직도 당신이 뭘 볼 때 어떻게 느끼는지 다 모르겠어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나도 당신이 왜 어떤 날은 일찍 일어나는지 아직 모르겠어."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"근데 그게 싫지 않아."</div></div>
@@ -585,12 +585,12 @@ const EPISODE_CONTENT = [
 {
   id: 50,
   content: `
-    <p>황금혼례는 50주년이다. 아직 25년이 남았지만, 재우는 이미 준비를 시작했다. 혜인은 그걸 보고 웃었다.</p>
+    <p>황금혼례는 50주년이다. 아직 25년이 남았지만, 할아버지는 이미 준비를 시작했다. 할머니은 그걸 보고 웃었다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"50주년 준비를 지금 해?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"미리 준비할수록 좋잖아. 그날 여행 갈 곳도 생각해놨어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"어디?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"처음에 만난 미술관. 거기서 시작했으니까 거기서 40년을 기념하고 싶어."</div></div>
-    <p>혜인은 말이 없었다. 40년의 설계도를 이미 머릿속에 그리고 있는 남자. 가장 큰 로맨틱은 가장 먼 계획이었다. 혜인은 그날 저녁 수채화를 한 장 그렸다. 미술관 앞, 두 사람의 노년. 아직 오지 않은 풍경이었다.</p>
+    <p>할머니은 말이 없었다. 40년의 설계도를 이미 머릿속에 그리고 있는 남자. 가장 큰 로맨틱은 가장 먼 계획이었다. 할머니은 그날 저녁 수채화를 한 장 그렸다. 미술관 앞, 두 사람의 노년. 아직 오지 않은 풍경이었다.</p>
   `
 },
 {
@@ -601,55 +601,55 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"저 하늘 봐. 저 파란색."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"저게 어떤 파란색이야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"…세루리안 블루. 아니면 우리 나이 색."</div></div>
-    <p>재우는 하늘을 올려봤다. 예전에는 하늘을 잘 보지 않았다. 걸으면서 앞만 봤다. 이제는 하늘이 보였다. 혜인이 40년 동안 보라고 했던 것들이 이제야 보이기 시작했다. 느려져서야 보이는 것들이 있었다.</p>
+    <p>할아버지는 하늘을 올려봤다. 예전에는 하늘을 잘 보지 않았다. 걸으면서 앞만 봤다. 이제는 하늘이 보였다. 할머니이 40년 동안 보라고 했던 것들이 이제야 보이기 시작했다. 느려져서야 보이는 것들이 있었다.</p>
   `
 },
 {
   id: 52,
   content: `
-    <p>손자가 태어났다. 재우는 병원에서 아이의 체중을 메모하려다가 메모지를 내려놨다. 혜인은 아이의 손을 잡았다. 오래전 자신들의 아이를 처음 봤을 때와 같은 손이었다.</p>
+    <p>손자가 태어났다. 할아버지는 병원에서 아이의 체중을 메모하려다가 메모지를 내려놨다. 할머니은 아이의 손을 잡았다. 오래전 자신들의 아이를 처음 봤을 때와 같은 손이었다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나를 닮았어?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"코는 너, 눈은 우리 딸."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그럼 좋은 부분만 섞인 거네."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"아이가 그림을 그릴 것 같아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"아니면 설계를 할 것 같아."</div></div>
-    <p>손자는 두 세계를 동시에 물려받은 두 번째 아이였다. 재우는 언젠가 이 아이에게 설계 도면 보는 법을 가르쳐주고 싶었다. 혜인은 수채화 물감을 쥐여주고 싶었다. 세상이 이렇게 이어지고 있었다.</p>
+    <p>손자는 두 세계를 동시에 물려받은 두 번째 아이였다. 할아버지는 언젠가 이 아이에게 설계 도면 보는 법을 가르쳐주고 싶었다. 할머니은 수채화 물감을 쥐여주고 싶었다. 세상이 이렇게 이어지고 있었다.</p>
   `
 },
 {
   id: 53,
   content: `
-    <p>재우는 회고록을 쓰기 시작했다. 연도별, 항목별로 정리했다. 혜인은 그림으로 기억을 남겼다. 같은 인생을 서로 다른 방식으로 기록했다.</p>
+    <p>할아버지는 회고록을 쓰기 시작했다. 연도별, 항목별로 정리했다. 할머니은 그림으로 기억을 남겼다. 같은 인생을 서로 다른 방식으로 기록했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"1979년 10월, 미술관 앞에서 만남. 이게 시작이야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그날 당신이 시계만 보고 있던 게 기억나."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나는 약속 시간이 기억나."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"같은 날을 이렇게 다르게 기억하는 거야."</div></div>
-    <p>두 가지 회고록을 합치면 전체 그림이 됐다. 숫자와 연도는 재우가 채웠고, 빛과 감각은 혜인이 채웠다. 한 사람의 인생을 두 사람이 기록할 수 있다는 것이 신기했다. 그것이 함께 산다는 의미의 일부였다.</p>
+    <p>두 가지 회고록을 합치면 전체 그림이 됐다. 숫자와 연도는 할아버지가 채웠고, 빛과 감각은 할머니이 채웠다. 한 사람의 인생을 두 사람이 기록할 수 있다는 것이 신기했다. 그것이 함께 산다는 의미의 일부였다.</p>
   `
 },
 {
   id: 54,
   content: `
-    <p>노년이 되면 집을 정리하게 된다. 재우는 버릴 것과 남길 것을 분류했다. 혜인은 모든 것에 이야기가 있다고 했다.</p>
+    <p>노년이 되면 집을 정리하게 된다. 할아버지는 버릴 것과 남길 것을 분류했다. 할머니은 모든 것에 이야기가 있다고 했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이 계량컵은 언제부터 있던 거야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"우리 처음 같이 카레 만들 때부터."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그때 당신이 감자를 눈대중으로 재서 짜게 됐잖아."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그래도 다 먹었잖아."</div></div>
-    <p>계량컵은 남기기로 했다. 오래된 것들이 버려지는 속도가 느려졌다. 모든 물건에 기억이 달려 있었다. 재우는 목록을 만들다가 멈췄다. 어떤 것들은 효율로 판단할 수 없었다.</p>
+    <p>계량컵은 남기기로 했다. 오래된 것들이 버려지는 속도가 느려졌다. 모든 물건에 기억이 달려 있었다. 할아버지는 목록을 만들다가 멈췄다. 어떤 것들은 효율로 판단할 수 없었다.</p>
   `
 },
 {
   id: 55,
   content: `
-    <p>재우가 수술을 받던 날, 혜인은 병원 복도 의자에 앉아서 기다렸다. 그림도 그리지 않았다. 책도 읽지 않았다. 그냥 앉아서 기다렸다.</p>
+    <p>할아버지가 수술을 받던 날, 할머니은 병원 복도 의자에 앉아서 기다렸다. 그림도 그리지 않았다. 책도 읽지 않았다. 그냥 앉아서 기다렸다.</p>
     <div class="dialogue"><div class="speaker">간호사</div><div class="line">"보호자분, 수술 잘 끝났습니다."</div></div>
-    <p>혜인은 아무 말도 하지 않았다. 눈물이 먼저 나왔다.</p>
-    <p>회복실에서 재우가 눈을 떴을 때, 혜인이 옆에 있었다. 재우는 아직 마취가 덜 깬 목소리로 말했다.</p>
+    <p>할머니은 아무 말도 하지 않았다. 눈물이 먼저 나왔다.</p>
+    <p>회복실에서 할아버지가 눈을 떴을 때, 할머니이 옆에 있었다. 할아버지는 아직 마취가 덜 깬 목소리로 말했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"얼마나 기다렸어?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"괜찮아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"몇 시간이야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그런 거 몰라도 돼."</div></div>
-    <p>혜인은 재우의 손을 꼭 잡았다. 말 없이 곁에 있는 것. 그것이 때로 모든 언어보다 컸다.</p>
+    <p>할머니은 할아버지의 손을 꼭 잡았다. 말 없이 곁에 있는 것. 그것이 때로 모든 언어보다 컸다.</p>
   `
 },
 {
@@ -666,7 +666,7 @@ const EPISODE_CONTENT = [
 {
   id: 57,
   content: `
-    <p>마지막 긴 여행을 계획했다. 이번에는 두 사람이 함께 계획했다. 재우가 스프레드시트를 열었고, 혜인이 옆에 앉았다.</p>
+    <p>마지막 긴 여행을 계획했다. 이번에는 두 사람이 함께 계획했다. 할아버지가 스프레드시트를 열었고, 할머니이 옆에 앉았다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"거기 가고 싶어. 아이슬란드."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"오로라 확률이 가장 높은 시기가 10월에서 2월이야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그 색 보고 싶어. 하늘이 초록이라니."</div></div>
@@ -678,7 +678,7 @@ const EPISODE_CONTENT = [
 {
   id: 58,
   content: `
-    <p>재우는 살면서 처음으로 편지를 썼다. 혜인에게. 이메일도, 문자도 아닌 손으로 쓴 편지.</p>
+    <p>할아버지는 살면서 처음으로 편지를 썼다. 할머니에게. 이메일도, 문자도 아닌 손으로 쓴 편지.</p>
     <p>편지에는 이렇게 쓰여 있었다.</p>
     <p>'당신이 색깔에 온도가 있다고 했을 때, 나는 이해하지 못했습니다. 지금은 압니다. 당신이 웃을 때 방이 따뜻해지는 것을. 당신이 없는 날은 조금 차가운 것을. 이것이 색깔의 온도인지는 모르겠지만, 나는 이제 느낍니다.'</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"이걸 언제 쓴 거야?"</div></div>
@@ -693,19 +693,19 @@ const EPISODE_CONTENT = [
   id: 59,
   content: `
     <p>황금혼례 기념일, 두 사람은 처음 만났던 미술관 앞으로 갔다. 같은 계단, 같은 자리. 그러나 다른 두 사람.</p>
-    <p>재우는 이번엔 시계를 보지 않았다. 혜인은 이번엔 하늘을 보다가 재우를 봤다.</p>
+    <p>할아버지는 이번엔 시계를 보지 않았다. 할머니은 이번엔 하늘을 보다가 할아버지를 봤다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"40년 전 여기서 처음 봤을 때, 시계만 보고 있었잖아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"너는 하늘을 보고 있었어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"지금은?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"지금은 너를 보고 있어."</div></div>
-    <p>빛이 미술관 기둥에 내려앉는 시간은 오후 3시였다. 40년 전과 같은 시간, 같은 빛. 혜인은 그 빛을 오래 바라봤다. 재우도 함께 봤다. 처음으로, 같은 것을 같은 방향으로 함께 바라봤다.</p>
+    <p>빛이 미술관 기둥에 내려앉는 시간은 오후 3시였다. 40년 전과 같은 시간, 같은 빛. 할머니은 그 빛을 오래 바라봤다. 할아버지도 함께 봤다. 처음으로, 같은 것을 같은 방향으로 함께 바라봤다.</p>
   `
 },
 {
   id: 60,
   content: `
     <p>우리는 처음부터 달랐다. 그리고 끝까지 달랐다. 그 사실은 40년이 지나도 변하지 않았다.</p>
-    <p>재우는 여전히 아침에 시간을 먼저 확인했다. 혜인은 여전히 창밖 하늘부터 봤다. 그러나 어느 순간부터 재우도 하늘을 봤고, 혜인도 시간을 챙겼다.</p>
+    <p>할아버지는 여전히 아침에 시간을 먼저 확인했다. 할머니은 여전히 창밖 하늘부터 봤다. 그러나 어느 순간부터 할아버지도 하늘을 봤고, 할머니도 시간을 챙겼다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"우리 달랐던 거, 후회해?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"아니. 달랐으니까 재밌었지."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나는 당신이 보는 세계가 궁금해서 살았어."</div></div>
