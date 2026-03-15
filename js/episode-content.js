@@ -220,7 +220,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"카레 끓이는 데 오차 분석이 왜 필요해?"</div></div>
     <p>그는 계량컵을 꺼냈고, 그녀는 양파를 大, 中, 小로 분류하는 그를 옆에서 구경했다. 그러다 물 붓는 타이밍에 서로 동시에 손을 뻗어 냄비 손잡이를 잡았다.</p>
     <p>둘 다 손을 놓지 않았다.</p>
-    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"네가 부어."</div></div>
+    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"당신이 부어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"같이 붓자."</div></div>
     <p>카레는 약간 짰다. 레시피보다 소금을 더 넣은 건 혜인이었고, 감자가 덜 익은 건 재우가 타이머를 잘못 맞춰서였다. 그래도 두 사람은 그릇을 깨끗이 비웠다. 오차가 있어도 괜찮았다.</p>
   `
@@ -232,7 +232,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"어떤 사람이었어?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"회계사. 말도 잘 하고, 조건도 좋았어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그래서?"</div></div>
-    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"밥 먹는 내내 네가 이 상황을 어떻게 그릴까 생각했어."</div></div>
+    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"밥 먹는 내내 당신이 이 상황을 어떻게 그릴까 생각했어."</div></div>
     <p>혜인은 잠시 말이 없었다.</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 상대가 말하는 동안 머릿속으로 네 목소리를 들었어. 아마 그때부터였나봐."</div></div>
     <p>두 번 다시 소개팅은 없었다. 필요가 없어졌으므로. 그것도 데이터였다. 가장 정직한 종류의.</p>
@@ -511,7 +511,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"응. 비행기 티켓만 사고, 나머지는 가서 정하자."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"근데 숙소는?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"현지에서 보면 되지 않아?"</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"…네가 그런 말을 하다니."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"…당신이 그런 말을 하다니."</div></div>
     <p>그들은 포르투갈로 갔다. 숙소는 리스본 골목에서 찾은 작은 게스트하우스였다. 동선은 없었다. 발길 닿는 대로 걸었다. 재우는 지도를 세 번 열었다가 세 번 닫았다. 혜인은 그 모습을 그림에 담았다. 지도를 접는 남자의 뒷모습.</p>
   `
 },
@@ -575,8 +575,8 @@ const EPISODE_CONTENT = [
   id: 49,
   content: `
     <p>결혼 25주년이었다. 재우는 이번에도 날짜를 기억했다. 그러나 이번에는 엑셀 표 대신 편지를 썼다.</p>
-    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"25년 동안 같이 살았는데, 아직도 네가 뭘 볼 때 어떻게 느끼는지 다 모르겠어."</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나도 네가 왜 어떤 날은 일찍 일어나는지 아직 모르겠어."</div></div>
+    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"25년 동안 같이 살았는데, 아직도 당신이 뭘 볼 때 어떻게 느끼는지 다 모르겠어."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나도 당신이 왜 어떤 날은 일찍 일어나는지 아직 모르겠어."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"근데 그게 싫지 않아."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나도."</div></div>
     <p>25년이 지나도 서로를 다 알 수 없다는 것. 그것이 사랑의 실패가 아니라 사랑의 지속이라는 것을. 이번 고백은 엑셀 없이 나왔다. 그러나 처음 고백보다 더 정확했다.</p>
@@ -621,7 +621,7 @@ const EPISODE_CONTENT = [
   content: `
     <p>재우는 회고록을 쓰기 시작했다. 연도별, 항목별로 정리했다. 혜인은 그림으로 기억을 남겼다. 같은 인생을 서로 다른 방식으로 기록했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"1979년 10월, 미술관 앞에서 만남. 이게 시작이야."</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그날 네가 시계만 보고 있던 게 기억나."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그날 당신이 시계만 보고 있던 게 기억나."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나는 약속 시간이 기억나."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"같은 날을 이렇게 다르게 기억하는 거야."</div></div>
     <p>두 가지 회고록을 합치면 전체 그림이 됐다. 숫자와 연도는 재우가 채웠고, 빛과 감각은 혜인이 채웠다. 한 사람의 인생을 두 사람이 기록할 수 있다는 것이 신기했다. 그것이 함께 산다는 의미의 일부였다.</p>
@@ -633,7 +633,7 @@ const EPISODE_CONTENT = [
     <p>노년이 되면 집을 정리하게 된다. 재우는 버릴 것과 남길 것을 분류했다. 혜인은 모든 것에 이야기가 있다고 했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이 계량컵은 언제부터 있던 거야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"우리 처음 같이 카레 만들 때부터."</div></div>
-    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그때 네가 감자를 눈대중으로 재서 짜게 됐잖아."</div></div>
+    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"그때 당신이 감자를 눈대중으로 재서 짜게 됐잖아."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그래도 다 먹었잖아."</div></div>
     <p>계량컵은 남기기로 했다. 오래된 것들이 버려지는 속도가 느려졌다. 모든 물건에 기억이 달려 있었다. 재우는 목록을 만들다가 멈췄다. 어떤 것들은 효율로 판단할 수 없었다.</p>
   `
@@ -657,7 +657,7 @@ const EPISODE_CONTENT = [
   content: `
     <p>오래된 사진첩을 꺼냈다. 두 사람은 같은 사진을 보면서 서로 다른 것을 기억했다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"이거 결혼식 전날 찍은 사진이지? 몇 시에 찍었는지 기억나."</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그날 네가 넥타이를 두 번 고쳐 맸던 게 기억나."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 그날 당신이 넥타이를 두 번 고쳐 맸던 게 기억나."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"넥타이를?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"응. 긴장했나봐."</div></div>
     <p>사진첩 한 권에 두 사람의 기억이 섞여 있었다. 정확한 날짜와 따뜻한 감각이. 어느 쪽도 틀리지 않았다. 사진 한 장은 두 사람의 눈으로 봐야 완성됐다. 그것이 같이 늙는다는 것의 의미였다.</p>
@@ -671,7 +671,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"오로라 확률이 가장 높은 시기가 10월에서 2월이야."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그 색 보고 싶어. 하늘이 초록이라니."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"하루 이틀은 계획 없이 걸어보자."</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"네가 그 말을 또 해줘서 고마워."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"당신이 그 말을 또 해줘서 고마워."</div></div>
     <p>스프레드시트에는 항공편과 숙소가 있었고, 여백에는 '계획 없는 날 2일'이라고 적혀 있었다. 두 사람의 여행이 처음으로 완전히 하나였다.</p>
   `
 },
@@ -708,8 +708,8 @@ const EPISODE_CONTENT = [
     <p>재우는 여전히 아침에 시간을 먼저 확인했다. 혜인은 여전히 창밖 하늘부터 봤다. 그러나 어느 순간부터 재우도 하늘을 봤고, 혜인도 시간을 챙겼다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"우리 달랐던 거, 후회해?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"아니. 달랐으니까 재밌었지."</div></div>
-    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나는 네가 보는 세계가 궁금해서 살았어."</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 네가 설명하는 세계를 이해하고 싶어서 살았어."</div></div>
+    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"나는 당신이 보는 세계가 궁금해서 살았어."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"나는 당신이 설명하는 세계를 이해하고 싶어서 살았어."</div></div>
     <p>두 사람은 서로의 세계를 완전히 이해하지 못한 채로 늙었다. 그러나 서로의 세계를 사랑한 채로 늙었다. 이해와 사랑이 항상 같은 것은 아니었다. 때로는 이해 없이도 사랑할 수 있었다.</p>
     <p>공대생 할아버지와 미대생 할머니는 그렇게, 다른 방식으로 같은 하루를 살았다. 오늘도, 내일도.</p>
   `
