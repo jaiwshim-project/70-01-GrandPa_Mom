@@ -1,0 +1,14 @@
+{
+  "project_id": "공대생-할아버지-미대생-할머니",
+  "project_name": "공대생 할아버지, 미대생 할머니",
+  "created_at": "2026-03-16",
+  "updated_at": "2026-03-16",
+  "total_tasks": 19,
+  "description": "40년 동행 — 공대생 할아버지와 미대생 할머니의 이야기를 담은 웹사이트. Vanilla HTML/CSS/JS + Supabase + Vercel. 소급 도입.",
+  "task_ids": [
+    "S1BI1", "S1DB1", "S1DV1", "S1DS1",
+    "S2FE1", "S2FE2", "S2FE3", "S2FE4", "S2BI1", "S2CS1", "S2CS2",
+    "S3FE1", "S3FE2", "S3FE3", "S3FE4", "S3FE5", "S3BI1",
+    "S4DS1", "S4DV1"
+  ]
+}
