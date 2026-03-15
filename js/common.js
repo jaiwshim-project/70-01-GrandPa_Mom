@@ -76,7 +76,7 @@ const SAMPLE_EPISODES = [
   { id:55, episode_number:55, part_number:6, title:'수술실 앞 복도',       summary:'말 없이 곁에 있는 것, 모든 언어보다.',               published_at:'2025-09-25', view_count:1650, is_published:true },
   { id:56, episode_number:56, part_number:6, title:'사진첩',               summary:'사진 한 장은 두 사람의 눈으로 봐야 완성됐다.',        published_at:'2025-09-26', view_count:1230, is_published:true },
   { id:57, episode_number:57, part_number:6, title:'아이슬란드',           summary:'두 사람의 여행이 처음으로 완전히 하나였다.',          published_at:'2025-09-27', view_count:1420, is_published:true },
-  { id:58, episode_number:58, part_number:6, title:'50년 만의 편지',       summary:'"딱 지금이야." — 늦지 않은 첫 편지.',                published_at:'2025-09-28', view_count:1780, is_published:true },
+  { id:58, episode_number:58, part_number:6, title:'40년 만의 편지',       summary:'"딱 지금이야." — 늦지 않은 첫 편지.',                published_at:'2025-09-28', view_count:1780, is_published:true },
   { id:59, episode_number:59, part_number:6, title:'황금혼례',             summary:'"지금은 너를 보고 있어."',                            published_at:'2025-09-29', view_count:2340, is_published:true },
   { id:60, episode_number:60, part_number:6, title:'다른 방식으로, 같은 하루', summary:'서로의 세계를 사랑한 채로 늙었다.',            published_at:'2025-09-30', view_count:3120, is_published:true },
 ];

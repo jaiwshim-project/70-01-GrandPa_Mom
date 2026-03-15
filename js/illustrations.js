@@ -1341,7 +1341,7 @@ const ILLUSTRATIONS = {
   <circle cx="700" cy="70" r="1.5" fill="white" opacity=".55"/>
 </svg>` },
 
-  58: { caption:'50년 만의 편지 — 딱 지금이야', svg: `
+  58: { caption:'40년 만의 편지 — 딱 지금이야', svg: `
 <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:#FFFBF5">
   <defs><filter id="ep58b"><feGaussianBlur stdDeviation="5"/></filter>
   <radialGradient id="ep58g" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#FFE8C0" stop-opacity=".55"/><stop offset="100%" stop-color="#FFFBF5" stop-opacity="0"/></radialGradient></defs>
@@ -1383,7 +1383,7 @@ const ILLUSTRATIONS = {
   <rect x="648" y="280" width="10" height="60" fill="#7A5C3A" opacity=".5"/>
 </svg>` },
 
-  60: { caption:'다른 방식으로, 같은 하루 — 50년의 마지막 페이지', svg: `
+  60: { caption:'다른 방식으로, 같은 하루 — 40년의 마지막 페이지', svg: `
 <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:#FDF6EE">
   <defs><filter id="ep60b"><feGaussianBlur stdDeviation="6"/></filter>
   <radialGradient id="ep60sky" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="#C8D8F0" stop-opacity=".7"/><stop offset="100%" stop-color="#FDF6EE" stop-opacity=".3"/></radialGradient>

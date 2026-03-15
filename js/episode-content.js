@@ -589,8 +589,8 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"50주년 준비를 지금 해?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"미리 준비할수록 좋잖아. 그날 여행 갈 곳도 생각해놨어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"어디?"</div></div>
-    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"처음에 만난 미술관. 거기서 시작했으니까 거기서 50년을 기념하고 싶어."</div></div>
-    <p>혜인은 말이 없었다. 50년의 설계도를 이미 머릿속에 그리고 있는 남자. 가장 큰 로맨틱은 가장 먼 계획이었다. 혜인은 그날 저녁 수채화를 한 장 그렸다. 미술관 앞, 두 사람의 노년. 아직 오지 않은 풍경이었다.</p>
+    <div class="dialogue"><div class="speaker">공대생</div><div class="line">"처음에 만난 미술관. 거기서 시작했으니까 거기서 40년을 기념하고 싶어."</div></div>
+    <p>혜인은 말이 없었다. 40년의 설계도를 이미 머릿속에 그리고 있는 남자. 가장 큰 로맨틱은 가장 먼 계획이었다. 혜인은 그날 저녁 수채화를 한 장 그렸다. 미술관 앞, 두 사람의 노년. 아직 오지 않은 풍경이었다.</p>
   `
 },
 {
@@ -601,7 +601,7 @@ const EPISODE_CONTENT = [
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"저 하늘 봐. 저 파란색."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"저게 어떤 파란색이야?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"…세루리안 블루. 아니면 우리 나이 색."</div></div>
-    <p>재우는 하늘을 올려봤다. 예전에는 하늘을 잘 보지 않았다. 걸으면서 앞만 봤다. 이제는 하늘이 보였다. 혜인이 50년 동안 보라고 했던 것들이 이제야 보이기 시작했다. 느려져서야 보이는 것들이 있었다.</p>
+    <p>재우는 하늘을 올려봤다. 예전에는 하늘을 잘 보지 않았다. 걸으면서 앞만 봤다. 이제는 하늘이 보였다. 혜인이 40년 동안 보라고 했던 것들이 이제야 보이기 시작했다. 느려져서야 보이는 것들이 있었다.</p>
   `
 },
 {
@@ -683,7 +683,7 @@ const EPISODE_CONTENT = [
     <p>'당신이 색깔에 온도가 있다고 했을 때, 나는 이해하지 못했습니다. 지금은 압니다. 당신이 웃을 때 방이 따뜻해지는 것을. 당신이 없는 날은 조금 차가운 것을. 이것이 색깔의 온도인지는 모르겠지만, 나는 이제 느낍니다.'</p>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"이걸 언제 쓴 거야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"어젯밤에."</div></div>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"50년 만에 처음이야?"</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"40년 만에 처음이야?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"응. 늦었지?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"아니. 딱 지금이야."</div></div>
     <p>논리와 감성이 섞인 편지는 서랍 제일 안쪽에 넣어졌다. 두 번째 편지는 그다음 날 왔다.</p>
@@ -694,17 +694,17 @@ const EPISODE_CONTENT = [
   content: `
     <p>황금혼례 기념일, 두 사람은 처음 만났던 미술관 앞으로 갔다. 같은 계단, 같은 자리. 그러나 다른 두 사람.</p>
     <p>재우는 이번엔 시계를 보지 않았다. 혜인은 이번엔 하늘을 보다가 재우를 봤다.</p>
-    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"50년 전 여기서 처음 봤을 때, 시계만 보고 있었잖아."</div></div>
+    <div class="dialogue"><div class="speaker">미대생</div><div class="line">"40년 전 여기서 처음 봤을 때, 시계만 보고 있었잖아."</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"너는 하늘을 보고 있었어."</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"지금은?"</div></div>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"지금은 너를 보고 있어."</div></div>
-    <p>빛이 미술관 기둥에 내려앉는 시간은 오후 3시였다. 50년 전과 같은 시간, 같은 빛. 혜인은 그 빛을 오래 바라봤다. 재우도 함께 봤다. 처음으로, 같은 것을 같은 방향으로 함께 바라봤다.</p>
+    <p>빛이 미술관 기둥에 내려앉는 시간은 오후 3시였다. 40년 전과 같은 시간, 같은 빛. 혜인은 그 빛을 오래 바라봤다. 재우도 함께 봤다. 처음으로, 같은 것을 같은 방향으로 함께 바라봤다.</p>
   `
 },
 {
   id: 60,
   content: `
-    <p>우리는 처음부터 달랐다. 그리고 끝까지 달랐다. 그 사실은 50년이 지나도 변하지 않았다.</p>
+    <p>우리는 처음부터 달랐다. 그리고 끝까지 달랐다. 그 사실은 40년이 지나도 변하지 않았다.</p>
     <p>재우는 여전히 아침에 시간을 먼저 확인했다. 혜인은 여전히 창밖 하늘부터 봤다. 그러나 어느 순간부터 재우도 하늘을 봤고, 혜인도 시간을 챙겼다.</p>
     <div class="dialogue"><div class="speaker">공대생</div><div class="line">"우리 달랐던 거, 후회해?"</div></div>
     <div class="dialogue"><div class="speaker">미대생</div><div class="line">"아니. 달랐으니까 재밌었지."</div></div>
