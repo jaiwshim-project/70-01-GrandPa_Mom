@@ -248,6 +248,25 @@ const PART_NAMES = {
 };
 function getPartName(n) { return PART_NAMES[n] || `${n}부`; }
 
+// ── 파트 네비게이터 HTML ──
+function renderPartNav() {
+  const parts = [
+    {n:0, label:'전체'},
+    {n:1, label:'1부 · 첫만남'},
+    {n:2, label:'2부 · 연애'},
+    {n:3, label:'3부 · 결혼'},
+    {n:4, label:'4부 · 생활'},
+    {n:5, label:'5부 · 중년'},
+    {n:6, label:'6부 · 노년'},
+  ];
+  const btns = parts.map(p =>
+    `<button class="part-nav-btn" data-part="${p.n}" onclick="partNavClick(${p.n},this)">${p.label}</button>`
+  ).join('');
+  return `<nav class="part-nav-bar" id="partNavBar" aria-label="부 네비게이터">
+  <div class="container"><div class="part-nav-inner">${btns}</div></div>
+</nav>`;
+}
+
 // ── 공통 헤더 HTML ──
 function renderHeader() {
   return `
@@ -379,11 +398,13 @@ async function handleSignup() {
 // ── DOM 로드 후 초기화 ──
 document.addEventListener('DOMContentLoaded', () => {
   // 헤더/푸터 자동 삽입 (data-inject 방식)
-  const headerEl = document.getElementById('header-placeholder');
-  const footerEl = document.getElementById('footer-placeholder');
-  const authEl   = document.getElementById('auth-placeholder');
-  if (headerEl) headerEl.outerHTML = renderHeader();
-  if (footerEl) footerEl.outerHTML = renderFooter();
-  if (authEl)   authEl.outerHTML   = renderAuthModal();
+  const headerEl  = document.getElementById('header-placeholder');
+  const footerEl  = document.getElementById('footer-placeholder');
+  const authEl    = document.getElementById('auth-placeholder');
+  const partNavEl = document.getElementById('part-nav-placeholder');
+  if (headerEl)  headerEl.outerHTML  = renderHeader();
+  if (footerEl)  footerEl.outerHTML  = renderFooter();
+  if (authEl)    authEl.outerHTML    = renderAuthModal();
+  if (partNavEl) partNavEl.outerHTML = renderPartNav();
   initNav();
 });

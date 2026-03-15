@@ -15,23 +15,6 @@
 .page-hero h1{color:#fff;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
 .page-hero p{color:rgba(255,255,255,.82);font-size:.96rem}
 
-/* Part filter tabs */
-.filter-bar{
-  background:var(--white);
-  border-bottom:2px solid var(--border);
-  position:sticky;top:66px;z-index:90;
-  box-shadow:0 2px 8px rgba(0,0,0,.05);
-}
-.filter-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
-.filter-inner::-webkit-scrollbar{display:none}
-.filter-btn{
-  flex-shrink:0;padding:14px 18px;font-size:.86rem;font-weight:600;
-  color:var(--text-light);background:none;
-  border-bottom:3px solid transparent;
-  transition:all .2s;white-space:nowrap;min-height:48px;
-}
-.filter-btn:hover{color:var(--terra);background:rgba(184,85,48,.05)}
-.filter-btn.active{color:var(--terra-dark);border-bottom-color:var(--terra);background:rgba(184,85,48,.06);font-weight:700}
 
 /* Episode grid */
 .ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:32px 0}
@@ -95,20 +78,8 @@
   </div>
 </div>
 
-<!-- 부 필터 -->
-<div class="filter-bar">
-  <div class="container">
-    <div class="filter-inner">
-      <button class="filter-btn active" data-part="0" onclick="filterPart(0,this)">전체</button>
-      <button class="filter-btn" data-part="1" onclick="filterPart(1,this)">1부 · 첫만남</button>
-      <button class="filter-btn" data-part="2" onclick="filterPart(2,this)">2부 · 연애</button>
-      <button class="filter-btn" data-part="3" onclick="filterPart(3,this)">3부 · 결혼</button>
-      <button class="filter-btn" data-part="4" onclick="filterPart(4,this)">4부 · 생활</button>
-      <button class="filter-btn" data-part="5" onclick="filterPart(5,this)">5부 · 중년</button>
-      <button class="filter-btn" data-part="6" onclick="filterPart(6,this)">6부 · 노년</button>
-    </div>
-  </div>
-</div>
+<!-- 파트 네비게이터 (common.js 자동 주입) -->
+<div id="part-nav-placeholder"></div>
 
 <section style="background:var(--cream-dark);min-height:60vh">
   <div class="container">
@@ -199,13 +170,16 @@ let currentPart = 0;
 let displayed = 0;
 const PAGE = 9;
 
-function filterPart(part, btn) {
+// episodes.html에서 파트 네비 클릭 처리
+function partNavClick(part, btn) {
   currentPart = part;
   displayed = 0;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.part-nav-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderEpisodes();
 }
+// 하위 호환
+function filterPart(part, btn) { partNavClick(part, btn); }
 
 function getFiltered() {
   return currentPart === 0 ? ALL_EPISODES : ALL_EPISODES.filter(e => e.part === currentPart);
@@ -320,6 +294,20 @@ async function loadFromSupabase() {
 
 renderEpisodes();
 loadFromSupabase();
+
+// URL ?part=N 파라미터로 초기 부 활성화
+document.addEventListener('DOMContentLoaded', () => {
+  const urlPart = parseInt(new URLSearchParams(location.search).get('part')) || 0;
+  if (urlPart > 0) {
+    currentPart = urlPart;
+    renderEpisodes();
+  }
+  const activeBtn = document.querySelector(`.part-nav-btn[data-part="${currentPart}"]`);
+  if (activeBtn) {
+    document.querySelectorAll('.part-nav-btn').forEach(b => b.classList.remove('active'));
+    activeBtn.classList.add('active');
+  }
+});
 </script>
 </body>
 </html>

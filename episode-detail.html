@@ -130,6 +130,9 @@
   </div>
 </div>
 
+<!-- 파트 네비게이터 (common.js 자동 주입) -->
+<div id="part-nav-placeholder"></div>
+
 <!-- 수채화 일러스트 -->
 <div class="ep-illustration">
   <div class="ep-illustration-frame" id="epIllustration">
@@ -409,6 +412,22 @@ function renderEpisodeBody() {
   }
 }
 renderEpisodeBody();
+
+// 파트 네비게이터 클릭 — episodes.html?part=N 이동
+function partNavClick(part) {
+  location.href = 'episodes.html' + (part > 0 ? '?part=' + part : '');
+}
+
+// DOMContentLoaded 후 현재 에피소드의 부 버튼 활성화
+document.addEventListener('DOMContentLoaded', () => {
+  const ep = epList.find(e => e.id === epId);
+  if (!ep) return;
+  const btn = document.querySelector(`.part-nav-btn[data-part="${ep.part_number}"]`);
+  if (btn) {
+    document.querySelectorAll('.part-nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+});
 </script>
 </body>
 </html>
