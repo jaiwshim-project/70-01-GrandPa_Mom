@@ -8,7 +8,7 @@
  * 4. 카카오 앱 설정 > 플랫폼 > 웹 > 사이트 도메인 등록
  */
 
-const KAKAO_JS_KEY = 'YOUR_KAKAO_JS_KEY'; // ← 여기에 JavaScript 앱 키 입력
+const KAKAO_JS_KEY = '8f6a78984e0fb47e41442713528141ee';
 
 (function initKakao() {
   if (typeof Kakao === 'undefined') return;
