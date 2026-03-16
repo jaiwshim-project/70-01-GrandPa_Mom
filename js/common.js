@@ -310,6 +310,7 @@ function renderHeader() {
       <a href="book-project.html" class="nav-link">책 프로젝트</a>
       <a href="author-notes.html" class="nav-link">작가 노트</a>
       <a href="platform.html"     class="nav-link nav-link-special">플랫폼 이야기</a>
+      <a href="admin.html"        class="nav-link" style="color:var(--terra);font-weight:700">🔐 관리자</a>
     </nav>
     <div class="header-actions">
       <button id="loginBtn" class="btn btn-primary btn-sm" onclick="showAuthModal()">로그인</button>
@@ -331,6 +332,7 @@ function renderHeader() {
     <a href="book-project.html" class="mobile-nav-link">📚 책 프로젝트</a>
     <a href="author-notes.html" class="mobile-nav-link">✍️ 작가 노트</a>
     <a href="platform.html"     class="mobile-nav-link mobile-nav-special">✨ 플랫폼 이야기</a>
+    <a href="admin.html"        class="mobile-nav-link" style="color:var(--terra);font-weight:700">🔐 관리자 대시보드</a>
   </div>
 </header>`;
 }
