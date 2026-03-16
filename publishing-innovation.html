@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>출판의 새로운 시도 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── 히어로 ── */
+.pi-hero {
+  background: linear-gradient(160deg, #0F172A 0%, #1E3A8A 55%, #2563EB 100%);
+  padding: 80px 24px 64px; text-align: center; color: #fff; position: relative; overflow: hidden;
+}
+.pi-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(99,102,241,.18) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(16,185,129,.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+.pi-hero-badge {
+  display: inline-block; padding: 6px 18px;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.9);
+  margin-bottom: 24px; letter-spacing: .05em;
+}
+.pi-hero h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; line-height: 1.25;
+  margin-bottom: 20px; color: #fff;
+}
+.pi-hero h1 em { font-style: normal; color: #93C5FD; }
+.pi-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,.8);
+  line-height: 1.85; max-width: 680px; margin: 0 auto 36px;
+}
+.pi-hero-scroll {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.5); font-size: .78rem;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+/* ── 메인 ── */
+.pi-main { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+/* ── 섹션 공통 ── */
+.pi-section {
+  padding: 72px 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+.pi-section:last-child { border-bottom: none; }
+
+.pi-label {
+  display: inline-block; font-size: .78rem; font-weight: 800; letter-spacing: .15em;
+  color: #2563EB; background: #EFF6FF; padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 22px;
+}
+.pi-section-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #111827;
+  line-height: 1.3; margin-bottom: 22px;
+}
+.pi-section-title em { font-style: normal; color: #2563EB; }
+.pi-text {
+  font-size: 1.05rem; color: #374151; line-height: 2;
+  margin-bottom: 20px;
+}
+.pi-text strong { color: #111827; font-weight: 800; }
+
+/* ── 인용 블록 ── */
+.pi-quote {
+  background: linear-gradient(135deg, #EFF6FF, #F0FDF4);
+  border-left: 4px solid #2563EB; border-radius: 0 12px 12px 0;
+  padding: 20px 24px; margin: 28px 0;
+}
+.pi-quote-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem; font-weight: 700; color: #1E3A8A; line-height: 1.8;
+  font-style: italic;
+}
+
+/* ── 흐름 카드 (기존 vs 새로운) ── */
+.pi-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0;
+}
+@media(max-width:600px){ .pi-compare { grid-template-columns: 1fr; } }
+.pi-compare-card {
+  border-radius: 14px; padding: 24px 22px;
+}
+.pi-compare-card.old {
+  background: #F9FAFB; border: 1.5px solid #E5E7EB;
+}
+.pi-compare-card.new {
+  background: linear-gradient(135deg, #EFF6FF, #ECFDF5); border: 1.5px solid #BFDBFE;
+}
+.pi-compare-label {
+  font-size: .78rem; font-weight: 800; letter-spacing: .12em; margin-bottom: 16px;
+}
+.pi-compare-card.old .pi-compare-label { color: #9CA3AF; }
+.pi-compare-card.new .pi-compare-label { color: #2563EB; }
+.pi-compare-list {
+  list-style: none; display: flex; flex-direction: column; gap: 12px;
+}
+.pi-compare-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: .95rem; color: #374151; line-height: 1.65;
+}
+.pi-compare-list li::before { flex-shrink: 0; margin-top: 2px; }
+.pi-compare-card.old .pi-compare-list li::before { content: '→'; color: #9CA3AF; }
+.pi-compare-card.new .pi-compare-list li::before { content: '✓'; color: #2563EB; font-weight: 900; }
+
+/* ── 흐름 스텝 ── */
+.pi-steps { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+.pi-step {
+  display: flex; gap: 20px; align-items: flex-start; position: relative;
+}
+.pi-step:not(:last-child)::after {
+  content: '';
+  position: absolute; left: 19px; top: 44px; bottom: -12px;
+  width: 2px; background: #DBEAFE;
+}
+.pi-step-num {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  background: #2563EB; color: #fff; font-size: .85rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.pi-step-body { padding: 8px 0 28px; flex: 1; }
+.pi-step-title { font-size: 1.05rem; font-weight: 800; color: #111827; margin-bottom: 6px; }
+.pi-step-text { font-size: .95rem; color: #6B7280; line-height: 1.8; }
+
+/* ── 강조 섹션 ── */
+.pi-highlight {
+  background: linear-gradient(135deg, #0F172A, #1E3A8A);
+  border-radius: 20px; padding: 44px 40px; margin: 48px 0; color: #fff; text-align: center;
+}
+.pi-highlight h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 900; color: #fff; margin-bottom: 16px;
+}
+.pi-highlight p { font-size: .92rem; color: rgba(255,255,255,.75); line-height: 1.9; margin-bottom: 24px; }
+.pi-highlight-quote {
+  font-size: 1.1rem; font-weight: 800; color: #93C5FD; font-style: italic;
+  border-top: 1px solid rgba(255,255,255,.15); padding-top: 20px; line-height: 1.7;
+}
+@media(max-width:600px){ .pi-highlight { padding: 32px 20px; } }
+
+/* ── 참여 방법 ── */
+.pi-participate {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0;
+}
+@media(max-width:700px){ .pi-participate { grid-template-columns: 1fr; } }
+.pi-participate-card {
+  background: #fff; border: 1.5px solid #E5E7EB; border-radius: 14px;
+  padding: 22px 18px; text-align: center; transition: all .2s;
+}
+.pi-participate-card:hover {
+  border-color: #2563EB; box-shadow: 0 4px 16px rgba(37,99,235,.1);
+  transform: translateY(-2px);
+}
+.pi-participate-icon { font-size: 2rem; margin-bottom: 10px; }
+.pi-participate-title { font-size: 1rem; font-weight: 800; color: #111827; margin-bottom: 6px; }
+.pi-participate-text { font-size: .88rem; color: #6B7280; line-height: 1.65; }
+
+/* ── 선언문 ── */
+.pi-declaration {
+  background: #FFFBF5; border: 2px solid #FDE68A; border-radius: 16px;
+  padding: 36px 36px; margin: 32px 0;
+}
+.pi-declaration-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.2rem; font-weight: 900; color: #92400E; margin-bottom: 20px;
+  padding-bottom: 14px; border-bottom: 1px solid #FDE68A;
+}
+.pi-declaration p {
+  font-size: 1rem; color: #78350F; line-height: 2; margin-bottom: 16px;
+}
+.pi-declaration p:last-child { margin-bottom: 0; }
+.pi-declaration strong { color: #92400E; }
+@media(max-width:600px){ .pi-declaration { padding: 24px 20px; } }
+
+/* ── CTA ── */
+.pi-cta {
+  text-align: center; padding: 60px 0 80px;
+}
+.pi-cta h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 900; color: #111827;
+  margin-bottom: 14px;
+}
+.pi-cta p { font-size: .92rem; color: #6B7280; line-height: 1.8; margin-bottom: 28px; }
+.pi-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.pi-btn {
+  padding: 13px 28px; border-radius: 10px; font-size: .9rem; font-weight: 700;
+  text-decoration: none; transition: all .18s; border: 2px solid transparent;
+}
+.pi-btn-primary { background: #2563EB; color: #fff; }
+.pi-btn-primary:hover { background: #1D4ED8; transform: translateY(-1px); }
+.pi-btn-outline { background: #fff; color: #2563EB; border-color: #BFDBFE; }
+.pi-btn-outline:hover { background: #EFF6FF; }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- 히어로 -->
+<section class="pi-hero">
+  <div class="pi-hero-badge">🚀 출판의 새로운 실험</div>
+  <h1>이 이야기는<br><em>단순한 소설 연재</em>가 아닙니다</h1>
+  <p class="pi-hero-sub">
+    이 프로젝트는 출판의 새로운 방식을 실험하는<br>혁신적인 이야기 플랫폼입니다.
+  </p>
+  <div class="pi-hero-scroll">↓ 아래로 읽어보세요</div>
+</section>
+
+<main class="pi-main">
+
+  <!-- ── 섹션 1: 기존 출판 vs 새로운 방식 ── -->
+  <section class="pi-section">
+    <div class="pi-label">WHY WE'RE DIFFERENT</div>
+    <h2 class="pi-section-title">기존의 책과는 <em>다릅니다</em></h2>
+    <p class="pi-text">
+      기존의 책은 보통 작가가 글을 완성한 뒤 출판되고, 그 후에 독자들이 읽게 됩니다.<br>
+      하지만 이 프로젝트는 다릅니다.
+    </p>
+
+    <div class="pi-compare">
+      <div class="pi-compare-card old">
+        <div class="pi-compare-label">기존 출판</div>
+        <ul class="pi-compare-list">
+          <li>작가가 혼자 글을 완성한다</li>
+          <li>출판사가 책을 만든다</li>
+          <li>독자는 완성된 책을 읽는다</li>
+          <li>독자의 반응은 출판 후에 전달된다</li>
+          <li>책은 변하지 않는다</li>
+        </ul>
+      </div>
+      <div class="pi-compare-card new">
+        <div class="pi-compare-label">이 프로젝트</div>
+        <ul class="pi-compare-list">
+          <li>매일 한 편의 에피소드가 공개된다</li>
+          <li>독자들은 이야기를 함께 따라가며 경험한다</li>
+          <li>독자들이 이야기 속 질문에 참여한다</li>
+          <li>명대사를 공유하고 감정을 함께 나눈다</li>
+          <li>쌓인 시간과 이야기가 책으로 완성된다</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pi-quote">
+      <div class="pi-quote-text">
+        "이 책은 작가 혼자 만드는 책이 아니라<br>독자와 함께 만들어가는 책입니다."
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 섹션 2: 이야기의 중심 ── -->
+  <section class="pi-section">
+    <div class="pi-label">THE STORY</div>
+    <h2 class="pi-section-title">이야기의 중심</h2>
+    <p class="pi-text">
+      이 플랫폼의 중심에는 <strong>공대생 할아버지와 미대생 할머니</strong>의 이야기가 있습니다.
+    </p>
+    <p class="pi-text">
+      논리적인 공대생과 감성적인 미대생.<br>
+      서로 다른 두 사람이 만나 — <strong>다르기 때문에 싸우고</strong>, 다르기 때문에 이해하고,
+      다르기 때문에 사랑하며 — 평생을 함께 살아갑니다.
+    </p>
+    <p class="pi-text">
+      이 이야기는 단순한 로맨스가 아니라 <strong>우리 모두의 삶과 관계를 담은 이야기</strong>입니다.
+    </p>
+
+    <div class="pi-highlight">
+      <h2>이 이야기가 전하는 메시지</h2>
+      <p>서로 다른 사람들이 만나 시간을 함께 견디며 살아가는 것.<br>그것이 바로 인생이고, 사랑이며, 이야기입니다.</p>
+      <div class="pi-highlight-quote">
+        "우리는 틀린 것이 아니라 다른 것이다."
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 섹션 3: 함께 만들어가는 책 ── -->
+  <section class="pi-section">
+    <div class="pi-label">HOW IT WORKS</div>
+    <h2 class="pi-section-title">함께 만들어가는 책</h2>
+    <p class="pi-text">
+      이 프로젝트는 매일 한 편의 이야기로 성장합니다.
+      오늘의 에피소드가 쌓이고 독자들의 기억과 감정이 더해지면,
+      어느 날 그 모든 시간이 모여 한 권의 책이 됩니다.
+    </p>
+
+    <div class="pi-steps">
+      <div class="pi-step">
+        <div class="pi-step-num">1</div>
+        <div class="pi-step-body">
+          <div class="pi-step-title">매일 에피소드 공개</div>
+          <div class="pi-step-text">수채화 그림과 함께 매일 오전 한 편의 에피소드가 공개됩니다. 총 60편, 6부 구성.</div>
+        </div>
+      </div>
+      <div class="pi-step">
+        <div class="pi-step-num">2</div>
+        <div class="pi-step-body">
+          <div class="pi-step-title">독자들의 참여</div>
+          <div class="pi-step-text">독자들은 이야기를 읽고, 질문에 답하고, 명대사를 공유하며 감정을 함께 나눕니다.</div>
+        </div>
+      </div>
+      <div class="pi-step">
+        <div class="pi-step-num">3</div>
+        <div class="pi-step-body">
+          <div class="pi-step-title">이야기의 성장</div>
+          <div class="pi-step-text">독자들의 반응과 공유가 이야기를 더욱 풍성하게 만듭니다. 이야기는 읽는 콘텐츠가 아니라 함께 살아가는 경험이 됩니다.</div>
+        </div>
+      </div>
+      <div class="pi-step">
+        <div class="pi-step-num">4</div>
+        <div class="pi-step-body">
+          <div class="pi-step-title">한 권의 책으로 완성</div>
+          <div class="pi-step-text">쌓인 시간과 기억은 결국 한 권의 책으로 완성됩니다. 그 책은 단순한 소설이 아니라, 많은 사람들이 함께 만든 이야기가 될 것입니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="pi-text">
+      그 책의 페이지마다 작가의 시간뿐 아니라 <strong>독자들의 시간도 함께 담겨 있을 것</strong>입니다.<br>
+      우리는 지금, 그 책을 함께 만들어가고 있습니다.
+    </p>
+  </section>
+
+  <!-- ── 섹션 4: 독자 참여 방법 ── -->
+  <section class="pi-section">
+    <div class="pi-label">PARTICIPATE</div>
+    <h2 class="pi-section-title">독자가 참여하는 방법</h2>
+    <p class="pi-text">이곳에서 이야기는 단순히 읽는 것이 아닙니다.</p>
+
+    <div class="pi-participate">
+      <div class="pi-participate-card">
+        <div class="pi-participate-icon">📖</div>
+        <div class="pi-participate-title">에피소드 읽기</div>
+        <div class="pi-participate-text">매일 오전 공개되는 에피소드를 수채화 그림과 함께 읽습니다</div>
+      </div>
+      <div class="pi-participate-card">
+        <div class="pi-participate-icon">💬</div>
+        <div class="pi-participate-title">명대사 공유</div>
+        <div class="pi-participate-text">마음에 남는 문장을 공유하고 독자들과 감정을 나눕니다</div>
+      </div>
+      <div class="pi-participate-card">
+        <div class="pi-participate-icon">🤔</div>
+        <div class="pi-participate-title">질문에 참여</div>
+        <div class="pi-participate-text">이야기 속 질문에 답하며 나의 이야기를 더해갑니다</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 섹션 5: 출판 혁신 선언문 ── -->
+  <section class="pi-section">
+    <div class="pi-label">MANIFESTO</div>
+    <h2 class="pi-section-title">출판 혁신 선언문</h2>
+    <p class="pi-text" style="font-size:1rem;font-weight:700;color:#111827">
+      우리는 새로운 방식으로 이야기를 만들고, 새로운 방식으로 책을 만든다.
+    </p>
+
+    <div class="pi-declaration">
+      <div class="pi-declaration-title">📜 선언문</div>
+      <p>
+        책은 오랫동안 같은 방식으로 만들어져 왔습니다.<br>
+        작가는 혼자 글을 쓰고, 출판사는 책을 만들고, 독자는 완성된 책을 읽습니다.<br>
+        하지만 우리는 질문을 던집니다.
+      </p>
+      <p>
+        <strong>이야기는 정말 그렇게만 만들어져야 할까요?</strong>
+      </p>
+      <p>
+        이곳에서는 책이 먼저 완성되지 않습니다.<br>
+        이야기는 매일 한 편의 에피소드로 세상에 공개됩니다.<br>
+        독자들은 그 이야기를 읽고, 느끼고, 생각하고, 참여합니다.<br>
+        그리고 그 과정 속에서 이야기는 조금씩 성장합니다.
+      </p>
+      <p>
+        이렇게 쌓인 시간과 기억은 결국 한 권의 책으로 완성됩니다.<br>
+        그 책은 한 사람의 작품이 아니라, <strong>함께 시간을 걸어온 사람들의 이야기</strong>입니다.
+      </p>
+      <p>
+        이 플랫폼의 중심에는 공대생 할아버지와 미대생 할머니의 이야기가 있습니다.<br>
+        논리적인 사람과 감성적인 사람. 서로 다른 두 사람이 만나<br>
+        다르기 때문에 싸우고, 다르기 때문에 이해하고,<br>
+        다르기 때문에 사랑하며 평생을 함께 살아갑니다.
+      </p>
+      <p>
+        <strong>이 이야기가 말하는 것은 단순합니다.</strong><br>
+        우리는 틀린 것이 아니라 다른 것이다.
+      </p>
+      <p>
+        이 프로젝트는 단순한 연재가 아닙니다.<br>
+        이것은 <strong>출판의 새로운 가능성을 실험하는 프로젝트</strong>입니다.<br>
+        이야기는 플랫폼에서 태어나고, 독자와 함께 성장하며,<br>
+        시간과 기억이 쌓여 결국 한 권의 책으로 완성됩니다.
+      </p>
+      <p>
+        이곳은 이야기의 시작입니다.<br>
+        우리는 지금 그 책을 함께 만들어가고 있습니다.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- CTA -->
+<div class="pi-cta">
+  <div style="max-width:640px;margin:0 auto;padding:0 24px">
+    <h2 class="pi-cta-title" style="font-family:'Noto Serif KR',serif;font-size:clamp(1.3rem,3vw,1.7rem);font-weight:900;color:#111827;margin-bottom:14px">
+      지금 이야기에 함께하세요
+    </h2>
+    <p style="font-size:.92rem;color:#6B7280;line-height:1.8;margin-bottom:28px">
+      매일 오전, 새로운 에피소드와 수채화 그림이 공개됩니다.<br>
+      이 책의 첫 번째 독자가 되어주세요.
+    </p>
+    <div class="pi-cta-btns">
+      <a href="episodes.html" class="pi-btn pi-btn-primary">📖 에피소드 읽기</a>
+      <a href="gallery.html" class="pi-btn pi-btn-outline">🎨 그림 이야기 보기</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="js/common.js"></script>
+<script>
+document.getElementById('site-header').innerHTML = renderHeader();
+document.getElementById('site-footer').innerHTML = renderFooter();
+</script>
+</body>
+</html>

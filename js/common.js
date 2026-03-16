@@ -306,6 +306,7 @@ function renderHeader() {
         <a href="platform.html" class="nav-link nav-link-special">플랫폼 이야기 ▾</a>
         <div class="nav-dropdown-menu">
           <a href="author-notes.html">✍️ 작가 노트</a>
+          <a href="publishing-innovation.html">🚀 출판의 새로운 시도</a>
         </div>
       </div>
       <a href="episodes.html"     class="nav-link">연재 이야기</a>
@@ -329,6 +330,7 @@ function renderHeader() {
   <div id="mobileMenu" class="mobile-menu">
     <a href="platform.html"     class="mobile-nav-link mobile-nav-special">✨ 플랫폼 이야기</a>
     <a href="author-notes.html" class="mobile-nav-link" style="padding-left:34px;font-size:.88rem;color:var(--text-muted)">↳ ✍️ 작가 노트</a>
+    <a href="publishing-innovation.html" class="mobile-nav-link" style="padding-left:34px;font-size:.88rem;color:var(--text-muted)">↳ 🚀 출판의 새로운 시도</a>
     <a href="episodes.html"     class="mobile-nav-link">📖 연재 이야기</a>
     <a href="gallery.html"      class="mobile-nav-link">🎨 그림 이야기</a>
     <a href="test.html"         class="mobile-nav-link">🔬 성향 테스트</a>
@@ -368,6 +370,8 @@ function renderFooter() {
           <li><a href="platform.html">플랫폼 이야기</a></li>
           <li><a href="book-project.html">책 프로젝트</a></li>
           <li><a href="author-notes.html">작가 노트</a></li>
+          <li><a href="publishing-innovation.html">출판의 새로운 시도</a></li>
+          <li><a href="press-kit.html">📋 안내자료</a></li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>안내자료 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111827; }
+
+/* ── 페이지 헤더 ── */
+.pk-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  padding: 48px 24px 40px; text-align: center; color: #fff;
+}
+.pk-header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 10px; }
+.pk-header p { font-size: 1rem; opacity: .85; margin-bottom: 28px; }
+.pk-nav { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pk-nav a {
+  padding: 8px 20px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 20px; color: #fff; font-size: .82rem; font-weight: 700;
+  text-decoration: none; transition: background .18s;
+}
+.pk-nav a:hover { background: rgba(255,255,255,.35); }
+
+/* ── 섹션 래퍼 ── */
+.pk-section {
+  max-width: 900px; margin: 48px auto; padding: 0 24px;
+}
+.pk-section-title {
+  font-size: 1.1rem; font-weight: 800; color: #374151; margin-bottom: 20px;
+  padding-bottom: 10px; border-bottom: 2px solid #E5E7EB;
+  display: flex; align-items: center; gap: 8px;
+}
+.pk-print-btn {
+  display: inline-block; padding: 9px 22px; border-radius: 8px;
+  background: #2563EB; color: #fff; font-size: .82rem; font-weight: 700;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background .18s; margin-bottom: 10px;
+}
+.pk-print-btn:hover { background: #1D4ED8; }
+.pk-print-btn.green { background: #059669; }
+.pk-print-btn.green:hover { background: #047857; }
+
+/* ── A4 공통 ── */
+.a4 {
+  width: 595px; min-height: 842px;
+  margin: 0 auto 48px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,.18);
+  page-break-after: always;
+}
+.a4-actions {
+  display: flex; gap: 10px; justify-content: center; margin-bottom: 12px;
+}
+.a4-label {
+  text-align: center; font-size: .78rem; color: #6B7280; margin-bottom: 6px; font-weight: 700;
+}
+
+/* ─────────────────────────────────
+   홍보물 1: 미니멀 화이트
+───────────────────────────────── */
+.pk1 {
+  background: #FFFFFF;
+  display: flex; flex-direction: column;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.pk1-top {
+  padding: 56px 52px 0;
+}
+.pk1-tag {
+  display: inline-block; padding: 5px 14px; border: 1.5px solid #1E3A8A;
+  font-size: .7rem; font-weight: 800; color: #1E3A8A; letter-spacing: .12em;
+  margin-bottom: 20px;
+}
+.pk1 h1 {
+  font-size: 2rem; font-weight: 900; color: #111827; line-height: 1.25;
+  margin-bottom: 14px;
+}
+.pk1 h1 span { color: #2563EB; }
+.pk1-desc {
+  font-size: .88rem; color: #6B7280; line-height: 1.75; margin-bottom: 28px;
+  border-left: 3px solid #E5E7EB; padding-left: 14px;
+}
+.pk1-divider { width: 40px; height: 3px; background: #2563EB; margin-bottom: 28px; }
+.pk1-features {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 32px;
+}
+.pk1-feat {
+  padding: 14px 16px; background: #F8FAFF;
+  border: 1px solid #E4E9F2; border-radius: 8px;
+}
+.pk1-feat-icon { font-size: 1.2rem; margin-bottom: 6px; }
+.pk1-feat-title { font-size: .78rem; font-weight: 800; color: #1E3A8A; margin-bottom: 3px; }
+.pk1-feat-text { font-size: .72rem; color: #6B7280; line-height: 1.5; }
+.pk1-illus {
+  flex: 1; display: flex; align-items: flex-end; justify-content: center;
+  padding: 0 52px 0;
+}
+.pk1-illus svg { width: 100%; max-height: 200px; }
+.pk1-footer {
+  background: #1E3A8A; padding: 18px 52px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pk1-footer-brand { color: #fff; font-size: .82rem; font-weight: 700; }
+.pk1-footer-url { color: rgba(255,255,255,.7); font-size: .72rem; }
+.pk1-qr {
+  width: 52px; height: 52px; background: #fff; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .55rem; color: #9CA3AF; font-weight: 700; text-align: center;
+  line-height: 1.3;
+}
+
+/* ─────────────────────────────────
+   홍보물 2: 딥 네이비 다크
+───────────────────────────────── */
+.pk2 {
+  background: linear-gradient(160deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%);
+  color: #fff; display: flex; flex-direction: column;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.pk2-inner { padding: 56px 52px; flex: 1; display: flex; flex-direction: column; }
+.pk2-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: .7rem; font-weight: 700; color: rgba(255,255,255,.9);
+  margin-bottom: 36px; width: fit-content;
+}
+.pk2 h1 {
+  font-size: 2.2rem; font-weight: 900; line-height: 1.2;
+  margin-bottom: 20px;
+}
+.pk2 h1 em { font-style: normal; color: #93C5FD; }
+.pk2-sub {
+  font-size: .88rem; color: rgba(255,255,255,.7); line-height: 1.8;
+  margin-bottom: 40px; max-width: 420px;
+}
+.pk2-stats {
+  display: flex; gap: 32px; margin-bottom: 40px;
+}
+.pk2-stat-num { font-size: 1.8rem; font-weight: 900; color: #93C5FD; line-height: 1; }
+.pk2-stat-label { font-size: .72rem; color: rgba(255,255,255,.6); margin-top: 4px; }
+.pk2-art {
+  flex: 1; display: flex; align-items: center; justify-content: flex-end;
+}
+.pk2-art-circle {
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+}
+.pk2-footer {
+  padding: 20px 52px;
+  background: rgba(0,0,0,.25);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pk2-footer-text { font-size: .75rem; color: rgba(255,255,255,.6); }
+.pk2-footer-url { font-size: .78rem; font-weight: 700; color: #93C5FD; }
+
+/* ─────────────────────────────────
+   홍보물 3: 수채화풍 따뜻한 톤
+───────────────────────────────── */
+.pk3 {
+  background: #FFFBF5;
+  font-family: 'Noto Serif KR', serif;
+  display: flex; flex-direction: column;
+}
+.pk3-banner {
+  background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+  padding: 10px 52px;
+  font-size: .75rem; font-weight: 700; color: #fff; letter-spacing: .1em;
+}
+.pk3-body { padding: 40px 52px; flex: 1; display: flex; flex-direction: column; }
+.pk3-watercolor {
+  width: 100%; height: 160px; margin-bottom: 28px; border-radius: 12px; overflow: hidden;
+  background: linear-gradient(135deg, #FEF3C7 0%, #FECACA 50%, #DDD6FE 100%);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.pk3-watercolor-text {
+  font-size: 3rem; filter: opacity(.5);
+}
+.pk3 h1 {
+  font-size: 1.8rem; font-weight: 900; color: #92400E; line-height: 1.3;
+  margin-bottom: 12px;
+}
+.pk3-quote {
+  font-size: .9rem; color: #B45309; font-style: italic;
+  border-left: 3px solid #F59E0B; padding-left: 14px;
+  margin-bottom: 24px; line-height: 1.8;
+}
+.pk3-desc { font-size: .82rem; color: #78350F; line-height: 1.85; margin-bottom: 28px; }
+.pk3-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.pk3-tag {
+  padding: 5px 12px; background: #FEF3C7; color: #92400E;
+  border-radius: 20px; font-size: .72rem; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.pk3-spacer { flex: 1; }
+.pk3-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-top: 20px; border-top: 1px solid #FDE68A;
+}
+.pk3-brand { font-size: .82rem; font-weight: 700; color: #92400E; }
+.pk3-url { font-size: .7rem; color: #B45309; }
+.pk3-qr { width: 48px; height: 48px; background: #FDE68A; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .5rem; color: #92400E; font-weight: 700; text-align: center; line-height: 1.3;
+}
+
+/* ─────────────────────────────────
+   홍보물 4: 골드 럭셔리
+───────────────────────────────── */
+.pk4 {
+  background: #0C0C0C;
+  font-family: 'Noto Serif KR', serif;
+  display: flex; flex-direction: column;
+  color: #fff;
+}
+.pk4-border { border: 1px solid #8B6914; margin: 18px; flex: 1; display: flex; flex-direction: column; padding: 44px 42px; }
+.pk4-ornament { text-align: center; font-size: 1.4rem; color: #D4AF37; margin-bottom: 24px; letter-spacing: .3em; }
+.pk4 h1 {
+  font-size: 1.9rem; font-weight: 900; text-align: center;
+  line-height: 1.35; margin-bottom: 10px; color: #F9D54A;
+}
+.pk4-line { width: 60px; height: 1px; background: #D4AF37; margin: 16px auto; }
+.pk4-sub { text-align: center; font-size: .82rem; color: #D4AF37; letter-spacing: .06em; margin-bottom: 28px; }
+.pk4-divider { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.pk4-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #8B6914, transparent); }
+.pk4-divider-icon { color: #D4AF37; font-size: .9rem; }
+.pk4-desc {
+  text-align: center; font-size: .82rem; color: #C9B882; line-height: 1.9;
+  margin-bottom: 32px;
+}
+.pk4-features { display: flex; gap: 0; margin-bottom: 28px; }
+.pk4-feat {
+  flex: 1; text-align: center; padding: 18px 10px;
+  border-right: 1px solid #3A2E00;
+}
+.pk4-feat:last-child { border-right: none; }
+.pk4-feat-num { font-size: 1.6rem; font-weight: 900; color: #D4AF37; line-height: 1; }
+.pk4-feat-label { font-size: .65rem; color: #8B7234; margin-top: 5px; letter-spacing: .05em; }
+.pk4-spacer { flex: 1; }
+.pk4-footer {
+  text-align: center; padding-top: 20px; border-top: 1px solid #3A2E00;
+}
+.pk4-footer-brand { font-size: .78rem; font-weight: 700; color: #D4AF37; letter-spacing: .08em; }
+.pk4-footer-url { font-size: .65rem; color: #6B5B2E; margin-top: 4px; }
+
+/* ─────────────────────────────────
+   홍보물 5: 봄 그린 내추럴
+───────────────────────────────── */
+.pk5 {
+  background: #F0FDF4;
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex; flex-direction: column;
+}
+.pk5-header {
+  background: linear-gradient(135deg, #059669 0%, #10B981 60%, #34D399 100%);
+  padding: 44px 52px 32px; color: #fff;
+}
+.pk5-header-badge {
+  display: inline-block; padding: 4px 12px; background: rgba(255,255,255,.2);
+  border-radius: 20px; font-size: .7rem; font-weight: 700; margin-bottom: 14px;
+}
+.pk5-header h1 { font-size: 1.85rem; font-weight: 900; line-height: 1.3; margin-bottom: 10px; }
+.pk5-header p { font-size: .83rem; opacity: .9; line-height: 1.7; }
+.pk5-body { padding: 32px 52px; flex: 1; display: flex; flex-direction: column; }
+.pk5-illus-row {
+  display: flex; gap: 14px; margin-bottom: 28px;
+}
+.pk5-illus-card {
+  flex: 1; background: #fff; border: 1px solid #D1FAE5; border-radius: 12px;
+  padding: 18px 14px; text-align: center;
+}
+.pk5-illus-icon { font-size: 2rem; margin-bottom: 8px; }
+.pk5-illus-title { font-size: .75rem; font-weight: 800; color: #065F46; margin-bottom: 4px; }
+.pk5-illus-text { font-size: .68rem; color: #6B7280; line-height: 1.5; }
+.pk5-quote {
+  background: #ECFDF5; border-left: 3px solid #059669;
+  padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;
+  font-size: .84rem; color: #065F46; font-style: italic; line-height: 1.8;
+}
+.pk5-spacer { flex: 1; }
+.pk5-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 18px; border-top: 1px solid #D1FAE5;
+}
+.pk5-footer-left .brand { font-size: .8rem; font-weight: 800; color: #059669; }
+.pk5-footer-left .url { font-size: .68rem; color: #6B7280; margin-top: 2px; }
+.pk5-footer-qr { width: 48px; height: 48px; background: #D1FAE5; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .5rem; color: #059669; font-weight: 700; text-align: center; line-height: 1.3;
+}
+
+/* ─────────────────────────────────
+   홍보물 6: 라벤더 보라
+───────────────────────────────── */
+.pk6 {
+  background: #FAFAFF;
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex; flex-direction: column;
+}
+.pk6-accent-bar {
+  height: 6px;
+  background: linear-gradient(90deg, #7C3AED, #A78BFA, #C4B5FD);
+}
+.pk6-body { padding: 44px 52px; flex: 1; display: flex; flex-direction: column; }
+.pk6-eyebrow { font-size: .72rem; font-weight: 800; color: #7C3AED; letter-spacing: .15em; margin-bottom: 14px; }
+.pk6 h1 {
+  font-size: 2rem; font-weight: 900; color: #1F1535; line-height: 1.25;
+  margin-bottom: 20px;
+}
+.pk6 h1 em { font-style: normal; color: #7C3AED; }
+.pk6-desc { font-size: .85rem; color: #4B5563; line-height: 1.8; margin-bottom: 32px; }
+.pk6-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+.pk6-card {
+  background: #fff; border: 1px solid #EDE9FE; border-radius: 10px;
+  padding: 16px; display: flex; align-items: flex-start; gap: 10px;
+}
+.pk6-card-icon {
+  width: 32px; height: 32px; background: #EDE9FE; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0;
+}
+.pk6-card-title { font-size: .75rem; font-weight: 800; color: #4C1D95; margin-bottom: 3px; }
+.pk6-card-text { font-size: .68rem; color: #6B7280; line-height: 1.5; }
+.pk6-spacer { flex: 1; }
+.pk6-bottom {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  border-radius: 12px; padding: 20px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pk6-bottom-text { color: #fff; font-size: .8rem; font-weight: 700; }
+.pk6-bottom-url { color: #C4B5FD; font-size: .7rem; margin-top: 3px; }
+.pk6-bottom-qr { width: 44px; height: 44px; background: rgba(255,255,255,.2); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .48rem; color: #fff; font-weight: 700; text-align: center; line-height: 1.3;
+}
+
+/* ─────────────────────────────────
+   홍보물 7: 신문 타이포그래피
+───────────────────────────────── */
+.pk7 {
+  background: #FFFEF7;
+  font-family: 'Noto Serif KR', serif;
+  display: flex; flex-direction: column;
+  padding: 44px 52px;
+}
+.pk7-masthead {
+  text-align: center; border-bottom: 3px solid #111827;
+  padding-bottom: 14px; margin-bottom: 14px;
+}
+.pk7-masthead-sub {
+  font-size: .65rem; letter-spacing: .2em; color: #6B7280; margin-bottom: 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.pk7-masthead h1 { font-size: 2.4rem; font-weight: 900; color: #111827; }
+.pk7-dateline {
+  display: flex; justify-content: space-between;
+  font-size: .65rem; color: #6B7280; letter-spacing: .05em;
+  border-bottom: 1px solid #111827; padding-bottom: 8px; margin-bottom: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.pk7-cols { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 18px; flex: 1; }
+.pk7-col-divider { background: #D1D5DB; }
+.pk7-headline { font-size: .9rem; font-weight: 900; color: #111827; line-height: 1.35; margin-bottom: 10px; }
+.pk7-body-text { font-size: .72rem; color: #374151; line-height: 1.9; margin-bottom: 12px; }
+.pk7-pullquote {
+  border-top: 2px solid #111827; border-bottom: 2px solid #111827;
+  padding: 10px 0; margin: 12px 0;
+  font-size: .82rem; font-style: italic; color: #111827; font-weight: 700; line-height: 1.6;
+  text-align: center;
+}
+.pk7-caption { font-size: .65rem; color: #9CA3AF; font-style: italic; font-family: 'Noto Sans KR', sans-serif; }
+.pk7-art-box {
+  background: #F3F4F6; height: 120px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; margin-bottom: 6px;
+}
+.pk7-footer {
+  border-top: 2px solid #111827; padding-top: 12px; margin-top: 18px;
+  display: flex; justify-content: space-between;
+  font-size: .65rem; color: #6B7280; font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ─────────────────────────────────
+   홍보물 8: 모던 핑크 그라디언트
+───────────────────────────────── */
+.pk8 {
+  background: linear-gradient(160deg, #FFF1F2 0%, #FDE8FF 50%, #E0E7FF 100%);
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex; flex-direction: column;
+}
+.pk8-body { padding: 52px 52px 32px; flex: 1; display: flex; flex-direction: column; }
+.pk8-pill {
+  display: inline-block; padding: 5px 16px;
+  background: linear-gradient(135deg, #EC4899, #A855F7);
+  border-radius: 20px; font-size: .7rem; font-weight: 700; color: #fff;
+  margin-bottom: 24px; width: fit-content;
+}
+.pk8 h1 {
+  font-size: 2.2rem; font-weight: 900; line-height: 1.2;
+  margin-bottom: 14px; color: #1F1535;
+}
+.pk8 h1 span { background: linear-gradient(135deg, #EC4899, #7C3AED); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.pk8-desc { font-size: .86rem; color: #4B5563; line-height: 1.8; margin-bottom: 32px; }
+.pk8-bubbles { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.pk8-bubble {
+  background: #fff; border-radius: 12px; padding: 12px 16px;
+  font-size: .78rem; color: #374151; line-height: 1.6; box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+.pk8-bubble.him { border-left: 3px solid #2563EB; }
+.pk8-bubble.her { border-left: 3px solid #EC4899; }
+.pk8-bubble-label { font-size: .65rem; font-weight: 800; margin-bottom: 3px; }
+.pk8-bubble.him .pk8-bubble-label { color: #2563EB; }
+.pk8-bubble.her .pk8-bubble-label { color: #EC4899; }
+.pk8-spacer { flex: 1; }
+.pk8-footer {
+  padding: 20px 52px;
+  background: linear-gradient(135deg, #EC4899, #7C3AED);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pk8-footer-brand { color: #fff; font-size: .82rem; font-weight: 800; }
+.pk8-footer-url { color: rgba(255,255,255,.75); font-size: .7rem; }
+.pk8-footer-qr { width: 44px; height: 44px; background: rgba(255,255,255,.25); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .48rem; color: #fff; font-weight: 700; text-align: center; line-height: 1.3;
+}
+
+/* ─────────────────────────────────
+   홍보물 9: 스케치/손그림 스타일
+───────────────────────────────── */
+.pk9 {
+  background: #FEFCE8;
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex; flex-direction: column;
+  padding: 44px 48px;
+  border: 8px solid #FDE047;
+}
+.pk9-sketch-header {
+  display: flex; align-items: center; gap: 18px; margin-bottom: 28px;
+}
+.pk9-sketch-icon { font-size: 3.5rem; }
+.pk9-sketch-title h1 { font-size: 1.6rem; font-weight: 900; color: #713F12; line-height: 1.3; }
+.pk9-sketch-title p { font-size: .75rem; color: #92400E; margin-top: 4px; }
+.pk9-sketch-line {
+  border: none; border-top: 2px dashed #FDE047;
+  margin-bottom: 24px;
+}
+.pk9-story-boxes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.pk9-story-box {
+  background: #fff; border: 2px solid #FDE047; border-radius: 8px;
+  padding: 14px 12px; text-align: center;
+}
+.pk9-story-num { font-size: 1.4rem; font-weight: 900; color: #F59E0B; line-height: 1; margin-bottom: 6px; }
+.pk9-story-label { font-size: .7rem; font-weight: 700; color: #713F12; margin-bottom: 4px; }
+.pk9-story-text { font-size: .65rem; color: #92400E; line-height: 1.5; }
+.pk9-note {
+  background: #fff; border: 2px solid #FDE047; border-radius: 8px;
+  padding: 16px 20px; margin-bottom: 24px; font-size: .82rem; color: #713F12;
+  line-height: 1.8; position: relative;
+}
+.pk9-note::before {
+  content: '"'; font-size: 2.5rem; color: #FDE047; position: absolute; top: -8px; left: 12px; line-height: 1;
+}
+.pk9-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.pk9-tag {
+  padding: 5px 12px; background: #FEF3C7; border: 1.5px solid #FDE047;
+  border-radius: 20px; font-size: .72rem; font-weight: 700; color: #92400E;
+}
+.pk9-spacer { flex: 1; }
+.pk9-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 16px; border-top: 2px dashed #FDE047;
+}
+.pk9-brand { font-size: .82rem; font-weight: 800; color: #713F12; }
+.pk9-url { font-size: .7rem; color: #92400E; }
+.pk9-qr { width: 48px; height: 48px; background: #FEF3C7; border: 2px solid #FDE047; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .5rem; color: #92400E; font-weight: 700; text-align: center; line-height: 1.3;
+}
+
+/* ─────────────────────────────────
+   홍보물 10: 시네마틱 그레이
+───────────────────────────────── */
+.pk10 {
+  background: #111827;
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex; flex-direction: column;
+  color: #fff;
+}
+.pk10-band { height: 4px; background: linear-gradient(90deg, #F59E0B, #EF4444, #8B5CF6, #3B82F6, #10B981); }
+.pk10-body { padding: 44px 52px; flex: 1; display: flex; flex-direction: column; }
+.pk10-chapter {
+  font-size: .68rem; font-weight: 800; letter-spacing: .25em; color: #6B7280; margin-bottom: 20px;
+}
+.pk10 h1 {
+  font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 16px; color: #F9FAFB;
+}
+.pk10 h1 span { color: #FBBF24; }
+.pk10-tagline { font-size: .9rem; color: #9CA3AF; line-height: 1.7; margin-bottom: 36px; }
+.pk10-parts { display: flex; gap: 0; margin-bottom: 36px; }
+.pk10-part {
+  flex: 1; padding: 14px 10px;
+  border-right: 1px solid #374151; text-align: center;
+}
+.pk10-part:last-child { border-right: none; }
+.pk10-part-dot { width: 6px; height: 6px; border-radius: 50%; margin: 0 auto 8px; }
+.pk10-part-name { font-size: .62rem; font-weight: 700; color: #9CA3AF; }
+.pk10-timeline {
+  background: #1F2937; border-radius: 10px; padding: 20px 22px; margin-bottom: 24px;
+}
+.pk10-tl-title { font-size: .7rem; font-weight: 800; color: #6B7280; letter-spacing: .1em; margin-bottom: 14px; }
+.pk10-tl-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.pk10-tl-dot { width: 8px; height: 8px; border-radius: 50%; background: #FBBF24; flex-shrink: 0; }
+.pk10-tl-text { font-size: .72rem; color: #D1D5DB; line-height: 1.4; }
+.pk10-spacer { flex: 1; }
+.pk10-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 18px; border-top: 1px solid #374151;
+}
+.pk10-footer-brand { font-size: .8rem; font-weight: 700; color: #F9FAFB; }
+.pk10-footer-url { font-size: .68rem; color: #6B7280; margin-top: 2px; }
+.pk10-footer-qr { width: 46px; height: 46px; background: #1F2937; border: 1px solid #374151; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .48rem; color: #6B7280; font-weight: 700; text-align: center; line-height: 1.3;
+}
+
+/* ── 프린트 CSS ── */
+@media print {
+  .pk-header, .pk-section-title, .pk-print-btn, .a4-actions, .a4-label,
+  .pk-section > p, .pk-nav { display: none !important; }
+  body { background: #fff; }
+  .pk-section { margin: 0; padding: 0; max-width: none; }
+  .a4 { box-shadow: none; margin: 0; page-break-after: always; width: 595px; }
+}
+
+/* ── 반응형 ── */
+@media(max-width: 660px) {
+  .a4 { width: 100%; min-height: auto; }
+  .pk1-features, .pk6-cards, .pk9-story-boxes { grid-template-columns: 1fr; }
+  .pk2-stats { flex-wrap: wrap; gap: 16px; }
+  .pk10-parts { flex-wrap: wrap; }
+  .pk7-cols { grid-template-columns: 1fr; }
+  .pk7-col-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- 페이지 헤더 -->
+<div class="pk-header">
+  <h1>📋 안내자료</h1>
+  <p>공대생 할아버지, 미대생 할머니 — A4 홍보물 10가지 디자인</p>
+  <div class="pk-nav">
+    <a href="index.html">🏠 메인</a>
+    <a href="platform.html">📖 플랫폼</a>
+    <a href="episodes.html">📚 에피소드</a>
+    <a href="gallery.html">🎨 그림이야기</a>
+  </div>
+</div>
+
+<div class="pk-section">
+  <div class="pk-section-title">🖨️ 사용 안내</div>
+  <p style="font-size:.86rem;color:#4B5563;line-height:1.8;margin-bottom:16px">
+    아래 10가지 디자인 중 원하는 홍보물을 선택해 인쇄하세요. 각 디자인 아래의 [인쇄] 버튼을 클릭하면 해당 홍보물만 출력됩니다.
+    A4 용지에 맞게 설계되었습니다.
+  </p>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 1: 미니멀 화이트
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">① 미니멀 화이트</div>
+  <div class="a4-label">깔끔한 화이트 배경, 블루 포인트</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk1-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk1-wrap">
+  <div class="a4 pk1">
+    <div class="pk1-top">
+      <div class="pk1-tag">SERIALIZED STORY PLATFORM</div>
+      <h1>공대생 할아버지,<br><span>미대생 할머니</span></h1>
+      <div class="pk1-desc">
+        이성과 감성이 만나 빚어내는 40년의 이야기.<br>
+        하루 한 편, 수채화 그림과 함께 연재됩니다.
+      </div>
+      <div class="pk1-divider"></div>
+      <div class="pk1-features">
+        <div class="pk1-feat">
+          <div class="pk1-feat-icon">📖</div>
+          <div class="pk1-feat-title">60편 에피소드</div>
+          <div class="pk1-feat-text">6부 구성, 매일 한 편씩 공개되는 연재 이야기</div>
+        </div>
+        <div class="pk1-feat">
+          <div class="pk1-feat-icon">🎨</div>
+          <div class="pk1-feat-title">수채화 그림</div>
+          <div class="pk1-feat-text">할머니가 직접 그린 수채화 일러스트 수록</div>
+        </div>
+        <div class="pk1-feat">
+          <div class="pk1-feat-icon">💑</div>
+          <div class="pk1-feat-title">실화 기반</div>
+          <div class="pk1-feat-text">공학과 미술, 두 사람의 실제 삶에서 영감을 받은 이야기</div>
+        </div>
+        <div class="pk1-feat">
+          <div class="pk1-feat-icon">📱</div>
+          <div class="pk1-feat-title">무료 공개</div>
+          <div class="pk1-feat-text">로그인 없이 누구나 읽을 수 있습니다</div>
+        </div>
+      </div>
+    </div>
+    <div class="pk1-illus">
+      <!-- 수채화풍 SVG 장식 -->
+      <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="250" cy="140" rx="220" ry="30" fill="#EFF6FF" opacity=".6"/>
+        <!-- 남자 실루엣 -->
+        <circle cx="185" cy="55" r="22" fill="#BFDBFE"/>
+        <rect x="162" y="78" width="46" height="62" rx="8" fill="#93C5FD"/>
+        <!-- 여자 실루엣 -->
+        <circle cx="315" cy="55" r="22" fill="#FBCFE8"/>
+        <path d="M292 78 Q315 72 338 78 L342 140 H288 Z" fill="#FCA5A5"/>
+        <!-- 연결선 -->
+        <path d="M207 75 Q250 50 293 75" stroke="#2563EB" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity=".5"/>
+        <!-- 하트 -->
+        <text x="242" y="54" font-size="16" text-anchor="middle" opacity=".8">💙</text>
+        <!-- 팔레트 -->
+        <text x="340" y="105" font-size="18" opacity=".6">🎨</text>
+        <!-- 공학 기호 -->
+        <text x="150" y="105" font-size="18" opacity=".6">⚙️</text>
+      </svg>
+    </div>
+    <div class="pk1-footer">
+      <div>
+        <div class="pk1-footer-brand">공대생 할아버지, 미대생 할머니</div>
+        <div class="pk1-footer-url">무료 연재 · 매일 오전 공개</div>
+      </div>
+      <div class="pk1-qr">QR<br>코드</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 2: 딥 네이비 다크
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">② 딥 네이비 다크</div>
+  <div class="a4-label">깊고 우아한 다크 배경</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk2-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk2-wrap">
+  <div class="a4 pk2">
+    <div class="pk2-inner">
+      <div class="pk2-badge">✦ STORY PLATFORM ✦</div>
+      <h1>공대생 할아버지,<br><em>미대생 할머니</em></h1>
+      <div class="pk2-sub">
+        논리와 감성이 빚어낸 40년의 사랑 이야기.<br>
+        이성과 직관이 충돌하고, 화해하고, 녹아드는 과정을<br>
+        수채화 그림과 함께 하루 한 편씩 전합니다.
+      </div>
+      <div class="pk2-stats">
+        <div>
+          <div class="pk2-stat-num">60</div>
+          <div class="pk2-stat-label">에피소드</div>
+        </div>
+        <div>
+          <div class="pk2-stat-num">6</div>
+          <div class="pk2-stat-label">파트 구성</div>
+        </div>
+        <div>
+          <div class="pk2-stat-num">40</div>
+          <div class="pk2-stat-label">년의 이야기</div>
+        </div>
+      </div>
+      <div class="pk2-art">
+        <div class="pk2-art-circle">🌙</div>
+      </div>
+    </div>
+    <div class="pk2-footer">
+      <div>
+        <div class="pk2-footer-text">공대생 할아버지, 미대생 할머니</div>
+        <div class="pk2-footer-text" style="margin-top:2px">매일 오전 새 에피소드 공개 · 무료</div>
+      </div>
+      <div class="pk2-footer-url">무료 연재 플랫폼</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 3: 수채화풍 따뜻한 톤
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">③ 수채화풍 따뜻한 톤</div>
+  <div class="a4-label">따뜻한 앰버·오렌지 톤, 세리프 서체</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk3-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk3-wrap">
+  <div class="a4 pk3">
+    <div class="pk3-banner">🎨 수채화와 함께 읽는 연재 이야기</div>
+    <div class="pk3-body">
+      <div class="pk3-watercolor">
+        <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="240" cy="100" rx="200" ry="45" fill="#FED7AA" opacity=".5"/>
+          <ellipse cx="140" cy="80" rx="90" ry="40" fill="#FECACA" opacity=".4"/>
+          <ellipse cx="340" cy="80" rx="90" ry="40" fill="#DDD6FE" opacity=".4"/>
+          <text x="240" y="95" font-size="36" text-anchor="middle" opacity=".7">🎨</text>
+          <text x="130" y="95" font-size="28" text-anchor="middle" opacity=".6">⚙️</text>
+          <text x="355" y="95" font-size="22" text-anchor="middle" opacity=".5">🖌️</text>
+        </svg>
+      </div>
+      <h1>공대생 할아버지,<br>미대생 할머니</h1>
+      <div class="pk3-quote">
+        "그는 각도를 재고, 나는 색을 봤다.<br>
+        그게 우리 40년의 시작이었다."
+      </div>
+      <div class="pk3-desc">
+        공학도 남편과 화가 아내가 함께 살아온 40년.<br>
+        서로 다른 방식으로 세상을 바라보며 만들어낸<br>
+        웃음과 눈물, 그 크고 작은 순간들을 기록합니다.<br>
+        수채화 그림과 함께 매일 오전 한 편씩 공개됩니다.
+      </div>
+      <div class="pk3-tags">
+        <span class="pk3-tag">📖 60편 연재</span>
+        <span class="pk3-tag">🎨 수채화 일러스트</span>
+        <span class="pk3-tag">💑 부부 이야기</span>
+        <span class="pk3-tag">🆓 무료 공개</span>
+        <span class="pk3-tag">📱 모바일 최적화</span>
+      </div>
+      <div class="pk3-spacer"></div>
+      <div class="pk3-footer">
+        <div>
+          <div class="pk3-brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk3-url">매일 새 에피소드 · 무료</div>
+        </div>
+        <div class="pk3-qr">QR<br>코드</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 4: 골드 럭셔리
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">④ 골드 럭셔리</div>
+  <div class="a4-label">블랙 & 골드, 고급스러운 느낌</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk4-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk4-wrap">
+  <div class="a4 pk4">
+    <div class="pk4-border">
+      <div class="pk4-ornament">— ✦ —</div>
+      <h1>공대생 할아버지<br>미대생 할머니</h1>
+      <div class="pk4-line"></div>
+      <div class="pk4-sub">LOVE STORY · 40 YEARS · SERIALIZED</div>
+      <div class="pk4-divider">
+        <div class="pk4-divider-line"></div>
+        <div class="pk4-divider-icon">✦</div>
+        <div class="pk4-divider-line"></div>
+      </div>
+      <div class="pk4-desc">
+        이성과 감성의 충돌과 조화.<br>
+        공학도와 화가가 함께 빚어낸 40년의 사랑 이야기를<br>
+        수채화 그림과 함께 하루 한 편, 정성껏 전합니다.<br><br>
+        매일 오전, 새로운 에피소드가 공개됩니다.
+      </div>
+      <div class="pk4-features">
+        <div class="pk4-feat">
+          <div class="pk4-feat-num">60</div>
+          <div class="pk4-feat-label">EPISODES</div>
+        </div>
+        <div class="pk4-feat">
+          <div class="pk4-feat-num">6</div>
+          <div class="pk4-feat-label">PARTS</div>
+        </div>
+        <div class="pk4-feat">
+          <div class="pk4-feat-num">40</div>
+          <div class="pk4-feat-label">YEARS</div>
+        </div>
+        <div class="pk4-feat">
+          <div class="pk4-feat-num">∞</div>
+          <div class="pk4-feat-label">FREE</div>
+        </div>
+      </div>
+      <div class="pk4-spacer"></div>
+      <div class="pk4-footer">
+        <div class="pk4-footer-brand">공대생 할아버지, 미대생 할머니</div>
+        <div class="pk4-footer-url">무료 연재 플랫폼 · 매일 업데이트</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 5: 봄 그린 내추럴
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑤ 봄 그린 내추럴</div>
+  <div class="a4-label">싱그러운 초록, 자연스러운 느낌</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk5-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk5-wrap">
+  <div class="a4 pk5">
+    <div class="pk5-header">
+      <div class="pk5-header-badge">🌿 매일 오전 공개</div>
+      <h1>공대생 할아버지,<br>미대생 할머니</h1>
+      <p>이성과 감성이 만나 키워낸 40년의 사랑을<br>수채화 그림과 함께 연재합니다.</p>
+    </div>
+    <div class="pk5-body">
+      <div class="pk5-illus-row">
+        <div class="pk5-illus-card">
+          <div class="pk5-illus-icon">📖</div>
+          <div class="pk5-illus-title">60편 에피소드</div>
+          <div class="pk5-illus-text">1부 첫만남부터 6부 노년까지</div>
+        </div>
+        <div class="pk5-illus-card">
+          <div class="pk5-illus-icon">🎨</div>
+          <div class="pk5-illus-title">수채화 그림</div>
+          <div class="pk5-illus-text">할머니가 그린 수채화 일러스트</div>
+        </div>
+        <div class="pk5-illus-card">
+          <div class="pk5-illus-icon">🆓</div>
+          <div class="pk5-illus-title">무료 공개</div>
+          <div class="pk5-illus-text">로그인 없이 누구나 읽기</div>
+        </div>
+      </div>
+      <div class="pk5-quote">
+        "그는 설계도를 그렸고, 나는 수채화를 그렸다.<br>
+        그런데 우리가 함께 그린 것은, 결국 하나의 삶이었다."
+      </div>
+      <div style="font-size:.82rem;color:#065F46;line-height:1.85;margin-bottom:20px">
+        공학과 미술—전혀 다른 두 세계가 만나 빚어낸 이야기.<br>
+        매일 오전, 새로운 에피소드와 수채화 그림이 공개됩니다.<br>
+        아침 커피 한 잔과 함께 읽기 좋은 짧고 따뜻한 이야기입니다.
+      </div>
+      <div class="pk5-spacer"></div>
+      <div class="pk5-footer">
+        <div class="pk5-footer-left">
+          <div class="brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="url">무료 연재 · 매일 새 에피소드</div>
+        </div>
+        <div class="pk5-footer-qr">QR<br>코드</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 6: 라벤더 보라
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑥ 라벤더 퍼플</div>
+  <div class="a4-label">보라빛 우아함, 카드 그리드 레이아웃</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk6-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk6-wrap">
+  <div class="a4 pk6">
+    <div class="pk6-accent-bar"></div>
+    <div class="pk6-body">
+      <div class="pk6-eyebrow">SERIALIZED LOVE STORY</div>
+      <h1>공대생 할아버지,<br><em>미대생 할머니</em></h1>
+      <div class="pk6-desc">
+        서로 다른 언어로 세상을 이해하는 두 사람.<br>
+        공학적 사고와 예술적 감성이 40년 동안 부딪히고,<br>
+        녹아들며 만들어낸 따뜻한 삶의 이야기를 전합니다.
+      </div>
+      <div class="pk6-cards">
+        <div class="pk6-card">
+          <div class="pk6-card-icon">📖</div>
+          <div>
+            <div class="pk6-card-title">60편 연재</div>
+            <div class="pk6-card-text">6부 구성, 매일 한 편씩 공개</div>
+          </div>
+        </div>
+        <div class="pk6-card">
+          <div class="pk6-card-icon">🎨</div>
+          <div>
+            <div class="pk6-card-title">수채화 그림</div>
+            <div class="pk6-card-text">에피소드마다 수채화 일러스트 수록</div>
+          </div>
+        </div>
+        <div class="pk6-card">
+          <div class="pk6-card-icon">💑</div>
+          <div>
+            <div class="pk6-card-title">실화 기반</div>
+            <div class="pk6-card-text">실제 부부의 삶에서 영감을 받은 이야기</div>
+          </div>
+        </div>
+        <div class="pk6-card">
+          <div class="pk6-card-icon">🆓</div>
+          <div>
+            <div class="pk6-card-title">무료 공개</div>
+            <div class="pk6-card-text">가입 없이 누구나 읽을 수 있습니다</div>
+          </div>
+        </div>
+      </div>
+      <div class="pk6-spacer"></div>
+      <div class="pk6-bottom">
+        <div>
+          <div class="pk6-bottom-text">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk6-bottom-url">매일 오전 새 에피소드 · 무료 연재</div>
+        </div>
+        <div class="pk6-bottom-qr">QR<br>코드</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 7: 신문 타이포그래피
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑦ 신문 타이포그래피</div>
+  <div class="a4-label">빈티지 신문 스타일, 2단 레이아웃</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk7-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk7-wrap">
+  <div class="a4 pk7">
+    <div class="pk7-masthead">
+      <div class="pk7-masthead-sub">THE STORY PLATFORM · EST. 2026</div>
+      <h1>공대생 할아버지, 미대생 할머니</h1>
+    </div>
+    <div class="pk7-dateline">
+      <span>Vol. 1 No. 1</span>
+      <span>연재 중 · 매일 오전 공개</span>
+      <span>무료</span>
+    </div>
+    <div class="pk7-cols">
+      <div>
+        <div class="pk7-headline">논리와 감성이 만난 40년, 매일 한 편씩 공개</div>
+        <div class="pk7-body-text">
+          공학도 남편과 미술을 사랑하는 아내. 전혀 다른 두 사람이 처음 만난 순간부터,
+          40년 동안 부딪히고 화해하며 함께 살아온 이야기를 연재합니다.
+        </div>
+        <div class="pk7-pullquote">
+          "그는 왜냐고 물었고<br>나는 어때냐고 물었다"
+        </div>
+        <div class="pk7-body-text">
+          1부 첫만남부터 6부 노년까지, 총 60편의 에피소드가 하루 한 편씩 공개됩니다.
+          매 편마다 수채화 그림이 함께 수록됩니다.
+        </div>
+      </div>
+      <div class="pk7-col-divider"></div>
+      <div>
+        <div class="pk7-art-box">🎨</div>
+        <div class="pk7-caption">할머니의 수채화 그림이 매 에피소드에 함께 수록됩니다.</div>
+        <div class="pk7-body-text" style="margin-top:12px">
+          <strong>에피소드 구성</strong><br>
+          1부 첫만남 (EP 1~10)<br>
+          2부 연애 (EP 11~20)<br>
+          3부 결혼 (EP 21~30)<br>
+          4부 생활 (EP 31~40)<br>
+          5부 중년 (EP 41~50)<br>
+          6부 노년 (EP 51~60)
+        </div>
+        <div class="pk7-pullquote">무료 · 가입 불필요</div>
+      </div>
+    </div>
+    <div class="pk7-footer">
+      <span>공대생 할아버지, 미대생 할머니</span>
+      <span>매일 오전 새 에피소드 공개</span>
+      <span>무료 연재 플랫폼</span>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 8: 모던 핑크 그라디언트
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑧ 모던 핑크 그라디언트</div>
+  <div class="a4-label">핑크-퍼플 그라디언트, 대화 버블</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk8-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk8-wrap">
+  <div class="a4 pk8">
+    <div class="pk8-body">
+      <div class="pk8-pill">💑 사랑 이야기 연재</div>
+      <h1>공대생 할아버지,<br><span>미대생 할머니</span></h1>
+      <div class="pk8-desc">
+        이성과 감성이 40년 동안 나눈 이야기.<br>
+        매일 오전, 수채화 그림과 함께 한 편씩 공개됩니다.
+      </div>
+      <div class="pk8-bubbles">
+        <div class="pk8-bubble him">
+          <div class="pk8-bubble-label">⚙️ 할아버지</div>
+          "미술관 입장 시각을 기준으로 봤을 때, 오늘 오후 3시가 최적이야."
+        </div>
+        <div class="pk8-bubble her">
+          <div class="pk8-bubble-label">🎨 할머니</div>
+          "그냥 노을이 예쁠 것 같아서 거기 가고 싶었어."
+        </div>
+        <div class="pk8-bubble him">
+          <div class="pk8-bubble-label">⚙️ 할아버지</div>
+          "노을 시각: 오후 6시 47분. 이동 시간 23분. 그러면 6시 24분 출발."
+        </div>
+        <div class="pk8-bubble her">
+          <div class="pk8-bubble-label">🎨 할머니</div>
+          "... 그래서 같이 갈 거야, 안 갈 거야?"
+        </div>
+      </div>
+      <div class="pk8-spacer"></div>
+    </div>
+    <div class="pk8-footer">
+      <div>
+        <div class="pk8-footer-brand">공대생 할아버지, 미대생 할머니</div>
+        <div class="pk8-footer-url">60편 연재 · 매일 오전 공개 · 무료</div>
+      </div>
+      <div class="pk8-footer-qr">QR<br>코드</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 9: 스케치/손그림 스타일
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑨ 스케치 손그림 스타일</div>
+  <div class="a4-label">노란 스케치북 느낌, 손그림 감성</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk9-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk9-wrap">
+  <div class="a4 pk9">
+    <div class="pk9-sketch-header">
+      <div class="pk9-sketch-icon">✏️</div>
+      <div class="pk9-sketch-title">
+        <h1>공대생 할아버지,<br>미대생 할머니</h1>
+        <p>수채화와 함께 읽는 부부 이야기</p>
+      </div>
+    </div>
+    <hr class="pk9-sketch-line">
+    <div class="pk9-story-boxes">
+      <div class="pk9-story-box">
+        <div class="pk9-story-num">1부</div>
+        <div class="pk9-story-label">첫만남</div>
+        <div class="pk9-story-text">미술관 앞에서 만난 두 사람</div>
+      </div>
+      <div class="pk9-story-box">
+        <div class="pk9-story-num">2부</div>
+        <div class="pk9-story-label">연애</div>
+        <div class="pk9-story-text">논리와 감성의 충돌과 설렘</div>
+      </div>
+      <div class="pk9-story-box">
+        <div class="pk9-story-num">3부</div>
+        <div class="pk9-story-label">결혼</div>
+        <div class="pk9-story-text">하나의 삶을 시작하다</div>
+      </div>
+      <div class="pk9-story-box">
+        <div class="pk9-story-num">4부</div>
+        <div class="pk9-story-label">생활</div>
+        <div class="pk9-story-text">함께 살아가는 날들</div>
+      </div>
+      <div class="pk9-story-box">
+        <div class="pk9-story-num">5부</div>
+        <div class="pk9-story-label">중년</div>
+        <div class="pk9-story-text">세월이 더해준 것들</div>
+      </div>
+      <div class="pk9-story-box">
+        <div class="pk9-story-num">6부</div>
+        <div class="pk9-story-label">노년</div>
+        <div class="pk9-story-text">40년이 쌓인 두 사람</div>
+      </div>
+    </div>
+    <div class="pk9-note">
+      그는 설계도를 그리고, 나는 수채화를 그렸다.<br>
+      우리가 함께 그린 것은, 결국 하나의 삶이었다.
+    </div>
+    <div class="pk9-tags">
+      <span class="pk9-tag">📖 60편</span>
+      <span class="pk9-tag">🎨 수채화</span>
+      <span class="pk9-tag">💑 부부</span>
+      <span class="pk9-tag">🆓 무료</span>
+      <span class="pk9-tag">📱 모바일</span>
+    </div>
+    <div class="pk9-spacer"></div>
+    <div class="pk9-footer">
+      <div>
+        <div class="pk9-brand">공대생 할아버지, 미대생 할머니</div>
+        <div class="pk9-url">매일 오전 공개 · 무료 연재</div>
+      </div>
+      <div class="pk9-qr">QR<br>코드</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     홍보물 10: 시네마틱 그레이
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑩ 시네마틱 다크 그레이</div>
+  <div class="a4-label">영화 포스터 스타일, 타임라인</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="printOne('pk10-wrap')">🖨️ 인쇄</button>
+  </div>
+  <div id="pk10-wrap">
+  <div class="a4 pk10">
+    <div class="pk10-band"></div>
+    <div class="pk10-body">
+      <div class="pk10-chapter">CHAPTER 01 — STORY BEGINS</div>
+      <h1>공대생 할아버지,<br><span>미대생 할머니</span></h1>
+      <div class="pk10-tagline">
+        논리와 감성. 공학과 예술. 두 세계가 만나<br>
+        40년 동안 빚어낸 사랑의 이야기.
+      </div>
+      <div class="pk10-parts">
+        <div class="pk10-part">
+          <div class="pk10-part-dot" style="background:#3B82F6"></div>
+          <div class="pk10-part-name">1부 첫만남</div>
+        </div>
+        <div class="pk10-part">
+          <div class="pk10-part-dot" style="background:#EF4444"></div>
+          <div class="pk10-part-name">2부 연애</div>
+        </div>
+        <div class="pk10-part">
+          <div class="pk10-part-dot" style="background:#10B981"></div>
+          <div class="pk10-part-name">3부 결혼</div>
+        </div>
+        <div class="pk10-part">
+          <div class="pk10-part-dot" style="background:#F59E0B"></div>
+          <div class="pk10-part-name">4부 생활</div>
+        </div>
+        <div class="pk10-part">
+          <div class="pk10-part-dot" style="background:#8B5CF6"></div>
+          <div class="pk10-part-name">5부 중년</div>
+        </div>
+        <div class="pk10-part">
+          <div class="pk10-part-dot" style="background:#FBBF24"></div>
+          <div class="pk10-part-name">6부 노년</div>
+        </div>
+      </div>
+      <div class="pk10-timeline">
+        <div class="pk10-tl-title">STORY HIGHLIGHTS</div>
+        <div class="pk10-tl-row">
+          <div class="pk10-tl-dot"></div>
+          <div class="pk10-tl-text">"미술관 앞에서" — 오후 3시, 처음 눈이 마주쳤다</div>
+        </div>
+        <div class="pk10-tl-row">
+          <div class="pk10-tl-dot" style="background:#93C5FD"></div>
+          <div class="pk10-tl-text">"20분 늦은 이유" — 그녀의 대답이 예상 밖이었다</div>
+        </div>
+        <div class="pk10-tl-row">
+          <div class="pk10-tl-dot" style="background:#A7F3D0"></div>
+          <div class="pk10-tl-text">수채화와 함께, 매일 오전 한 편씩 새 에피소드 공개</div>
+        </div>
+      </div>
+      <div class="pk10-spacer"></div>
+      <div class="pk10-footer">
+        <div>
+          <div class="pk10-footer-brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk10-footer-url">60편 연재 · 무료 공개 · 매일 업데이트</div>
+        </div>
+        <div class="pk10-footer-qr">QR<br>코드</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div style="height:60px"></div>
+
+<script src="js/common.js"></script>
+<script>
+function printOne(wrapId) {
+  const el = document.getElementById(wrapId);
+  if (!el) return;
+  const html = `<!DOCTYPE html><html lang="ko"><head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background: #fff; }
+      @page { size: A4; margin: 0; }
+      @media print { body { margin: 0; } }
+    </style>
+    <style>${document.querySelector('style').textContent}</style>
+  </head><body>${el.innerHTML}</body></html>`;
+  const w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+  w.onload = () => { w.focus(); w.print(); };
+}
+</script>
+</body>
+</html>
