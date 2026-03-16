@@ -130,6 +130,13 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .art-copy-btn:hover { background: #1D4ED8; }
 .art-copy-btn.copied { background: #059669; }
+.art-img-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 20px; border-radius: 8px; cursor: pointer;
+  font-size: .82rem; font-weight: 900; font-family: 'Noto Sans KR', sans-serif;
+  background: #fff; color: #059669; border: 1.5px solid #059669; transition: all .18s;
+}
+.art-img-btn:hover { background: #059669; color: #fff; }
 .art-copy-hint { font-size: .72rem; color: #6B7280; font-weight: 700; }
 
 /* ── 반응형 ── */
@@ -217,7 +224,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art1', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art1')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -272,7 +280,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art2', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art2')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -330,7 +339,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art3', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art3')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -377,7 +387,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art4', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art4')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -424,7 +435,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art5', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art5')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -472,7 +484,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art6', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art6')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -519,7 +532,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art7', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art7')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -566,7 +580,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art8', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art8')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -614,7 +629,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art9', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art9')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -671,7 +687,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art10', event)">📋 기사 전문 복사</button>
-      <span class="art-copy-hint">텍스트 복사 + 이미지 자동 다운로드</span>
+      <button class="art-img-btn" onclick="downloadImg('art10')">🖼 사진 다운로드</button>
+      <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
 </div>
@@ -751,11 +768,7 @@ function copyArticle(artId, ev) {
   const btn = ev.currentTarget;
   const orig = btn.textContent;
 
-  // 본문 텍스트 추출
-  const bodyText = textEl.innerText
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-
+  const bodyText = textEl.innerText.replace(/\n{3,}/g, '\n\n').trim();
   const fullText =
     meta.headline + '\n\n' +
     meta.title + '\n\n' +
@@ -764,41 +777,35 @@ function copyArticle(artId, ev) {
     bodyText + '\n\n' +
     '─────────────────────────────────\n' +
     '공대생 할아버지, 미대생 할머니 | 무료 연재 플랫폼\n' +
-    '2026년 3월 21일 연재 시작 · 매일 오전 1편씩 공개\n' +
-    '이미지 파일명: ' + meta.img;
+    '2026년 3월 21일 연재 시작 · 매일 오전 1편씩 공개';
 
-  // 텍스트 클립보드 복사
-  const doCopy = () => {
-    navigator.clipboard.writeText(fullText).then(() => {
-      btn.textContent = '✅ 복사 완료! (이미지 저장 중)';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2500);
-    }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = fullText;
-      ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy');
-      document.body.removeChild(ta);
-      btn.textContent = '✅ 복사 완료! (이미지 저장 중)';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2500);
-    });
-  };
+  navigator.clipboard.writeText(fullText).then(() => {
+    btn.textContent = '✅ 복사 완료!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2200);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = fullText;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = '✅ 복사 완료!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2200);
+  });
+}
 
-  // 이미지 다운로드
-  const downloadImg = () => {
-    const a = document.createElement('a');
-    a.href = meta.img;
-    a.download = meta.img;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
-
-  doCopy();
-  downloadImg();
+function downloadImg(artId) {
+  const meta = ARTICLES[artId];
+  if (!meta) return;
+  const a = document.createElement('a');
+  a.href = meta.img;
+  a.download = meta.img;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 </script>
 </body>
