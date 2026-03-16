@@ -18,7 +18,7 @@ const EPISODE_CONTENT = [
 <p>공대생은 그 말을 이해하려고 했다. 하지만 노을은 해질 녘에 나타나는 현상이었다. 오후 3시의 빛이 노을 같다는 것은 기상학적으로 설명하기 어려운 표현이었다.</p>
 <p>그는 다시 하늘을 봤다.</p>
 <p>확실히 맑았다. 그러나 노을은 아니었다.</p>
-<p>그런데 이상하게도, 그녀의 말을 들으니 그 빛이 조금 달라 보이는 것 같기도 했다. 아니, 그런 리가 없었다. 빛의 파장은 변하지 않는다.</p>
+<p>그런데 이상하게도, 그녀의 말을 들으니 그 빛이 조금 달라 보이는 것 같기도 했다. 아니, 그럴 리가 없었다. 빛의 파장은 변하지 않는다.</p>
 <div class="dialogue"><div class="speaker">공대생</div><div class="line">"다음에는 출발 시간을 역산해서 오시면 어떨까요?"</div></div>
 <div class="dialogue"><div class="speaker">미대생</div><div class="line">"역산이요?"</div></div>
 <div class="dialogue"><div class="speaker">공대생</div><div class="line">"약속 시간에서 이동 시간을 빼고, 거기서 변수 시간을 10분 더 빼면 출발 시간이 나와요."</div></div>
@@ -293,7 +293,7 @@ const EPISODE_CONTENT = [
   id: 12,
   content: `
 <p>여행은 계획이 틀어지면서 시작됐다.</p>
-<p>공대생은 이틀간의 여행 일정을 완벽하게 짜두었다. 스프레드시트 다섯 장 분량이었다. 숙소, 식당, 이동 수단, 각 장소의 영업시간과 대기 시간 예측값까지.</p>
+<p>공대생은 여행 일정을 완벽하게 짜두었다. 스프레드시트 두 장 분량이었다. 카페, 식당, 이동 수단, 각 장소의 영업시간과 대기 시간 예측값까지.</p>
 <p>첫 번째 틀어짐은 출발 당일 아침에 일어났다. 고속도로 사고로 우회가 필요했다. 예정 도착 시간이 1시간 지연됐다.</p>
 <div class="dialogue"><div class="speaker">공대생</div><div class="line">"일정이 한 시간 밀렸어요. 첫 번째 식당은 포기해야 해요."</div></div>
 <div class="dialogue"><div class="speaker">미대생</div><div class="line">"그러면 가다가 맛있어 보이는 곳 들어가요."</div></div>
