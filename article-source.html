@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기사원본 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111827; }
+
+/* ── 페이지 헤더 ── */
+.pk-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  padding: 48px 24px 40px; text-align: center; color: #fff;
+}
+.pk-header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 10px; }
+.pk-header p { font-size: 1rem; opacity: .85; margin-bottom: 28px; }
+.pk-nav { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pk-nav a {
+  padding: 8px 20px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 20px; color: #fff; font-size: .82rem; font-weight: 700;
+  text-decoration: none; transition: background .18s;
+}
+.pk-nav a:hover { background: rgba(255,255,255,.35); }
+
+/* ── 섹션 ── */
+.as-section { max-width: 860px; margin: 44px auto; padding: 0 20px; }
+.as-section-label {
+  font-size: 1rem; font-weight: 800; color: #374151; margin-bottom: 20px;
+  padding-bottom: 10px; border-bottom: 2px solid #E5E7EB;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── 기사 카드 ── */
+.art-card {
+  background: #fff; border: 1.5px solid #E4E9F2; border-radius: 14px;
+  overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+
+/* ── 기사 이미지 ── */
+.art-img {
+  width: 100%; height: 280px; overflow: hidden; position: relative; flex-shrink: 0;
+}
+.art-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.art-img-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,.6); color: rgba(255,255,255,.88);
+  font-size: .68rem; font-weight: 700; padding: 6px 16px;
+}
+
+/* ── 기사 헤더 (마스트헤드) ── */
+.art-masthead {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px; border-bottom: 1px solid #F3F4F6; flex-wrap: wrap; gap: 6px;
+}
+.art-masthead-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.art-cat {
+  display: inline-block; padding: 3px 10px; border-radius: 4px;
+  font-size: .68rem; font-weight: 900; letter-spacing: .04em;
+  background: #1E3A8A; color: #fff;
+}
+.art-masthead-media { font-size: .78rem; font-weight: 900; color: #1E3A8A; }
+.art-masthead-date { font-size: .72rem; color: #6B7280; font-weight: 700; }
+
+/* ── 기사 본문 ── */
+.art-body-wrap { padding: 20px 24px 16px; }
+.art-headline {
+  font-family: 'Noto Serif KR', serif; font-size: 1.35rem; font-weight: 900;
+  color: #111827; line-height: 1.45; margin-bottom: 10px;
+}
+.art-standfirst {
+  font-size: .9rem; font-weight: 700; color: #374151; line-height: 1.7;
+  margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #F3F4F6;
+}
+.art-byline {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+  font-size: .72rem; color: #6B7280; font-weight: 700; flex-wrap: wrap;
+}
+.art-byline strong { color: #374151; font-weight: 900; }
+.art-byline-sep { color: #D1D5DB; }
+.art-text { font-size: .86rem; color: #374151; line-height: 2.1; font-weight: 700; }
+.art-text p { margin-bottom: 12px; }
+.art-text p:last-child { margin-bottom: 0; }
+.art-text strong { color: #111827; font-weight: 900; }
+.art-text em { font-style: normal; color: #2563EB; font-weight: 900; }
+.art-pullquote {
+  margin: 16px 0; padding: 14px 20px;
+  background: #F8FAFF; border-left: 4px solid #2563EB;
+  border-radius: 0 8px 8px 0;
+  font-size: .88rem; font-style: italic; color: #1E3A8A;
+  font-weight: 700; line-height: 1.85;
+}
+.art-pullquote cite {
+  display: block; font-style: normal; font-size: .7rem;
+  color: #6B7280; margin-top: 6px;
+}
+.art-info-box {
+  margin: 16px 0; padding: 14px 18px;
+  background: #F0FDF4; border: 1px solid #D1FAE5; border-radius: 10px;
+}
+.art-info-box-title {
+  font-size: .72rem; font-weight: 900; color: #065F46;
+  margin-bottom: 8px; letter-spacing: .06em;
+}
+.art-info-box ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.art-info-box li {
+  font-size: .78rem; color: #374151; font-weight: 700;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.art-info-box li::before { content: '▸'; color: #059669; flex-shrink: 0; }
+.art-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #F3F4F6; }
+.art-tag {
+  padding: 3px 10px; border: 1px solid #E5E7EB; border-radius: 20px;
+  font-size: .67rem; color: #6B7280; font-weight: 700; text-decoration: none;
+}
+.art-tag:hover { border-color: #2563EB; color: #2563EB; }
+
+/* ── 복사 버튼 영역 ── */
+.art-copy-bar {
+  padding: 12px 24px; background: #F8FAFF;
+  border-top: 1px solid #E4E9F2;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.art-copy-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 20px; border-radius: 8px; border: none; cursor: pointer;
+  font-size: .82rem; font-weight: 900; font-family: 'Noto Sans KR', sans-serif;
+  background: #2563EB; color: #fff; transition: all .18s;
+}
+.art-copy-btn:hover { background: #1D4ED8; }
+.art-copy-btn.copied { background: #059669; }
+.art-copy-hint { font-size: .72rem; color: #6B7280; font-weight: 700; }
+
+/* ── 반응형 ── */
+@media(max-width:600px) {
+  .art-headline { font-size: 1.1rem; }
+  .art-img { height: 200px; }
+  .art-body-wrap { padding: 14px 16px 12px; }
+  .art-copy-bar { padding: 10px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="pk-header">
+  <h1>📝 기사원본</h1>
+  <p>공대생 할아버지, 미대생 할머니 — 인터넷신문 게재용 기사 원문 10편</p>
+  <div class="pk-nav">
+    <a href="index.html">🏠 메인</a>
+    <a href="news-kit.html">📰 기사자료</a>
+    <a href="press-kit.html">📋 안내자료</a>
+    <a href="episodes.html">📚 에피소드</a>
+  </div>
+</div>
+
+<div class="as-section">
+  <div class="as-section-label">💡 사용 안내</div>
+  <p style="font-size:.86rem;color:#4B5563;line-height:1.85;background:#fff;padding:16px 20px;border-radius:10px;border:1px solid #E4E9F2">
+    각 기사 아래 <strong>[기사 전문 복사]</strong> 버튼을 클릭하면 기사 원문이 클립보드에 복사됩니다. 이미지는 별도 저장 후 함께 첨부하세요.<br>
+    기사 형식·제목·내용은 자유롭게 수정해 사용할 수 있습니다.
+  </p>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 1: 플랫폼 오픈 발표 뉴스
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">① 플랫폼 오픈 발표 뉴스</div>
+  <div class="art-card">
+    <div class="art-img">
+      <img src="couple-park.png" alt="공원 산책 커플">
+      <div class="art-img-caption">▲ 공학도 남편과 화가 아내의 40년 사랑 이야기를 담은 연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 2026년 3월 21일 오픈한다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat">문화·라이프</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.21 09:00 | 수정 2026.03.21 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">"논리와 감성이 만나는 40년의 사랑"… 무료 연재 플랫폼 '공대생 할아버지, 미대생 할머니' 오픈</h1>
+      <div class="art-standfirst">수채화 일러스트와 함께 매일 오전 한 편씩 무료 공개… 60편 완결 부부 이야기, 21일 정식 서비스 시작</div>
+      <div class="art-byline">
+        <strong>김민준 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.21 09:00</span>
+        <span class="art-byline-sep">|</span>
+        <span>댓글 <strong>0</strong></span>
+      </div>
+      <div class="art-text" id="art1-text">
+        <p>공학도 남편과 화가 아내가 함께 살아온 <strong>40년간의 실화</strong>를 담은 온라인 연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 21일 정식 서비스를 시작한다고 밝혔다.</p>
+        <p>이 플랫폼은 이공계 출신의 논리적인 남편과 미술대학 출신의 감성적인 아내가 부딪히고 조화를 이루며 살아온 40년의 이야기를 <strong>6개 파트, 총 60편의 에피소드</strong>로 구성했다. 첫만남부터 연애, 결혼, 생활, 중년, 노년까지 이어지는 이야기가 매일 오전 한 편씩 무료로 공개된다.</p>
+        <div class="art-pullquote">
+          "공학과 예술이라는 서로 다른 세계를 가진 두 사람이 40년을 함께 살아온 이야기는, 결국 서로 다른 우리 모두의 이야기입니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p>특히 각 에피소드마다 <strong>본문과 어울리는 수채화 일러스트</strong>가 함께 수록되어 글과 그림이 조화를 이루는 독특한 읽기 경험을 제공한다. 로그인이나 회원가입 없이 누구나 무료로 이용할 수 있으며, 모바일 환경에서도 편리하게 읽을 수 있도록 최적화되었다.</p>
+        <div class="art-info-box">
+          <div class="art-info-box-title">▸ 서비스 주요 정보</div>
+          <ul>
+            <li>서비스명: 공대생 할아버지, 미대생 할머니</li>
+            <li>연재 시작: 2026년 3월 21일 (매일 오전 공개)</li>
+            <li>총 분량: 6개 파트, 60편 완결</li>
+            <li>이용 요금: 완전 무료 (로그인 불필요)</li>
+            <li>특징: 에피소드마다 수채화 일러스트 수록</li>
+          </ul>
+        </div>
+        <p>개발팀은 "두 사람의 이야기는 단순한 부부 이야기를 넘어, 서로 다른 배경과 성격을 가진 사람들이 함께 살아가는 방법에 대한 이야기"라며 "독자들이 자신과 소중한 사람을 이 이야기 안에서 발견하길 바란다"고 전했다.</p>
+        <p>한편 플랫폼은 독자 참여 기능도 마련해, 에피소드마다 독자들이 공감과 댓글을 남길 수 있도록 설계됐다. 향후 독자 참여형 이벤트와 함께 책 출판도 검토 중인 것으로 알려졌다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#무료연재</a>
+        <a class="art-tag" href="#">#수채화</a>
+        <a class="art-tag" href="#">#부부이야기</a>
+        <a class="art-tag" href="#">#연재플랫폼</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art1')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 2: 저자·개발팀 인터뷰
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">② 저자·개발팀 단독 인터뷰</div>
+  <div class="art-card">
+    <div class="art-img">
+      <img src="couple-watercolor.png" alt="커플 수채화">
+      <div class="art-img-caption">▲ '공대생 할아버지, 미대생 할머니' 수채화 일러스트. 매 에피소드마다 본문과 어울리는 그림이 함께 수록된다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#059669">인터뷰·특집</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.21 10:00 | 수정 2026.03.21 10:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">"40년을 함께 살았지만, 아직도 서로가 신기합니다"… '공대생 할아버지, 미대생 할머니' 개발팀 단독 인터뷰</h1>
+      <div class="art-standfirst">이공계와 예술계의 만남이 빚어낸 40년 실화… "다름이 충돌이 아닌 풍요로움"이라는 것을 60편의 이야기로 증명한다</div>
+      <div class="art-byline">
+        <strong>이서연 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.21 10:00</span>
+      </div>
+      <div class="art-text" id="art2-text">
+        <p>오늘(21일) 정식 서비스를 시작한 온라인 연재 플랫폼 '공대생 할아버지, 미대생 할머니' 개발팀을 만나 이야기를 들었다. 공학도 남편과 화가 아내의 40년 실화를 담은 이 플랫폼은, 두 사람의 극적인 시각 차이를 유쾌하고 따뜻하게 풀어내 출시 전부터 화제를 모았다.</p>
+        <p><strong>— 이 이야기를 연재하게 된 계기가 무엇인가요?</strong></p>
+        <p>"처음엔 그냥 가족 안에서만 웃고 넘겼던 이야기들이에요. 그런데 어느 날 이 이야기들을 기록해보니, 40년 동안 쌓인 에피소드가 60개가 넘더라고요. 이걸 혼자 가지고 있기가 너무 아까웠습니다."</p>
+        <p><strong>— 논리적인 남편과 감성적인 아내의 충돌, 어떻게 이야기로 담았나요?</strong></p>
+        <p>"사실 처음엔 충돌이 정말 많았어요. '이건 빨강입니다'와 '이건 노을색이에요'처럼 같은 걸 보면서도 완전히 다른 언어를 쓰는 거죠. 하지만 40년을 함께 살다 보니, 그 다름이 충돌이 아니라 오히려 서로를 더 풍요롭게 만들어준다는 걸 알게 됐습니다. 그 과정이 이 이야기의 핵심입니다."</p>
+        <div class="art-pullquote">
+          "그는 각도를 재고, 나는 색을 봤다. 그게 우리 40년의 시작이었다. 그리고 그 다름이, 결국 우리를 더 깊게 만들어주었습니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p><strong>— 수채화 일러스트를 함께 수록한 이유가 있나요?</strong></p>
+        <p>"화가 아내의 이야기이기도 하니까요. 글로만 전달하기 어려운 감정들을 수채화가 대신 말해준다는 느낌이 있어요. 그림을 먼저 보고 글을 읽는 독자도 있고, 글을 읽고 나서 그림을 보는 독자도 있는데, 두 방식 모두 새로운 경험을 준다는 게 재밌습니다."</p>
+        <p><strong>— 독자들에게 전하고 싶은 메시지는?</strong></p>
+        <p>"달라도 괜찮다는 것, 그리고 그 다름이 결국 삶을 더 아름답게 만든다는 것입니다. 우리 이야기가 그 증거가 되길 바랍니다. 지금 곁에 있는 나와 다른 사람을, 조금 더 따뜻하게 바라볼 수 있게 되었으면 해요."</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#인터뷰</a>
+        <a class="art-tag" href="#">#수채화</a>
+        <a class="art-tag" href="#">#부부이야기</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art2')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 3: 연재 구성 소개
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">③ 6개 파트 연재 구성 소개</div>
+  <div class="art-card">
+    <div class="art-img" style="height:240px">
+      <img src="couple-park.png" alt="공원 산책 커플">
+      <div class="art-img-caption">▲ 첫만남부터 노년까지 6개 파트, 60편으로 구성된 연재 이야기. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#D97706">특집·기획</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.21 11:00 | 수정 2026.03.21 11:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">첫만남부터 노년까지… '공대생 할아버지, 미대생 할머니' 6개 파트 60편 완전 해부</h1>
+      <div class="art-standfirst">1부 첫만남에서 6부 노년까지, 40년 부부의 이야기를 담은 60편의 에피소드 구성 공개</div>
+      <div class="art-byline">
+        <strong>박지훈 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.21 11:00</span>
+      </div>
+      <div class="art-text" id="art3-text">
+        <p>21일 서비스를 시작한 연재 플랫폼 '공대생 할아버지, 미대생 할머니'의 전체 연재 구성이 공개됐다. 총 6개 파트, 60편으로 구성된 이 연재는 공학도 남편과 화가 아내의 40년 이야기를 시간 순서로 담아냈다.</p>
+        <p><strong>1부 '첫만남'(1~10편)</strong>은 미술관 앞에서 처음 만난 두 사람의 이야기로 시작된다. 시간을 계산하던 남자와 노을의 빛깔을 바라보던 여자의 첫 만남, 전혀 다른 두 언어를 가진 사람들이 서로에게 이끌리는 과정을 담는다.</p>
+        <p><strong>2부 '연애'(11~20편)</strong>에서는 엑셀로 만든 데이트 계획표, '이건 빨강입니다' vs '이건 노을색이에요'의 색깔 논쟁, 논리적인 고백 등 두 사람의 연애 방식이 충돌하고 또 매력이 되는 과정이 펼쳐진다.</p>
+        <p><strong>3부 '결혼'(21~30편)</strong>에서는 스프레드시트로 만든 프로포즈, 수채화 청첩장, 신혼여행지 선택을 둘러싼 논리와 감성의 전쟁 등 결혼 전후의 에피소드를 담는다.</p>
+        <div class="art-pullquote">
+          "4부 '생활'부터는 함께 살아가며 서로를 더 깊이 이해하는 이야기들이 이어집니다. 충돌에서 조화로, 다름에서 보완으로 변해가는 과정이 핵심입니다."
+          <cite>— 개발팀</cite>
+        </div>
+        <p><strong>4부 '생활'(31~40편)</strong>, <strong>5부 '중년'(41~50편)</strong>, <strong>6부 '노년'(51~60편)</strong>에서는 함께 살아가며 서로를 닮아가고, 세월이 더해주는 것들을 발견하며, 40년이 쌓인 두 사람의 깊어진 사랑을 그린다.</p>
+        <div class="art-info-box">
+          <div class="art-info-box-title">▸ 파트별 연재 일정</div>
+          <ul>
+            <li>1부 첫만남 (1~10편): 2026년 3월 21일~30일</li>
+            <li>2부 연애 (11~20편): 2026년 3월 31일~4월 9일</li>
+            <li>3부 결혼 (21~30편): 2026년 4월 10일~19일</li>
+            <li>4부 생활~6부 노년 (31~60편): 2026년 4월 20일~5월 19일</li>
+          </ul>
+        </div>
+        <p>모든 에피소드는 매일 오전 공개되며, 각 편마다 본문과 어울리는 수채화 일러스트가 함께 수록된다. 로그인 없이 누구나 무료로 이용 가능하다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#60편연재</a>
+        <a class="art-tag" href="#">#무료</a>
+        <a class="art-tag" href="#">#부부</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art3')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 4: 수채화 일러스트 특집
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">④ 수채화 일러스트 특집</div>
+  <div class="art-card">
+    <div class="art-img">
+      <img src="couple-watercolor.png" alt="커플 수채화">
+      <div class="art-img-caption">▲ '공대생 할아버지, 미대생 할머니'의 수채화 일러스트. 공원을 함께 걷는 두 사람의 모습이 따뜻하게 담겼다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#7C3AED">문화·예술</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.22 09:00 | 수정 2026.03.22 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">"글과 그림이 함께 말한다"… 매 에피소드 수채화 일러스트 수록, 새로운 읽기 경험 제공</h1>
+      <div class="art-standfirst">각 에피소드 본문에 최적화된 수채화 그림 수록… 이야기와 그림이 하나로 어우러지는 독특한 감성 플랫폼</div>
+      <div class="art-byline">
+        <strong>최유나 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.22 09:00</span>
+      </div>
+      <div class="art-text" id="art4-text">
+        <p>연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 기존 온라인 연재물과 차별화된 지점은 단연 <strong>수채화 일러스트</strong>다. 단순히 삽화를 추가하는 수준이 아니라, 각 에피소드의 감정과 분위기를 그림이 직접 전달하는 방식을 택했다.</p>
+        <p>플랫폼 측에 따르면 각 수채화는 에피소드의 핵심 장면이나 감정을 담아 제작됐다. 글로 표현하기 어려운 미묘한 감정의 결, 두 사람이 함께하는 순간의 공기 같은 것들을 그림이 대신 전달한다.</p>
+        <div class="art-pullquote">
+          "수채화는 경계가 흐릿하고, 색이 번지며 섞입니다. 논리와 감성이 부딪히다 결국 하나가 되는 두 사람의 이야기와 너무 잘 어울리는 재료라고 생각했습니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p>독자들은 그림을 먼저 보고 이야기를 추측한 뒤 글을 읽거나, 글을 읽은 후 그림에서 새로운 의미를 발견하는 두 가지 방식으로 즐길 수 있다. 개발팀은 "이 두 가지 순서 모두 전혀 다른 경험을 준다"며 "한 에피소드를 두 번 즐기는 셈"이라고 설명했다.</p>
+        <p>수채화 일러스트는 각 에피소드 공개일에 맞춰 함께 업데이트되며, 모바일과 데스크톱 환경 모두에서 최적화된 형태로 표시된다. 향후 수채화 원본 인쇄물 제공도 검토 중인 것으로 전해졌다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#수채화</a>
+        <a class="art-tag" href="#">#일러스트</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#예술</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art4')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 5: 출판의 새로운 시도
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">⑤ 출판의 새로운 시도 — 플랫폼 혁신</div>
+  <div class="art-card">
+    <div class="art-img" style="height:240px">
+      <img src="couple-park.png" alt="공원 산책 커플" style="object-position:center 30%">
+      <div class="art-img-caption">▲ 기존 출판 방식을 벗어난 무료 연재 플랫폼이 독자와의 새로운 소통 방식을 제안한다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#0891B2">출판·미디어</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.22 10:00 | 수정 2026.03.22 10:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">"독자가 먼저, 책은 나중에"… 연재 플랫폼이 제안하는 출판의 새로운 시도</h1>
+      <div class="art-standfirst">유료 출판보다 무료 연재로 독자와 먼저 만나는 방식 선택… "작가와 독자가 함께 만들어가는 이야기"</div>
+      <div class="art-byline">
+        <strong>정하늘 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.22 10:00</span>
+      </div>
+      <div class="art-text" id="art5-text">
+        <p>'공대생 할아버지, 미대생 할머니' 플랫폼은 기존 출판 방식과 다른 길을 선택했다. 책을 먼저 만들어 독자를 기다리는 대신, <strong>무료 연재로 독자를 먼저 만나는 방식</strong>을 택한 것이다.</p>
+        <p>개발팀은 "좋은 이야기를 가능한 많은 사람이 읽을 수 있어야 한다고 생각했다"며 "접근성을 높이기 위해 로그인도, 결제도 필요 없는 완전 무료 플랫폼으로 설계했다"고 밝혔다.</p>
+        <p>매일 오전 한 편씩 새 에피소드를 공개하는 방식도 기존 연재 플랫폼과 차별화된다. 독자들이 다음 이야기를 기다리며 일상 속에서 작은 설렘을 느끼게 하려는 의도다.</p>
+        <div class="art-pullquote">
+          "신문 연재 소설처럼, 매일 아침 출근하기 전에 오늘의 에피소드를 읽는 루틴이 생기길 바랍니다. 이야기가 독자의 일상 안으로 들어가는 것, 그게 저희가 꿈꾸는 방식입니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p>또한 독자 반응을 보며 이야기 방향을 조율하고, 독자 참여형 이벤트도 계획하고 있다. "독자가 이야기의 소비자가 아니라 함께 만들어가는 참여자가 되길 원한다"는 것이 개발팀의 철학이다.</p>
+        <p>연재 완결 후에는 독자들과 함께 책 출판을 결정할 예정이다. 구독자 수와 독자 의견을 반영해 종이책 출판 여부를 결정하는 이른바 '독자 참여형 출판' 방식을 시도한다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#출판혁신</a>
+        <a class="art-tag" href="#">#무료연재</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#디지털출판</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art5')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 6: 이공계·예술계 부부 이야기의 힘
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">⑥ 이공계와 예술계의 만남 — 사회적 메시지</div>
+  <div class="art-card">
+    <div class="art-img" style="height:240px">
+      <img src="couple-watercolor.png" alt="커플 수채화" style="object-position:center 35%">
+      <div class="art-img-caption">▲ 이공계와 예술계, 전혀 다른 두 세계의 만남이 40년의 사랑 이야기를 만들어냈다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#BE185D">라이프·인간</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.23 09:00 | 수정 2026.03.23 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">이공계 남편과 예술가 아내의 40년… "다름이 충돌이 아닌 보완임을 알게 되는 데 10년 걸렸다"</h1>
+      <div class="art-standfirst">논리와 감성이 만나 빚어낸 40년의 이야기… 서로 다른 우리 모두에게 건네는 따뜻한 메시지</div>
+      <div class="art-byline">
+        <strong>강민서 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.23 09:00</span>
+      </div>
+      <div class="art-text" id="art6-text">
+        <p>공학과 예술. 세상에서 가장 다르다고 여겨지는 두 세계가 만나 40년을 함께했다. '공대생 할아버지, 미대생 할머니'의 이야기는 단순한 부부 이야기를 넘어, <strong>서로 다른 세계의 사람들이 함께 살아가는 방법</strong>에 대한 이야기다.</p>
+        <p>이공계 출신의 남편은 모든 것을 수치로, 효율로 판단하려 했다. 반면 미대 출신의 아내는 같은 상황을 색과 감각으로 읽었다. 처음에는 이 차이가 끊임없는 갈등의 원인이었다.</p>
+        <p>"'이건 빨강입니다'와 '이건 노을색이에요'의 차이가 얼마나 큰지, 함께 살아보기 전엔 몰랐어요. 그런데 10년쯤 지나니까, 그 다름이 충돌이 아니라 보완이라는 걸 알게 됐습니다. 그가 보지 못하는 걸 내가 보고, 내가 놓치는 것을 그가 잡아줘요."</p>
+        <div class="art-pullquote">
+          "논리는 방향을 잡아주고, 감성은 그 길을 아름답게 만들어줍니다. 두 가지가 함께 있을 때 비로소 완전한 여정이 됩니다."
+          <cite>— 미대생 할머니</cite>
+        </div>
+        <p>이 이야기가 울림을 주는 것은, 두 사람만의 이야기가 아니기 때문이다. 우리는 누구나 나와 다른 사람과 함께 살아간다. 가족, 친구, 동료, 파트너. 그 다름을 어떻게 받아들이고 함께 성장하는가의 문제는 모두에게 공통된 과제다.</p>
+        <p>개발팀은 "이 이야기를 읽으며 지금 내 곁의 다른 사람을 조금 더 따뜻하게 바라볼 수 있게 되길 바란다"고 전했다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#이공계</a>
+        <a class="art-tag" href="#">#예술</a>
+        <a class="art-tag" href="#">#부부</a>
+        <a class="art-tag" href="#">#다름</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art6')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 7: 독자 공감 스토리
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">⑦ 독자 공감 스토리</div>
+  <div class="art-card">
+    <div class="art-img" style="height:240px">
+      <img src="couple-park.png" alt="공원 산책 커플" style="object-position:center 40%">
+      <div class="art-img-caption">▲ 독자들은 이 이야기 속에서 자신과 사랑하는 사람의 모습을 발견한다고 전했다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#059669">독자반응·리뷰</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.25 09:00 | 수정 2026.03.25 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">"남편한테 보내줬더니 둘이 웃었어요"… '공대생 할아버지, 미대생 할머니' 독자 반응 화제</h1>
+      <div class="art-standfirst">연재 시작 닷새 만에 뜨거운 공감 반응… "우리 부부 이야기 같다" "부모님 생각났다" 등 댓글 이어져</div>
+      <div class="art-byline">
+        <strong>윤지아 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.25 09:00</span>
+      </div>
+      <div class="art-text" id="art7-text">
+        <p>지난 21일 서비스를 시작한 연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 연재 닷새 만에 뜨거운 독자 반응을 얻고 있다. "우리 부부 이야기 같다", "부모님이 생각난다"는 댓글이 이어지며 SNS에서도 빠르게 확산되고 있다.</p>
+        <p>특히 1부 첫만남의 에피소드들, 특히 '15화 색깔 논쟁'이 큰 반향을 일으켰다. "'이건 빨강입니다'와 '이건 노을색이에요'라는 대화가 남편이 저한테 하는 말 같아서 캡처해서 보내줬더니 둘이 한참 웃었어요"라는 댓글에 수백 명이 공감을 눌렀다.</p>
+        <div class="art-pullquote">
+          "이 이야기는 제 부모님 이야기이기도 하고, 저와 남편 이야기이기도 해요. 읽으면서 계속 피식피식 웃고, 가끔은 눈물이 났습니다."
+          <cite>— 독자 댓글 중</cite>
+        </div>
+        <p>30대 직장인 독자는 "매일 아침 출근하면서 오늘의 에피소드 읽는 게 루틴이 됐다"며 "짧지만 여운이 길어서 하루 종일 생각난다"고 전했다. 50대 독자는 "나이 들수록 이런 이야기가 더 따뜻하게 느껴진다"는 반응을 보였다.</p>
+        <p>개발팀은 "이렇게 많은 분들이 자신의 이야기처럼 공감해주실 줄 몰랐다"며 "독자 여러분의 반응이 이야기를 만들어가는 원동력이 되고 있다"고 감사를 전했다.</p>
+        <p>현재 1부 첫만남 에피소드가 연재 중이며, 매일 오전 새 에피소드가 공개된다. 플랫폼은 무료로 이용 가능하며 별도 회원가입이 필요 없다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#독자반응</a>
+        <a class="art-tag" href="#">#공감</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#부부이야기</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art7')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 8: 시니어 콘텐츠 새 바람
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">⑧ 시니어 콘텐츠의 새 바람</div>
+  <div class="art-card">
+    <div class="art-img" style="height:240px">
+      <img src="couple-watercolor.png" alt="커플 수채화" style="object-position:center 20%">
+      <div class="art-img-caption">▲ 시니어 주인공의 이야기가 전 세대에 걸쳐 공감을 얻고 있다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#92400E">시니어·트렌드</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.26 09:00 | 수정 2026.03.26 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">할아버지·할머니가 주인공인 연재물이 2030세대를 사로잡은 이유</h1>
+      <div class="art-standfirst">'공대생 할아버지, 미대생 할머니'… 시니어 주인공이 전 세대 독자의 공감을 얻는 콘텐츠가 된 비결</div>
+      <div class="art-byline">
+        <strong>이준혁 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.26 09:00</span>
+      </div>
+      <div class="art-text" id="art8-text">
+        <p>최근 콘텐츠 시장에서 시니어를 주인공으로 한 이야기들이 주목받고 있다. 그중에서도 '공대생 할아버지, 미대생 할머니'는 10~60대를 아우르는 폭넓은 독자층에게 공감을 얻으며 주목받고 있다.</p>
+        <p>2030세대 독자들은 "조부모님이 생각난다", "내 미래가 이랬으면 좋겠다"는 반응을 보이며 콘텐츠에 감정이입하고 있다. 4050세대는 "우리 부부 이야기 같다"며 직접 공감을, 시니어 독자들은 "공감 백 배"라는 반응을 보인다.</p>
+        <div class="art-pullquote">
+          "시니어 주인공의 이야기가 젊은 독자들에게 공감받는 이유는, 그것이 결국 '시간이 지나도 변하지 않는 인간의 이야기'이기 때문입니다. 사랑, 다름, 성장 — 이 주제는 세대와 관계없이 울립니다."
+          <cite>— 콘텐츠 전문가</cite>
+        </div>
+        <p>특히 이 플랫폼이 주목받는 이유 중 하나는 <strong>'젊은 시절의 이야기'로 시작한다는 점</strong>이다. 1부 첫만남부터 시작해 6부 노년까지 이어지는 구성은, 현재 시니어인 두 주인공이 젊었을 때의 이야기를 담고 있어 모든 세대가 각자의 시점에서 공감할 수 있다.</p>
+        <p>개발팀은 "나이 든 주인공이 아닌, 나이가 들어가는 과정을 담은 이야기"라며 "독자들이 자신의 삶의 어떤 시점과 겹쳐 읽을 수 있도록 설계했다"고 밝혔다.</p>
+        <p>플랫폼은 무료로 이용 가능하며, 2026년 3월 21일부터 매일 오전 새 에피소드를 공개하고 있다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#시니어콘텐츠</a>
+        <a class="art-tag" href="#">#세대공감</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#부부이야기</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art8')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 9: 기술과 예술의 융합
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">⑨ 기술과 예술의 융합 — STEM·STEAM 화제</div>
+  <div class="art-card">
+    <div class="art-img" style="height:240px">
+      <img src="couple-park.png" alt="공원 산책 커플" style="object-position:center 25%">
+      <div class="art-img-caption">▲ 공학과 예술의 만남은 콘텐츠를 넘어 새로운 교육적 메시지를 전달한다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#0891B2">교육·STEAM</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.03.27 09:00 | 수정 2026.03.27 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">공대생과 미대생의 40년 동거… "STEM과 STEAM의 대화"라는 새로운 해석</h1>
+      <div class="art-standfirst">이공계와 예술계의 대화가 콘텐츠를 넘어 교육·문화계에서 새로운 담론 형성 중</div>
+      <div class="art-byline">
+        <strong>김도현 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.03.27 09:00</span>
+      </div>
+      <div class="art-text" id="art9-text">
+        <p>연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 단순한 부부 이야기를 넘어 <strong>STEM과 STEAM의 융합</strong>이라는 새로운 시각에서 주목받고 있다. 교육계와 문화계 일부에서는 이 이야기를 "이공계 사고와 예술적 감성이 어떻게 상호보완하는가를 보여주는 생생한 사례"라고 평가하기도 한다.</p>
+        <p>공학도인 남편은 데이터와 효율, 최적화의 언어로 세상을 본다. 화가인 아내는 감각과 감정, 직관의 언어로 같은 세상을 읽는다. 두 사람이 함께하며 각자의 관점이 서로를 보완하고 풍요롭게 만드는 과정이 이 이야기의 핵심이다.</p>
+        <div class="art-pullquote">
+          "엑셀로 데이트를 계획하는 남자와 즉흥적으로 골목을 걷는 여자. 처음엔 충돌이었지만, 나중엔 그 계획이 있어서 즉흥이 더 자유로웠고, 즉흥이 있어서 계획이 더 풍요로웠다는 걸 알게 됐습니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p>이 이야기는 이공계와 인문·예술계의 경계를 허무는 융합 교육(STEAM)의 가치를 삶 속에서 보여준다는 점에서 교육적으로도 의미가 있다는 평가다.</p>
+        <p>플랫폼은 2026년 3월 21일부터 매일 오전 새 에피소드를 무료로 공개하고 있으며, 로그인 없이 누구나 이용 가능하다. 총 60편이 연재될 예정이다.</p>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#STEAM</a>
+        <a class="art-tag" href="#">#융합</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#교육</a>
+        <a class="art-tag" href="#">#이공계</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art9')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     기사 10: 연재 완결 예고 / 책 출판 기대
+════════════════════════════════════ -->
+<div class="as-section">
+  <div class="as-section-label">⑩ 연재 완결 · 책 출판 기대</div>
+  <div class="art-card">
+    <div class="art-img">
+      <img src="couple-park.png" alt="공원 산책 커플">
+      <div class="art-img-caption">▲ 60편의 연재 완결 후 독자 참여형 책 출판을 검토 중인 것으로 알려졌다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <div class="art-masthead">
+      <div class="art-masthead-left">
+        <span class="art-cat" style="background:#1E3A8A">출판·도서</span>
+        <span class="art-masthead-media">브랜드뉴스</span>
+      </div>
+      <div class="art-masthead-date">2026.04.01 09:00 | 수정 2026.04.01 09:00</div>
+    </div>
+    <div class="art-body-wrap">
+      <h1 class="art-headline">"60편 연재 완결 후 독자와 함께 책 만든다"… '공대생 할아버지, 미대생 할머니', 독자 참여형 출판 예고</h1>
+      <div class="art-standfirst">무료 연재 완결 후 독자 반응 반영해 종이책 출판 결정… "독자가 출판의 주체"라는 새로운 모델 제시</div>
+      <div class="art-byline">
+        <strong>박수연 기자</strong>
+        <span class="art-byline-sep">|</span>
+        <span>승인 2026.04.01 09:00</span>
+      </div>
+      <div class="art-text" id="art10-text">
+        <p>연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 60편의 연재 완결 이후 <strong>독자 참여형 방식으로 책 출판</strong>을 검토 중이라고 밝혔다. 독자 수와 반응을 보고 출판 여부를 결정하는 이른바 '역방향 출판 모델'이다.</p>
+        <p>개발팀은 "일반적으로 책을 먼저 만들고 독자를 찾는 방식이 출판의 공식이지만, 저희는 독자를 먼저 만나고 그 다음에 책을 만들고 싶었다"며 "무료 연재를 통해 충분한 독자가 이 이야기를 사랑하게 되면, 그때 함께 책을 만드는 것이 맞다고 생각한다"고 밝혔다.</p>
+        <p>책이 출판될 경우, 온라인 연재 때 수록된 수채화 일러스트를 모두 인쇄본으로 담고, 독자 에세이나 연재 후기도 함께 수록하는 방식을 구상 중이다. 독자가 단순히 이야기를 읽는 것을 넘어 책의 일부가 되는 참여형 출판이 목표다.</p>
+        <div class="art-pullquote">
+          "이 이야기는 두 사람만의 이야기가 아니라, 이 이야기를 함께 읽어준 독자들의 이야기이기도 합니다. 책이 나온다면, 그 책 안에 독자들도 함께 있어야 한다고 생각합니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p>현재 플랫폼은 2026년 3월 21일 1편을 시작으로 매일 오전 새 에피소드를 공개하고 있다. 총 60편의 연재는 약 2개월에 걸쳐 진행되며, 로그인 없이 무료로 이용 가능하다.</p>
+        <p>개발팀은 "연재가 끝날 때쯤이면 독자들도 이 두 사람의 40년을 함께 걸어온 느낌이 들 것"이라며 "그 마지막 순간, 독자들과 함께 책으로 가는 여정을 시작하고 싶다"고 전했다.</p>
+        <div class="art-info-box">
+          <div class="art-info-box-title">▸ 연재 및 출판 계획</div>
+          <ul>
+            <li>연재 시작: 2026년 3월 21일 (매일 오전 1편)</li>
+            <li>연재 완결 예정: 2026년 5월 19일 (60편)</li>
+            <li>책 출판 여부: 독자 반응 반영 후 결정</li>
+            <li>출판 형태: 수채화 일러스트 + 독자 참여 에세이 포함 예정</li>
+          </ul>
+        </div>
+      </div>
+      <div class="art-tags">
+        <a class="art-tag" href="#">#출판</a>
+        <a class="art-tag" href="#">#공대생할아버지</a>
+        <a class="art-tag" href="#">#미대생할머니</a>
+        <a class="art-tag" href="#">#독자참여</a>
+        <a class="art-tag" href="#">#도서</a>
+        <a class="art-tag" href="#">#연재완결</a>
+      </div>
+    </div>
+    <div class="art-copy-bar">
+      <button class="art-copy-btn" onclick="copyArticle('art10')">📋 기사 전문 복사</button>
+      <span class="art-copy-hint">클릭 시 기사 본문이 클립보드에 복사됩니다</span>
+    </div>
+  </div>
+</div>
+
+<div style="height:60px"></div>
+<script src="js/common.js"></script>
+<script>
+// ── 기사별 원문 텍스트 (헤드라인 + 부제 + 본문) ──
+const ARTICLES = {
+  art1: {
+    headline: '【브랜드뉴스 | 문화·라이프 | 2026.03.21】',
+    title: '"논리와 감성이 만나는 40년의 사랑"… 무료 연재 플랫폼 \'공대생 할아버지, 미대생 할머니\' 오픈',
+    standfirst: '수채화 일러스트와 함께 매일 오전 한 편씩 무료 공개… 60편 완결 부부 이야기, 21일 정식 서비스 시작',
+    byline: '김민준 기자 | 승인 2026.03.21 09:00'
+  },
+  art2: {
+    headline: '【브랜드뉴스 | 인터뷰·특집 | 2026.03.21】',
+    title: '"40년을 함께 살았지만, 아직도 서로가 신기합니다"… \'공대생 할아버지, 미대생 할머니\' 개발팀 단독 인터뷰',
+    standfirst: '이공계와 예술계의 만남이 빚어낸 40년 실화… "다름이 충돌이 아닌 풍요로움"이라는 것을 60편의 이야기로 증명한다',
+    byline: '이서연 기자 | 승인 2026.03.21 10:00'
+  },
+  art3: {
+    headline: '【브랜드뉴스 | 특집·기획 | 2026.03.21】',
+    title: '첫만남부터 노년까지… \'공대생 할아버지, 미대생 할머니\' 6개 파트 60편 완전 해부',
+    standfirst: '1부 첫만남에서 6부 노년까지, 40년 부부의 이야기를 담은 60편의 에피소드 구성 공개',
+    byline: '박지훈 기자 | 승인 2026.03.21 11:00'
+  },
+  art4: {
+    headline: '【브랜드뉴스 | 문화·예술 | 2026.03.22】',
+    title: '"글과 그림이 함께 말한다"… 매 에피소드 수채화 일러스트 수록, 새로운 읽기 경험 제공',
+    standfirst: '각 에피소드 본문에 최적화된 수채화 그림 수록… 이야기와 그림이 하나로 어우러지는 독특한 감성 플랫폼',
+    byline: '최유나 기자 | 승인 2026.03.22 09:00'
+  },
+  art5: {
+    headline: '【브랜드뉴스 | 출판·미디어 | 2026.03.22】',
+    title: '"독자가 먼저, 책은 나중에"… 연재 플랫폼이 제안하는 출판의 새로운 시도',
+    standfirst: '유료 출판보다 무료 연재로 독자와 먼저 만나는 방식 선택… "작가와 독자가 함께 만들어가는 이야기"',
+    byline: '정하늘 기자 | 승인 2026.03.22 10:00'
+  },
+  art6: {
+    headline: '【브랜드뉴스 | 라이프·인간 | 2026.03.23】',
+    title: '이공계 남편과 예술가 아내의 40년… "다름이 충돌이 아닌 보완임을 알게 되는 데 10년 걸렸다"',
+    standfirst: '논리와 감성이 만나 빚어낸 40년의 이야기… 서로 다른 우리 모두에게 건네는 따뜻한 메시지',
+    byline: '강민서 기자 | 승인 2026.03.23 09:00'
+  },
+  art7: {
+    headline: '【브랜드뉴스 | 독자반응·리뷰 | 2026.03.25】',
+    title: '"남편한테 보내줬더니 둘이 웃었어요"… \'공대생 할아버지, 미대생 할머니\' 독자 반응 화제',
+    standfirst: '연재 시작 닷새 만에 뜨거운 공감 반응… "우리 부부 이야기 같다" "부모님 생각났다" 등 댓글 이어져',
+    byline: '윤지아 기자 | 승인 2026.03.25 09:00'
+  },
+  art8: {
+    headline: '【브랜드뉴스 | 시니어·트렌드 | 2026.03.26】',
+    title: '할아버지·할머니가 주인공인 연재물이 2030세대를 사로잡은 이유',
+    standfirst: '\'공대생 할아버지, 미대생 할머니\'… 시니어 주인공이 전 세대 독자의 공감을 얻는 콘텐츠가 된 비결',
+    byline: '이준혁 기자 | 승인 2026.03.26 09:00'
+  },
+  art9: {
+    headline: '【브랜드뉴스 | 교육·STEAM | 2026.03.27】',
+    title: '공대생과 미대생의 40년 동거… "STEM과 STEAM의 대화"라는 새로운 해석',
+    standfirst: '이공계와 예술계의 대화가 콘텐츠를 넘어 교육·문화계에서 새로운 담론 형성 중',
+    byline: '김도현 기자 | 승인 2026.03.27 09:00'
+  },
+  art10: {
+    headline: '【브랜드뉴스 | 출판·도서 | 2026.04.01】',
+    title: '"60편 연재 완결 후 독자와 함께 책 만든다"… \'공대생 할아버지, 미대생 할머니\', 독자 참여형 출판 예고',
+    standfirst: '무료 연재 완결 후 독자 반응 반영해 종이책 출판 결정… "독자가 출판의 주체"라는 새로운 모델 제시',
+    byline: '박수연 기자 | 승인 2026.04.01 09:00'
+  }
+};
+
+function copyArticle(artId) {
+  const meta = ARTICLES[artId];
+  const textEl = document.getElementById(artId + '-text');
+  if (!textEl || !meta) return;
+
+  // 본문 텍스트 추출 (태그 제거)
+  const bodyText = textEl.innerText
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+  const fullText =
+    meta.headline + '\n\n' +
+    meta.title + '\n\n' +
+    meta.standfirst + '\n\n' +
+    meta.byline + '\n\n' +
+    '─────────────────────────────────\n\n' +
+    bodyText + '\n\n' +
+    '─────────────────────────────────\n' +
+    '공대생 할아버지, 미대생 할머니 | 무료 연재 플랫폼\n' +
+    '2026년 3월 21일 연재 시작 · 매일 오전 1편씩 공개\n' +
+    '이미지 제공: 공대생 할아버지, 미대생 할머니';
+
+  navigator.clipboard.writeText(fullText).then(() => {
+    const btn = event.currentTarget;
+    const orig = btn.textContent;
+    btn.textContent = '✅ 복사 완료!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 2200);
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = fullText;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    const btn = event.currentTarget;
+    btn.textContent = '✅ 복사 완료!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 기사 전문 복사'; btn.classList.remove('copied'); }, 2200);
+  });
+}
+</script>
+</body>
+</html>

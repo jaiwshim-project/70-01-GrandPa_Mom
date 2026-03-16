@@ -371,6 +371,7 @@ function renderFooter() {
           <li><a href="book-project.html">책 프로젝트</a></li>
           <li><a href="author-notes.html">작가 노트</a></li>
           <li><a href="publishing-innovation.html">출판의 새로운 시도</a></li>
+          <li><a href="article-source.html">📝 기사원본</a></li>
           <li><a href="news-kit.html">📰 기사자료</a></li>
           <li><a href="press-kit.html">📋 안내자료</a></li>
         </ul>
