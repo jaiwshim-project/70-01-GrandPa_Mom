@@ -311,7 +311,7 @@ const GALLERY_COVER = [{
 }];
 
 function buildEpisodeGallery() {
-  return SAMPLE_EPISODES.map(ep => {
+  return getPublishedEpisodes().map(ep => {
     const epNum = ep.episode_number;
     const illus = ILLUSTRATIONS[epNum] || ILLUSTRATIONS.default;
     return {
@@ -373,7 +373,7 @@ function renderGallery() {
   const grid  = document.getElementById('galleryGrid');
   const empty = document.getElementById('emptyState');
   const list  = getFiltered();
-  document.getElementById('totalCount').textContent = GALLERY.length - 1; // 표지 제외 에피소드 수
+  document.getElementById('totalCount').textContent = GALLERY.length - 1; // 표지 제외 공개된 에피소드 수
   if (list.length === 0) {
     grid.innerHTML = '';
     empty.classList.remove('hidden');
