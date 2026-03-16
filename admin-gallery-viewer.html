@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그림이야기 전체 보기 — 관리자</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111827; min-height: 100vh; }
+
+/* ── 헤더 ── */
+.av-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  padding: 0 28px; height: 60px;
+  display: flex; align-items: center; gap: 16px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(37,99,235,.35);
+}
+.av-back {
+  padding: 7px 16px; border-radius: 8px;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; font-size: .83rem; font-weight: 700; cursor: pointer;
+  text-decoration: none; white-space: nowrap; transition: background .18s;
+}
+.av-back:hover { background: rgba(255,255,255,.28); }
+.av-title { font-size: 1rem; font-weight: 800; color: #fff; flex: 1; }
+.av-badge {
+  padding: 4px 12px; background: #FEF3C7; color: #92400E;
+  border-radius: 20px; font-size: .75rem; font-weight: 800; white-space: nowrap;
+}
+
+/* ── 필터 바 ── */
+.av-filter-bar {
+  background: #fff; border-bottom: 1px solid #E4E9F2;
+  padding: 14px 28px; display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; position: sticky; top: 60px; z-index: 90;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.av-search {
+  padding: 8px 14px; background: #F4F6FA; border: 1.5px solid #E4E9F2;
+  border-radius: 8px; font-size: .85rem; outline: none; color: #374151;
+  min-width: 220px; transition: border-color .18s;
+}
+.av-search:focus { border-color: #059669; background: #fff; }
+.av-part-btns { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+.av-part-btn {
+  padding: 6px 14px; border-radius: 20px; font-size: .78rem; font-weight: 700;
+  border: 1.5px solid #E4E9F2; background: #fff; color: #6B7280;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.av-part-btn:hover { border-color: #059669; color: #059669; }
+.av-part-btn.active { background: #059669; border-color: #059669; color: #fff; box-shadow: 0 2px 8px rgba(5,150,105,.3); }
+.av-count { font-size: .82rem; color: #6B7280; white-space: nowrap; }
+.av-count strong { color: #111827; }
+
+/* ── 그리드 ── */
+.av-body { padding: 24px 28px 60px; max-width: 1600px; margin: 0 auto; }
+.av-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+@media(max-width:1200px){ .av-grid { grid-template-columns: repeat(4,1fr); } }
+@media(max-width:900px) { .av-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:600px) { .av-grid { grid-template-columns: repeat(2,1fr); } .av-body { padding: 16px 12px 48px; } .av-filter-bar { padding: 10px 14px; } }
+
+/* ── 카드 ── */
+.av-card {
+  background: #fff; border: 1.5px solid #E4E9F2; border-radius: 14px;
+  overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  transition: all .2s; display: flex; flex-direction: column;
+}
+.av-card:hover {
+  border-color: #059669; transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(5,150,105,.14);
+}
+.av-card.locked { opacity: .7; }
+.av-thumb {
+  width: 100%; aspect-ratio: 4/3; background: #F8FAFC;
+  position: relative; overflow: hidden;
+}
+.av-thumb svg { display: block; width: 100%; height: 100%; }
+.av-thumb-empty {
+  height: 100%; display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; color: #CBD5E1;
+}
+.av-badge-ep {
+  position: absolute; top: 8px; left: 8px;
+  padding: 3px 9px; border-radius: 20px;
+  font-size: .7rem; font-weight: 900; background: #1E3A8A; color: #fff;
+}
+.av-badge-status {
+  position: absolute; top: 8px; right: 8px;
+  padding: 3px 9px; border-radius: 20px;
+  font-size: .68rem; font-weight: 800; background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+.av-info { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
+.av-part-label { font-size: .7rem; font-weight: 700; margin-bottom: 4px; }
+.av-ep-title {
+  font-size: .9rem; font-weight: 800; color: #111827; margin-bottom: 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.av-ep-summary {
+  font-size: .75rem; color: #9CA3AF; margin-bottom: 10px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  flex: 1;
+}
+.av-actions { display: flex; gap: 6px; }
+.av-btn {
+  flex: 1; text-align: center; padding: 7px 4px; border-radius: 7px;
+  font-size: .75rem; font-weight: 700; text-decoration: none;
+  transition: all .15s; border: 1px solid transparent;
+}
+.av-btn-art {
+  background: #F0FDF4; color: #059669; border-color: rgba(5,150,105,.2);
+}
+.av-btn-art:hover { background: #059669; color: #fff; }
+.av-btn-read {
+  background: #EFF6FF; color: #2563EB; border-color: rgba(37,99,235,.2);
+}
+.av-btn-read:hover { background: #2563EB; color: #fff; }
+
+/* ── 빈 상태 ── */
+.av-empty {
+  text-align: center; padding: 80px 20px; color: #9CA3AF;
+  grid-column: 1 / -1;
+}
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<div class="av-header">
+  <a href="admin.html" class="av-back">← 대시보드</a>
+  <div class="av-title">🎨 그림이야기 전체 보기</div>
+  <span class="av-badge">🔐 관리자 전용 — 미공개 포함</span>
+</div>
+
+<!-- 필터 바 -->
+<div class="av-filter-bar">
+  <input class="av-search" id="searchInput" placeholder="제목 검색..." oninput="render()">
+  <span class="av-count" id="countLabel">—</span>
+  <div class="av-part-btns">
+    <button class="av-part-btn active" data-part="0" onclick="setPart(0,this)">전체</button>
+    <button class="av-part-btn" data-part="1" onclick="setPart(1,this)">1부 첫만남</button>
+    <button class="av-part-btn" data-part="2" onclick="setPart(2,this)">2부 연애</button>
+    <button class="av-part-btn" data-part="3" onclick="setPart(3,this)">3부 결혼</button>
+    <button class="av-part-btn" data-part="4" onclick="setPart(4,this)">4부 생활</button>
+    <button class="av-part-btn" data-part="5" onclick="setPart(5,this)">5부 중년</button>
+    <button class="av-part-btn" data-part="6" onclick="setPart(6,this)">6부 노년</button>
+  </div>
+</div>
+
+<!-- 그리드 -->
+<div class="av-body">
+  <div class="av-grid" id="galleryGrid"></div>
+</div>
+
+<script src="js/illustrations.js"></script>
+<script src="js/common.js"></script>
+<script>
+// 관리자 인증 체크
+if (sessionStorage.getItem('adminAuth') !== '1') location.href = 'admin.html';
+
+const PART_COLORS = {1:'#1D4ED8',2:'#C2410C',3:'#166534',4:'#B45309',5:'#7C3AED',6:'#92400E'};
+
+let currentPart = 0;
+
+function setPart(part, btn) {
+  currentPart = part;
+  document.querySelectorAll('.av-part-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function isOpen(dateStr) {
+  const d = new Date(dateStr); d.setHours(0,0,0,0);
+  const t = new Date(); t.setHours(0,0,0,0);
+  return d <= t;
+}
+function isToday(dateStr) {
+  const d = new Date(dateStr); d.setHours(0,0,0,0);
+  const t = new Date(); t.setHours(0,0,0,0);
+  return d.getTime() === t.getTime();
+}
+
+function galleryCard(e) {
+  const illus = ILLUSTRATIONS[e.episode_number] || null;
+  const open  = isOpen(e.published_at);
+  const tod   = isToday(e.published_at);
+  const statusColor = tod ? '#B45309' : open ? '#059669' : '#6B7280';
+  const statusText  = tod ? '★ 오늘' : open ? '● 공개' : '🔒 미공개';
+  const thumb = illus
+    ? `<div style="width:100%;height:100%;overflow:hidden">${illus.svg}</div>`
+    : `<div class="av-thumb-empty">🖌️</div>`;
+  const pColor = PART_COLORS[e.part_number] || '#6B7280';
+  const pName  = PART_NAMES[e.part_number] || `${e.part_number}부`;
+  const locked = !open ? ' locked' : '';
+
+  return `
+  <div class="av-card${locked}">
+    <div class="av-thumb">
+      ${thumb}
+      <span class="av-badge-ep">EP.${e.episode_number}</span>
+      <span class="av-badge-status" style="color:${statusColor}">${statusText}</span>
+    </div>
+    <div class="av-info">
+      <div class="av-part-label" style="color:${pColor}">${pName}</div>
+      <div class="av-ep-title">${e.title}</div>
+      <div class="av-ep-summary">${e.summary}</div>
+      <div class="av-actions">
+        <a class="av-btn av-btn-art"  href="admin-episode-detail.html?id=${e.id}&mode=gallery">🎨 그림보기</a>
+        <a class="av-btn av-btn-read" href="admin-episode-detail.html?id=${e.id}&mode=ep">📖 읽기</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function render() {
+  const q = document.getElementById('searchInput').value.trim();
+  let list = [...SAMPLE_EPISODES].sort((a,b) => a.episode_number - b.episode_number);
+  if (currentPart) list = list.filter(e => e.part_number === currentPart);
+  if (q) list = list.filter(e => e.title.includes(q) || e.summary.includes(q));
+
+  document.getElementById('countLabel').innerHTML =
+    `총 <strong>${list.length}편</strong> 표시 중`;
+
+  const grid = document.getElementById('galleryGrid');
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="av-empty"><div style="font-size:2.5rem;margin-bottom:12px">🔍</div><p>검색 결과가 없습니다.</p></div>`;
+  } else {
+    grid.innerHTML = list.map(galleryCard).join('');
+  }
+}
+
+render();
+</script>
+</body>
+</html>

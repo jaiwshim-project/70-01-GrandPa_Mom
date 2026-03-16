@@ -65,31 +65,32 @@ body { background: var(--admin-bg); color: var(--admin-text); font-family: 'Noto
 /* ── 메인 레이아웃 ── */
 #adminApp { display: none; }
 .admin-header {
-  background: #fff; border-bottom: 1px solid var(--admin-border);
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  border-bottom: none;
   padding: 0 28px; display: flex; align-items: center; gap: 20px;
   height: 60px; position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  box-shadow: 0 2px 12px rgba(37,99,235,.35);
 }
-.admin-logo { font-size: 1rem; font-weight: 800; color: var(--admin-text); white-space: nowrap; letter-spacing: -.2px; }
-.admin-logo span { color: var(--admin-accent); }
+.admin-logo { font-size: 1rem; font-weight: 800; color: #fff; white-space: nowrap; letter-spacing: -.2px; }
+.admin-logo span { color: #93C5FD; }
 
 .tab-nav { display: flex; gap: 2px; flex: 1; overflow-x: auto; scrollbar-width: none; }
 .tab-nav::-webkit-scrollbar { display: none; }
 .tab-btn {
   padding: 8px 16px; border-radius: 8px; font-size: .83rem; font-weight: 600;
-  color: var(--admin-muted); background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,.7); background: none; border: none; cursor: pointer;
   transition: all .18s; white-space: nowrap;
 }
-.tab-btn:hover { color: var(--admin-text); background: var(--admin-bg); }
-.tab-btn.active { color: var(--admin-accent); background: var(--admin-accent-light); }
+.tab-btn:hover { color: #fff; background: rgba(255,255,255,.15); }
+.tab-btn.active { color: #fff; background: rgba(255,255,255,.22); font-weight: 700; }
 
 .admin-logout {
   margin-left: auto; padding: 7px 16px; border-radius: 8px;
-  font-size: .8rem; color: var(--admin-muted); background: var(--admin-bg);
-  border: 1px solid var(--admin-border); cursor: pointer; white-space: nowrap; font-weight: 600;
+  font-size: .8rem; color: rgba(255,255,255,.8); background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25); cursor: pointer; white-space: nowrap; font-weight: 600;
   transition: all .18s;
 }
-.admin-logout:hover { color: var(--admin-red); border-color: var(--admin-red); background: var(--admin-red-light); }
+.admin-logout:hover { color: #fff; background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.5); }
 
 /* ── 탭 컨텐츠 ── */
 .admin-body { padding: 28px; max-width: 1400px; margin: 0 auto; }
@@ -299,6 +300,55 @@ body { background: var(--admin-bg); color: var(--admin-text); font-family: 'Noto
 .part-sum-total { font-size: .72rem; color: var(--admin-muted); }
 .part-sum-bar { height: 5px; border-radius: 4px; margin-top: 10px; background: var(--admin-border); overflow: hidden; }
 .part-sum-fill { height: 100%; border-radius: 4px; }
+
+/* ── 퀵 버튼 ── */
+.admin-quick-btns { display:flex; gap:8px; }
+.quick-btn {
+  padding:7px 14px; border-radius:8px; font-size:.8rem; font-weight:700;
+  border:none; cursor:pointer; transition:all .18s; white-space:nowrap;
+}
+.quick-ep { background:rgba(255,255,255,.15); color:#fff; border:1.5px solid rgba(255,255,255,.3); }
+.quick-ep:hover { background:#fff; color:#2563EB; }
+.quick-gallery { background:rgba(255,255,255,.15); color:#fff; border:1.5px solid rgba(255,255,255,.3); }
+.quick-gallery:hover { background:#fff; color:#059669; }
+
+/* ── 뷰어 에피소드 리스트 ── */
+.viewer-ep-list { display:flex; flex-direction:column; gap:8px; }
+.viewer-ep-row {
+  background:#fff; border:1px solid #E4E9F2; border-radius:12px;
+  padding:14px 20px; display:flex; align-items:center; gap:16px;
+  transition:all .18s; box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+.viewer-ep-row:hover { border-color:#2563EB; box-shadow:0 4px 14px rgba(37,99,235,.1); transform:translateX(3px); }
+.viewer-ep-num { font-size:1rem; font-weight:900; color:#2563EB; min-width:50px; }
+.viewer-ep-info { flex:1 }
+.viewer-ep-title { font-size:.95rem; font-weight:700; color:#111827; margin-bottom:3px; }
+.viewer-ep-meta { font-size:.78rem; color:#6B7280; }
+.viewer-ep-status { font-size:.78rem; font-weight:700; white-space:nowrap; }
+
+/* ── 뷰어 갤러리 그리드 ── */
+.viewer-gallery-grid {
+  display:grid; grid-template-columns:repeat(5,1fr); gap:16px;
+}
+@media(max-width:1200px){ .viewer-gallery-grid{grid-template-columns:repeat(4,1fr)} }
+@media(max-width:900px){ .viewer-gallery-grid{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:600px){ .viewer-gallery-grid{grid-template-columns:repeat(2,1fr)} }
+.viewer-gallery-card {
+  background:#fff; border:1px solid #E4E9F2; border-radius:12px;
+  overflow:hidden; transition:all .2s; box-shadow:0 1px 3px rgba(0,0,0,.05);
+  cursor:pointer;
+}
+.viewer-gallery-card:hover { border-color:#059669; box-shadow:0 6px 20px rgba(5,150,105,.15); transform:translateY(-3px); }
+.viewer-gallery-card.locked { opacity:.55; }
+.viewer-filter-sel {
+  padding:7px 13px; background:#fff; border:1.5px solid #E4E9F2;
+  border-radius:8px; font-size:.82rem; font-weight:600; cursor:pointer; outline:none; color:#374151;
+}
+.viewer-search {
+  padding:7px 13px; background:#fff; border:1.5px solid #E4E9F2;
+  border-radius:8px; font-size:.82rem; outline:none; color:#374151; min-width:200px;
+}
+.viewer-search:focus,.viewer-filter-sel:focus { border-color:#2563EB; }
 </style>
 </head>
 <body>
@@ -327,7 +377,21 @@ body { background: var(--admin-bg); color: var(--admin-text); font-family: 'Noto
       <button class="tab-btn" onclick="switchTab('quotes',this)">명대사</button>
       <button class="tab-btn" onclick="switchTab('community',this)">커뮤니티</button>
     </div>
+    <div class="admin-quick-btns">
+      <a class="quick-btn quick-ep" href="admin-episodes-viewer.html" style="text-decoration:none">📖 에피소드 보기</a>
+      <a class="quick-btn quick-gallery" href="admin-gallery-viewer.html" style="text-decoration:none">🎨 그림이야기 보기</a>
+    </div>
     <button class="admin-logout" onclick="doLogout()">로그아웃</button>
+  </div>
+
+  <!-- ── 풀스크린 뷰어 ── -->
+  <div id="adminViewer" style="display:none;position:fixed;inset:0;z-index:999;background:#F4F6FA;overflow-y:auto">
+    <div style="background:#fff;border-bottom:1px solid #E4E9F2;padding:0 24px;height:56px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+      <button onclick="closeViewer()" style="padding:7px 16px;border-radius:8px;background:#F4F6FA;border:1px solid #E4E9F2;font-size:.85rem;font-weight:700;cursor:pointer;color:#374151">← 닫기</button>
+      <span id="viewerTitle" style="font-size:1rem;font-weight:800;color:#111827"></span>
+      <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap" id="viewerFilterBar"></div>
+    </div>
+    <div id="viewerBody" style="padding:24px;max-width:1400px;margin:0 auto"></div>
   </div>
 
   <div class="admin-body">
@@ -768,6 +832,126 @@ function renderQuotesAdmin() {
 }
 
 // ── 전체 초기화 ──
+// ── 풀스크린 뷰어 ──
+let viewerMode = '';
+function openViewer(mode) {
+  viewerMode = mode;
+  document.getElementById('adminViewer').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  if (mode === 'episodes') renderViewerEpisodes();
+  else renderViewerGallery();
+}
+function closeViewer() {
+  document.getElementById('adminViewer').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function viewerFilterBar(mode, partFilter, searchQ) {
+  return `
+    <input class="viewer-search" id="vSearch" placeholder="제목 검색..." value="${searchQ||''}"
+      oninput="mode==='ep'?renderViewerEpisodes(parseInt(document.getElementById('vPart').value)||0,this.value):renderViewerGallery(parseInt(document.getElementById('vPart').value)||0,this.value)">
+    <select id="vPart" class="viewer-filter-sel"
+      onchange="mode==='ep'?renderViewerEpisodes(parseInt(this.value)||0,document.getElementById('vSearch')?.value||''):renderViewerGallery(parseInt(this.value)||0,document.getElementById('vSearch')?.value||'')">
+      <option value="0">전체 부</option>
+      <option value="1">1부 첫만남</option><option value="2">2부 연애</option>
+      <option value="3">3부 결혼</option><option value="4">4부 생활</option>
+      <option value="5">5부 중년</option><option value="6">6부 노년</option>
+    </select>`;
+}
+
+function viewerCard(e, mode) {
+  const illus = ILLUSTRATIONS[e.episode_number] || null;
+  const open = isOpen(e.published_at);
+  const tod = isToday(e.published_at);
+  const statusColor = tod ? '#B45309' : open ? '#059669' : '#6B7280';
+  const statusText  = tod ? '★ 오늘 공개' : open ? '● 공개됨' : '🔒 미공개';
+  const thumb = illus
+    ? `<div style="width:100%;height:100%;overflow:hidden">${illus.svg}</div>`
+    : `<div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#CBD5E1">🎨</div>`;
+
+  return `
+  <div style="background:#fff;border:1.5px solid #E4E9F2;border-radius:14px;overflow:hidden;
+       box-shadow:0 1px 4px rgba(0,0,0,.06);transition:all .2s;cursor:pointer"
+       onmouseover="this.style.borderColor='#2563EB';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(37,99,235,.12)'"
+       onmouseout="this.style.borderColor='#E4E9F2';this.style.transform='';this.style.boxShadow='0 1px 4px rgba(0,0,0,.06)'">
+    <!-- 썸네일 -->
+    <div style="width:100%;aspect-ratio:4/3;background:#F8FAFC;position:relative;overflow:hidden">
+      ${thumb}
+      <!-- 상태 뱃지 -->
+      <span style="position:absolute;top:8px;right:8px;padding:3px 9px;border-radius:20px;
+            font-size:.68rem;font-weight:800;background:#fff;color:${statusColor};
+            box-shadow:0 1px 4px rgba(0,0,0,.12)">${statusText}</span>
+      <!-- EP 번호 -->
+      <span style="position:absolute;top:8px;left:8px;padding:3px 9px;border-radius:20px;
+            font-size:.7rem;font-weight:900;background:#1E3A8A;color:#fff">EP.${e.episode_number}</span>
+    </div>
+    <!-- 정보 -->
+    <div style="padding:12px 14px 14px">
+      <div style="font-size:.7rem;font-weight:700;color:${PART_COLORS[e.part_number]};margin-bottom:5px">${PART_NAMES[e.part_number]}</div>
+      <div style="font-size:.9rem;font-weight:800;color:#111827;margin-bottom:4px;
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e.title}</div>
+      <div style="font-size:.75rem;color:#9CA3AF;margin-bottom:10px;
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e.summary}</div>
+      <div style="display:flex;gap:6px">
+        <a href="admin-episode-detail.html?id=${e.id}&mode=ep"
+           style="flex:1;text-align:center;padding:6px;border-radius:7px;font-size:.75rem;font-weight:700;
+                  background:#EFF6FF;color:#2563EB;border:1px solid rgba(37,99,235,.2);text-decoration:none"
+           onmouseover="this.style.background='#2563EB';this.style.color='#fff'"
+           onmouseout="this.style.background='#EFF6FF';this.style.color='#2563EB'">
+          📖 읽기
+        </a>
+        <a href="admin-episode-detail.html?id=${e.id}&mode=gallery"
+           style="flex:1;text-align:center;padding:6px;border-radius:7px;font-size:.75rem;font-weight:700;
+                  background:#F0FDF4;color:#059669;border:1px solid rgba(5,150,105,.2);text-decoration:none"
+           onmouseover="this.style.background='#059669';this.style.color='#fff'"
+           onmouseout="this.style.background='#F0FDF4';this.style.color='#059669'">
+          🎨 그림보기
+        </a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderViewerEpisodes(partFilter=0, searchQ='') {
+  document.getElementById('viewerTitle').textContent = '📖 에피소드 전체 보기 — 관리자 (60편 전체)';
+  document.getElementById('viewerFilterBar').innerHTML = viewerFilterBar('ep', partFilter, searchQ);
+  if (partFilter) document.getElementById('vPart').value = partFilter;
+
+  // 관리자: 날짜 무관 전체 표시
+  let list = [...SAMPLE_EPISODES].sort((a,b) => a.episode_number - b.episode_number);
+  if (partFilter) list = list.filter(e => e.part_number === partFilter);
+  if (searchQ) list = list.filter(e => e.title.includes(searchQ) || e.summary.includes(searchQ));
+
+  document.getElementById('viewerBody').innerHTML = `
+    <p style="font-size:.82rem;color:#6B7280;margin-bottom:20px">
+      총 <strong style="color:#111827">${list.length}편</strong> 표시 중
+      <span style="margin-left:10px;padding:3px 10px;background:#FEF3C7;color:#92400E;border-radius:20px;font-size:.75rem;font-weight:700">🔐 관리자 전용 — 미공개 포함</span>
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:18px">
+      ${list.map(e => viewerCard(e,'ep')).join('')}
+    </div>`;
+}
+
+function renderViewerGallery(partFilter=0, searchQ='') {
+  document.getElementById('viewerTitle').textContent = '🎨 그림이야기 전체 보기 — 관리자 (60편 전체)';
+  document.getElementById('viewerFilterBar').innerHTML = viewerFilterBar('gallery', partFilter, searchQ);
+  if (partFilter) document.getElementById('vPart').value = partFilter;
+
+  // 관리자: 날짜 무관 전체 표시
+  let list = [...SAMPLE_EPISODES].sort((a,b) => a.episode_number - b.episode_number);
+  if (partFilter) list = list.filter(e => e.part_number === partFilter);
+  if (searchQ) list = list.filter(e => e.title.includes(searchQ) || e.summary.includes(searchQ));
+
+  document.getElementById('viewerBody').innerHTML = `
+    <p style="font-size:.82rem;color:#6B7280;margin-bottom:20px">
+      총 <strong style="color:#111827">${list.length}편</strong> 표시 중
+      <span style="margin-left:10px;padding:3px 10px;background:#FEF3C7;color:#92400E;border-radius:20px;font-size:.75rem;font-weight:700">🔐 관리자 전용 — 미공개 포함</span>
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:18px">
+      ${list.map(e => viewerCard(e,'gallery')).join('')}
+    </div>`;
+}
+
 function initAdmin() {
   initDashboard();
   renderEpTable();

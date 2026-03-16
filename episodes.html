@@ -72,9 +72,9 @@
 
 <div class="page-hero">
   <div class="container">
-    <span class="badge badge-gold" style="margin-bottom:12px">📖 총 <span id="totalCount">15</span>편 연재 중</span>
+    <span class="badge badge-gold" style="margin-bottom:12px">📖 총 <span id="totalCount">0</span>편 연재 중</span>
     <h1>연재 이야기</h1>
-    <p>공대생 할아버지, 미대생 할머니가 함께 살아가는 이야기</p>
+    <p>공대생 할아버지, 미대생 할머니가 함께 살아가는 이야기<br>1부에서 6부까지 각각 10개 에피소드로 구성됩니다.</p>
   </div>
 </div>
 
@@ -204,12 +204,24 @@ function renderEpisodes() {
     grid.innerHTML = '';
     empty.classList.remove('hidden');
     more.style.display = 'none';
+    // 다음 공개 예정 에피소드 날짜 계산
+    const nextEp = ALL_EPISODES
+      .filter(e => currentPart === 0 || e.part === currentPart)
+      .sort((a,b) => new Date(a.date)-new Date(b.date))
+      .find(e => { const d=new Date(e.date); d.setHours(0,0,0,0); const t=new Date(); t.setHours(0,0,0,0); return d>t; });
+    const dateMsg = nextEp
+      ? (() => { const [y,m,d]=nextEp.date.split('-'); return `${y}년 ${m}월 ${d}일부터 하루에 한 개의 에피소드가 공개됩니다.`; })()
+      : '곧 연재될 예정입니다.';
+    empty.querySelector('p').textContent = '이 부의 에피소드가 곧 연재됩니다. ' + dateMsg;
     return;
   }
   empty.classList.add('hidden');
   grid.innerHTML = slice.map(epCard).join('');
   more.style.display = filtered.length > displayed ? 'block' : 'none';
-  document.getElementById('totalCount').textContent = filtered.length;
+  // 전체 공개 편수 (파트 필터와 무관하게 전체)
+  const today2 = new Date(); today2.setHours(0,0,0,0);
+  const allPublished = ALL_EPISODES.filter(e => { const d=new Date(e.date); d.setHours(0,0,0,0); return d<=today2; });
+  document.getElementById('totalCount').textContent = allPublished.length;
 }
 
 function loadMore() {

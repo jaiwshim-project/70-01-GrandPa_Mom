@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 에피소드 뷰어 — 공대생 할아버지, 미대생 할머니</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #F4F6FA;
+  color: #111827;
+  min-height: 100vh;
+}
+
+/* ── 관리자 상단 헤더 ── */
+.ar-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(37,99,235,.35);
+}
+.ar-back-btn {
+  padding: 7px 16px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  font-size: .83rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .18s;
+}
+.ar-back-btn:hover { background: rgba(255,255,255,.25); }
+.ar-header-title {
+  font-size: .92rem;
+  font-weight: 700;
+  color: #fff;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ar-admin-badge {
+  padding: 3px 10px;
+  background: #FEF3C7;
+  color: #92400E;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.ar-nav-btns {
+  display: flex;
+  gap: 6px;
+}
+.ar-nav-btn {
+  padding: 6px 14px;
+  border-radius: 7px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ar-nav-btn:hover { background: rgba(255,255,255,.28); }
+.ar-nav-btn:disabled, .ar-nav-btn.disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* ── 본문 레이아웃 ── */
+.ar-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 20px 80px;
+}
+
+/* ── 에피소드 헤더 ── */
+.ar-ep-header {
+  background: linear-gradient(135deg, #0E2440 0%, #162E4A 60%, #1E3E61 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  color: #fff;
+  margin-bottom: 28px;
+  border: 2px solid rgba(255,255,255,.08);
+  box-shadow: 0 4px 20px rgba(14,36,64,.3);
+}
+.ar-part-label {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .4px;
+  margin-bottom: 10px;
+  opacity: .75;
+}
+.ar-ep-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #B45309, #D97706);
+  color: #fff;
+  border-radius: 20px;
+  font-size: .78rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(180,83,9,.4);
+}
+.ar-ep-title {
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -.3px;
+}
+.ar-ep-meta {
+  display: flex;
+  gap: 16px;
+  font-size: .8rem;
+  color: rgba(255,255,255,.6);
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.ar-unlock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.85);
+}
+
+/* ── 수채화 일러스트 ── */
+.ar-illustration {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #E4E9F2;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  margin-bottom: 28px;
+}
+.ar-illustration-frame {
+  width: 100%;
+  background: #F8FAFC;
+}
+.ar-illustration-frame svg { display: block; width: 100%; height: auto; }
+.ar-illus-caption {
+  padding: 14px 20px;
+  font-size: .8rem;
+  color: #6B7280;
+  font-style: italic;
+  text-align: center;
+  border-top: 1px solid #E4E9F2;
+  background: #FAFBFF;
+}
+
+/* ── 그림 설명 (gallery 모드) ── */
+.ar-gallery-desc {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  border: 2px solid #E4E9F2;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  margin-bottom: 28px;
+}
+.ar-gallery-desc-title {
+  font-size: .78rem;
+  font-weight: 800;
+  color: #2563EB;
+  letter-spacing: .4px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.ar-gallery-desc-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.02rem;
+  line-height: 2;
+  color: #374151;
+}
+
+/* ── 에피소드 본문 ── */
+.ar-content-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 40px;
+  border: 2px solid #E4E9F2;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  margin-bottom: 28px;
+}
+.ar-content-title {
+  font-size: .78rem;
+  font-weight: 800;
+  color: #2563EB;
+  letter-spacing: .4px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #EEF2F8;
+}
+.ar-ep-body {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.06rem;
+  line-height: 2.1;
+  color: #374151;
+}
+.ar-ep-body p { margin-bottom: 1.3em; }
+.ar-ep-body .dialogue {
+  margin: 1.8em 0;
+  padding: 20px 26px;
+  background: linear-gradient(135deg, #FAFAFA, #F5F5F0);
+  border-left: 4px solid #B85530;
+  border: 1.5px solid #EDE8E0;
+  border-left-width: 4px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.ar-ep-body .dialogue .speaker {
+  font-size: .78rem;
+  font-weight: 800;
+  color: #8B4513;
+  margin-bottom: 6px;
+  letter-spacing: .5px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.ar-ep-body .dialogue .line {
+  font-size: 1.1rem;
+  color: #162E4A;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+/* ── 미공개 안내 ── */
+.ar-unpublished-notice {
+  background: #FFF7ED;
+  border: 2px solid #FED7AA;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .85rem;
+  font-weight: 700;
+  color: #9A3412;
+}
+
+/* ── 이전/다음 네비 ── */
+.ar-ep-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.ar-ep-nav-btn {
+  flex: 1;
+  padding: 16px 20px;
+  background: #fff;
+  border: 2px solid #E4E9F2;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.ar-ep-nav-btn:hover {
+  border-color: #2563EB;
+  background: #EFF6FF;
+  box-shadow: 0 4px 14px rgba(37,99,235,.12);
+}
+.ar-ep-nav-btn.next { text-align: right; }
+.ar-ep-nav-label { font-size: .72rem; color: #9CA3AF; font-weight: 700; margin-bottom: 5px; }
+.ar-ep-nav-title { font-size: .9rem; font-weight: 800; color: #162E4A; }
+.ar-ep-nav-btn.disabled { opacity: .35; pointer-events: none; }
+
+@media(max-width:640px){
+  .ar-body { padding: 20px 14px 60px; }
+  .ar-content-card { padding: 24px 18px; }
+  .ar-ep-header { padding: 20px 20px; }
+  .ar-header { gap: 8px; }
+  .ar-header-title { display: none; }
+  .ar-gallery-desc { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 관리자 상단 헤더 -->
+<div class="ar-header">
+  <button class="ar-back-btn" onclick="goBack()">← 뷰어로</button>
+  <div class="ar-header-title" id="headerTitle">로딩 중...</div>
+  <span class="ar-admin-badge">🔐 관리자 전용</span>
+  <div class="ar-nav-btns">
+    <a class="ar-nav-btn disabled" id="prevLink">◀ 이전</a>
+    <a class="ar-nav-btn disabled" id="nextLink">다음 ▶</a>
+  </div>
+</div>
+
+<!-- 본문 -->
+<div class="ar-body" id="arBody">
+  <div style="text-align:center;padding:80px 20px;color:#9CA3AF">
+    <div style="font-size:2.5rem;margin-bottom:16px">⏳</div>
+    <p>로딩 중...</p>
+  </div>
+</div>
+
+<script src="js/illustrations.js"></script>
+<script src="js/episode-content.js"></script>
+<script src="js/common.js"></script>
+<script>
+// ── 관리자 인증 체크 ──
+if (sessionStorage.getItem('adminAuth') !== '1') {
+  location.href = 'admin.html';
+}
+
+const params = new URLSearchParams(location.search);
+const epId   = parseInt(params.get('id')) || 1;
+const mode   = params.get('mode') || 'ep';  // 'ep' | 'gallery'
+const fromViewer = params.get('from') || mode;  // back 타겟
+
+// EP_DESCS (그림 이야기 설명)
+const EP_DESCS = {
+  1:'미술관 정문 계단 위, 가을 햇살이 대리석 기둥을 사선으로 가로지르는 오후 3시. 수채화는 차분한 황토와 연보랏빛으로 건물 그림자를 채우고, 두 인물을 화면 왼쪽과 오른쪽 끝에 각각 배치했다. 한 사람은 손목시계에 시선을 고정한 채 반듯하게 서 있고, 다른 사람은 고개를 들어 하늘 어딘가를 바라본다. 두 실루엣 사이의 공백이 이 그림의 핵심이다. 같은 오후, 같은 계단이지만 완전히 다른 세계에 서 있던 두 사람이 처음으로 같은 공간 안에 놓인 순간을 화가는 따뜻한 번짐으로 기록했다.',
+  2:'노을이 건물 모서리에 날카롭게 걸린 골목 어귀, 오후가 저녁으로 기울어지는 시간. 화면 전체를 주황과 심홍의 층위로 물들인 수채화 안에서 한 사람이 홀로 서 있다. 20분이라는 숫자는 논리의 언어이고, "노을이 예뻤어요"는 감성의 언어다. 화가는 그 두 언어 사이의 거리를 골목 한복판의 빈 공간으로 표현했다.',
+  3:'카페 내부, 카운터 앞에 나란히 선 두 사람. 한 사람은 "아이스 아메리카노, 얼음 세 개"를 정확하게 요청하고, 다른 사람은 "제일 예쁜 색 커피요"라고 말한다. 브러시는 두 잔의 테두리를 같은 색으로 처리했다. 다른 언어로 주문한 커피가 결국 같은 온도로 테이블에 놓인다.',
+  4:'카페 창가 자리, 마주 놓인 두 잔의 커피와 엇갈린 시선. "왜 그렇게 생각해요?"와 "어때요, 이 분위기?" 두 질문이 같은 테이블 위에서 처음 부딪힌 날. 화가는 두 잔 사이의 빈 공간에 번짐을 넣어 대화의 공기를 묘사했다.',
+  5:'박물관 유리 진열장 앞, 파란 조명이 도자기 표면을 감싸는 공간. 한 사람의 시선은 설명 패널을 좇고, 다른 사람의 눈은 유약의 색조에 머문다. 이름을 아는 것과 색을 느끼는 것은 모두 그 사물에 가닿는 방법이다.',
+  6:'가로수길, 오후의 빛이 나뭇잎 사이로 내려앉는 산책로. 한 사람이 처음으로 고개를 들어 하늘에게 묻는다. "어때요, 오늘 하늘?" 논리의 언어로 하늘을 묻는 것은 불가능하지만, 그가 그것을 물었다는 사실이 이미 하나의 변화였다.',
+  7:'단풍이 시작된 가로수 길, 두 사람이 나란히 걷는다. 한 손에는 지도, 다른 시선은 기울어진 나무 위에 멈춰 있다. 기울어진 나무는 쓸모없는 것이 아니었다.',
+  8:'"좋아요"라는 말이 오가는 스케치북 앞. 맞는 말이 상처가 될 수 있다는 것, 언어에도 온도와 방향이 있다는 것을 그가 처음 배운 날이었다.',
+  9:'카페 창가, 웃음이 터진 타이밍은 같았다. 그러나 이유는 달랐다. 이해하지 않아도 함께 웃을 수 있다는 것이 처음 알게 된 가능성이었다.',
+  10:'갈림길 앞, 저녁 어스름. 하나는 지도의 길, 하나는 느낌이 이끄는 길. 사라진 길을 함께 아쉬워하는 것도 하나의 함께하는 방식이었다.',
+  11:'노트북 화면이 켜진 카페 테이블. 엑셀 파일에는 데이트 일정이 세 개의 시트로 정리되어 있었다. 세 개의 시트 안에 담긴 것은 데이터가 아니라 공들인 마음이었다.',
+  12:'기차역 광장, 계획표에 없던 어묵 포장마차 앞. 계획이 빗나가는 순간에만 열리는 골목이 있다는 것을 두 사람은 그날 처음 알았다.',
+  13:'공원 벤치, 두 사람이 나란히 카메라를 들고 서 있다. 완성된 사진 속 약간 기울어진 지평선과 살아있는 순간. 정확성이 전부가 아니다.',
+  14:'카페 창밖, 신호등이 빨강으로 켜진 오후. 화가는 같은 빨강을 화면 안에서 두 가지 온도로 칠했다. 두 시선은 모두 정확하다.',
+  15:'마트 과일 코너, 빨간 사과들. "빨간 사과"와 "노을색, 석류색, 장미 다홍". 하나의 단어 안에 여러 개의 세계가 들어있다.',
+  16:'카페 창가, 노트북 엑셀 화면. 마지막 행에 "측정 불가"라는 텍스트와 작은 별표 하나. 모든 논리가 무너지는 지점에서 시작되는 것이 있다.',
+  17:'생일 아침, 나란히 놓인 보조 배터리와 물감 팔레트. 쓸모와 아름다움은 반대가 아니었다. 이해받는다는 것은 그 사람의 방식대로 선물 받는 것이었다.',
+  18:'작은 주방, 냄비 손잡이를 동시에 잡은 두 손. 계량컵의 눈금과 손바닥의 감각이 같은 냄비 안에서 만났다.',
+  19:'조용한 식당, 소개팅 테이블. 밥을 먹는 내내 다른 사람을 생각했다. 논리를 중시하는 사람이 논리로 설명할 수 없는 것을 처음 발견하는 순간.',
+  20:'카페 창가, 열린 노트. 10년 계획의 첫 항목에 이름 하나가 적혔다. 효율을 위한 도구가 처음으로 마음을 기록하는 방식이 됐다.',
+  21:'작은 레스토랑 창가, 촛불 아래 반지. 182일의 준비 끝에 돌아온 대답은 단 한 글자, "응." 가장 정밀한 준비가 가장 단순한 답으로 완성됐다.',
+  22:'웨딩드레스 매장, 흰색들이 가득한 공간. 아이보리, 오프화이트, 샴페인, 밀크 화이트. 같은 이름의 색이 이토록 다를 수 있다는 것.',
+  23:'책상 위 스케치북, 물감이 아직 마르지 않은 수채화 청첩장. 손으로 직접 만든 것이 가장 정확하게 마음을 전달할 수 있다.',
+  24:'신혼집 거실, 파란 소파가 놓인 창가. 효율을 원한 사람과 아름다움을 원한 사람이 가구 하나를 두고 오래 의견을 나눴다. 결과는 파란 소파였다.',
+  25:'프라하 구시가지 골목, 돌바닥 위 두 개의 그림자. 계획이 빗나가는 자리에서 여행이 진짜 시작된다. 그날의 23%가 가장 좋은 날이 됐다.',
+  26:'결혼식장 통로 끝, 버진 로드. 식이 시작되는 순간 체크리스트가 사라지고 그녀만 보였다. 통로 끝에서 그는 처음으로 숫자를 세지 않았다.',
+  27:'식장의 제단 앞, 두 장의 서약서. 하나는 논리의 문장들, 하나는 시 같은 문장들. 두 언어인 채로 하나의 삶을 시작했다.',
+  28:'신혼집 첫날밤, 맞닿은 두 손. 집이 낯설었지만 숨소리는 낯설지 않았다. 낯섦 속에서도 낯설지 않은 것이 있다.',
+  29:'긴 식탁, 양쪽에 앉은 두 가족. 감성의 언어와 논리의 언어 사이에서 두 사람이 통역사가 됐다.',
+  30:'결혼 1주년 레스토랑. 한 사람은 날짜와 시간을 기억하고, 다른 사람은 그날의 빛과 설렘을 기억한다. 두 기억이 합쳐져야 그날이 완성됐다.',
+  31:'이른 아침 부엌, 두 개의 커피잔. 7시와 7시 33분. 말 없는 배려가 루틴이 될 때, 그것이 사랑의 문법이 된다.',
+  32:'마트 카트 안, 보라 양배추 한 통. 목록에 없었지만 색이 예뻐서 담았다. 그주 내내 식탁이 화사해졌다.',
+  33:'벼룩시장, 긁힌 자국이 있는 빈티지 의자. 흠집이 있었지만 결이 아름다웠다. 안전하고 아름다운 것이 공존할 수 있다.',
+  34:'나란히 놓인 두 개의 가계부. 엑셀 표에는 금액, 노트에는 "커피 × 6 = 봄". 두 가계부가 함께 있어야 한 달이 완성된다.',
+  35:'저녁 식탁, 무거운 침묵. "서운했어?" 그 한마디가 모든 논리의 언어보다 먼저 도착했다.',
+  36:'긴 식탁, 공학도 친구들과 예술대 친구들. 공학의 기하학과 예술의 기하학이 같은 것을 다른 언어로 말하고 있다는 것을 발견했다.',
+  37:'병원 신생아실, 아버지의 손가락을 감싸 쥔 아주 작은 손. 작다는 것의 크기를 그날 처음으로 알았다.',
+  38:'아이방 바닥, 파란 크레용을 쥔 작은 손. 아이를 키운다는 것은 두 세계를 동시에 필요로 하는 일이었다.',
+  39:'공원 산책로, 담벼락 이끼 앞에 멈춰 선 세 사람. 개미 한 마리. 계획은 길을 만들고, 우연은 풍경을 만든다.',
+  40:'오후의 거실, 빨래를 개는 손과 설거지하며 노래하는 모습. 집안일이 분업을 넘어 함께하는 리듬이 되는 순간.',
+  41:'넓어진 식탁, 두 개의 그릇. 아이가 떠난 뒤 식탁이 넓어졌다. 두 그릇은 충분했다.',
+  42:'서재 책상, 스프레드시트 옆의 새 스케치북. 은퇴 계획에서 수입 칸을 비워두고, 그림 시간을 첫 항목에 넣었다.',
+  43:'리스본 구불구불한 골목, 지도를 접는 남자의 뒷모습. 지도를 접었다. 처음이었다. 그 골목에서 처음으로 같은 속도로 걷기 시작했다.',
+  44:'병원 상담실, 건강검진 결과지. 숫자와 의사의 표정을 함께 읽어야 전체 그림이 나왔다.',
+  45:'오후의 서재, 각자의 작업. 말이 없었다. 그러나 둘 다 그 조용함이 좋았다.',
+  46:'은퇴 후 오후 산책로, 이끼 낀 담벼락. 두 그림자가 같은 방향으로 길게 뻗어 있다.',
+  47:'오래된 동창회 자리, 낡은 스케치북. 청춘은 숫자 속에 있지 않았다. 그려두었던 것들 속에 있었다.',
+  48:'저녁, 병원 스케줄표 옆 전화기. 그냥 생각나서 전화를 걸었다. 그것이 모든 스케줄보다 컸다.',
+  49:'25주년 기념일, 창가의 두 잔 차와 편지지. 이해하지 않아도 사랑할 수 있다는 것을 이제 알고 있다.',
+  50:'카페 테이블, 펼쳐진 스케치북 위의 수채화. 아직 오지 않은 40주년을 그녀가 먼저 그렸다. 미래를 그린다는 것은 예언이 아니라 소원이다.',
+  51:'넓은 하늘 아래 산책로, 세루리안 블루. 40년 만에 하늘이 보이기 시작했다.',
+  52:'공원 벤치, 손자의 손을 잡은 두 노인. 논리와 감성, 두 세계가 작은 손 안에 함께 흘러 들어간다.',
+  53:'서재 테이블, 나란히 놓인 연도별 기록 파일과 수채화 스케치. 한 인생을 온전히 담으려면 두 가지 언어가 모두 필요하다.',
+  54:'부엌 선반, 오래된 계량컵. 집을 정리하다 발견했다. 버릴 수 없었다. 물건은 기억을 달고 산다.',
+  55:'병원 복도, 긴 의자에 나란히 앉은 두 사람. 말이 없었다. 그러나 혼자가 아니었다.',
+  56:'소파 위, 사진첩을 펼친 두 사람. 한 사람은 날짜를, 다른 사람은 그날의 빛을 기억한다. 두 기억이 합쳐져야 그날이 완성됐다.',
+  57:'아이슬란드 밤하늘, 오로라 아래 두 실루엣. 말이 사라지는 자리에서 두 사람이 처음으로 완전히 같았다.',
+  58:'조용한 오후, 손으로 쓴 편지지. 40년 만에 처음으로 편지를 썼다. "딱 지금이야."',
+  59:'마지막 겨울, 눈 내리는 창가의 두 사람. 처음 만났던 그 창가와 같은 빛이었다.',
+  60:'봄날 미술관 앞, 처음 만났던 그 계단 위. 시계와 하늘을 함께 보는 두 사람.'
+};
+
+// ── 유틸 ──
+function getParam(k) { return new URLSearchParams(location.search).get(k); }
+function isOpen(dateStr) {
+  const d = new Date(dateStr); d.setHours(0,0,0,0);
+  const t = new Date(); t.setHours(0,0,0,0);
+  return d <= t;
+}
+
+const PART_COLORS = { 1:'#1D4ED8',2:'#C2410C',3:'#166534',4:'#B45309',5:'#7C3AED',6:'#B45309' };
+const PART_PALETTES = {
+  1:{ bg:'#EEF4FA',accent1:'#7EA8CC',accent2:'#3A6A9C',blob1:'#B8D0E8',blob2:'#8AAAC8' },
+  2:{ bg:'#FFF0E8',accent1:'#D47040',accent2:'#A84820',blob1:'#F0B890',blob2:'#D48060' },
+  3:{ bg:'#F0F8F0',accent1:'#5A9460',accent2:'#2A6430',blob1:'#90C898',blob2:'#60A870' },
+  4:{ bg:'#FFF8E8',accent1:'#C09030',accent2:'#907010',blob1:'#E8CC80',blob2:'#C0A840' },
+  5:{ bg:'#F8F0F8',accent1:'#9060A0',accent2:'#603070',blob1:'#C898C8',blob2:'#A868A8' },
+  6:{ bg:'#F8F0E8',accent1:'#A07050',accent2:'#704830',blob1:'#D0AA88',blob2:'#B08060' },
+};
+
+// ── 뒤로가기 ──
+function goBack() {
+  // viewerMode를 기반으로 admin.html로 돌아가되, 뷰어를 재오픈하기 어려우므로 그냥 admin으로
+  history.back();
+}
+
+// ── 네비게이션 ──
+function buildNavLink(targetId) {
+  return `admin-episode-detail.html?id=${targetId}&mode=${mode}`;
+}
+
+function setupNav(ep) {
+  const idx = SAMPLE_EPISODES.findIndex(e => e.id === ep.id);
+  const prevEp = idx > 0 ? SAMPLE_EPISODES[idx-1] : null;
+  const nextEp = idx < SAMPLE_EPISODES.length-1 ? SAMPLE_EPISODES[idx+1] : null;
+
+  const prevEl = document.getElementById('prevLink');
+  const nextEl = document.getElementById('nextLink');
+
+  if (prevEp) {
+    prevEl.href = buildNavLink(prevEp.id);
+    prevEl.classList.remove('disabled');
+  }
+  if (nextEp) {
+    nextEl.href = buildNavLink(nextEp.id);
+    nextEl.classList.remove('disabled');
+  }
+}
+
+// ── 메인 렌더 ──
+function render() {
+  const ep = SAMPLE_EPISODES.find(e => e.id === epId);
+  if (!ep) {
+    document.getElementById('arBody').innerHTML =
+      `<div style="text-align:center;padding:80px 20px"><h3>에피소드를 찾을 수 없습니다</h3></div>`;
+    return;
+  }
+
+  const partName = PART_NAMES[ep.part_number] || `${ep.part_number}부`;
+  const illus = ILLUSTRATIONS[ep.episode_number] || ILLUSTRATIONS.default;
+  const published = isOpen(ep.published_at);
+  const epContent = EPISODE_CONTENT.find(c => c.id === ep.id);
+
+  // 헤더 타이틀
+  document.getElementById('headerTitle').textContent =
+    mode === 'gallery'
+      ? `🎨 그림이야기 — EP.${ep.episode_number} ${ep.title}`
+      : `📖 에피소드 — EP.${ep.episode_number} ${ep.title}`;
+  document.title = `EP.${ep.episode_number} ${ep.title} — 관리자 뷰어`;
+
+  // 네비
+  setupNav(ep);
+
+  const pColor = PART_COLORS[ep.part_number] || '#2563EB';
+
+  // 미공개 배너
+  const unpublishedBanner = !published
+    ? `<div class="ar-unpublished-notice">🔒 미공개 에피소드 — 공개 예정: ${ep.published_at}</div>`
+    : '';
+
+  // 삽화 SVG
+  const illustrationHTML = `
+    <div class="ar-illustration">
+      <div class="ar-illustration-frame">${illus.svg}</div>
+      ${illus.caption ? `<div class="ar-illus-caption">🎨 ${illus.caption}</div>` : ''}
+    </div>`;
+
+  let mainHTML = '';
+
+  if (mode === 'gallery') {
+    // ── 그림이야기 모드: 삽화 + 그림 설명 ──
+    const desc = EP_DESCS[ep.episode_number] || illus.caption || ep.summary;
+    mainHTML = `
+      ${illustrationHTML}
+      <div class="ar-gallery-desc">
+        <div class="ar-gallery-desc-title">🖌️ 그림 이야기 해설</div>
+        <div class="ar-gallery-desc-text">${desc}</div>
+      </div>
+      <div class="ar-gallery-desc" style="background:#FAFBFF">
+        <div class="ar-gallery-desc-title">📝 에피소드 요약</div>
+        <div class="ar-gallery-desc-text" style="font-size:.95rem;color:#6B7280">${ep.summary}</div>
+      </div>`;
+  } else {
+    // ── 에피소드 읽기 모드: 삽화 + 전체 본문 ──
+    const bodyHTML = epContent
+      ? epContent.content
+      : `<p style="color:#9CA3AF;font-style:italic">이 에피소드의 본문이 아직 등록되지 않았습니다.<br>요약: ${ep.summary}</p>`;
+
+    mainHTML = `
+      ${illustrationHTML}
+      <div class="ar-content-card">
+        <div class="ar-content-title">📖 에피소드 본문</div>
+        <div class="ar-ep-body">${bodyHTML}</div>
+      </div>`;
+  }
+
+  // 이전/다음 카드 네비
+  const idx = SAMPLE_EPISODES.findIndex(e => e.id === epId);
+  const prevEp = idx > 0 ? SAMPLE_EPISODES[idx-1] : null;
+  const nextEp = idx < SAMPLE_EPISODES.length-1 ? SAMPLE_EPISODES[idx+1] : null;
+  const navHTML = `
+    <div class="ar-ep-nav">
+      <a class="ar-ep-nav-btn${prevEp?'':' disabled'}"
+         href="${prevEp ? buildNavLink(prevEp.id) : '#'}">
+        <div class="ar-ep-nav-label">← 이전</div>
+        <div class="ar-ep-nav-title">${prevEp ? `EP.${prevEp.episode_number} ${prevEp.title}` : '—'}</div>
+      </a>
+      <a class="ar-ep-nav-btn next${nextEp?'':' disabled'}"
+         href="${nextEp ? buildNavLink(nextEp.id) : '#'}">
+        <div class="ar-ep-nav-label">다음 →</div>
+        <div class="ar-ep-nav-title">${nextEp ? `EP.${nextEp.episode_number} ${nextEp.title}` : '—'}</div>
+      </a>
+    </div>`;
+
+  document.getElementById('arBody').innerHTML = `
+    <div class="ar-ep-header">
+      <div class="ar-part-label" style="color:${pColor};opacity:1;font-size:.8rem;font-weight:800">${partName}</div>
+      <div class="ar-ep-badge">EP.${ep.episode_number}</div>
+      <h1 class="ar-ep-title">${ep.title}</h1>
+      <div class="ar-ep-meta">
+        <span>📅 ${ep.published_at}</span>
+        <span>👁️ ${(ep.view_count||0).toLocaleString()}</span>
+        ${!published ? `<span class="ar-unlock-badge">🔒 미공개</span>` : `<span class="ar-unlock-badge">✅ 공개됨</span>`}
+        <span class="ar-unlock-badge">🔐 관리자 전용 뷰어</span>
+      </div>
+    </div>
+    ${unpublishedBanner}
+    ${mainHTML}
+    ${navHTML}`;
+}
+
+render();
+</script>
+</body>
+</html>

@@ -204,8 +204,8 @@
     <div class="gallery-grid" id="galleryGrid"></div>
     <div class="empty-soon hidden" id="emptyState">
       <div class="empty-icon">🖌️</div>
-      <h4>해당 그림이 아직 없습니다</h4>
-      <p>새로운 그림이 곧 추가될 예정입니다.</p>
+      <h4>아직 그림 이야기가 없습니다</h4>
+      <p id="emptyStateMsg">이 부의 그림 이야기가 곧 연재됩니다.</p>
     </div>
   </div>
 </section>
@@ -373,10 +373,19 @@ function renderGallery() {
   const grid  = document.getElementById('galleryGrid');
   const empty = document.getElementById('emptyState');
   const list  = getFiltered();
-  document.getElementById('totalCount').textContent = GALLERY.length - 1; // 표지 제외 공개된 에피소드 수
+  document.getElementById('totalCount').textContent = GALLERY.length - 1; // 표지 제외 공개된 수
   if (list.length === 0) {
     grid.innerHTML = '';
     empty.classList.remove('hidden');
+    // 다음 공개 예정 날짜 동적 표시
+    const allEps = SAMPLE_EPISODES || [];
+    const today0 = new Date(); today0.setHours(0,0,0,0);
+    const nextEp = allEps.sort((a,b)=>new Date(a.date)-new Date(b.date))
+      .find(e => { const d=new Date(e.date); d.setHours(0,0,0,0); return d>today0; });
+    const dateMsg = nextEp
+      ? (()=>{ const [y,m,d]=nextEp.date.split('-'); return `${y}년 ${m}월 ${d}일부터 하루에 한 개의 그림 이야기가 공개됩니다.`; })()
+      : '곧 연재될 예정입니다.';
+    document.getElementById('emptyStateMsg').textContent = '이 부의 그림 이야기가 곧 연재됩니다. ' + dateMsg;
   } else {
     empty.classList.add('hidden');
     grid.innerHTML = list.map(galleryCard).join('');
