@@ -135,8 +135,39 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   padding: 9px 20px; border-radius: 8px; cursor: pointer;
   font-size: .82rem; font-weight: 900; font-family: 'Noto Sans KR', sans-serif;
   background: #fff; color: #059669; border: 1.5px solid #059669; transition: all .18s;
+  text-decoration: none;
 }
 .art-img-btn:hover { background: #059669; color: #fff; }
+
+/* ── 이미지 모달 ── */
+.img-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.82); align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px; padding: 20px;
+}
+.img-modal-overlay.open { display: flex; }
+.img-modal-box {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  max-width: min(760px, 94vw); width: 100%;
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+}
+.img-modal-header {
+  padding: 14px 20px; background: #1E3A8A; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.img-modal-title { font-size: .9rem; font-weight: 900; }
+.img-modal-close {
+  background: rgba(255,255,255,.2); border: none; color: #fff;
+  border-radius: 6px; padding: 5px 12px; font-size: .82rem;
+  font-weight: 900; cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+}
+.img-modal-close:hover { background: rgba(255,255,255,.35); }
+.img-modal-img { width: 100%; display: block; max-height: 60vh; object-fit: contain; }
+.img-modal-guide {
+  background: #F0FDF4; padding: 14px 20px; font-size: .82rem;
+  font-weight: 700; color: #065F46; line-height: 1.7; text-align: center;
+}
+.img-modal-guide strong { color: #059669; }
 .art-copy-hint { font-size: .72rem; color: #6B7280; font-weight: 700; }
 
 /* ── 반응형 ── */
@@ -224,7 +255,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art1', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-park.png" download="couple-park.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-park.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -280,7 +311,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art2', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-watercolor.png" download="couple-watercolor.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-watercolor.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -339,7 +370,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art3', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-park.png" download="couple-park.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-park.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -387,7 +418,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art4', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-watercolor.png" download="couple-watercolor.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-watercolor.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -435,7 +466,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art5', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-park.png" download="couple-park.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-park.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -484,7 +515,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art6', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-watercolor.png" download="couple-watercolor.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-watercolor.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -532,7 +563,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art7', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-park.png" download="couple-park.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-park.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -580,7 +611,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art8', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-watercolor.png" download="couple-watercolor.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-watercolor.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -629,7 +660,7 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art9', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-park.png" download="couple-park.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-park.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
     </div>
   </div>
@@ -687,8 +718,23 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
     </div>
     <div class="art-copy-bar">
       <button class="art-copy-btn" onclick="copyArticle('art10', event)">📋 기사 전문 복사</button>
-      <a class="art-img-btn" href="couple-park.png" download="couple-park.png">🖼 사진 다운로드</a>
+      <button class="art-img-btn" onclick="openImgModal('couple-park.png')">🖼 사진 저장</button>
       <span class="art-copy-hint">기사 본문 클립보드 복사</span>
+    </div>
+  </div>
+</div>
+
+<!-- 이미지 모달 -->
+<div class="img-modal-overlay" id="imgModal" onclick="if(event.target===this)closeImgModal()">
+  <div class="img-modal-box">
+    <div class="img-modal-header">
+      <span class="img-modal-title">🖼 사진 저장</span>
+      <button class="img-modal-close" onclick="closeImgModal()">✕ 닫기</button>
+    </div>
+    <img class="img-modal-img" id="imgModalImg" src="" alt="기사 사진">
+    <div class="img-modal-guide">
+      <strong>PC:</strong> 이미지 위에서 <strong>우클릭 → '이미지를 다른 이름으로 저장'</strong><br>
+      <strong>모바일:</strong> 이미지를 <strong>길게 누르기 → '이미지 저장'</strong>
     </div>
   </div>
 </div>
@@ -795,6 +841,17 @@ function copyArticle(artId, ev) {
     setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2200);
   });
 }
+
+function openImgModal(imgSrc) {
+  document.getElementById('imgModalImg').src = imgSrc;
+  document.getElementById('imgModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImgModal() {
+  document.getElementById('imgModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImgModal(); });
 </script>
 </body>
 </html>
