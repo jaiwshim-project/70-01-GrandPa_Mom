@@ -277,10 +277,12 @@
 <div id="footer-placeholder"></div>
 <div id="auth-placeholder"></div>
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="js/illustrations.js"></script>
 <script src="js/episode-content.js"></script>
 <script src="js/common.js"></script>
+<script src="js/kakao-share.js"></script>
 <script>
 const epId = parseInt(getParam('id')) || 1;
 let liked = false;
@@ -355,7 +357,15 @@ if (idx < epList.length-1) {
 }
 
 // 공유
-function shareKakao() { showToast('카카오 SDK 연동이 필요합니다.', 'info'); }
+function shareKakao() {
+  const ep = curEp || { id: epId, episode_number: epId, title: '', part_name: '' };
+  kakaoShareEpisode({
+    id: ep.id,
+    episode_number: ep.episode_number,
+    title: ep.title,
+    part_name: getPartName ? getPartName(ep.part_number) : '',
+  });
+}
 function shareTwitter() {
   const text = encodeURIComponent(`"오늘 하늘 색이 너무 예뻤어요." — 공대생 할아버지, 미대생 할머니 EP.${epId}`);
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(location.href)}`,'_blank');

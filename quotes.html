@@ -179,8 +179,10 @@
 <div id="footer-placeholder"></div>
 <div id="auth-placeholder"></div>
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="js/common.js"></script>
+<script src="js/kakao-share.js"></script>
 <script>
 const ALL_QUOTES = [
   {id:1, text:'\"20분 늦었어요.\" \"노을이 예뻤어요.\" — 그 순간 그는 처음으로 이해했다. 아, 이 사람은 시간보다 아름다움이 먼저인 사람이구나.', speaker:'engineer', ep:2, epTitle:'20분 늦은 이유', likes:312, date:'2025-08-02'},
@@ -282,12 +284,7 @@ function toggleLike(id, btn) {
 function shareQuote(id) {
   const q = ALL_QUOTES.find(q => q.id === id);
   if (!q) return;
-  const text = q.text + '\n\n— 공대생 할아버지, 미대생 할머니';
-  if (navigator.share) {
-    navigator.share({title: '명대사', text, url: location.href});
-  } else {
-    navigator.clipboard.writeText(text).then(() => showToast('명대사가 클립보드에 복사됐어요.'));
-  }
+  kakaoShareQuote({ id: q.id, text: q.text, ep: q.ep, epTitle: q.epTitle });
 }
 
 // Supabase load
