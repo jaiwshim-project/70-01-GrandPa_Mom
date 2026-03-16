@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기사자료 — 공대생 할아버지, 미대생 할머니</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111827; }
+
+/* ── 페이지 헤더 ── */
+.pk-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  padding: 48px 24px 40px; text-align: center; color: #fff;
+}
+.pk-header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 10px; }
+.pk-header p { font-size: 1rem; opacity: .85; margin-bottom: 28px; }
+.pk-nav { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pk-nav a {
+  padding: 8px 20px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 20px; color: #fff; font-size: .82rem; font-weight: 700;
+  text-decoration: none; transition: background .18s;
+}
+.pk-nav a:hover { background: rgba(255,255,255,.35); }
+
+/* ── 섹션 래퍼 ── */
+.pk-section { max-width: 900px; margin: 48px auto; padding: 0 24px; }
+.pk-section-title {
+  font-size: 1.1rem; font-weight: 800; color: #374151; margin-bottom: 20px;
+  padding-bottom: 10px; border-bottom: 2px solid #E5E7EB;
+  display: flex; align-items: center; gap: 8px;
+}
+.pk-print-btn {
+  display: inline-block; padding: 9px 22px; border-radius: 8px;
+  background: #2563EB; color: #fff; font-size: .82rem; font-weight: 700;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background .18s; margin-bottom: 10px;
+}
+.pk-print-btn:hover { background: #1D4ED8; }
+.pk-print-btn.green { background: #059669; }
+.pk-print-btn.green:hover { background: #047857; }
+
+/* ── A4 공통 ── */
+.a4 {
+  width: 595px; min-height: 842px;
+  margin: 0 auto 48px; position: relative; overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,.18); page-break-after: always;
+}
+.a4-actions { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
+.a4-label { text-align: center; font-size: .78rem; color: #6B7280; margin-bottom: 6px; font-weight: 700; }
+
+/* ─────────────────────────────────
+   공통: 기사 내 요소
+───────────────────────────────── */
+.art-category {
+  display: inline-block; padding: 3px 10px; border-radius: 3px;
+  font-size: .68rem; font-weight: 900; letter-spacing: .06em;
+}
+.art-meta { font-size: .7rem; color: #6B7280; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.art-meta strong { color: #374151; font-weight: 700; }
+.art-meta-sep { color: #D1D5DB; }
+.art-byline { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid #F3F4F6; border-bottom: 1px solid #F3F4F6; margin-bottom: 14px; }
+.art-reporter-avatar { width: 28px; height: 28px; border-radius: 50%; background: #E5E7EB; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 900; color: #374151; flex-shrink: 0; }
+.art-body p { font-size: .82rem; color: #374151; line-height: 2; margin-bottom: 10px; font-weight: 700; }
+.art-body p strong { color: #111827; font-weight: 900; }
+.art-highlight {
+  background: #F0FDF4; border-left: 4px solid #059669; padding: 12px 16px;
+  margin: 14px 0; border-radius: 0 8px 8px 0;
+  font-size: .8rem; color: #065F46; font-weight: 700; line-height: 1.9;
+}
+.art-quote {
+  background: #F8FAFF; border-left: 4px solid #2563EB; padding: 12px 16px;
+  margin: 14px 0; font-size: .82rem; color: #1E3A8A;
+  font-style: italic; font-weight: 700; line-height: 1.9;
+}
+.art-quote cite { display: block; font-style: normal; font-size: .7rem; color: #6B7280; margin-top: 4px; }
+.art-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .75rem; }
+.art-table th { background: #1E3A8A; color: #fff; padding: 7px 10px; font-weight: 800; text-align: left; }
+.art-table td { padding: 6px 10px; border-bottom: 1px solid #E5E7EB; font-weight: 700; color: #374151; }
+.art-table tr:nth-child(even) td { background: #F8FAFF; }
+.art-tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+.art-tag { padding: 3px 10px; border: 1px solid #E5E7EB; border-radius: 20px; font-size: .65rem; color: #6B7280; font-weight: 700; }
+.art-footer { background: #F8FAFF; border-top: 2px solid #E5E7EB; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; }
+.art-footer-logo { height: 28px; object-fit: contain; }
+.art-footer-qr { width: 44px; height: 44px; border-radius: 6px; overflow: hidden; border: 1px solid #E5E7EB; }
+.art-footer-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.art-footer-info { font-size: .65rem; color: #6B7280; font-weight: 700; }
+.art-footer-info strong { color: #374151; font-weight: 900; }
+
+/* ─────────────────────────────────
+   기사 1: 연재 시작 알림 (브랜드뉴스 스타일)
+───────────────────────────────── */
+.nk1 { background: #fff; display: flex; flex-direction: column; font-family: 'Noto Sans KR', sans-serif; }
+.nk1-masthead {
+  background: #fff; border-bottom: 3px solid #1E3A8A;
+  padding: 10px 24px 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nk1-masthead-logo { font-size: .95rem; font-weight: 900; color: #1E3A8A; letter-spacing: -.02em; }
+.nk1-masthead-date { font-size: .65rem; color: #6B7280; font-weight: 700; }
+.nk1-hero { position: relative; height: 220px; overflow: hidden; flex-shrink: 0; }
+.nk1-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.nk1-hero-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,.6); padding: 6px 16px; font-size: .65rem; color: rgba(255,255,255,.85); font-weight: 700; }
+.nk1-content { padding: 18px 24px; flex: 1; display: flex; flex-direction: column; }
+.nk1-head { margin-bottom: 12px; }
+.nk1-head h1 { font-family: 'Noto Serif KR', serif; font-size: 1.25rem; font-weight: 900; color: #111827; line-height: 1.4; margin-bottom: 6px; }
+.nk1-head .sub { font-size: .85rem; font-weight: 700; color: #374151; line-height: 1.6; }
+
+/* ─────────────────────────────────
+   기사 2: 인터뷰 스타일
+───────────────────────────────── */
+.nk2 { background: #fff; display: flex; flex-direction: column; font-family: 'Noto Sans KR', sans-serif; }
+.nk2-masthead {
+  background: #111827; padding: 10px 24px 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nk2-masthead-logo { font-size: .92rem; font-weight: 900; color: #fff; }
+.nk2-masthead-date { font-size: .65rem; color: rgba(255,255,255,.6); font-weight: 700; }
+.nk2-split { display: flex; flex: 1; min-height: 0; }
+.nk2-img-col { width: 200px; flex-shrink: 0; overflow: hidden; }
+.nk2-img-col img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+.nk2-content { flex: 1; padding: 18px 20px; display: flex; flex-direction: column; }
+.nk2-head h1 { font-family: 'Noto Serif KR', serif; font-size: 1.15rem; font-weight: 900; color: #111827; line-height: 1.4; margin-bottom: 6px; }
+.nk2-head .sub { font-size: .82rem; font-weight: 700; color: #374151; line-height: 1.6; margin-bottom: 10px; }
+.nk2-qa { margin-bottom: 8px; }
+.nk2-q { font-size: .78rem; font-weight: 900; color: #1E3A8A; margin-bottom: 3px; }
+.nk2-a { font-size: .76rem; color: #374151; line-height: 1.8; font-weight: 700; }
+
+/* ─────────────────────────────────
+   기사 3: 특집 기획 (풀페이지)
+───────────────────────────────── */
+.nk3 { background: #FAFAFA; display: flex; flex-direction: column; font-family: 'Noto Sans KR', sans-serif; }
+.nk3-masthead {
+  background: linear-gradient(90deg, #1E3A8A, #2563EB);
+  padding: 10px 24px 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nk3-masthead-logo { font-size: .92rem; font-weight: 900; color: #fff; }
+.nk3-masthead-right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.nk3-masthead-date { font-size: .62rem; color: rgba(255,255,255,.7); font-weight: 700; }
+.nk3-content { padding: 16px 24px; flex: 1; display: flex; flex-direction: column; }
+.nk3-head h1 { font-family: 'Noto Serif KR', serif; font-size: 1.3rem; font-weight: 900; color: #111827; line-height: 1.35; margin-bottom: 6px; }
+.nk3-head .sub { font-size: .85rem; font-weight: 700; color: #374151; line-height: 1.6; margin-bottom: 10px; }
+.nk3-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+.nk3-col { display: flex; flex-direction: column; gap: 8px; }
+.nk3-img { width: 100%; height: 140px; overflow: hidden; border-radius: 6px; }
+.nk3-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+
+/* ─────────────────────────────────
+   기사 4: 보도자료 (공식 발표)
+───────────────────────────────── */
+.nk4 { background: #fff; display: flex; flex-direction: column; font-family: 'Noto Sans KR', sans-serif; border: 2px solid #1E3A8A; }
+.nk4-header { background: #1E3A8A; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; }
+.nk4-header-left h2 { font-size: 1rem; font-weight: 900; color: #fff; margin-bottom: 2px; }
+.nk4-header-left p { font-size: .65rem; color: rgba(255,255,255,.75); font-weight: 700; }
+.nk4-header-right { text-align: right; }
+.nk4-header-right .nk4-embargo { font-size: .65rem; color: #FDE68A; font-weight: 900; letter-spacing: .08em; }
+.nk4-header-right .nk4-date { font-size: .62rem; color: rgba(255,255,255,.7); font-weight: 700; margin-top: 2px; }
+.nk4-content { padding: 18px 28px; flex: 1; display: flex; flex-direction: column; }
+.nk4-head h1 { font-family: 'Noto Serif KR', serif; font-size: 1.2rem; font-weight: 900; color: #111827; line-height: 1.4; margin-bottom: 6px; border-bottom: 2px solid #1E3A8A; padding-bottom: 10px; }
+.nk4-head .sub { font-size: .84rem; font-weight: 700; color: #374151; line-height: 1.65; margin-bottom: 12px; }
+.nk4-contact { background: #F0F4FF; border: 1px solid #C7D7F5; border-radius: 8px; padding: 10px 14px; margin-top: 10px; }
+.nk4-contact-title { font-size: .68rem; font-weight: 900; color: #1E3A8A; margin-bottom: 6px; letter-spacing: .08em; }
+.nk4-contact-row { font-size: .7rem; color: #374151; font-weight: 700; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ─────────────────────────────────
+   기사 5: SNS/디지털 보도 (모바일 감성)
+───────────────────────────────── */
+.nk5 { background: linear-gradient(165deg, #FFF7ED, #FFFBEB); display: flex; flex-direction: column; font-family: 'Noto Sans KR', sans-serif; }
+.nk5-masthead {
+  background: linear-gradient(90deg, #D97706, #F59E0B);
+  padding: 10px 24px 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nk5-masthead-logo { font-size: .92rem; font-weight: 900; color: #fff; }
+.nk5-masthead-date { font-size: .65rem; color: rgba(255,255,255,.8); font-weight: 700; }
+.nk5-hero { position: relative; height: 200px; overflow: hidden; flex-shrink: 0; }
+.nk5-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.nk5-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(255,247,237,.95) 100%); }
+.nk5-content { padding: 6px 24px 18px; flex: 1; display: flex; flex-direction: column; }
+.nk5-head h1 { font-family: 'Noto Serif KR', serif; font-size: 1.2rem; font-weight: 900; color: #1C1410; line-height: 1.4; margin-bottom: 6px; }
+.nk5-head .sub { font-size: .83rem; font-weight: 700; color: #44260B; line-height: 1.65; margin-bottom: 10px; }
+.nk5-numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0; }
+.nk5-num { background: rgba(255,255,255,.7); border: 1px solid rgba(217,119,6,.2); border-radius: 8px; padding: 8px; text-align: center; }
+.nk5-num-n { font-size: 1.3rem; font-weight: 900; color: #D97706; line-height: 1; }
+.nk5-num-l { font-size: .6rem; color: #92400E; margin-top: 2px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- 페이지 헤더 -->
+<div class="pk-header">
+  <h1>📰 기사자료</h1>
+  <p>공대생 할아버지, 미대생 할머니 — 보도자료 · 기사 형식 홍보물 5종</p>
+  <div class="pk-nav">
+    <a href="index.html">🏠 메인</a>
+    <a href="press-kit.html">📋 안내자료</a>
+    <a href="platform.html">📖 플랫폼</a>
+    <a href="episodes.html">📚 에피소드</a>
+  </div>
+</div>
+
+<div class="pk-section">
+  <div class="pk-section-title">📋 사용 안내</div>
+  <p style="font-size:.86rem;color:#4B5563;line-height:1.8;margin-bottom:16px">
+    언론사·블로그·SNS 홍보에 바로 활용할 수 있는 기사 형식 보도자료 5종입니다. 각 자료 아래 [PNG 저장] 버튼으로 이미지 파일을 다운로드하세요.
+  </p>
+</div>
+
+<!-- ══════════════════════════════
+     기사 1: 연재 시작 뉴스
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">① 연재 시작 뉴스 — 브랜드뉴스 스타일</div>
+  <div class="a4-label">헤드라인 + 이미지 + 본문 기사 형식</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="downloadPNG('nk1-wrap')">⬇️ PNG 저장</button>
+  </div>
+  <div id="nk1-wrap">
+  <div class="a4 nk1">
+    <!-- 마스트헤드 -->
+    <div class="nk1-masthead">
+      <div class="nk1-masthead-logo">📰 BRAND NEWS</div>
+      <div class="nk1-masthead-date">2026.03.21 (토) · 문화·라이프</div>
+    </div>
+    <!-- 히어로 이미지 -->
+    <div class="nk1-hero">
+      <img src="couple-park.png" alt="공원 산책 커플">
+      <div class="nk1-hero-caption">▲ 공학도 남편과 화가 아내의 40년 사랑 이야기를 담은 수채화 연재 플랫폼이 오늘 정식 오픈한다. (이미지 제공: 공대생 할아버지, 미대생 할머니)</div>
+    </div>
+    <!-- 기사 본문 -->
+    <div class="nk1-content">
+      <div class="nk1-head">
+        <span class="art-category" style="background:#EFF6FF;color:#1E3A8A">📖 문화·도서</span>
+        <h1 style="margin-top:8px">"논리와 감성이 만나는 40년"… 무료 연재 플랫폼 '공대생 할아버지, 미대생 할머니' 오픈</h1>
+        <div class="sub">수채화 일러스트와 함께 매일 오전 한 편씩 공개… 60편 완결 부부 이야기</div>
+      </div>
+      <div class="art-meta" style="margin-bottom:10px">
+        <strong>김민준 기자</strong>
+        <span class="art-meta-sep">|</span>
+        <span>승인 2026.03.21 09:00</span>
+        <span class="art-meta-sep">|</span>
+        <span>댓글 0</span>
+      </div>
+      <div class="art-body">
+        <p>공학도 남편과 화가 아내가 함께 살아온 <strong>40년간의 실화</strong>를 담은 연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 21일 정식 서비스를 시작한다.</p>
+        <p>이 플랫폼은 이공계 출신 할아버지의 논리적 시각과 미술대학 출신 할머니의 감성적 시각이 부딪히고 조화를 이루는 과정을 6개 파트, 총 60편의 에피소드로 풀어낸다. 첫만남부터 연애, 결혼, 생활, 중년, 노년까지 이어지는 이야기가 <strong>매일 오전 한 편씩 무료로 공개</strong>된다.</p>
+        <div class="art-highlight">
+          📅 <strong>2026년 3월 21일</strong>부터 매일 오전 공개 · 총 60편 · 로그인 없이 무료 읽기
+        </div>
+        <p>특히 각 에피소드마다 본문과 어울리는 <strong>수채화 일러스트</strong>가 함께 수록되어, 글과 그림이 조화를 이루는 독특한 읽기 경험을 제공한다. 개발팀은 "공학과 예술이라는 극단적으로 다른 두 세계가 만나 40년을 함께 살아온 이야기는, 결국 우리 모두의 이야기"라고 말했다.</p>
+      </div>
+      <div class="art-tag-row">
+        <span class="art-tag">#부부이야기</span>
+        <span class="art-tag">#수채화</span>
+        <span class="art-tag">#무료연재</span>
+        <span class="art-tag">#공대생할아버지</span>
+        <span class="art-tag">#미대생할머니</span>
+      </div>
+    </div>
+    <div class="art-footer">
+      <img src="로고-공대생.png" alt="로고" class="art-footer-logo">
+      <div class="art-footer-info">
+        <strong>공대생 할아버지, 미대생 할머니</strong><br>
+        무료 연재 플랫폼 · 매일 오전 공개
+      </div>
+      <div class="art-footer-qr"><img src="qr-code.png" alt="QR"></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     기사 2: 인터뷰 기사
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">② 저자 인터뷰 기사 — 투컬럼 레이아웃</div>
+  <div class="a4-label">인터뷰 질답 형식 · 이미지 사이드바</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="downloadPNG('nk2-wrap')">⬇️ PNG 저장</button>
+  </div>
+  <div id="nk2-wrap">
+  <div class="a4 nk2">
+    <div class="nk2-masthead">
+      <div class="nk2-masthead-logo">📰 BRAND NEWS · 인터뷰</div>
+      <div class="nk2-masthead-date">2026.03.21 · 특별기획</div>
+    </div>
+    <div class="nk2-split">
+      <div class="nk2-img-col"><img src="couple-park.png" alt="커플"></div>
+      <div class="nk2-content">
+        <span class="art-category" style="background:#1E3A8A;color:#fff">💬 인터뷰</span>
+        <div class="nk2-head" style="margin-top:8px">
+          <h1>"40년을 함께 살았지만, 아직도 서로가 신기합니다"</h1>
+          <div class="sub">공대생 할아버지·미대생 할머니 연재 플랫폼 개발팀 단독 인터뷰</div>
+        </div>
+        <div class="art-meta" style="margin-bottom:10px">
+          <strong>이서연 기자</strong>
+          <span class="art-meta-sep">|</span>
+          <span>2026.03.21</span>
+        </div>
+        <div class="nk2-qa">
+          <div class="nk2-q">▶ 이 이야기를 연재하게 된 계기는 무엇인가요?</div>
+          <div class="nk2-a">공학도 남편과 화가 아내의 시각 차이가 너무 재밌고 따뜻해서, 이 이야기를 혼자 가지고 있기가 아까웠습니다. 40년 동안 쌓인 에피소드들을 조금씩 꺼내 보니 60편이 되었어요.</div>
+        </div>
+        <div class="nk2-qa">
+          <div class="nk2-q">▶ 논리와 감성, 어떻게 조화를 이루나요?</div>
+          <div class="nk2-a">처음엔 충돌이었습니다. "이건 빨강입니다"와 "이건 노을색이에요" 같은 대화가 매일 있었죠. 그런데 어느 순간, 그 다름이 우리를 더 풍요롭게 만든다는 걸 알았습니다.</div>
+        </div>
+        <div class="nk2-qa">
+          <div class="nk2-q">▶ 독자들에게 전하고 싶은 메시지는?</div>
+          <div class="nk2-a">달라도 괜찮다는 것, 그리고 그 다름이 결국 삶을 더 아름답게 만든다는 것입니다. 우리 이야기가 그 증거가 되길 바랍니다.</div>
+        </div>
+        <div class="art-highlight" style="font-size:.72rem;padding:8px 12px;margin-top:8px">
+          📅 2026년 3월 21일부터 매일 오전 1편씩 무료 공개 · 총 60편
+        </div>
+      </div>
+    </div>
+    <div class="art-footer">
+      <img src="로고-공대생.png" alt="로고" class="art-footer-logo">
+      <div class="art-footer-info">
+        <strong>공대생 할아버지, 미대생 할머니</strong><br>무료 연재 · 매일 오전 공개
+      </div>
+      <div class="art-footer-qr"><img src="qr-code.png" alt="QR"></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     기사 3: 특집 기획 기사
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">③ 특집 기획 — 연재 구성 소개</div>
+  <div class="a4-label">그리드 레이아웃 · 파트별 구성 소개</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn green" onclick="downloadPNG('nk3-wrap')">⬇️ PNG 저장</button>
+  </div>
+  <div id="nk3-wrap">
+  <div class="a4 nk3">
+    <div class="nk3-masthead">
+      <div class="nk3-masthead-logo">📰 BRAND NEWS · 특집기획</div>
+      <div class="nk3-masthead-right">
+        <div class="nk3-masthead-date">2026.03.21</div>
+      </div>
+    </div>
+    <div class="nk3-content">
+      <span class="art-category" style="background:#EFF6FF;color:#1E3A8A">🎯 특집기획</span>
+      <div class="nk3-head" style="margin-top:8px">
+        <h1>6개 파트, 60편의 이야기 — '공대생 할아버지, 미대생 할머니' 완전 해부</h1>
+        <div class="sub">첫만남부터 노년까지, 논리와 감성이 40년을 함께 살아온 기록</div>
+      </div>
+      <div class="art-meta" style="margin-bottom:10px">
+        <strong>박지훈 기자</strong>
+        <span class="art-meta-sep">|</span>
+        <span>2026.03.21</span>
+      </div>
+      <div class="nk3-layout">
+        <div class="nk3-col">
+          <div class="nk3-img"><img src="couple-watercolor.png" alt="커플 수채화"></div>
+          <div class="art-body" style="flex:1">
+            <p>공학도 남편과 화가 아내의 이야기는 <strong>1부 첫만남</strong>에서 시작된다. 미술관 앞에서 시간을 계산하던 남자와 노을을 바라보던 여자의 첫 만남이 그 시작이다.</p>
+            <p><strong>2부 연애</strong>에서는 엑셀 데이트 계획표와 즉흥 여행의 충돌이, <strong>3부 결혼</strong>에서는 엑셀 프로포즈와 수채화 청첩장이 등장한다.</p>
+          </div>
+        </div>
+        <div class="nk3-col">
+          <div class="nk3-img"><img src="couple-park.png" alt="공원 산책"></div>
+          <div class="art-body" style="flex:1">
+            <p><strong>4부 생활</strong>부터 <strong>6부 노년</strong>까지는 함께 살아가며 서로를 더 깊이 이해하는 과정을 담는다. 40년이 쌓인 두 사람의 모습에서 독자들은 자신과 사랑하는 사람을 발견하게 된다.</p>
+            <p>각 에피소드마다 본문과 어울리는 <strong>수채화 일러스트</strong>가 수록되어 읽는 재미를 더한다.</p>
+          </div>
+        </div>
+      </div>
+      <table class="art-table">
+        <tr><th>파트</th><th>제목</th><th>편수</th><th>공개 시작</th></tr>
+        <tr><td>1부</td><td>첫만남</td><td>10편</td><td>2026.03.21</td></tr>
+        <tr><td>2부</td><td>연애</td><td>10편</td><td>2026.03.31</td></tr>
+        <tr><td>3부</td><td>결혼</td><td>10편</td><td>2026.04.10</td></tr>
+        <tr><td>4부~6부</td><td>생활·중년·노년</td><td>30편</td><td>2026.04.20~</td></tr>
+      </table>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px solid #E5E7EB">
+        <div class="art-tag-row" style="margin-top:0">
+          <span class="art-tag">#무료연재</span><span class="art-tag">#수채화</span><span class="art-tag">#부부이야기</span>
+        </div>
+        <div class="art-footer-qr" style="margin-left:10px"><img src="qr-code.png" alt="QR"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     기사 4: 공식 보도자료
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">④ 공식 보도자료 — 언론사 배포용</div>
+  <div class="a4-label">공식 프레스릴리즈 형식 · 즉시 배포 가능</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn" onclick="downloadPNG('nk4-wrap')">⬇️ PNG 저장</button>
+  </div>
+  <div id="nk4-wrap">
+  <div class="a4 nk4">
+    <div class="nk4-header">
+      <div class="nk4-header-left">
+        <h2>공대생 할아버지, 미대생 할머니</h2>
+        <p>무료 연재 플랫폼 · 공식 보도자료</p>
+      </div>
+      <div class="nk4-header-right">
+        <div class="nk4-embargo">즉시 배포 가능</div>
+        <div class="nk4-date">발행일: 2026년 3월 21일</div>
+      </div>
+    </div>
+    <div class="nk4-content">
+      <div class="nk4-head">
+        <h1>논리와 감성이 만나는 40년의 사랑 이야기, 무료 연재 플랫폼으로 독자 찾는다</h1>
+        <div class="sub">2026년 3월 21일, '공대생 할아버지·미대생 할머니' 정식 서비스 시작… 매일 오전 1편씩 수채화 일러스트와 함께 60편 무료 공개</div>
+      </div>
+      <div class="art-meta" style="margin-bottom:12px">
+        <span>보도자료 배포: 2026.03.21</span>
+        <span class="art-meta-sep">|</span>
+        <span>즉시 배포 가능</span>
+      </div>
+      <div class="art-body">
+        <p><strong>서울, 2026년 3월 21일</strong> — 공학도 남편과 화가 아내의 40년 실화를 담은 온라인 연재 플랫폼 '공대생 할아버지, 미대생 할머니'가 오늘부터 정식 서비스를 시작한다고 밝혔다.</p>
+        <p>이 플랫폼은 이공계와 예술계라는 극단적으로 다른 배경을 가진 두 사람이 함께 살아온 40년의 이야기를 6개 파트, 총 60편의 에피소드로 구성했다. 특히 <strong>로그인 없이 누구나 무료</strong>로 읽을 수 있으며, 매일 오전 새 에피소드가 공개된다.</p>
+        <div class="art-quote">
+          "공학과 예술이라는 다른 언어를 가진 두 사람이 40년을 함께 살아온 이야기는, 결국 서로 다른 우리 모두의 이야기입니다."
+          <cite>— 개발팀 관계자</cite>
+        </div>
+        <p>각 에피소드마다 본문과 어울리는 수채화 일러스트가 함께 수록되어 글과 그림이 조화를 이루는 독특한 읽기 경험을 제공한다. 모바일 최적화 설계로 스마트폰에서도 편리하게 이용할 수 있다.</p>
+      </div>
+      <div class="nk4-contact">
+        <div class="nk4-contact-title">▸ 보도 문의</div>
+        <div class="nk4-contact-row">
+          <span>플랫폼: 공대생 할아버지, 미대생 할머니</span>
+          <span>서비스 시작: 2026년 3월 21일</span>
+          <span>이용 요금: 완전 무료</span>
+        </div>
+      </div>
+    </div>
+    <div class="art-footer">
+      <img src="로고-공대생.png" alt="로고" class="art-footer-logo">
+      <div class="art-footer-info">
+        <strong>공대생 할아버지, 미대생 할머니</strong><br>
+        무료 연재 플랫폼 · 2026년 3월 21일 시작
+      </div>
+      <div class="art-footer-qr"><img src="qr-code.png" alt="QR"></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     기사 5: SNS 감성 기사
+══════════════════════════════ -->
+<div class="pk-section">
+  <div class="pk-section-title">⑤ SNS·디지털 감성 기사 — 따뜻한 앰버톤</div>
+  <div class="a4-label">디지털 매체·SNS 공유용 감성 뉴스 카드</div>
+  <div class="a4-actions">
+    <button class="pk-print-btn green" onclick="downloadPNG('nk5-wrap')">⬇️ PNG 저장</button>
+  </div>
+  <div id="nk5-wrap">
+  <div class="a4 nk5">
+    <div class="nk5-masthead">
+      <div class="nk5-masthead-logo">📰 BRAND NEWS · 라이프</div>
+      <div class="nk5-masthead-date">2026.03.21</div>
+    </div>
+    <div class="nk5-hero">
+      <img src="couple-park.png" alt="공원 산책 커플">
+      <div class="nk5-hero-overlay"></div>
+    </div>
+    <div class="nk5-content">
+      <span class="art-category" style="background:#FEF3C7;color:#92400E">❤️ 라이프·인간</span>
+      <div class="nk5-head" style="margin-top:8px">
+        <h1>"그는 설계도를 들고, 나는 붓을 들었다"… 40년 부부의 이야기가 온다</h1>
+        <div class="sub">매일 오전 한 편씩, 수채화와 함께 펼쳐지는 이공계 할아버지·예술가 할머니의 실화 연재</div>
+      </div>
+      <div class="art-meta" style="margin-bottom:10px">
+        <strong>최유나 기자</strong>
+        <span class="art-meta-sep">|</span>
+        <span>2026.03.21 09:00</span>
+      </div>
+      <div class="nk5-numbers">
+        <div class="nk5-num"><div class="nk5-num-n">60</div><div class="nk5-num-l">에피소드</div></div>
+        <div class="nk5-num"><div class="nk5-num-n">6</div><div class="nk5-num-l">파트</div></div>
+        <div class="nk5-num"><div class="nk5-num-n">🆓</div><div class="nk5-num-l">완전 무료</div></div>
+      </div>
+      <div class="art-body">
+        <p>미술관 앞에서 처음 만난 두 사람. 그는 시간을 계산했고, 그녀는 빛의 색깔을 봤다. 그렇게 시작된 40년이 이제 60편의 이야기로 독자 앞에 펼쳐진다.</p>
+        <p>'공대생 할아버지, 미대생 할머니'는 <strong>2026년 3월 21일</strong>부터 매일 오전 한 편씩, 수채화 일러스트와 함께 완전 무료로 공개된다. 로그인 없이 누구나 읽을 수 있다.</p>
+        <div class="art-quote" style="background:#FEF3C7;border-left-color:#D97706;color:#92400E">
+          "그는 각도를 재고, 나는 색을 봤다. 그게 우리 40년의 시작이었다."
+          <cite style="color:#B45309">— 미대생 할머니</cite>
+        </div>
+        <p>서로 다른 세계를 가진 두 사람이 함께 살아가며 발견한 것. 바로 <strong>다름이 결국 삶을 더 풍요롭게 만든다</strong>는 사실이다. 이 이야기는 단순한 부부 이야기를 넘어, 서로 다른 우리 모두를 위한 이야기다.</p>
+      </div>
+      <div class="art-tag-row" style="margin-top:8px">
+        <span class="art-tag">#부부이야기</span>
+        <span class="art-tag">#수채화</span>
+        <span class="art-tag">#무료연재</span>
+        <span class="art-tag">#공대생할아버지</span>
+        <span class="art-tag">#미대생할머니</span>
+      </div>
+    </div>
+    <div class="art-footer" style="background:#FEF3C7;border-top-color:#FDE68A">
+      <img src="로고-공대생.png" alt="로고" class="art-footer-logo">
+      <div class="art-footer-info">
+        <strong>공대생 할아버지, 미대생 할머니</strong><br>
+        2026.3.21 연재 시작 · 무료
+      </div>
+      <div class="art-footer-qr"><img src="qr-code.png" alt="QR"></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div style="height:60px"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+const ART_NAMES = {
+  'nk1-wrap': '기사자료-연재시작뉴스',
+  'nk2-wrap': '기사자료-저자인터뷰',
+  'nk3-wrap': '기사자료-특집기획',
+  'nk4-wrap': '기사자료-공식보도자료',
+  'nk5-wrap': '기사자료-SNS감성기사'
+};
+
+function downloadPNG(wrapId) {
+  const el = document.getElementById(wrapId);
+  if (!el) return;
+  const a4 = el.querySelector('.a4');
+  if (!a4) return;
+
+  const btn = el.previousElementSibling?.querySelector('button');
+  const origText = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = '⏳ 변환 중...'; btn.disabled = true; }
+
+  html2canvas(a4, { scale: 2, useCORS: true, logging: false, backgroundColor: null })
+    .then(canvas => {
+      const link = document.createElement('a');
+      link.download = (ART_NAMES[wrapId] || wrapId) + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    })
+    .finally(() => {
+      if (btn) { btn.textContent = origText; btn.disabled = false; }
+    });
+}
+</script>
+</body>
+</html>
