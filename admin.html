@@ -562,9 +562,7 @@ function doLogin() {
 }
 function doLogout() {
   sessionStorage.removeItem('adminAuth');
-  document.getElementById('loginScreen').style.display = 'flex';
-  document.getElementById('adminApp').style.display = 'none';
-  document.getElementById('pwInput').value = '';
+  location.href = 'index.html';
 }
 
 // 새로고침 시 로그인 상태 복원
