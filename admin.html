@@ -7,16 +7,26 @@
 <link rel="stylesheet" href="css/style.css">
 <style>
 :root {
-  --admin-bg: #0F1923;
-  --admin-card: #1A2535;
-  --admin-border: #2A3A52;
-  --admin-accent: #4A90D9;
-  --admin-green: #2ECC71;
-  --admin-orange: #E67E22;
-  --admin-red: #E74C3C;
-  --admin-gold: #F1C40F;
-  --admin-text: #E8F0FE;
-  --admin-muted: #7A9CC0;
+  --admin-bg: #F4F6FA;
+  --admin-card: #FFFFFF;
+  --admin-border: #E4E9F2;
+  --admin-border-light: #EEF2F8;
+  --admin-accent: #2563EB;
+  --admin-accent-light: #EFF6FF;
+  --admin-green: #059669;
+  --admin-green-light: #ECFDF5;
+  --admin-orange: #D97706;
+  --admin-orange-light: #FFFBEB;
+  --admin-red: #DC2626;
+  --admin-red-light: #FEF2F2;
+  --admin-gold: #B45309;
+  --admin-gold-light: #FEF3C7;
+  --admin-text: #111827;
+  --admin-text-sub: #374151;
+  --admin-muted: #6B7280;
+  --admin-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --admin-shadow-md: 0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
+  --admin-shadow-lg: 0 20px 60px rgba(0,0,0,.10), 0 8px 20px rgba(0,0,0,.06);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,167 +35,182 @@ body { background: var(--admin-bg); color: var(--admin-text); font-family: 'Noto
 /* ── 로그인 화면 ── */
 #loginScreen {
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #0A1628 0%, #1A2840 50%, #0F1F30 100%);
+  background: linear-gradient(145deg, #F0F4FF 0%, #FAFBFF 50%, #F5F0FF 100%);
 }
 .login-box {
-  background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 16px; padding: 48px 40px; width: 360px; text-align: center;
-  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  background: #fff; border: 1px solid var(--admin-border);
+  border-radius: 20px; padding: 52px 44px; width: 380px; text-align: center;
+  box-shadow: var(--admin-shadow-lg);
 }
-.login-logo { font-size: 2.8rem; margin-bottom: 12px; }
-.login-title { font-size: 1.2rem; font-weight: 700; color: var(--admin-text); margin-bottom: 6px; }
-.login-sub { font-size: .82rem; color: var(--admin-muted); margin-bottom: 32px; }
+.login-logo { font-size: 3rem; margin-bottom: 16px; }
+.login-title { font-size: 1.3rem; font-weight: 800; color: var(--admin-text); margin-bottom: 6px; letter-spacing: -.3px; }
+.login-sub { font-size: .84rem; color: var(--admin-muted); margin-bottom: 36px; }
 .login-input {
-  width: 100%; padding: 12px 16px; background: rgba(255,255,255,.06);
-  border: 1.5px solid var(--admin-border); border-radius: 8px;
-  color: var(--admin-text); font-size: 1rem; margin-bottom: 16px; outline: none;
-  transition: border-color .2s;
+  width: 100%; padding: 13px 16px; background: var(--admin-bg);
+  border: 1.5px solid var(--admin-border); border-radius: 10px;
+  color: var(--admin-text); font-size: 1rem; margin-bottom: 14px; outline: none;
+  transition: border-color .2s, box-shadow .2s;
 }
-.login-input:focus { border-color: var(--admin-accent); }
+.login-input:focus { border-color: var(--admin-accent); box-shadow: 0 0 0 3px rgba(37,99,235,.1); background: #fff; }
 .login-btn {
-  width: 100%; padding: 13px; background: var(--admin-accent); color: #fff;
-  border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
-  cursor: pointer; transition: background .2s;
+  width: 100%; padding: 14px; background: var(--admin-accent); color: #fff;
+  border: none; border-radius: 10px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: background .2s, transform .1s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(37,99,235,.35);
 }
-.login-btn:hover { background: #3A80C9; }
-.login-err { color: var(--admin-red); font-size: .83rem; margin-top: 10px; display: none; }
+.login-btn:hover { background: #1D4ED8; box-shadow: 0 6px 20px rgba(37,99,235,.45); transform: translateY(-1px); }
+.login-btn:active { transform: translateY(0); }
+.login-err { color: var(--admin-red); font-size: .83rem; margin-top: 12px; display: none; background: var(--admin-red-light); padding: 8px 12px; border-radius: 8px; }
 
 /* ── 메인 레이아웃 ── */
 #adminApp { display: none; }
 .admin-header {
-  background: var(--admin-card); border-bottom: 1px solid var(--admin-border);
-  padding: 0 24px; display: flex; align-items: center; gap: 20px;
-  height: 56px; position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--admin-border);
+  padding: 0 28px; display: flex; align-items: center; gap: 20px;
+  height: 60px; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
 }
-.admin-logo { font-size: 1rem; font-weight: 700; color: var(--admin-text); white-space: nowrap; }
+.admin-logo { font-size: 1rem; font-weight: 800; color: var(--admin-text); white-space: nowrap; letter-spacing: -.2px; }
 .admin-logo span { color: var(--admin-accent); }
 
 .tab-nav { display: flex; gap: 2px; flex: 1; overflow-x: auto; scrollbar-width: none; }
 .tab-nav::-webkit-scrollbar { display: none; }
 .tab-btn {
-  padding: 8px 18px; border-radius: 6px; font-size: .83rem; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px; font-size: .83rem; font-weight: 600;
   color: var(--admin-muted); background: none; border: none; cursor: pointer;
   transition: all .18s; white-space: nowrap;
 }
-.tab-btn:hover { color: var(--admin-text); background: rgba(255,255,255,.06); }
-.tab-btn.active { color: var(--admin-accent); background: rgba(74,144,217,.15); }
+.tab-btn:hover { color: var(--admin-text); background: var(--admin-bg); }
+.tab-btn.active { color: var(--admin-accent); background: var(--admin-accent-light); }
 
 .admin-logout {
-  margin-left: auto; padding: 6px 14px; border-radius: 6px;
-  font-size: .8rem; color: var(--admin-muted); background: rgba(255,255,255,.05);
-  border: 1px solid var(--admin-border); cursor: pointer; white-space: nowrap;
+  margin-left: auto; padding: 7px 16px; border-radius: 8px;
+  font-size: .8rem; color: var(--admin-muted); background: var(--admin-bg);
+  border: 1px solid var(--admin-border); cursor: pointer; white-space: nowrap; font-weight: 600;
+  transition: all .18s;
 }
-.admin-logout:hover { color: var(--admin-red); border-color: var(--admin-red); }
+.admin-logout:hover { color: var(--admin-red); border-color: var(--admin-red); background: var(--admin-red-light); }
 
 /* ── 탭 컨텐츠 ── */
-.admin-body { padding: 24px; max-width: 1400px; margin: 0 auto; }
+.admin-body { padding: 28px; max-width: 1400px; margin: 0 auto; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
 /* ── 통계 카드 ── */
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px; }
 @media(max-width:900px){ .stats-grid { grid-template-columns: repeat(2,1fr); } }
 .stat-card {
   background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 12px; padding: 20px 22px;
+  border-radius: 14px; padding: 22px 24px;
+  box-shadow: var(--admin-shadow);
+  transition: box-shadow .2s, transform .2s;
 }
-.stat-label { font-size: .78rem; color: var(--admin-muted); font-weight: 600; letter-spacing: .5px; margin-bottom: 8px; }
-.stat-value { font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+.stat-card:hover { box-shadow: var(--admin-shadow-md); transform: translateY(-2px); }
+.stat-label { font-size: .75rem; color: var(--admin-muted); font-weight: 700; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 10px; }
+.stat-value { font-size: 2.2rem; font-weight: 900; line-height: 1; margin-bottom: 5px; letter-spacing: -.5px; }
 .stat-sub { font-size: .78rem; color: var(--admin-muted); }
+.stat-green { border-top: 3px solid var(--admin-green); }
 .stat-green .stat-value { color: var(--admin-green); }
+.stat-blue { border-top: 3px solid var(--admin-accent); }
 .stat-blue .stat-value { color: var(--admin-accent); }
+.stat-orange { border-top: 3px solid var(--admin-orange); }
 .stat-orange .stat-value { color: var(--admin-orange); }
+.stat-gold { border-top: 3px solid var(--admin-gold); }
 .stat-gold .stat-value { color: var(--admin-gold); }
 
 /* ── 섹션 헤더 ── */
 .section-title {
-  font-size: 1rem; font-weight: 700; color: var(--admin-text);
-  margin-bottom: 14px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--admin-border);
-  display: flex; align-items: center; gap: 8px;
+  font-size: 1rem; font-weight: 800; color: var(--admin-text);
+  margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--admin-border-light);
+  display: flex; align-items: center; gap: 8px; letter-spacing: -.2px;
 }
 .section-title .badge-count {
   background: var(--admin-accent); color: #fff;
-  font-size: .72rem; padding: 2px 8px; border-radius: 20px; font-weight: 700;
+  font-size: .72rem; padding: 2px 9px; border-radius: 20px; font-weight: 700;
 }
 
 /* ── 에피소드 테이블 ── */
-.ep-table-wrap { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+.ep-table-wrap { background: var(--admin-card); border: 1px solid var(--admin-border); border-radius: 14px; overflow: hidden; margin-bottom: 24px; box-shadow: var(--admin-shadow); }
 .ep-table { width: 100%; border-collapse: collapse; }
 .ep-table th {
-  padding: 11px 16px; font-size: .76rem; font-weight: 700; color: var(--admin-muted);
-  text-align: left; background: rgba(255,255,255,.03);
-  border-bottom: 1px solid var(--admin-border); letter-spacing: .4px;
+  padding: 12px 16px; font-size: .74rem; font-weight: 700; color: var(--admin-muted);
+  text-align: left; background: var(--admin-bg);
+  border-bottom: 1px solid var(--admin-border); letter-spacing: .5px; text-transform: uppercase;
 }
 .ep-table td {
-  padding: 10px 16px; font-size: .83rem; color: var(--admin-text);
-  border-bottom: 1px solid rgba(255,255,255,.04); vertical-align: middle;
+  padding: 11px 16px; font-size: .84rem; color: var(--admin-text-sub);
+  border-bottom: 1px solid var(--admin-border-light); vertical-align: middle;
 }
 .ep-table tr:last-child td { border-bottom: none; }
-.ep-table tr:hover td { background: rgba(74,144,217,.06); }
+.ep-table tr:hover td { background: var(--admin-accent-light); }
 
 .ep-num { font-weight: 800; color: var(--admin-accent); font-size: .9rem; }
-.ep-title-cell { font-weight: 600; max-width: 200px; }
+.ep-title-cell { font-weight: 600; max-width: 200px; color: var(--admin-text); }
 .ep-part-badge {
-  display: inline-block; padding: 2px 9px; border-radius: 20px;
+  display: inline-block; padding: 3px 10px; border-radius: 20px;
   font-size: .72rem; font-weight: 700; letter-spacing: .3px;
 }
-.part-1 { background: rgba(74,144,217,.2); color: #7AB8F5; }
-.part-2 { background: rgba(230,126,34,.2); color: #F0A060; }
-.part-3 { background: rgba(46,204,113,.2); color: #60D090; }
-.part-4 { background: rgba(241,196,15,.2); color: #F5D040; }
-.part-5 { background: rgba(155,89,182,.2); color: #C080F0; }
-.part-6 { background: rgba(231,76,60,.2); color: #F07060; }
+.part-1 { background: #DBEAFE; color: #1D4ED8; }
+.part-2 { background: #FEF3C7; color: #92400E; }
+.part-3 { background: #D1FAE5; color: #065F46; }
+.part-4 { background: #FEF9C3; color: #713F12; }
+.part-5 { background: #EDE9FE; color: #5B21B6; }
+.part-6 { background: #FFE4E6; color: #9F1239; }
 
 .status-badge {
   display: inline-flex; align-items: center; gap: 5px;
-  padding: 3px 10px; border-radius: 20px; font-size: .74rem; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px; font-size: .74rem; font-weight: 700;
 }
-.status-open { background: rgba(46,204,113,.15); color: var(--admin-green); }
-.status-locked { background: rgba(231,76,60,.12); color: #F07070; }
-.status-today { background: rgba(241,196,15,.2); color: var(--admin-gold); animation: pulse 2s infinite; }
+.status-open { background: var(--admin-green-light); color: var(--admin-green); }
+.status-locked { background: var(--admin-red-light); color: var(--admin-red); }
+.status-today { background: var(--admin-gold-light); color: var(--admin-gold); animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
 
 .date-cell { font-size: .78rem; color: var(--admin-muted); white-space: nowrap; }
 .action-link {
-  padding: 4px 12px; border-radius: 6px; font-size: .75rem; font-weight: 600;
-  color: var(--admin-accent); border: 1px solid rgba(74,144,217,.35);
+  padding: 5px 13px; border-radius: 7px; font-size: .75rem; font-weight: 700;
+  color: var(--admin-accent); border: 1.5px solid rgba(37,99,235,.25);
+  background: var(--admin-accent-light);
   text-decoration: none; transition: all .18s; white-space: nowrap;
 }
-.action-link:hover { background: rgba(74,144,217,.15); }
+.action-link:hover { background: var(--admin-accent); color: #fff; }
 
 /* ── 검색/필터 바 ── */
 .filter-row {
-  display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center;
+  display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center;
 }
 .admin-search {
-  flex: 1; min-width: 200px; padding: 8px 14px;
-  background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 8px; color: var(--admin-text); font-size: .86rem; outline: none;
+  flex: 1; min-width: 200px; padding: 9px 14px;
+  background: var(--admin-card); border: 1.5px solid var(--admin-border);
+  border-radius: 9px; color: var(--admin-text); font-size: .86rem; outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  box-shadow: var(--admin-shadow);
 }
-.admin-search:focus { border-color: var(--admin-accent); }
+.admin-search:focus { border-color: var(--admin-accent); box-shadow: 0 0 0 3px rgba(37,99,235,.08); }
 .filter-sel {
-  padding: 8px 14px; background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 8px; color: var(--admin-text); font-size: .83rem; cursor: pointer; outline: none;
+  padding: 9px 14px; background: var(--admin-card); border: 1.5px solid var(--admin-border);
+  border-radius: 9px; color: var(--admin-text); font-size: .83rem; cursor: pointer; outline: none;
+  box-shadow: var(--admin-shadow);
 }
-.filter-sel option { background: var(--admin-card); }
 
 /* ── 그림이야기 그리드 ── */
 .gallery-admin-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
 }
 @media(max-width:1100px){ .gallery-admin-grid { grid-template-columns: repeat(3,1fr); } }
 @media(max-width:760px){ .gallery-admin-grid { grid-template-columns: repeat(2,1fr); } }
 
 .gallery-admin-card {
   background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 10px; overflow: hidden; transition: border-color .2s;
+  border-radius: 12px; overflow: hidden; transition: all .2s;
+  box-shadow: var(--admin-shadow);
 }
-.gallery-admin-card:hover { border-color: var(--admin-accent); }
-.gallery-admin-card.locked { opacity: .55; }
-.gallery-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: #0D1A28; }
+.gallery-admin-card:hover { border-color: var(--admin-accent); box-shadow: var(--admin-shadow-md); transform: translateY(-2px); }
+.gallery-admin-card.locked { opacity: .6; }
+.gallery-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: var(--admin-bg); }
 .gallery-img svg { width: 100%; height: 100%; display: block; }
-.gallery-admin-body { padding: 10px 12px 12px; }
+.gallery-admin-body { padding: 11px 13px 13px; }
 .gallery-ep-num { font-size: .72rem; font-weight: 800; color: var(--admin-accent); margin-bottom: 3px; }
 .gallery-ep-title { font-size: .83rem; font-weight: 600; color: var(--admin-text); margin-bottom: 5px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -193,80 +218,86 @@ body { background: var(--admin-bg); color: var(--admin-text); font-family: 'Noto
 .gallery-status { display: flex; align-items: center; justify-content: space-between; margin-top: 7px; }
 
 /* ── 일정 캘린더 ── */
-.schedule-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 24px; }
+.schedule-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 5px; margin-bottom: 24px; }
 .schedule-day-label {
   text-align: center; font-size: .72rem; font-weight: 700; color: var(--admin-muted);
-  padding: 6px 0; letter-spacing: .5px;
+  padding: 8px 0; letter-spacing: .5px; text-transform: uppercase;
 }
 .schedule-cell {
   background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 6px; padding: 6px; min-height: 64px; transition: border-color .2s;
+  border-radius: 8px; padding: 7px; min-height: 68px; transition: all .2s;
+  box-shadow: var(--admin-shadow);
 }
-.schedule-cell:hover { border-color: var(--admin-accent); }
-.schedule-cell.has-ep { border-color: rgba(74,144,217,.4); }
-.schedule-cell.today-cell { border-color: var(--admin-gold); background: rgba(241,196,15,.06); }
-.schedule-cell.open-cell { border-color: rgba(46,204,113,.4); }
-.schedule-date { font-size: .7rem; color: var(--admin-muted); margin-bottom: 4px; font-weight: 600; }
+.schedule-cell:hover { border-color: var(--admin-accent); box-shadow: var(--admin-shadow-md); }
+.schedule-cell.has-ep { border-color: rgba(37,99,235,.3); background: #FAFCFF; }
+.schedule-cell.today-cell { border-color: var(--admin-gold); background: var(--admin-gold-light); }
+.schedule-cell.open-cell { border-color: rgba(5,150,105,.35); background: var(--admin-green-light); }
+.schedule-date { font-size: .7rem; color: var(--admin-muted); margin-bottom: 4px; font-weight: 700; }
 .schedule-cell.today-cell .schedule-date { color: var(--admin-gold); }
 .schedule-ep-chip {
-  font-size: .65rem; font-weight: 700; padding: 2px 5px; border-radius: 4px;
+  font-size: .65rem; font-weight: 700; padding: 2px 6px; border-radius: 5px;
   margin-bottom: 2px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.chip-open { background: rgba(46,204,113,.2); color: #60D090; }
-.chip-locked { background: rgba(100,120,150,.2); color: var(--admin-muted); }
-.chip-today { background: rgba(241,196,15,.25); color: var(--admin-gold); }
+.chip-open { background: var(--admin-green-light); color: var(--admin-green); }
+.chip-locked { background: var(--admin-bg); color: var(--admin-muted); }
+.chip-today { background: var(--admin-gold-light); color: var(--admin-gold); }
 
-/* ── 명대사 테이블 ── */
+/* ── 명대사 카드 ── */
 .quote-admin-card {
   background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 10px; padding: 16px 18px; margin-bottom: 10px;
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;
   display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: var(--admin-shadow); transition: box-shadow .2s;
 }
+.quote-admin-card:hover { box-shadow: var(--admin-shadow-md); }
 .quote-rank { font-size: 1.4rem; font-weight: 900; color: var(--admin-muted); min-width: 36px; text-align: center; padding-top: 2px; }
 .quote-rank.top { color: var(--admin-gold); }
 .quote-body { flex: 1; }
 .quote-text-admin { font-size: .9rem; color: var(--admin-text); line-height: 1.75; margin-bottom: 7px; }
 .quote-meta-admin { display: flex; gap: 14px; font-size: .76rem; color: var(--admin-muted); flex-wrap: wrap; }
-.quote-likes { color: #F07070; font-weight: 700; }
+.quote-likes { color: var(--admin-red); font-weight: 700; }
 
 /* ── 커뮤니티 섹션 ── */
 .community-note {
-  background: rgba(74,144,217,.08); border: 1px solid rgba(74,144,217,.25);
-  border-radius: 10px; padding: 20px 22px; color: var(--admin-muted);
+  background: var(--admin-accent-light); border: 1px solid rgba(37,99,235,.2);
+  border-radius: 12px; padding: 22px 24px; color: var(--admin-text-sub);
   font-size: .88rem; line-height: 1.8;
 }
 .community-note strong { color: var(--admin-accent); }
 
 /* ── 진행률 바 ── */
-.progress-bar-wrap { margin-bottom: 20px; }
-.progress-label { display: flex; justify-content: space-between; font-size: .8rem; color: var(--admin-muted); margin-bottom: 6px; }
-.progress-label strong { color: var(--admin-text); }
-.progress-track { height: 10px; background: rgba(255,255,255,.07); border-radius: 20px; overflow: hidden; }
-.progress-fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--admin-accent), var(--admin-green)); transition: width .6s ease; }
+.progress-bar-wrap { margin-bottom: 22px; }
+.progress-label { display: flex; justify-content: space-between; font-size: .8rem; color: var(--admin-muted); margin-bottom: 8px; }
+.progress-label strong { color: var(--admin-text); font-weight: 700; }
+.progress-track { height: 10px; background: var(--admin-border); border-radius: 20px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--admin-accent), var(--admin-green)); transition: width .8s ease; }
 
 /* ── 다음 공개 카드 ── */
 .next-ep-card {
-  background: linear-gradient(135deg, rgba(74,144,217,.12) 0%, rgba(46,204,113,.08) 100%);
-  border: 1px solid rgba(74,144,217,.3); border-radius: 12px;
-  padding: 20px 22px; margin-bottom: 24px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+  background: linear-gradient(135deg, #EFF6FF 0%, #ECFDF5 100%);
+  border: 1.5px solid rgba(37,99,235,.2); border-radius: 14px;
+  padding: 22px 24px; margin-bottom: 26px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+  box-shadow: var(--admin-shadow);
 }
-.next-ep-countdown { font-size: 2rem; font-weight: 900; color: var(--admin-gold); }
+.next-ep-countdown { font-size: 2.2rem; font-weight: 900; color: var(--admin-accent); letter-spacing: -.5px; }
 .next-ep-info { flex: 1; }
-.next-ep-label { font-size: .75rem; color: var(--admin-muted); margin-bottom: 4px; font-weight: 700; letter-spacing: .4px; }
-.next-ep-title { font-size: 1.05rem; font-weight: 700; color: var(--admin-text); }
+.next-ep-label { font-size: .73rem; color: var(--admin-muted); margin-bottom: 5px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; }
+.next-ep-title { font-size: 1.08rem; font-weight: 800; color: var(--admin-text); }
 .next-ep-date { font-size: .82rem; color: var(--admin-muted); margin-top: 3px; }
 
 /* ── 부 요약 카드 ── */
-.part-summary { display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; margin-bottom: 24px; }
+.part-summary { display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; margin-bottom: 26px; }
 @media(max-width:900px){ .part-summary { grid-template-columns: repeat(3,1fr); } }
 .part-sum-card {
   background: var(--admin-card); border: 1px solid var(--admin-border);
-  border-radius: 10px; padding: 14px; text-align: center;
+  border-radius: 12px; padding: 16px; text-align: center;
+  box-shadow: var(--admin-shadow); transition: all .2s;
 }
-.part-sum-name { font-size: .72rem; font-weight: 700; color: var(--admin-muted); margin-bottom: 6px; }
-.part-sum-count { font-size: 1.6rem; font-weight: 900; color: var(--admin-accent); }
+.part-sum-card:hover { box-shadow: var(--admin-shadow-md); transform: translateY(-2px); }
+.part-sum-name { font-size: .72rem; font-weight: 700; color: var(--admin-muted); margin-bottom: 7px; letter-spacing: .3px; }
+.part-sum-count { font-size: 1.7rem; font-weight: 900; color: var(--admin-accent); }
 .part-sum-total { font-size: .72rem; color: var(--admin-muted); }
-.part-sum-bar { height: 4px; border-radius: 4px; margin-top: 8px; background: rgba(255,255,255,.07); overflow: hidden; }
+.part-sum-bar { height: 5px; border-radius: 4px; margin-top: 10px; background: var(--admin-border); overflow: hidden; }
 .part-sum-fill { height: 100%; border-radius: 4px; }
 </style>
 </head>
@@ -452,11 +483,12 @@ body { background: var(--admin-bg); color: var(--admin-text); font-family: 'Noto
 <script src="js/common.js"></script>
 <script>
 // ── 비밀번호 (변경 원하시면 아래 값 교체) ──
-const ADMIN_PW = 'admin1234';
+const ADMIN_PW = '9633';
 
 function doLogin() {
   const v = document.getElementById('pwInput').value;
   if (v === ADMIN_PW) {
+    sessionStorage.setItem('adminAuth', '1');
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('adminApp').style.display = 'block';
     initAdmin();
@@ -465,9 +497,17 @@ function doLogin() {
   }
 }
 function doLogout() {
+  sessionStorage.removeItem('adminAuth');
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('adminApp').style.display = 'none';
   document.getElementById('pwInput').value = '';
+}
+
+// 새로고침 시 로그인 상태 복원
+if (sessionStorage.getItem('adminAuth') === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'block';
+  document.addEventListener('DOMContentLoaded', initAdmin);
 }
 
 function switchTab(name, btn) {
@@ -497,7 +537,7 @@ function diffDays(dateStr) {
   return Math.round((d - TODAY) / 86400000);
 }
 
-const PART_NAMES = {1:'1부 첫만남',2:'2부 연애',3:'3부 결혼',4:'4부 생활',5:'5부 중년',6:'6부 노년'};
+// PART_NAMES는 common.js에서 로드됨
 const PART_COLORS = {1:'#7AB8F5',2:'#F0A060',3:'#60D090',4:'#F5D040',5:'#C080F0',6:'#F07060'};
 const PART_BG    = {1:'rgba(74,144,217,.2)',2:'rgba(230,126,34,.2)',3:'rgba(46,204,113,.2)',4:'rgba(241,196,15,.2)',5:'rgba(155,89,182,.2)',6:'rgba(231,76,60,.2)'};
 
@@ -710,7 +750,7 @@ function renderQuotesAdmin() {
   const sorted = [...ALL_QUOTES_ADMIN].sort((a,b) => b.likes - a.likes);
   document.getElementById('quotesAdminList').innerHTML = sorted.map((q,i) => `
     <div class="quote-admin-card">
-      <div class="quote-rank ${i<3?'top':#''}">
+      <div class="quote-rank ${i<3?'top':''}">
         ${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}
       </div>
       <div class="quote-body">

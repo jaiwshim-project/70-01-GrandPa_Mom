@@ -37,14 +37,19 @@
   box-shadow:0 4px 16px var(--shadow);
 }
 .author-intro.hidden{display:none}
-@media(max-width:640px){.author-intro{flex-direction:column;gap:20px;padding:24px}}
-.author-avatar{
-  width:88px;height:88px;border-radius:50%;
-  background:linear-gradient(135deg,var(--terra),var(--gold));
-  display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;
-  box-shadow:0 4px 14px rgba(184,85,48,.35);
-  border:3px solid rgba(255,255,255,.8);
+@media(max-width:640px){
+  .author-intro{flex-direction:column;gap:20px;padding:24px}
+  .author-avatar{width:100%;height:220px}
 }
+.author-avatar{
+  width:220px;height:260px;border-radius:12px;
+  background:linear-gradient(135deg,var(--terra),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:4rem;flex-shrink:0;
+  box-shadow:0 6px 20px rgba(184,85,48,.35);
+  border:3px solid rgba(255,255,255,.8);
+  overflow:hidden;
+}
+.author-avatar img{width:100%;height:100%;object-fit:cover;border-radius:10px}
 .author-info h3{font-family:'Noto Serif KR',serif;font-size:1.22rem;margin-bottom:4px;color:var(--navy)}
 .author-info .author-sub{font-size:.86rem;color:var(--terra);margin-bottom:13px;font-weight:600}
 .author-info p{font-size:.92rem;line-height:1.85;color:var(--text-sub)}
@@ -139,21 +144,37 @@
 
     <!-- 조혜인 작가 -->
     <div class="author-intro" id="authorTab1">
-      <div class="author-avatar" style="background:linear-gradient(135deg,#C4623A,#E8A070)">🎨</div>
+      <div class="author-avatar" style="background:linear-gradient(135deg,#C4623A,#E8A070)">
+        <img src="1. 자료/author-grandma.png" alt="조혜인 작가" onerror="this.style.display='none';this.parentElement.textContent='🎨'">
+      </div>
       <div class="author-info">
         <h3>조혜인 작가</h3>
         <p class="author-sub">미대 출신 유화, 파스텔화, 수채화 작가 · 부부 에세이스트</p>
         <p>
-          색과 붓으로 세상을 담아 온 지 40년이 넘었지만,
-          여전히 새로운 색이 보입니다. 남편은 제가 왜 같은 노을을 매번 다르게 그리냐고 묻지만,
-          노을은 어제와 오늘이 다르거든요. 이 이야기에 우리들 삶의 여정과 순간들이 담긴 수채화가 함께할 수 있어 행복합니다.
+          색과 붓으로 세상을 담아 온 지 40년이 넘었지만, 여전히 새로운 색이 보입니다.
+          남편은 제가 왜 같은 노을을 매번 다르게 그리냐고 묻지만, 노을은 어제와 오늘이 다르거든요.
+          이 이야기에 우리들 삶의 여정과 순간들이 담긴 수채화가 함께할 수 있어 행복합니다.
+        </p>
+        <p>
+          저는 미대에서 유화를 전공했지만, 수채화와 파스텔화도 40년 넘게 놓지 않았습니다.
+          유화는 덮고 고칠 수 있지만, 수채화는 한 번 스민 색은 지울 수 없어요.
+          그래서 수채화를 그릴 때는 더 솔직해지는 것 같습니다. 실수도, 번짐도 그림의 일부가 되거든요.
+          우리 부부 이야기도 그래요. 실수투성이지만, 그 번짐들이 오히려 가장 따뜻한 부분이 됐어요.
+        </p>
+        <p>
+          남편과 함께 산 40년 동안 저는 그이를 수백 번 그렸습니다. 설계도를 들여다보는 뒷모습,
+          커피를 식힌 채 책 읽는 옆모습, 잠든 얼굴. 남편은 자기 그림이 집에 그렇게 많은 줄도 몰라요.
+          이 연재를 시작하면서 처음으로 남편에게 그림들을 보여줬더니, 한참 말이 없다가 이렇게 말했어요.
+          "당신이 나를 이렇게 보고 있었구나." 저는 그 말이 40년 중 가장 좋은 말이었습니다.
         </p>
       </div>
     </div>
 
     <!-- 심재우 작가 -->
     <div class="author-intro hidden" id="authorTab2">
-      <div class="author-avatar">✍️</div>
+      <div class="author-avatar">
+        <img src="1. 자료/author-grandpa.png" alt="심재우 작가" onerror="this.style.display='none';this.parentElement.textContent='✍️'">
+      </div>
       <div class="author-info">
         <h3>심재우 작가</h3>
         <p class="author-sub">공대 출신 스토리텔러 · 부부 에세이스트</p>
@@ -162,6 +183,20 @@
           공학도의 눈으로 세상을 분석하고, 예술가의 감성을 가진 아내 덕분에
           세상을 다시 보게 됐습니다. 이 이야기가 비슷한 차이를 가진
           누군가에게 닿기를 바랍니다.
+        </p>
+        <p>
+          저는 평생 구조와 수치로 세상을 이해해 왔습니다. 다리를 설계할 때는 하중과 응력을 계산하고,
+          문제가 생기면 원인을 추적해 해결합니다. 그런데 아내는 달랐어요.
+          같은 다리를 보면서 "저 곡선이 참 아름답다"고 했습니다.
+          처음엔 이해가 안 됐지만, 어느 날 문득 그 말이 틀리지 않았다는 걸 알았습니다.
+          구조적으로 완벽한 설계는 결국 아름다울 수밖에 없거든요.
+        </p>
+        <p>
+          이 연재를 결심하게 된 건 아내가 "우리 이야기를 써 볼까?"라고 한 말 한 마디 때문이었습니다.
+          저는 그 말을 듣고 사흘을 분석했어요. 소재의 독창성, 독자 공감 가능성, 시장성까지.
+          그리고 결론을 냈습니다. 조건 충족. 그랬더니 아내가 웃으며 말했어요.
+          "당신은 사랑도 엑셀로 하는 사람이야." 맞습니다. 그런데 그 엑셀 안에는 항상 아내가 있었어요.
+          40년 동안 단 한 번도 빠진 적 없이.
         </p>
       </div>
     </div>
@@ -287,7 +322,7 @@ const AUTHOR_NOTES = [
     title:'\"빨강\"과 \"노을색\" 사이의 거리',
     body:[
       '이 에피소드를 쓸 때 아내에게 물었습니다. "당신은 저 색이 뭔 색이야?" 아내는 망설임 없이 "노을색"이라고 했습니다. 저는 색상표를 펼쳐 Pantone 코드를 찾으려 했죠.',
-      '이상하게도 우리는 40년을 이런 식으로 대화해 왔습니다. 그런데 한 번도 싸운 적이 없어요. 아마 둘 다 틀리지 않았다는 걸 어느 순간 알게 됐기 때문이겠죠. 빨강과 노을색, 둘 다 맞는 말이니까요.'
+      '이상하게도 우리는 40년을 이런 식으로 대화해 왔습니다. 그런데 심하게 대립된 적이 없어요. 아마 둘 다 틀리지 않았다는 걸 어느 순간 알게 됐기 때문이겠죠. 빨강과 노을색, 둘 다 맞는 말이니까요.'
     ],
     tags:['색깔','소통','부부','에피소드 뒷이야기'],
     likes:87

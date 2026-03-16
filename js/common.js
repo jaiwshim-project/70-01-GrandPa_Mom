@@ -302,15 +302,18 @@ function renderHeader() {
       </div>
     </a>
     <nav class="desktop-nav">
+      <div class="nav-dropdown">
+        <a href="platform.html" class="nav-link nav-link-special">플랫폼 이야기 ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="author-notes.html">✍️ 작가 노트</a>
+        </div>
+      </div>
       <a href="episodes.html"     class="nav-link">연재 이야기</a>
       <a href="gallery.html"      class="nav-link">그림 이야기</a>
       <a href="test.html"         class="nav-link">성향 테스트</a>
       <a href="quotes.html"       class="nav-link">명대사</a>
       <a href="community.html"    class="nav-link">독자 이야기</a>
       <a href="book-project.html" class="nav-link">책 프로젝트</a>
-      <a href="author-notes.html" class="nav-link">작가 노트</a>
-      <a href="platform.html"     class="nav-link nav-link-special">플랫폼 이야기</a>
-      <a href="admin.html"        class="nav-link" style="color:var(--terra);font-weight:700">🔐 관리자</a>
     </nav>
     <div class="header-actions">
       <button id="loginBtn" class="btn btn-primary btn-sm" onclick="showAuthModal()">로그인</button>
@@ -324,15 +327,14 @@ function renderHeader() {
     </div>
   </div>
   <div id="mobileMenu" class="mobile-menu">
+    <a href="platform.html"     class="mobile-nav-link mobile-nav-special">✨ 플랫폼 이야기</a>
+    <a href="author-notes.html" class="mobile-nav-link" style="padding-left:34px;font-size:.88rem;color:var(--text-muted)">↳ ✍️ 작가 노트</a>
     <a href="episodes.html"     class="mobile-nav-link">📖 연재 이야기</a>
     <a href="gallery.html"      class="mobile-nav-link">🎨 그림 이야기</a>
     <a href="test.html"         class="mobile-nav-link">🔬 성향 테스트</a>
     <a href="quotes.html"       class="mobile-nav-link">💬 명대사</a>
     <a href="community.html"    class="mobile-nav-link">👥 독자 이야기</a>
     <a href="book-project.html" class="mobile-nav-link">📚 책 프로젝트</a>
-    <a href="author-notes.html" class="mobile-nav-link">✍️ 작가 노트</a>
-    <a href="platform.html"     class="mobile-nav-link mobile-nav-special">✨ 플랫폼 이야기</a>
-    <a href="admin.html"        class="mobile-nav-link" style="color:var(--terra);font-weight:700">🔐 관리자 대시보드</a>
   </div>
 </header>`;
 }
@@ -371,6 +373,9 @@ function renderFooter() {
     </div>
     <div class="footer-bottom">
       <p>© 2026 공대생 할아버지, 미대생 할머니. All rights reserved.</p>
+    </div>
+    <div style="text-align:center;padding:12px 0 4px;border-top:1px solid var(--border-light)">
+      <a href="admin.html" style="font-size:.75rem;color:var(--text-muted);opacity:1">🔐 관리자 대시보드</a>
     </div>
   </div>
 </footer>`;
