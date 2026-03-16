@@ -108,11 +108,10 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 .pk1-footer-brand { color: #fff; font-size: .82rem; font-weight: 700; }
 .pk1-footer-url { color: rgba(255,255,255,.7); font-size: .72rem; }
 .pk1-qr {
-  width: 52px; height: 52px; background: #fff; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .55rem; color: #9CA3AF; font-weight: 700; text-align: center;
-  line-height: 1.3;
+  width: 72px; height: 72px; background: #fff; border-radius: 6px;
+  overflow: hidden; flex-shrink: 0;
 }
+.pk1-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ─────────────────────────────────
    홍보물 2: 딥 네이비 다크
@@ -206,10 +205,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .pk3-brand { font-size: .82rem; font-weight: 700; color: #92400E; }
 .pk3-url { font-size: .7rem; color: #B45309; }
-.pk3-qr { width: 48px; height: 48px; background: #FDE68A; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .5rem; color: #92400E; font-weight: 700; text-align: center; line-height: 1.3;
-}
+.pk3-qr { width: 68px; height: 68px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.pk3-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ─────────────────────────────────
    홍보물 4: 골드 럭셔리
@@ -291,10 +288,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .pk5-footer-left .brand { font-size: .8rem; font-weight: 800; color: #059669; }
 .pk5-footer-left .url { font-size: .68rem; color: #6B7280; margin-top: 2px; }
-.pk5-footer-qr { width: 48px; height: 48px; background: #D1FAE5; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .5rem; color: #059669; font-weight: 700; text-align: center; line-height: 1.3;
-}
+.pk5-footer-qr { width: 68px; height: 68px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.pk5-footer-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ─────────────────────────────────
    홍보물 6: 라벤더 보라
@@ -335,10 +330,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .pk6-bottom-text { color: #fff; font-size: .8rem; font-weight: 700; }
 .pk6-bottom-url { color: #C4B5FD; font-size: .7rem; margin-top: 3px; }
-.pk6-bottom-qr { width: 44px; height: 44px; background: rgba(255,255,255,.2); border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .48rem; color: #fff; font-weight: 700; text-align: center; line-height: 1.3;
-}
+.pk6-bottom-qr { width: 64px; height: 64px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.pk6-bottom-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ─────────────────────────────────
    홍보물 7: 신문 타이포그래피
@@ -425,10 +418,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .pk8-footer-brand { color: #fff; font-size: .82rem; font-weight: 800; }
 .pk8-footer-url { color: rgba(255,255,255,.75); font-size: .7rem; }
-.pk8-footer-qr { width: 44px; height: 44px; background: rgba(255,255,255,.25); border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .48rem; color: #fff; font-weight: 700; text-align: center; line-height: 1.3;
-}
+.pk8-footer-qr { width: 64px; height: 64px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.pk8-footer-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ─────────────────────────────────
    홍보물 9: 스케치/손그림 스타일
@@ -478,10 +469,8 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .pk9-brand { font-size: .82rem; font-weight: 800; color: #713F12; }
 .pk9-url { font-size: .7rem; color: #92400E; }
-.pk9-qr { width: 48px; height: 48px; background: #FEF3C7; border: 2px solid #FDE047; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .5rem; color: #92400E; font-weight: 700; text-align: center; line-height: 1.3;
-}
+.pk9-qr { width: 68px; height: 68px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.pk9-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ─────────────────────────────────
    홍보물 10: 시네마틱 그레이
@@ -526,10 +515,41 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 }
 .pk10-footer-brand { font-size: .8rem; font-weight: 700; color: #F9FAFB; }
 .pk10-footer-url { font-size: .68rem; color: #6B7280; margin-top: 2px; }
-.pk10-footer-qr { width: 46px; height: 46px; background: #1F2937; border: 1px solid #374151; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .48rem; color: #6B7280; font-weight: 700; text-align: center; line-height: 1.3;
+.pk10-footer-qr { width: 64px; height: 64px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.pk10-footer-qr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── 홍보물 공통 로고 ── */
+.flyer-logo { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; display: block; flex-shrink: 0; }
+.flyer-footer-left { display: flex; align-items: center; gap: 10px; }
+.flyer-footer-left-text { display: flex; flex-direction: column; }
+
+/* ── 홍보물 공통 상단 슬로건 배너 ── */
+.flyer-slogan {
+  text-align: center; padding: 7px 20px;
+  background: linear-gradient(90deg, #7C3AED, #2563EB, #059669);
+  font-size: .72rem; font-weight: 900; color: #fff;
+  letter-spacing: .18em; white-space: nowrap;
 }
+
+/* ── PDF 다운로드 버튼 ── */
+.pk-print-btn { font-weight: 900; }
+
+/* ── 가독성 최대화: 볼드 + 투명도 제거 ── */
+.a4 { color: inherit; }
+.a4 p, .a4 li, .a4 div, .a4 span { font-weight: 700; }
+.a4 h1, .a4 h2, .a4 h3 { font-weight: 900 !important; }
+.pk1-desc, .pk3-desc, .pk4-desc, .pk5-header p, .pk7-body-text,
+.pk8-desc, .pk9-story-text { font-weight: 700 !important; color: inherit; }
+.pk1-feat-text, .pk6-card-text, .pk5-illus-text,
+.pk2-sub, .pk3-quote { font-weight: 700 !important; }
+.pk2-sub { color: rgba(255,255,255,.95) !important; }
+.pk3-quote { color: #92400E !important; }
+.pk1-desc { color: #4B5563 !important; }
+.pk7-body-text { color: #111827 !important; }
+.pk8-bubble { color: #111827 !important; font-weight: 700 !important; }
+.pk10-tagline { color: #D1D5DB !important; font-weight: 700 !important; }
+.pk10-tl-text { color: #F3F4F6 !important; font-weight: 700 !important; }
+.pk4-desc { color: #D4AF37 !important; font-weight: 700 !important; }
 
 /* ── 프린트 CSS ── */
 @media print {
@@ -580,10 +600,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">① 미니멀 화이트</div>
   <div class="a4-label">깔끔한 화이트 배경, 블루 포인트</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk1-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk1-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk1-wrap">
   <div class="a4 pk1">
+    <div class="flyer-slogan">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk1-top">
       <div class="pk1-tag">SERIALIZED STORY PLATFORM</div>
       <h1>공대생 할아버지,<br><span>미대생 할머니</span></h1>
@@ -615,32 +636,18 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
         </div>
       </div>
     </div>
-    <div class="pk1-illus">
-      <!-- 수채화풍 SVG 장식 -->
-      <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="250" cy="140" rx="220" ry="30" fill="#EFF6FF" opacity=".6"/>
-        <!-- 남자 실루엣 -->
-        <circle cx="185" cy="55" r="22" fill="#BFDBFE"/>
-        <rect x="162" y="78" width="46" height="62" rx="8" fill="#93C5FD"/>
-        <!-- 여자 실루엣 -->
-        <circle cx="315" cy="55" r="22" fill="#FBCFE8"/>
-        <path d="M292 78 Q315 72 338 78 L342 140 H288 Z" fill="#FCA5A5"/>
-        <!-- 연결선 -->
-        <path d="M207 75 Q250 50 293 75" stroke="#2563EB" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity=".5"/>
-        <!-- 하트 -->
-        <text x="242" y="54" font-size="16" text-anchor="middle" opacity=".8">💙</text>
-        <!-- 팔레트 -->
-        <text x="340" y="105" font-size="18" opacity=".6">🎨</text>
-        <!-- 공학 기호 -->
-        <text x="150" y="105" font-size="18" opacity=".6">⚙️</text>
-      </svg>
+    <div class="pk1-illus" style="padding:0 52px 0;flex:1;display:flex;align-items:center">
+      <img src="couple-watercolor.png" alt="공대생 할아버지 미대생 할머니" style="width:100%;height:180px;object-fit:cover;object-position:center 30%;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.1)">
     </div>
     <div class="pk1-footer">
-      <div>
-        <div class="pk1-footer-brand">공대생 할아버지, 미대생 할머니</div>
-        <div class="pk1-footer-url">무료 연재 · 매일 오전 공개</div>
+      <div class="flyer-footer-left">
+        <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+        <div class="flyer-footer-left-text">
+          <div class="pk1-footer-brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk1-footer-url">무료 연재 · 매일 오전 공개</div>
+        </div>
       </div>
-      <div class="pk1-qr">QR<br>코드</div>
+      <div class="pk1-qr"><img src="qr-code.png" alt="QR코드"></div>
     </div>
   </div>
   </div>
@@ -653,10 +660,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">② 딥 네이비 다크</div>
   <div class="a4-label">깊고 우아한 다크 배경</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk2-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk2-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk2-wrap">
   <div class="a4 pk2">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#1E40AF,#4F46E5,#7C3AED)">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk2-inner">
       <div class="pk2-badge">✦ STORY PLATFORM ✦</div>
       <h1>공대생 할아버지,<br><em>미대생 할머니</em></h1>
@@ -680,15 +688,20 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
         </div>
       </div>
       <div class="pk2-art">
-        <div class="pk2-art-circle">🌙</div>
+        <div class="pk2-art-circle" style="width:180px;height:180px;overflow:hidden;border:2px solid rgba(255,255,255,.2)">
+          <img src="couple-watercolor.png" alt="커플 이미지" style="width:100%;height:100%;object-fit:cover;object-position:center 25%">
+        </div>
       </div>
     </div>
     <div class="pk2-footer">
-      <div>
-        <div class="pk2-footer-text">공대생 할아버지, 미대생 할머니</div>
-        <div class="pk2-footer-text" style="margin-top:2px">매일 오전 새 에피소드 공개 · 무료</div>
+      <div class="flyer-footer-left">
+        <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+        <div class="flyer-footer-left-text">
+          <div class="pk2-footer-text" style="font-weight:800;color:#fff">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk2-footer-text" style="margin-top:2px">매일 오전 새 에피소드 공개 · 무료</div>
+        </div>
       </div>
-      <div class="pk2-footer-url">무료 연재 플랫폼</div>
+      <div style="width:64px;height:64px;border-radius:6px;overflow:hidden;flex-shrink:0"><img src="qr-code.png" alt="QR코드" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     </div>
   </div>
   </div>
@@ -701,21 +714,15 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">③ 수채화풍 따뜻한 톤</div>
   <div class="a4-label">따뜻한 앰버·오렌지 톤, 세리프 서체</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk3-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk3-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk3-wrap">
   <div class="a4 pk3">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#B45309,#D97706,#F59E0B)">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk3-banner">🎨 수채화와 함께 읽는 연재 이야기</div>
     <div class="pk3-body">
-      <div class="pk3-watercolor">
-        <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="240" cy="100" rx="200" ry="45" fill="#FED7AA" opacity=".5"/>
-          <ellipse cx="140" cy="80" rx="90" ry="40" fill="#FECACA" opacity=".4"/>
-          <ellipse cx="340" cy="80" rx="90" ry="40" fill="#DDD6FE" opacity=".4"/>
-          <text x="240" y="95" font-size="36" text-anchor="middle" opacity=".7">🎨</text>
-          <text x="130" y="95" font-size="28" text-anchor="middle" opacity=".6">⚙️</text>
-          <text x="355" y="95" font-size="22" text-anchor="middle" opacity=".5">🖌️</text>
-        </svg>
+      <div class="pk3-watercolor" style="background:none;height:170px">
+        <img src="couple-watercolor.png" alt="공대생 할아버지 미대생 할머니" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;border-radius:12px">
       </div>
       <h1>공대생 할아버지,<br>미대생 할머니</h1>
       <div class="pk3-quote">
@@ -738,10 +745,15 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
       <div class="pk3-spacer"></div>
       <div class="pk3-footer">
         <div>
-          <div class="pk3-brand">공대생 할아버지, 미대생 할머니</div>
-          <div class="pk3-url">매일 새 에피소드 · 무료</div>
+          <div class="flyer-footer-left">
+            <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+            <div class="flyer-footer-left-text">
+              <div class="pk3-brand">공대생 할아버지, 미대생 할머니</div>
+              <div class="pk3-url">매일 새 에피소드 · 무료</div>
+            </div>
+          </div>
         </div>
-        <div class="pk3-qr">QR<br>코드</div>
+        <div class="pk3-qr"><img src="qr-code.png" alt="QR코드"></div>
       </div>
     </div>
   </div>
@@ -755,10 +767,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">④ 골드 럭셔리</div>
   <div class="a4-label">블랙 & 골드, 고급스러운 느낌</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk4-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk4-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk4-wrap">
   <div class="a4 pk4">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#78350F,#92400E,#B45309);letter-spacing:.22em">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk4-border">
       <div class="pk4-ornament">— ✦ —</div>
       <h1>공대생 할아버지<br>미대생 할머니</h1>
@@ -794,9 +807,13 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
         </div>
       </div>
       <div class="pk4-spacer"></div>
-      <div class="pk4-footer">
-        <div class="pk4-footer-brand">공대생 할아버지, 미대생 할머니</div>
-        <div class="pk4-footer-url">무료 연재 플랫폼 · 매일 업데이트</div>
+      <div class="pk4-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div style="flex:1;text-align:center">
+          <img src="로고-공대생.png" alt="로고" style="width:44px;height:44px;border-radius:50%;object-fit:cover;margin:0 auto 8px;display:block">
+          <div class="pk4-footer-brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk4-footer-url">무료 연재 플랫폼 · 매일 업데이트</div>
+        </div>
+        <div style="width:64px;height:64px;border-radius:6px;overflow:hidden;flex-shrink:0;border:1px solid #8B6914"><img src="qr-code.png" alt="QR코드" style="width:100%;height:100%;object-fit:cover;display:block"></div>
       </div>
     </div>
   </div>
@@ -810,10 +827,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">⑤ 봄 그린 내추럴</div>
   <div class="a4-label">싱그러운 초록, 자연스러운 느낌</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk5-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk5-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk5-wrap">
   <div class="a4 pk5">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#065F46,#059669,#10B981)">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk5-header">
       <div class="pk5-header-badge">🌿 매일 오전 공개</div>
       <h1>공대생 할아버지,<br>미대생 할머니</h1>
@@ -846,13 +864,18 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
         매일 오전, 새로운 에피소드와 수채화 그림이 공개됩니다.<br>
         아침 커피 한 잔과 함께 읽기 좋은 짧고 따뜻한 이야기입니다.
       </div>
-      <div class="pk5-spacer"></div>
+      <div class="pk5-spacer" style="min-height:0">
+        <img src="couple-watercolor.png" alt="커플 이미지" style="width:100%;height:120px;object-fit:cover;object-position:center 30%;border-radius:10px;margin-bottom:14px">
+      </div>
       <div class="pk5-footer">
-        <div class="pk5-footer-left">
-          <div class="brand">공대생 할아버지, 미대생 할머니</div>
-          <div class="url">무료 연재 · 매일 새 에피소드</div>
+        <div class="pk5-footer-left flyer-footer-left">
+          <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+          <div class="flyer-footer-left-text">
+            <div class="brand">공대생 할아버지, 미대생 할머니</div>
+            <div class="url">무료 연재 · 매일 새 에피소드</div>
+          </div>
         </div>
-        <div class="pk5-footer-qr">QR<br>코드</div>
+        <div class="pk5-footer-qr"><img src="qr-code.png" alt="QR코드"></div>
       </div>
     </div>
   </div>
@@ -866,10 +889,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">⑥ 라벤더 퍼플</div>
   <div class="a4-label">보라빛 우아함, 카드 그리드 레이아웃</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk6-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk6-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk6-wrap">
   <div class="a4 pk6">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#4C1D95,#7C3AED,#A78BFA)">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk6-accent-bar"></div>
     <div class="pk6-body">
       <div class="pk6-eyebrow">SERIALIZED LOVE STORY</div>
@@ -909,13 +933,18 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
           </div>
         </div>
       </div>
-      <div class="pk6-spacer"></div>
+      <div class="pk6-spacer" style="min-height:0">
+        <img src="couple-watercolor.png" alt="커플 이미지" style="width:100%;height:130px;object-fit:cover;object-position:center 30%;border-radius:10px;margin-bottom:14px">
+      </div>
       <div class="pk6-bottom">
-        <div>
-          <div class="pk6-bottom-text">공대생 할아버지, 미대생 할머니</div>
-          <div class="pk6-bottom-url">매일 오전 새 에피소드 · 무료 연재</div>
+        <div class="flyer-footer-left">
+          <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+          <div class="flyer-footer-left-text">
+            <div class="pk6-bottom-text">공대생 할아버지, 미대생 할머니</div>
+            <div class="pk6-bottom-url">매일 오전 새 에피소드 · 무료 연재</div>
+          </div>
         </div>
-        <div class="pk6-bottom-qr">QR<br>코드</div>
+        <div class="pk6-bottom-qr"><img src="qr-code.png" alt="QR코드"></div>
       </div>
     </div>
   </div>
@@ -929,11 +958,12 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">⑦ 신문 타이포그래피</div>
   <div class="a4-label">빈티지 신문 스타일, 2단 레이아웃</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk7-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk7-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk7-wrap">
   <div class="a4 pk7">
-    <div class="pk7-masthead">
+    <div class="flyer-slogan" style="background:#111827;border-bottom:2px solid #D4AF37;color:#D4AF37">★ 세계 최초, 출판의 혁명! ★</div>
+    <div class="pk7-masthead" style="margin-top:16px">
       <div class="pk7-masthead-sub">THE STORY PLATFORM · EST. 2026</div>
       <h1>공대생 할아버지, 미대생 할머니</h1>
     </div>
@@ -973,10 +1003,10 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
         <div class="pk7-pullquote">무료 · 가입 불필요</div>
       </div>
     </div>
-    <div class="pk7-footer">
-      <span>공대생 할아버지, 미대생 할머니</span>
-      <span>매일 오전 새 에피소드 공개</span>
-      <span>무료 연재 플랫폼</span>
+    <div class="pk7-footer" style="align-items:center">
+      <span style="display:flex;align-items:center;gap:6px"><img src="로고-공대생.png" style="width:24px;height:24px;border-radius:50%;object-fit:cover"> <strong>공대생 할아버지, 미대생 할머니</strong></span>
+      <span><strong>매일 오전 새 에피소드 공개</strong></span>
+      <div style="width:48px;height:48px;border-radius:4px;overflow:hidden;flex-shrink:0"><img src="qr-code.png" alt="QR코드" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     </div>
   </div>
   </div>
@@ -989,10 +1019,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">⑧ 모던 핑크 그라디언트</div>
   <div class="a4-label">핑크-퍼플 그라디언트, 대화 버블</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk8-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk8-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk8-wrap">
   <div class="a4 pk8">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#BE185D,#EC4899,#A855F7)">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk8-body">
       <div class="pk8-pill">💑 사랑 이야기 연재</div>
       <h1>공대생 할아버지,<br><span>미대생 할머니</span></h1>
@@ -1018,14 +1049,19 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
           "... 그래서 같이 갈 거야, 안 갈 거야?"
         </div>
       </div>
-      <div class="pk8-spacer"></div>
+      <div class="pk8-spacer" style="min-height:0;padding:0 0 12px">
+        <img src="couple-watercolor.png" alt="커플 이미지" style="width:100%;height:100px;object-fit:cover;object-position:center 30%;border-radius:10px">
+      </div>
     </div>
     <div class="pk8-footer">
-      <div>
-        <div class="pk8-footer-brand">공대생 할아버지, 미대생 할머니</div>
-        <div class="pk8-footer-url">60편 연재 · 매일 오전 공개 · 무료</div>
+      <div class="flyer-footer-left">
+        <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+        <div class="flyer-footer-left-text">
+          <div class="pk8-footer-brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk8-footer-url">60편 연재 · 매일 오전 공개 · 무료</div>
+        </div>
       </div>
-      <div class="pk8-footer-qr">QR<br>코드</div>
+      <div class="pk8-footer-qr"><img src="qr-code.png" alt="QR코드"></div>
     </div>
   </div>
   </div>
@@ -1038,10 +1074,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">⑨ 스케치 손그림 스타일</div>
   <div class="a4-label">노란 스케치북 느낌, 손그림 감성</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk9-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk9-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk9-wrap">
   <div class="a4 pk9">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#78350F,#B45309,#D97706);margin:-44px -48px 24px;padding:7px 20px">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk9-sketch-header">
       <div class="pk9-sketch-icon">✏️</div>
       <div class="pk9-sketch-title">
@@ -1093,13 +1130,18 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
       <span class="pk9-tag">🆓 무료</span>
       <span class="pk9-tag">📱 모바일</span>
     </div>
-    <div class="pk9-spacer"></div>
+    <div class="pk9-spacer" style="min-height:0">
+      <img src="couple-watercolor.png" alt="커플 이미지" style="width:100%;height:100px;object-fit:cover;object-position:center 30%;border-radius:8px;border:2px solid #FDE047;margin-bottom:12px">
+    </div>
     <div class="pk9-footer">
-      <div>
-        <div class="pk9-brand">공대생 할아버지, 미대생 할머니</div>
-        <div class="pk9-url">매일 오전 공개 · 무료 연재</div>
+      <div class="flyer-footer-left">
+        <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+        <div class="flyer-footer-left-text">
+          <div class="pk9-brand">공대생 할아버지, 미대생 할머니</div>
+          <div class="pk9-url">매일 오전 공개 · 무료 연재</div>
+        </div>
       </div>
-      <div class="pk9-qr">QR<br>코드</div>
+      <div class="pk9-qr"><img src="qr-code.png" alt="QR코드"></div>
     </div>
   </div>
   </div>
@@ -1112,10 +1154,11 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="pk-section-title">⑩ 시네마틱 다크 그레이</div>
   <div class="a4-label">영화 포스터 스타일, 타임라인</div>
   <div class="a4-actions">
-    <button class="pk-print-btn" onclick="printOne('pk10-wrap')">🖨️ 인쇄</button>
+    <button class="pk-print-btn" onclick="downloadPDF('pk10-wrap')">⬇️ PDF 저장</button>
   </div>
   <div id="pk10-wrap">
   <div class="a4 pk10">
+    <div class="flyer-slogan" style="background:linear-gradient(90deg,#111827,#1F2937,#374151);border-bottom:2px solid #FBBF24;color:#FBBF24">★ 세계 최초, 출판의 혁명! ★</div>
     <div class="pk10-band"></div>
     <div class="pk10-body">
       <div class="pk10-chapter">CHAPTER 01 — STORY BEGINS</div>
@@ -1165,13 +1208,18 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
           <div class="pk10-tl-text">수채화와 함께, 매일 오전 한 편씩 새 에피소드 공개</div>
         </div>
       </div>
-      <div class="pk10-spacer"></div>
+      <div class="pk10-spacer" style="min-height:0">
+        <img src="couple-watercolor.png" alt="커플 이미지" style="width:100%;height:110px;object-fit:cover;object-position:center 30%;border-radius:8px;margin-bottom:14px;opacity:.85">
+      </div>
       <div class="pk10-footer">
-        <div>
-          <div class="pk10-footer-brand">공대생 할아버지, 미대생 할머니</div>
-          <div class="pk10-footer-url">60편 연재 · 무료 공개 · 매일 업데이트</div>
+        <div class="flyer-footer-left">
+          <img src="로고-공대생.png" alt="로고" class="flyer-logo">
+          <div class="flyer-footer-left-text">
+            <div class="pk10-footer-brand">공대생 할아버지, 미대생 할머니</div>
+            <div class="pk10-footer-url">60편 연재 · 무료 공개 · 매일 업데이트</div>
+          </div>
         </div>
-        <div class="pk10-footer-qr">QR<br>코드</div>
+        <div class="pk10-footer-qr"><img src="qr-code.png" alt="QR코드"></div>
       </div>
     </div>
   </div>
@@ -1180,27 +1228,43 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
 
 <div style="height:60px"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="js/common.js"></script>
 <script>
-function printOne(wrapId) {
+const PDF_NAMES = {
+  'pk1-wrap': '홍보물-미니멀화이트',
+  'pk2-wrap': '홍보물-딥네이비',
+  'pk3-wrap': '홍보물-수채화따뜻한톤',
+  'pk4-wrap': '홍보물-골드럭셔리',
+  'pk5-wrap': '홍보물-봄그린',
+  'pk6-wrap': '홍보물-라벤더',
+  'pk7-wrap': '홍보물-신문타이포',
+  'pk8-wrap': '홍보물-핑크그라디언트',
+  'pk9-wrap': '홍보물-스케치',
+  'pk10-wrap': '홍보물-시네마틱'
+};
+
+function downloadPDF(wrapId) {
   const el = document.getElementById(wrapId);
   if (!el) return;
-  const html = `<!DOCTYPE html><html lang="ko"><head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { background: #fff; }
-      @page { size: A4; margin: 0; }
-      @media print { body { margin: 0; } }
-    </style>
-    <style>${document.querySelector('style').textContent}</style>
-  </head><body>${el.innerHTML}</body></html>`;
-  const w = window.open('', '_blank');
-  w.document.write(html);
-  w.document.close();
-  w.onload = () => { w.focus(); w.print(); };
+  const a4 = el.querySelector('.a4');
+  if (!a4) return;
+
+  const btn = el.previousElementSibling?.querySelector('button');
+  const origText = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = '⏳ 변환 중...'; btn.disabled = true; }
+
+  const opt = {
+    margin: 0,
+    filename: (PDF_NAMES[wrapId] || wrapId) + '.pdf',
+    image: { type: 'jpeg', quality: 0.97 },
+    html2canvas: { scale: 2, useCORS: true, logging: false },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(a4).save().then(() => {
+    if (btn) { btn.textContent = origText; btn.disabled = false; }
+  });
 }
 </script>
 </body>
