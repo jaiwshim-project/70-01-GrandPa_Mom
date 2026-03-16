@@ -802,31 +802,28 @@ function downloadImg(artId) {
 
   const btn = document.querySelector(`[onclick="downloadImg('${artId}')"]`);
   const orig = btn ? btn.textContent : '';
-  if (btn) { btn.textContent = '⏳ 변환 중...'; btn.disabled = true; }
+  if (btn) { btn.textContent = '⏳ 저장 중...'; btn.disabled = true; }
 
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = () => {
-    const canvas = document.createElement('canvas');
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
-    canvas.getContext('2d').drawImage(img, 0, 0);
-    const a = document.createElement('a');
-    a.download = meta.img.replace(/\.[^.]+$/, '') + '.png';
-    a.href = canvas.toDataURL('image/png');
-    a.click();
-    if (btn) { btn.textContent = '✅ 저장 완료!'; }
-    setTimeout(() => { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 2000);
-  };
-  img.onerror = () => {
-    // crossOrigin 실패 시 직접 다운로드 fallback
-    const a = document.createElement('a');
-    a.href = meta.img;
-    a.download = meta.img.replace(/\.[^.]+$/, '') + '.png';
-    a.click();
-    if (btn) { btn.textContent = orig; btn.disabled = false; }
-  };
-  img.src = meta.img + '?t=' + Date.now();
+  const filename = meta.img.replace(/\.[^.]+$/, '') + '.png';
+
+  fetch(meta.img)
+    .then(r => r.blob())
+    .then(blob => {
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      if (btn) { btn.textContent = '✅ 저장 완료!'; }
+      setTimeout(() => { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 2000);
+    })
+    .catch(() => {
+      if (btn) { btn.textContent = orig; btn.disabled = false; }
+      alert('이미지 다운로드에 실패했습니다. 이미지를 직접 우클릭 → 다른 이름으로 저장해 주세요.');
+    });
 }
 </script>
 </body>
