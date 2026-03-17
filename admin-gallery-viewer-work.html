@@ -164,77 +164,13 @@ body { font-family: 'Noto Sans KR', sans-serif; background: #F4F6FA; color: #111
   <div class="av-grid" id="galleryGrid"></div>
 </div>
 
+<script src="js/illustrations-ep.js"></script>
 <script src="js/common.js"></script>
 <script>
 // 관리자 인증 체크
 if (sessionStorage.getItem('adminAuth') !== '1') location.href = 'admin.html';
 
 const PART_COLORS = {1:'#1D4ED8',2:'#C2410C',3:'#166534',4:'#B45309',5:'#7C3AED',6:'#92400E'};
-
-// ── 에피소드별 이미지 파일 지정 ──
-// 각 에피소드 번호에 맞는 이미지 파일명을 여기서 수정하세요
-const EPISODE_IMAGES = {
-   1: 'couple-park2.png',
-   2: 'couple-park2.png',
-   3: 'couple-park2.png',
-   4: 'couple-park2.png',
-   5: 'couple-park2.png',
-   6: 'couple-park2.png',
-   7: 'couple-park2.png',
-   8: 'couple-park2.png',
-   9: 'couple-park2.png',
-  10: 'couple-park2.png',
-  11: 'couple-watercolor.png',
-  12: 'couple-watercolor.png',
-  13: 'couple-watercolor.png',
-  14: 'couple-watercolor.png',
-  15: 'couple-watercolor.png',
-  16: 'couple-watercolor.png',
-  17: 'couple-watercolor.png',
-  18: 'couple-watercolor.png',
-  19: 'couple-watercolor.png',
-  20: 'couple-watercolor.png',
-  21: 'couple-park.png',
-  22: 'couple-park.png',
-  23: 'couple-park.png',
-  24: 'couple-park.png',
-  25: 'couple-park.png',
-  26: 'couple-park.png',
-  27: 'couple-park.png',
-  28: 'couple-park.png',
-  29: 'couple-park.png',
-  30: 'couple-park.png',
-  31: 'couple-park2.png',
-  32: 'couple-park2.png',
-  33: 'couple-park2.png',
-  34: 'couple-park2.png',
-  35: 'couple-park2.png',
-  36: 'couple-park2.png',
-  37: 'couple-park2.png',
-  38: 'couple-park2.png',
-  39: 'couple-park2.png',
-  40: 'couple-park2.png',
-  41: 'couple-watercolor.png',
-  42: 'couple-watercolor.png',
-  43: 'couple-watercolor.png',
-  44: 'couple-watercolor.png',
-  45: 'couple-watercolor.png',
-  46: 'couple-watercolor.png',
-  47: 'couple-watercolor.png',
-  48: 'couple-watercolor.png',
-  49: 'couple-watercolor.png',
-  50: 'couple-watercolor.png',
-  51: 'couple-park.png',
-  52: 'couple-park.png',
-  53: 'couple-park.png',
-  54: 'couple-park.png',
-  55: 'couple-park.png',
-  56: 'couple-park.png',
-  57: 'couple-park.png',
-  58: 'couple-park.png',
-  59: 'couple-park.png',
-  60: 'couple-park.png',
-};
 
 let currentPart = 0;
 
@@ -257,12 +193,14 @@ function isToday(dateStr) {
 }
 
 function galleryCard(e) {
-  const imgSrc = EPISODE_IMAGES[e.episode_number] || 'couple-park2.png';
+  const illus = EPISODE_ILLUS[e.episode_number] || null;
   const open  = isOpen(e.published_at);
   const tod   = isToday(e.published_at);
   const statusColor = tod ? '#B45309' : open ? '#059669' : '#6B7280';
   const statusText  = tod ? '★ 오늘' : open ? '● 공개' : '🔒 미공개';
-  const thumb = `<img src="${imgSrc}" alt="EP.${e.episode_number}" style="width:100%;height:100%;object-fit:cover;object-position:center;">`;
+  const thumb = illus
+    ? `<div style="width:100%;height:100%;overflow:hidden">${illus}</div>`
+    : `<div class="av-thumb-empty">🖌️</div>`;
   const pColor = PART_COLORS[e.part_number] || '#6B7280';
   const pName  = PART_NAMES[e.part_number] || `${e.part_number}부`;
   const locked = !open ? ' locked' : '';
