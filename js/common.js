@@ -295,7 +295,7 @@ function renderHeader() {
   <div class="header-top-bar"></div>
   <div class="container header-inner">
     <a href="index.html" class="logo">
-      <img src="/로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="logo-img" style="height:40px;width:40px;border-radius:50%;object-fit:cover;flex-shrink:0">
+      <img src="/로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="logo-img" style="height:40px;width:40px;border-radius:50%;object-fit:contain;flex-shrink:0">
       <div class="logo-text">
         공대생 할아버지, 미대생 할머니
         <small>논리와 감성이 함께 살아가는 이야기</small>
