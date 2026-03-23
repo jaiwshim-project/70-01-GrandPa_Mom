@@ -295,7 +295,7 @@ function renderHeader() {
   <div class="header-top-bar"></div>
   <div class="container header-inner">
     <a href="index.html" class="logo">
-      <img src="로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="logo-img">
+      <img src="/로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="logo-img">
       <div class="logo-text">
         공대생 할아버지, 미대생 할머니
         <small>논리와 감성이 함께 살아가는 이야기</small>
@@ -349,7 +349,7 @@ function renderFooter() {
     <div class="footer-grid">
       <div>
         <div class="footer-logo">
-          <img src="로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="footer-logo-img">
+          <img src="/로고-공대생.png" alt="공대생 할아버지, 미대생 할머니" class="footer-logo-img">
         </div>
         <p class="footer-desc">논리와 감성이 함께 살아가는 이야기.<br>우리는 틀린 것이 아니라 다른 것이었다.</p>
         <p class="footer-tagline">— 40년의 사랑, 두 언어로 쓴 하나의 이야기</p>
